@@ -5,9 +5,69 @@
     align-items: center;
 }
 
-input {
+.input-icon-container input {
     border: none;
     outline: none;
     width: 100%;
-    font-size: 16px;
+    font-size: 19px;
+}
+
+.input-icon-container img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}
+
+/* Checkbox styles */
+.checkbox-container {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-size: 16px;
+	padding-bottom: 16px;
+}
+
+.custom-checkbox {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	user-select: none;
+}
+
+.checkbox-masked {
+	content: "";
+	position: relative;
+	width: 24px;
+	height: 24px;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.checkbox-masked::before {
+	content: "";
+	background-color: #ffffff;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 24px;
+	height: 24px;
+	background-image: url(..//assets/icon/sign/unchecked.svg);
+}
+
+.checkbox-masked:checked::before {
+	content: "";
+	position: absolute;
+	transform: translateY(-50%);
+	width: 24px;
+	height: 24px;
+	background-image: url(..//assets/icon/sign/checked.svg);
+}
+
+.checkbox-masked:hover::before {
+	background-color: #EDF2FA;
+	border-radius: 50%;
 }
