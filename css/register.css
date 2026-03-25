@@ -44,3 +44,23 @@ main {
     background: white;
     border-radius: 30px;
 }
+
+.register-form-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.register-form-header span {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.seperator {
+    width: 150px;
+    height: 3px;
+    background: #4589FF;
+    border-radius: 1.5px;
+}

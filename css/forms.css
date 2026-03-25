@@ -1,0 +1,13 @@
+.input-icon-container {
+    border-bottom: 1px solid #D4D4D4;
+    padding: 12.5px 21px;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+}
