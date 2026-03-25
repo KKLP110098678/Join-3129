@@ -1,48 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Join</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo">
+      <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
     </header>
     <main>
-        <form onsubmit="">
-            <div class="register-form-header">
-                <span>Sign up</span>
-                <div class="seperator"></div>
+      <form onsubmit="">
+        <div>
+          <div class="register-form-header">
+            <span>Sign up</span>
+            <div class="seperator"></div>
+          </div>
+          <div class="register-form-body">
+            <div class="field-container">
+              <div class="input-icon-container">
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  required
+                />
+                <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
+              </div>
             </div>
-            <div class="register-form-body">
-                <div class="field-container">
-                    <div class="input-icon-container">
-                        <input type="text" id="username" name="username" placeholder="Username" required>
-                        <img src="../assets/icon/sign/person.svg" alt="Username Icon">
-                    </div>
-                </div>
-                <div class="field-container">
-                    <div class="input-icon-container">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <img src="../assets/icon/sign/email.svg" alt="Email Icon">
-                    </div>
-                </div>
-                <div class="field-container">
-                    <div class="input-icon-container">
-                        <input type="password" id="password" name="password" placeholder="Password" required>
-                        <img src="../assets/icon/sign/password.svg" alt="Password Icon">
-                    </div>
-                </div>
-                <div class="field-container">
-                    <div class="input-icon-container">
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" required>
-                        <img src="../assets/icon/sign/password.svg" alt="Confirm Password Icon">
-                    </div>
-                </div>
-                <button type="submit">Register</button>
+            <div class="field-container">
+              <div class="input-icon-container">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  required
+                />
+                <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
+              </div>
             </div>
-        </form>
+            <div class="field-container">
+              <div class="input-icon-container">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="Password"
+                  required
+                />
+                <img
+                  src="../assets/icon/sign/lock.svg"
+                  alt="Password Icon"
+                />
+              </div>
+            </div>
+            <div class="field-container">
+              <div class="input-icon-container">
+                <input
+                  type="password"
+                  id="confirm-password"
+                  name="confirm-password"
+                  placeholder="Confirm Password"
+                  required
+                />
+                <img
+                  src="../assets/icon/sign/lock.svg"
+                  alt="Confirm Password Icon"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="checkbox-container">
+            <label class="custom-checkbox" onclick="toggleCheckBox(event)">
+              <input
+                id="privacy-checkbox"
+                class="checkbox-masked"
+                type="checkbox"
+                disabled
+              />
+              <span class="checkbox-label">
+                I accept the
+                <a
+                  href="./datenschutz.html"
+                  data-text="Privacy policy"
+                  class="color-blue checkbox-link"
+                  >Privacy policy</a
+                >
+              </span>
+            </label>
+          </div>
+          <button type="submit">Register</button>
+        </div>
+      </form>
     </main>
-</body>
+    <footer>
+      <a href="./datenschutz.html">Privacy Policy</a>
+      <a href="./legalnotice.html">Legal Notice</a>
+    </footer>
+  </body>
 </html>
