@@ -1,3 +1,42 @@
 body {
     background-color: #4589FF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100svh;
+}
+
+header, footer {
+    min-height: 201.97px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-shrink: 1;
+    gap: 16px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    padding: 8px;
+    margin-bottom: 42.7px;
+}
+
+header img {
+    margin: 80px 0 0 77px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-form {
+    padding: 48px 88px;
+    background: white;
+    border-radius: 30px;
 }
