@@ -16,8 +16,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
 }
 
 /* Checkbox styles */
@@ -27,7 +25,8 @@
 	flex-direction: column;
 	align-items: center;
 	font-size: 16px;
-	padding-bottom: 16px;
+	padding-top: 16px;
+	margin-bottom: 36px;
 }
 
 .custom-checkbox {
@@ -40,8 +39,9 @@
 .checkbox-masked {
 	content: "";
 	position: relative;
-	width: 24px;
-	height: 24px;
+	width: 16px;
+	height: 16px;
+	padding: 4px;
 	appearance: none;
 	-webkit-appearance: none;
 }
@@ -53,8 +53,9 @@
 	top: 50%;
 	left: 0;
 	transform: translateY(-50%);
-	width: 24px;
-	height: 24px;
+	width: 16px;
+	height: 16px;
+	padding: 4px;
 	background-image: url(..//assets/icon/sign/unchecked.svg);
 }
 
@@ -62,8 +63,9 @@
 	content: "";
 	position: absolute;
 	transform: translateY(-50%);
-	width: 24px;
-	height: 24px;
+	width: 16px;
+	height: 16px;
+	padding: 4px;
 	background-image: url(..//assets/icon/sign/checked.svg);
 }
 

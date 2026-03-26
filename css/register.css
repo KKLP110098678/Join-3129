@@ -64,3 +64,24 @@ main {
     background: #4589FF;
     border-radius: 1.5px;
 }
+
+.error-message {
+    padding: 1px 0;
+}
+
+button[type="submit"] {
+    display: flex;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .register-form {
+        width: 598px;
+    }
+}
+
+@media (max-height: 982px) {
+    footer {
+        min-height: auto;
+    }
+}
