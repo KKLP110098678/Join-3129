@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/buttons.css" />
+    <title>Join</title>
+  </head>
+  <body>
+    <div class="content">
+        <header>
+          <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
+        </header>
+        <main>
+          <form class="register-form" onsubmit="">
+            <div>
+              <div class="register-form-header">
+                <span>Sign up</span>
+                <div class="seperator"></div>
+              </div>
+              <div class="register-form-body">
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      type="text"
+                      id="username"
+                      name="username"
+                      placeholder="Username"
+                      required
+                    />
+                    <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
+                  </div>
+                  <output class="error-message" for="username">This field is required</output>
+                </div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Email"
+                      required
+                    />
+                    <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
+                  </div>
+                  <output class="error-message" for="email">This field is required</output>
+                </div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      placeholder="Password"
+                      required
+                    />
+                    <img
+                      src="../assets/icon/sign/lock.svg"
+                      alt="Password Icon"
+                    />
+                  </div>
+                  <output class="error-message" for="password">This field is required</output>
+                </div>
+                <div class="field-container">
+                  <div class="input-icon-container">
+                    <input
+                      type="password"
+                      id="confirm-password"
+                      name="confirm-password"
+                      placeholder="Confirm Password"
+                      required
+                    />
+                    <img
+                      src="../assets/icon/sign/lock.svg"
+                      alt="Confirm Password Icon"
+                    />
+                  </div>
+                  <output class="error-message" for="confirm-password">This field is required</output>
+                </div>
+              </div>
+              <div class="checkbox-container">
+                <label class="custom-checkbox" onclick="toggleCheckBox(event)">
+                  <input
+                    id="privacy-checkbox"
+                    class="checkbox-masked"
+                    type="checkbox"
+                    disabled
+                  />
+                  <span class="checkbox-label">
+                    I accept the
+                    <a
+                      href="./datenschutz.html"
+                      data-text="Privacy policy"
+                      class="color-blue checkbox-link"
+                      >Privacy policy</a
+                    >
+                  </span>
+                </label>
+              </div>
+              <button type="submit" class="btn-primary">Register</button>
+            </div>
+          </form>
+        </main>
+        <footer>
+          <a href="./datenschutz.html">Privacy Policy</a>
+          <a href="./legalnotice.html">Legal Notice</a>
+        </footer>
+    </div>
+  </body>
+</html>
