@@ -82,7 +82,7 @@ button[type="submit"] {
     }
 }
 
-@media (max-height: 982px) {
+@media (max-height: 1002px) {
     footer {
         min-height: auto;
     }

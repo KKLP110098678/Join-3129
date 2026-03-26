@@ -13,9 +13,7 @@
 }
 
 .input-icon-container img {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transform: translateX(50%);
 }
 
 /* Checkbox styles */
