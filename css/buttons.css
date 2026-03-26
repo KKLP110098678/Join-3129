@@ -1,0 +1,17 @@
+.btn-primary {
+    background: #4589FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #005dff;
+}
+
+.btn-primary:active {
+    color: #4589ff;
+	background-color: white;
+}
