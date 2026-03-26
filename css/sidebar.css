@@ -10,22 +10,12 @@
     left: 0;
 }
 
-/* Logo oben zentrieren */
-.logo-container {
-    padding: 0 40px;
-    margin-bottom: 60px;
-}
-
-.logo {
-    width: 56px;
-}
-
 /* Menü-Links */
 .menu {
-    flex-grow: 1;
-    /* Nimmt den restlichen Platz ein, drückt den Footer nach unten */
+    height: calc(100% - 180px);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
 }
 
