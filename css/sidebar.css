@@ -1,0 +1,69 @@
+/* Grundgerüst der Sidebar */
+.sidebar {
+    width: 232px;
+    height: 75vh;
+    box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    position: fixed;
+    left: 0;
+}
+
+/* Logo oben zentrieren */
+.logo-container {
+    padding: 0 40px;
+    margin-bottom: 60px;
+}
+
+.logo {
+    width: 56px;
+}
+
+/* Menü-Links */
+.menu {
+    flex-grow: 1;
+    /* Nimmt den restlichen Platz ein, drückt den Footer nach unten */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 40px;
+    text-decoration: none;
+    color: rgb(84, 100, 128);
+    font-size: 16px;
+    transition: background-color 0.2s;
+    border-radius: 12px;
+    margin-left: 16px;
+    margin-right: 16px;
+    
+}
+
+/* Aktiver Link oder Hover-Effekt */
+.menu-item:hover,
+.menu-item.active {
+    background-color: rgb(210, 227, 255);
+}
+
+.menu-item img {
+    margin-right: 15px;
+    width: 24px;
+}
+
+/* Footer Links ganz unten */
+.sidebar-footer {
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-footer a {
+    color: #A8A8A8;
+    text-decoration: none;
+    font-size: 14px;
+}
