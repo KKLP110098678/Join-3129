@@ -9,10 +9,31 @@ header {
 .header-content {
     max-width: 1920px;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-logo {
     width: 50px;
     height: 50px;
     margin-left: 24px;
+}
+
+.header-interaction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-right: 24px;
+}
+
+.help-icon:hover {
+    cursor: pointer;
+    height: 24px;
+}
+
+.header-headline {
+    color: white;
+    font-size: 16px;
 }
