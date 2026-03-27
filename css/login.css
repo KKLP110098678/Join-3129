@@ -102,7 +102,7 @@ input::placeholder {
 
 input:focus {
     outline: none;
-    border: 1px solid #cacaca50;
+    /* border: 1px solid #cacaca50; */
     box-shadow: none;
     border-radius: 8px;
 }
