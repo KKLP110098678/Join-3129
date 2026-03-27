@@ -71,3 +71,19 @@
 	background-color: #EDF2FA;
 	border-radius: 50%;
 }
+
+.input-icon-container.error {
+	border-color: #E60026;
+}
+
+.input-icon-container.error:focus-within {
+	border-color: #E60026;
+}
+
+.input-icon-container:focus-within {
+	border-color: #005DFF;
+}
+
+output.error {
+	color: #E60026;
+}
