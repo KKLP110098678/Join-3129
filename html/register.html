@@ -39,7 +39,7 @@
                   <output class="error-message" id="username-error" for="username">This field is required</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container" id="email-field"§>
+                  <div class="input-icon-container" id="email-field">
                     <input
                       onblur="validateEmail()"
                       type="email"
@@ -53,8 +53,9 @@
                   <output class="error-message" id="email-error" for="email">This field is required</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="password-field">
                     <input
+                      onblur="validatePassword()"
                       type="password"
                       id="password"
                       name="password"
@@ -69,8 +70,9 @@
                   <output class="error-message" id="password-error" for="password">This field is required</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="confirm-password-field">
                     <input
+                      onblur="validateConfirmPassword()"
                       type="password"
                       id="confirm-password"
                       name="confirm-password"
