@@ -15,7 +15,7 @@
           <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
         </header>
         <main>
-          <form class="register-form" onsubmit="">
+          <form class="register-form" onsubmit="return validateForm()">
             <button class="back-btn" type="button" onclick="window.location.href='./login.html'">
             </button>
             <div>
@@ -25,8 +25,9 @@
               </div>
               <div class="register-form-body">
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="username-field">
                     <input
+                      onblur="validateName()"
                       type="text"
                       id="username"
                       name="username"
@@ -35,7 +36,7 @@
                     />
                     <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
                   </div>
-                  <output class="error-message" for="username">This field is required</output>
+                  <output class="error-message" id="username-error" for="username">This field is required</output>
                 </div>
                 <div class="field-container">
                   <div class="input-icon-container">
@@ -48,7 +49,7 @@
                     />
                     <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
                   </div>
-                  <output class="error-message" for="email">This field is required</output>
+                  <output class="error-message" id="email-error" for="email">This field is required</output>
                 </div>
                 <div class="field-container">
                   <div class="input-icon-container">
@@ -64,7 +65,7 @@
                       alt="Password Icon"
                     />
                   </div>
-                  <output class="error-message" for="password">This field is required</output>
+                  <output class="error-message" id="password-error" for="password">This field is required</output>
                 </div>
                 <div class="field-container">
                   <div class="input-icon-container">
@@ -80,7 +81,7 @@
                       alt="Confirm Password Icon"
                     />
                   </div>
-                  <output class="error-message" for="confirm-password">This field is required</output>
+                  <output class="error-message" id="confirm-password-error" for="confirm-password">This field is required</output>
                 </div>
               </div>
               <div class="checkbox-container">
@@ -111,5 +112,6 @@
           <a href="./legalnotice.html">Legal Notice</a>
         </footer>
     </div>
+    <script src="../js/register.js"></script>
   </body>
 </html>
