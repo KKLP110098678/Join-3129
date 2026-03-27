@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/Join-3129/css/dashboard.css">
 </head>
 
-<body>
+<body onload="init()">
 
     <header class="header">
         <div class="header-content">
@@ -60,16 +60,22 @@
     </aside>
 
     <main>
-        <h1>Good morning, User</h1>
-        <div class="active-tasks">
-            <div class="active-task"></div>
-            <div class="task-in-board"></div>
-        </div>
-        <div class="tasks-overview">
-            <div class="to-do"></div>
-            <div class="in-progress"></div>
-            <div class="awaiting-feedback"></div>
-            <div class="done"></div>
+        <div id="dashboardContent">
+            <h1>Good morning, User</h1>
+            <div class="active-tasks">
+                <div class="urgent-task-box">
+                    <div class="urgent-task"></div>
+                    <div class="seperation-line"></div>
+                    <div class="urgent-task-date"></div>
+                </div>
+                <div class="task-in-board"></div>
+            </div>
+            <div class="tasks-overview">
+                <div class="to-do"></div>
+                <div class="in-progress"></div>
+                <div class="awaiting-feedback"></div>
+                <div class="done"></div>
+            </div>
         </div>
     </main>
 
