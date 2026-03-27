@@ -30,7 +30,7 @@ function validateEmail() {
     }
     errorMessage.classList.remove('error');
     emailField.classList.remove('error');
-    errorMessage.textContent = '';
+    errorMessage.textContent = '&8203;'; // Clear error message
     return true;
 }
 
