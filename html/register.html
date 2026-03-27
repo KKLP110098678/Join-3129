@@ -39,8 +39,9 @@
                   <output class="error-message" id="username-error" for="username">This field is required</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="email-field"§>
                     <input
+                      onblur="validateEmail()"
                       type="email"
                       id="email"
                       name="email"
