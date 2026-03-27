@@ -61,24 +61,58 @@
 
     <main>
         <div id="dashboardContent">
-            <h1>Good morning, User</h1>
+            <p class="dashboard-headline">Good morning, User</p>
             <div class="active-tasks">
                 <div class="urgent-task-box">
                     <div class="urgent-task"></div>
                     <div class="seperation-line"></div>
                     <div class="urgent-task-date"></div>
                 </div>
-                <div class="task-in-board"></div>
+                <div class="task-in-board">
+                    <div class="tib-amount">
+                        <img class="task-icons" src="/Join-3129/assets/icon/summary/default.svg" alt="">
+                        <p>5</p>
+                    </div>
+                    <p class="task-text">Task in Board</p>
+                </div>
             </div>
             <div class="tasks-overview">
-                <div class="to-do"></div>
-                <div class="in-progress"></div>
-                <div class="awaiting-feedback"></div>
-                <div class="done"></div>
+                <div class="to-do">
+                    <div class="tib-amount">
+                        <img class="task-icons" src="/Join-3129/assets/icon/summary/todo.svg" alt="">
+                        <p>5</p>
+                    </div>
+                    <p class="task-text">Tasks To-do</p>
+                </div>
+                <div class="in-progress">
+                    <div class="tib-amount">
+                        <img class="task-icons" src="/Join-3129/assets/icon/summary/in-progress.svg" alt="">
+                        <p>5</p>
+                    </div>
+                    <p class="task-text">Tasks in Progress</p>
+                </div>
+                <div class="awaiting-feedback">
+                    <div class="tib-amount">
+                        <img class="task-icons" src="/Join-3129/assets/icon/summary/await-feedback.svg" alt="">
+                        <p>5</p>
+                    </div>
+                    <p class="task-text">Awaiting Feedback</p>
+                </div>
+                <div class="done">
+                    <div class="tib-amount">
+                        <img class="task-icons" src="/Join-3129/assets/icon/summary/done.svg" alt="">
+                        <p>5</p>
+                    </div>
+                    <p class="task-text">Tasks Done</p>
+                </div>
             </div>
         </div>
     </main>
 
 </body>
+
+<script src="/Join-3129/script/script.js"></script>
+<script src="/Join-3129/script/dashboard.js"></script>
+<script src="/Join-3129/templates/dashboardTemplate.js"></script>
 
 </html>
