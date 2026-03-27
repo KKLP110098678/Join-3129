@@ -15,18 +15,18 @@ header {
     min-height: 201.97px;
 }
 
-img {
-    height: 121, 97pc;
-    width: 100, 03px;
+.logo {
+    height: 121.97px;
+    width: 100.03px;
     margin: 80px 0 0 77px;
 }
 
-.btn-primary {
-    margin: 0 auto;
-    padding: 10px 20px;
+.btn-login {
+    padding: 6px 30px 6px 30px;
+    font-size: 17px;
 }
 
-.header-right{
+.header-right {
     padding: 60px 77px 0 0;
 }
 
@@ -63,10 +63,53 @@ main {
 }
 
 .seperator {
-    width: 150px;
+    width: 170px;
     height: 3px;
     background: #4589FF;
     border-radius: 1.5px;
+}
+
+.login-form-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.input-contaier {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    height: 50px;
+    border-bottom: 1px solid #c4c4c4;
+    padding: 0 20px 0 20px;
+}
+
+input {
+    border: none;
+    height: 30px;
+    width: 350px;
+    font-size: 16px;
+    color: #2c2c2c;
+}
+
+input::placeholder {
+    color: #a8a8a8;
+}
+
+input:focus {
+    outline: none;
+}
+
+.login-button-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 18px;
+    margin: 80px auto 0 auto;
 }
 
 footer {
@@ -80,7 +123,6 @@ footer {
 footer a {
     color: #42526e;
     text-decoration: none;
-    /* font-weight: 600; */
     padding: 8px;
     margin-bottom: 42.7px;
 }
