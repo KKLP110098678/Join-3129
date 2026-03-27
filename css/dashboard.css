@@ -18,8 +18,11 @@ main {
 }
 
 .dashboard-headline {
+    width: 750px;
+    height: 80px;
     font-size: 48px;
     margin-top: 0;
+    text-align: center;
 }
 
 .active-tasks {
