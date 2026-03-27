@@ -42,19 +42,23 @@ main {
 .urgent-task {
     width: 140px;
     height: 120px;
-    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .seperation-line {
-    height: 120px;
+    height: 160px;
     width: 3px;
     background-color: white;
 }
 
 .urgent-task-date {
     width: 270px;
-    height: 80px;
-    border: 1px black solid;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .task-in-board {
@@ -68,7 +72,7 @@ main {
     justify-content: center;
 }
 
-.tib-amount {
+.tasks-amount {
     width: 120px;
     display: flex;
     align-items: center;
@@ -136,4 +140,49 @@ main {
     color: #4589FF;
     text-align: center;
     margin-top: 8px;
+}
+
+.task-text-white {
+    width: 140px;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.date-text-top {
+    width: 270px;
+    font-size: 28px;
+    color: white;
+    text-align: start;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.date-text {
+    width: 270px;
+    font-size: 20px;
+    color: white;
+    text-align: start;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.task-amount-number {
+    font-size: 48px;
+    margin: 0;
+}
+
+.task-amount-number-white {
+    font-size: 48px;
+    color: white;
+    margin: 0;
+}
+
+.icon-border {
+    height: 50px;
+    width: 50px;
+    border: 2px white solid;
+    border-radius: 50%;
 }
