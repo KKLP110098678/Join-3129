@@ -23,7 +23,7 @@ function validateEmail() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (email === '' || !emailPattern.test(email)) {
-        errorMessage.textContent = 'Please enter a valid email address';
+        errorMessage.textContent = 'Please enter a valid email address.';
         errorMessage.classList.add('error');
         emailField.classList.add('error');
         return false;
@@ -56,7 +56,7 @@ function validatePassword() {
 function buildPasswordErrorMessage(password) {
     const rules = checkPasswordRules(password);
     if (!rules.minLength) {
-        return 'Password must be at least 8 characters long';
+        return 'Password must be at least 8 characters long.';
     }
     let message = 'Missing: ';
     if (!rules.uppercase) {
@@ -83,4 +83,27 @@ function checkPasswordRules(password) {
         number: /[0-9]/.test(password),
         specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(password)
     };
+}
+
+function validateConfirmPassword() {
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const confirmPassword = confirmPasswordInput.value.trim();
+    const confirmPasswordField = document.getElementById('confirm-password-field');
+    const errorMessage = document.getElementById('confirm-password-error');
+
+    if (confirmPassword !== passwordInput.value.trim() || confirmPassword === '') {
+        if (confirmPassword === '') {
+            errorMessage.textContent = 'Please confirm your password.';
+        } else {            
+            errorMessage.textContent = 'Your passwords don\'t match. Please try again.';
+        }
+        errorMessage.classList.add('error');
+        confirmPasswordField.classList.add('error');
+        return false;
+    }
+    errorMessage.classList.remove('error');
+    confirmPasswordField.classList.remove('error');
+    errorMessage.textContent = 'ㅤ'; // Clear error message
+    return true;
 }
