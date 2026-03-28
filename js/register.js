@@ -1,10 +1,14 @@
-function validateName(checkMode) {
+async function validateName(checkMode) {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
     const usernameField = document.getElementById('username-field');
     const errorMessage = document.getElementById('username-error');
-
-    if (username === '') {
+    if (username === '' || await isUserNameTaken(username)) {
+        if (await isUserNameTaken(username)) {
+            if (!checkMode) {
+                errorMessage.textContent = 'This username is already taken. Please choose another one.';
+            }
+        }
         if (!checkMode) {
             errorMessage.classList.add('error');
             usernameField.classList.add('error');
@@ -18,16 +22,20 @@ function validateName(checkMode) {
 }
 
 
-function validateEmail(checkMode) {
+async function validateEmail(checkMode) {
     const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
     const emailField = document.getElementById('email-field');
     const errorMessage = document.getElementById('email-error');
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (email === '' || !emailPattern.test(email)) {
+    if (email === '' || !emailPattern.test(email) || await isUserEmailTaken(email)) {
         if (!checkMode) {
-            errorMessage.textContent = 'Please enter a valid email address.';
+            if (await isUserEmailTaken(email)) {
+                errorMessage.textContent = 'This email is already registered. Please use another one.';
+            } else {
+                errorMessage.textContent = 'Please enter a valid email address.';
+            }
             errorMessage.classList.add('error');
             emailField.classList.add('error');
         }
@@ -131,3 +139,15 @@ function toggleSubmitDisabledState() {
     const submitButton = document.getElementById('submit-button');
     submitButton.disabled = !privacyCheckbox.checked;
 }
+
+async function registerUser(event) {
+    event.preventDefault();
+    newUser = {
+        username: document.getElementById('username').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        password: document.getElementById('password').value.trim()
+    };
+    await addNewUser(newUser);
+    window.location.href = './login.html';
+}
+    
