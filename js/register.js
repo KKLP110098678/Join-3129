@@ -125,3 +125,9 @@ function updateCheckboxDisabledState() {
         document.getElementById('privacy-checkbox').checked = false; // Uncheck if disabled
     }
 }
+
+function toggleSubmitDisabledState() {
+    const privacyCheckbox = document.getElementById('privacy-checkbox');
+    const submitButton = document.getElementById('submit-button');
+    submitButton.disabled = !privacyCheckbox.checked;
+}
