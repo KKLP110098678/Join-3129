@@ -15,7 +15,7 @@
           <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
         </header>
         <main>
-          <form class="register-form" onsubmit="return validateForm()">
+          <form class="register-form" onsubmit="registerUser(event)">
             <button class="back-btn" type="button" onclick="window.location.href='./login.html'">
             </button>
             <div>
@@ -118,6 +118,11 @@
           <a href="./legalnotice.html">Legal Notice</a>
         </footer>
     </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="../js/register.js"></script>
+    <script src="../js/database/dbConfig.js"></script>
+    <script src="../js/database/userDB.js"></script>
   </body>
 </html>
