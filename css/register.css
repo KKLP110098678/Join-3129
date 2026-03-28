@@ -88,6 +88,25 @@ button[type="submit"] {
     font-size: 19px;
 }
 
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    gap: 8px;
+    margin-left: 8px;
+}
+
+.checkbox-label a {
+    color: #005DFF;
+    text-decoration: none;
+}
+
+.checkbox-label a:hover {
+    color: #005DFF;
+    text-decoration: underline;
+    text-shadow: 1px 1px 1px #005DFF, 0px 1px 1px #005DFF;
+}
+
 @media (min-width: 768px) {
     .register-form {
         width: 598px;
