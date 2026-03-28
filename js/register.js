@@ -1,21 +1,24 @@
-function validateName() {
+function validateName(checkMode) {
     const usernameInput = document.getElementById('username');
     const username = usernameInput.value.trim();
     const usernameField = document.getElementById('username-field');
     const errorMessage = document.getElementById('username-error');
 
     if (username === '') {
-        errorMessage.classList.add('error');
-        usernameField.classList.add('error');
+        if (!checkMode) {
+            errorMessage.classList.add('error');
+            usernameField.classList.add('error');
+        }
         return false;
     }
     errorMessage.classList.remove('error');
     usernameField.classList.remove('error');
+    errorMessage.textContent = 'ㅤ'; // Clear error message
     return true;
 }
 
 
-function validateEmail() {
+function validateEmail(checkMode) {
     const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
     const emailField = document.getElementById('email-field');
@@ -23,9 +26,11 @@ function validateEmail() {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (email === '' || !emailPattern.test(email)) {
-        errorMessage.textContent = 'Please enter a valid email address.';
-        errorMessage.classList.add('error');
-        emailField.classList.add('error');
+        if (!checkMode) {
+            errorMessage.textContent = 'Please enter a valid email address.';
+            errorMessage.classList.add('error');
+            emailField.classList.add('error');
+        }
         return false;
     }
     errorMessage.classList.remove('error');
@@ -34,7 +39,7 @@ function validateEmail() {
     return true;
 }
 
-function validatePassword() {
+function validatePassword(checkMode) {
     const passwordInput = document.getElementById('password');
     const password = passwordInput.value.trim();
     const passwordField = document.getElementById('password-field');
@@ -42,14 +47,16 @@ function validatePassword() {
     const rules = checkPasswordRules(password);
 
     if (!rules.minLength || !rules.uppercase || !rules.lowercase || !rules.number || !rules.specialChar) {
-        errorMessage.textContent = buildPasswordErrorMessage(password);
-        errorMessage.classList.add('error');
-        passwordField.classList.add('error');
+        if (!checkMode) {
+            errorMessage.textContent = buildPasswordErrorMessage(password);
+            errorMessage.classList.add('error');
+            passwordField.classList.add('error');
+        }
         return false;
     }
     errorMessage.classList.remove('error');
     passwordField.classList.remove('error');
-    errorMessage.textContent = 'ㅤ \n ㅤ';
+    errorMessage.textContent = 'ㅤ'; // Clear error message
     return true;
 }
 
@@ -85,7 +92,7 @@ function checkPasswordRules(password) {
     };
 }
 
-function validateConfirmPassword() {
+function validateConfirmPassword(checkMode) {
     const passwordInput = document.getElementById('password');
     const confirmPasswordInput = document.getElementById('confirm-password');
     const confirmPassword = confirmPasswordInput.value.trim();
@@ -93,17 +100,28 @@ function validateConfirmPassword() {
     const errorMessage = document.getElementById('confirm-password-error');
 
     if (confirmPassword !== passwordInput.value.trim() || confirmPassword === '') {
-        if (confirmPassword === '') {
-            errorMessage.textContent = 'Please confirm your password.';
-        } else {            
-            errorMessage.textContent = 'Your passwords don\'t match. Please try again.';
+        if (!checkMode) {
+            if (confirmPassword === '') {
+                errorMessage.textContent = 'Please confirm your password.';
+            } else {            
+                errorMessage.textContent = 'Your passwords don\'t match. Please try again.';
+            }
+            errorMessage.classList.add('error');
+            confirmPasswordField.classList.add('error');
         }
-        errorMessage.classList.add('error');
-        confirmPasswordField.classList.add('error');
         return false;
     }
     errorMessage.classList.remove('error');
     confirmPasswordField.classList.remove('error');
     errorMessage.textContent = 'ㅤ'; // Clear error message
     return true;
+}
+
+function updateCheckboxDisabledState() {
+    if (validateName(true) && validateEmail(true) && validatePassword(true) && validateConfirmPassword(true)) {
+        document.getElementById('privacy-checkbox').disabled = false;
+    } else {
+        document.getElementById('privacy-checkbox').disabled = true;
+        document.getElementById('privacy-checkbox').checked = false; // Uncheck if disabled
+    }
 }
