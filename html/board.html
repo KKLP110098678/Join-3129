@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join</title>
+
+    <link rel="stylesheet" href="../css/standard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body onload="init()">
+
+    <header class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="../assets/icon/logo-white.svg" alt="join logo">
+            </div>
+            <div class="header-interaction">
+                <div>
+                    <h3 class="header-headline">Kanban Project Managment Tool</h3>
+                </div>
+                <div>
+                    <a><img class="help-icon" src="../assets/icon/questionmark.svg"
+                            alt="questionmark help link"></a>
+                </div>
+                <div class="user-icon-border">
+                    <div class="user-icon">
+                        <a>AA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="menu">
+            <div class="menu-items-container">
+                <a href="./" class="menu-item active">
+                    <img src="../assets/icon/menuIcons/summary.svg"> Summary
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/add-task.svg" alt=""> Add Task
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/board.svg" alt=""> Board
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/contacts.svg" alt=""> Contacts
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal notice</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main>
+        <div id="dashboardContent">
+            <p class="dashboard-headline">Good morning, User</p>
+            <div class="active-tasks">
+                <div class="urgent-task-box">
+                    <div class="urgent-task">
+                        <div class="tasks-amount">
+                            <img class="task-icons icon-border" src="../assets/icon/summary/urgent.svg" alt="">
+                            <p class="task-amount-number-white">5</p>
+                        </div>
+                        <p class="task-text-white">Tasks Urgent</p>
+                    </div>
+                    <div class="seperation-line"></div>
+                    <div class="urgent-task-date">
+                        <p class="date-text-top">Todays Date</p>
+                        <p class="date-text">Upcoming Deadline</p>
+                    </div>
+                </div>
+                <div class="task-in-board">
+                    <div class="tasks-amount">
+                        <img class="task-icons" src="../assets/icon/summary/default.svg" alt="">
+                        <p class="task-amount-number">5</p>
+                    </div>
+                    <p class="task-text">Task in Board</p>
+                </div>
+            </div>
+            <div class="tasks-overview">
+                <div class="to-do">
+                    <div class="tasks-amount">
+                        <img class="task-icons" src="../assets/icon/summary/todo.svg" alt="">
+                        <p class="task-amount-number">5</p>
+                    </div>
+                    <p class="task-text">Tasks To-do</p>
+                </div>
+                <div class="in-progress">
+                    <div class="tasks-amount">
+                        <img class="task-icons" src="../assets/icon/summary/in-progress.svg" alt="">
+                        <p class="task-amount-number">5</p>
+                    </div>
+                    <p class="task-text">Tasks in Progress</p>
+                </div>
+                <div class="awaiting-feedback">
+                    <div class="tasks-amount">
+                        <img class="task-icons" src="../assets/icon/summary/await-feedback.svg" alt="">
+                        <p class="task-amount-number">5</p>
+                    </div>
+                    <p class="task-text">Awaiting Feedback</p>
+                </div>
+                <div class="done">
+                    <div class="tasks-amount">
+                        <img class="task-icons" src="../assets/icon/summary/done.svg" alt="">
+                        <p class="task-amount-number">5</p>
+                    </div>
+                    <p class="task-text">Tasks Done</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+<script src="../script/script.js"></script>
+<script src="../script/dashboard.js"></script>
+<script src="../templates/dashboardTemplate.js"></script>
+
+</html>
