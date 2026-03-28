@@ -88,7 +88,7 @@
                 </div>
               </div>
               <div class="checkbox-container">
-                <label class="custom-checkbox" onclick="toggleCheckBox(event)">
+                <label class="custom-checkbox" onchange="toggleSubmitDisabledState()">
                   <input
                     id="privacy-checkbox"
                     class="checkbox-masked"
@@ -106,7 +106,10 @@
                   </span>
                 </label>
               </div>
-              <button type="submit" class="btn-primary">Register</button>
+              <button type="submit" class="btn-primary" id="submit-button" disabled>
+                Register
+                <span class="disabled-tooltip">Please fill out all fields and accept the privacy policy to proceed.</span>
+              </button>
             </div>
           </form>
         </main>
