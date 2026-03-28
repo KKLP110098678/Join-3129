@@ -27,7 +27,7 @@
                 <div class="field-container">
                   <div class="input-icon-container" id="username-field">
                     <input
-                      onblur="validateName()"
+                      onblur="validateName(); updateCheckboxDisabledState();"
                       type="text"
                       id="username"
                       name="username"
@@ -41,7 +41,7 @@
                 <div class="field-container">
                   <div class="input-icon-container" id="email-field">
                     <input
-                      onblur="validateEmail()"
+                      onblur="validateEmail(); updateCheckboxDisabledState();"
                       type="email"
                       id="email"
                       name="email"
@@ -55,7 +55,7 @@
                 <div class="field-container">
                   <div class="input-icon-container" id="password-field">
                     <input
-                      onblur="validatePassword()"
+                      onblur="validatePassword(); updateCheckboxDisabledState();"
                       type="password"
                       id="password"
                       name="password"
@@ -72,7 +72,7 @@
                 <div class="field-container">
                   <div class="input-icon-container" id="confirm-password-field">
                     <input
-                      onblur="validateConfirmPassword()"
+                      onblur="validateConfirmPassword(); updateCheckboxDisabledState();"
                       type="password"
                       id="confirm-password"
                       name="confirm-password"
