@@ -15,7 +15,7 @@
           <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
         </header>
         <main>
-          <form class="register-form" onsubmit="">
+          <form class="register-form" onsubmit="return validateForm()">
             <button class="back-btn" type="button" onclick="window.location.href='./login.html'">
             </button>
             <div>
@@ -25,8 +25,9 @@
               </div>
               <div class="register-form-body">
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="username-field">
                     <input
+                      onblur="validateName(); updateCheckboxDisabledState();"
                       type="text"
                       id="username"
                       name="username"
@@ -35,11 +36,12 @@
                     />
                     <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
                   </div>
-                  <output class="error-message" for="username">This field is required</output>
+                  <output class="error-message" id="username-error" for="username">This field is required!</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="email-field">
                     <input
+                      onblur="validateEmail(); updateCheckboxDisabledState();"
                       type="email"
                       id="email"
                       name="email"
@@ -48,11 +50,12 @@
                     />
                     <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
                   </div>
-                  <output class="error-message" for="email">This field is required</output>
+                  <output class="error-message" id="email-error" for="email">This field is required!</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="password-field">
                     <input
+                      onblur="validatePassword(); updateCheckboxDisabledState();"
                       type="password"
                       id="password"
                       name="password"
@@ -64,11 +67,12 @@
                       alt="Password Icon"
                     />
                   </div>
-                  <output class="error-message" for="password">This field is required</output>
+                  <output class="error-message" id="password-error" for="password">This field is required!</output>
                 </div>
                 <div class="field-container">
-                  <div class="input-icon-container">
+                  <div class="input-icon-container" id="confirm-password-field">
                     <input
+                      onblur="validateConfirmPassword(); updateCheckboxDisabledState();"
                       type="password"
                       id="confirm-password"
                       name="confirm-password"
@@ -80,11 +84,11 @@
                       alt="Confirm Password Icon"
                     />
                   </div>
-                  <output class="error-message" for="confirm-password">This field is required</output>
+                  <output class="error-message" id="confirm-password-error" for="confirm-password">This field is required!</output>
                 </div>
               </div>
               <div class="checkbox-container">
-                <label class="custom-checkbox" onclick="toggleCheckBox(event)">
+                <label class="custom-checkbox" onchange="toggleSubmitDisabledState()">
                   <input
                     id="privacy-checkbox"
                     class="checkbox-masked"
@@ -92,7 +96,7 @@
                     disabled
                   />
                   <span class="checkbox-label">
-                    I accept the
+                    I accept the 
                     <a
                       href="./datenschutz.html"
                       data-text="Privacy policy"
@@ -102,7 +106,10 @@
                   </span>
                 </label>
               </div>
-              <button type="submit" class="btn-primary">Register</button>
+              <button type="submit" class="btn-primary" id="submit-button" disabled>
+                Register
+                <span class="disabled-tooltip">Please fill out all fields and accept the privacy policy to proceed.</span>
+              </button>
             </div>
           </form>
         </main>
@@ -111,5 +118,6 @@
           <a href="./legalnotice.html">Legal Notice</a>
         </footer>
     </div>
+    <script src="../js/register.js"></script>
   </body>
 </html>
