@@ -6,8 +6,43 @@
     <title>Join Board</title>
 
     <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
+    <link rel="stylesheet" href="../css/standard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
-<body>
+
+<body onload="init()">
+
+    <header>
+        <div id="headerContent" class="header-content"></div>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="menu">
+            <div class="menu-items-container">
+                <a href="./" class="menu-item active">
+                    <img src="../assets/icon/menuIcons/summary.svg"> Summary
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/add-task.svg" alt=""> Add Task
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/board.svg" alt=""> Board
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/contacts.svg" alt=""> Contacts
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal notice</a>
+            </div>
+        </nav>
+    </aside>
     
 </body>
+
+<script src="../script/script.js"></script>
+<script src="../templates/headerTemplate.js"></script>
+
 </html>

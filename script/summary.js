@@ -1,9 +1,3 @@
-function addSummary() {
-    let dashboardRef = document.getElementById('dashboardContent');
-
-    dashboardRef.innerHTML += summaryTemplate();
-}
-
 function getGreeting() {
     const hour = new Date().getHours();
 
