@@ -15,26 +15,8 @@
 
 <body onload="init()">
 
-    <header class="header">
-        <div class="header-content">
-            <div class="header-logo">
-                <img src="../assets/icon/logo-white.svg" alt="join logo">
-            </div>
-            <div class="header-interaction">
-                <div>
-                    <h3 class="header-headline">Kanban Project Managment Tool</h3>
-                </div>
-                <div>
-                    <a><img class="help-icon" src="../assets/icon/questionmark.svg"
-                            alt="questionmark help link"></a>
-                </div>
-                <div class="user-icon-border">
-                    <div class="user-icon">
-                        <a>AA</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <header>
+        <div id="headerContent" class="header-content"></div>
     </header>
 
     <aside class="sidebar">
@@ -61,12 +43,13 @@
     </aside>
 
     <main>
-        <div id="dashboardContent"></div>
+        <div id="summaryContent"></div>
     </main>
 
 </body>
 
 <script src="../script/script.js"></script>
+<script src="../templates/headerTemplate.js"></script>
 <script src="../script/summary.js"></script>
 <script src="../templates/summaryTemplate.js"></script>
 

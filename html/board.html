@@ -1,13 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Board</title>
 
     <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
+    <link rel="stylesheet" href="../css/standard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/board.css">
 </head>
-<body>
-    
+
+<body onload="init()">
+
+    <header>
+        <div id="headerContent" class="header-content"></div>
+    </header>
+
+    <aside class="sidebar">
+        <nav class="menu">
+            <div class="menu-items-container">
+                <a href="./" class="menu-item active">
+                    <img src="../assets/icon/menuIcons/summary.svg"> Summary
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/add-task.svg" alt=""> Add Task
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/board.svg" alt=""> Board
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/contacts.svg" alt=""> Contacts
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal notice</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main>
+        <div id="boardContent">
+            <div class="upper-board">
+                <div class="searchbar">
+                    <input class="search-field" type="search" placeholder="Find Task">
+                    <button class="add-task-btn">Add task +</button>
+                </div>
+                <div class="tasksbar">
+                    <div class="taskbar-tab">
+                        <p>To do</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>In progress</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>Await feedback</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>Done</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-board">
+                <div class="lower-board-content">
+                    <div class="tab-content-box" id="toDoBox"></div>
+                    <div class="tab-content-box" id="progressBox"></div>
+                    <div class="tab-content-box" id="feedbackBox"></div>
+                    <div class="tab-content-box" id="doneBox"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
+
+<script src="../script/script.js"></script>
+<script src="../templates/headerTemplate.js"></script>
+
 </html>

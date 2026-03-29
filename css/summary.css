@@ -9,7 +9,7 @@ main {
     margin-left: 232px;
 }
 
-#dashboardContent {
+#summaryContent {
     width: 900px;
     height: 600px;
     display: flex;
