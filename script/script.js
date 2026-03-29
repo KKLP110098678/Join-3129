@@ -10,8 +10,8 @@ function addHeader() {
 }
 
 function addSummary() {
-    let dashboardRef = document.getElementById('summaryContent');
-    if (!dashboardRef) return;
+    let summaryRef = document.getElementById('summaryContent');
+    if (!summaryRef) return;
 
-    dashboardRef.innerHTML += summaryTemplate();
+    summaryRef.innerHTML += summaryTemplate();
 }

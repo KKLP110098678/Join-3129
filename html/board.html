@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="../css/standard.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/board.css">
 </head>
 
 <body onload="init()">
@@ -39,7 +41,43 @@
             </div>
         </nav>
     </aside>
-    
+
+    <main>
+        <div id="boardContent">
+            <div class="upper-board">
+                <div class="searchbar">
+                    <input class="search-field" type="search" placeholder="Find Task">
+                    <button class="add-task-btn">Add task +</button>
+                </div>
+                <div class="tasksbar">
+                    <div class="taskbar-tab">
+                        <p>To do</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>In progress</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>Await feedback</p>
+                        <button>+</button>
+                    </div>
+                    <div class="taskbar-tab">
+                        <p>Done</p>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-board">
+                <div class="lower-board-content">
+                    <div class="tab-content-box" id="toDoBox"></div>
+                    <div class="tab-content-box" id="progressBox"></div>
+                    <div class="tab-content-box" id="feedbackBox"></div>
+                    <div class="tab-content-box" id="doneBox"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
 </body>
 
 <script src="../script/script.js"></script>
