@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
     <title>Join - Login</title>
 </head>
+
 <body>
-    
+    <header>
+        <img src="../assets/icon/logo-blue.svg" class="logo" alt="Join Logo">
+        <div class="header-right"><span class="sign-up-info">Not a Join user?</span><button class="btn-primary btn-login">Sign
+                up</button></div>
+    </header>
+    <main>
+        <form class="login-form" onsubmit="">
+            <div class="login-form-header">
+                <span>Log in</span>
+                <div class="seperator"></div>
+            </div>
+            <div class="login-form-body">
+                <div class="input-contaier">
+                    <input type="email" id="username" name="username" placeholder="Email" required>
+                    <img src="../assets/icon/login/mail.svg" alt="Mail Icon">
+                </div>
+                <div class="input-contaier">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <img src="../assets/icon/login/lock.svg" class="pointer" alt="Lock Icon">
+                </div>
+            </div>
+            <div class="login-button-area">
+                <button class="btn-primary btn-login">Log in</button>
+                <button class="btn-light btn-login">Guest log in</button>
+            </div>
+        </form>
+    </main>
+    <footer>
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./legalnotice.html">Legal Notice</a>
+    </footer>
 </body>
+
 </html>
