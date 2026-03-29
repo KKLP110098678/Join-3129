@@ -1,4 +1,4 @@
-function dahsboardTemplate() {
+function summaryTemplate() {
     return `
         <p class="dashboard-headline">${getGreeting()}, User</p>
             <div class="active-tasks">

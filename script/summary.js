@@ -1,7 +1,7 @@
-function addDashboard() {
+function addSummary() {
     let dashboardRef = document.getElementById('dashboardContent');
 
-    dashboardRef.innerHTML += dahsboardTemplate();
+    dashboardRef.innerHTML += summaryTemplate();
 }
 
 function getGreeting() {
