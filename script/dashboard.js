@@ -1,3 +1,5 @@
 function addDashboard() {
-    document.getElementById('dashboardContent');
+    let dashboardRef = document.getElementById('dashboardContent');
+
+    dashboardRef.innerHTML += dahsboardTemplate();
 }
