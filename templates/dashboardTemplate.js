@@ -1,6 +1,6 @@
 function dahsboardTemplate() {
     return `
-        <p class="dashboard-headline">Good morning, User</p>
+        <p class="dashboard-headline">${getGreeting()}, User</p>
             <div class="active-tasks">
                 <div class="urgent-task-box">
                     <div class="urgent-task">
