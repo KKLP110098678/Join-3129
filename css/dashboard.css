@@ -33,6 +33,7 @@ main {
     height: 200px;
     display: flex;
     gap: 20px;
+    perspective: 500px;
 }
 
 .urgent-task-box {
@@ -43,6 +44,35 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    transition: transform 0.3s ease;
+}
+
+.urgent-task-box:hover {
+    cursor: pointer;
+    background-color: white;
+    border: 1px lightgray solid;
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
+    
+    .task-amount-number-white {
+        color: #4589FF;
+    }
+
+    .task-text-white {
+        color: #4589FF;
+    }
+
+    .seperation-line {
+        background-color: #005DFF;
+    }
+
+    .date-text-top {
+        color: #4589FF;
+    }
+
+    .date-text {
+        color: #4589FF;
+    }
 }
 
 .urgent-task {
@@ -76,13 +106,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .task-in-board:hover {
     cursor: pointer;
     background-color: #005DFF;
     color: white;
-    transform: scale(1.1);
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
 
     .task-text {
         color: white;
@@ -99,6 +131,7 @@ main {
     width: 900px;
     display: flex;
     justify-content: space-between;
+    perspective: 500px;
 }
 
 .to-do {
@@ -111,13 +144,15 @@ main {
     align-items: center;
     justify-content: center;
     background-color: #D2E3FF;
+    transition: transform 0.3s ease;
 }
 
 .to-do:hover {
     cursor: pointer;
     background-color: white;
     color: #005DFF;
-    transform: scale(1.1);
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
 
     .task-text {
         color: #005DFF;
@@ -133,13 +168,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .in-progress:hover {
     cursor: pointer;
     background-color: #005DFF;
     color: white;
-    transform: scale(1.1);
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
 
     .task-text {
         color: white;
@@ -160,13 +197,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .awaiting-feedback:hover {
     cursor: pointer;
     background-color: #005DFF;
     color: white;
-    transform: scale(1.1);
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
 
     .task-text {
         color: white;
@@ -187,13 +226,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 .done:hover {
     cursor: pointer;
     background-color: #005DFF;
     color: white;
-    transform: scale(1.1);
+    transform: translateZ(30px);
+    border-radius: 0 24px 24px 24px;
 
     .task-text {
         color: white;
@@ -210,12 +251,17 @@ main {
     width: 120px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .task-icons {
     height: 75px;
     width: 75px;
+    border-radius: 50%;
+}
+
+.icon-border {
+    border: 3px white solid;
     border-radius: 50%;
 }
 
@@ -264,11 +310,4 @@ main {
     font-size: 48px;
     color: white;
     margin: 0;
-}
-
-.icon-border {
-    height: 50px;
-    width: 50px;
-    border: 2px white solid;
-    border-radius: 50%;
 }
