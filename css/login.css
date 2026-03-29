@@ -43,7 +43,7 @@ main {
 
 .login-form {
     box-shadow: 0px 0px 20px 3px rgba(131, 131, 131, 0.2);
-    padding: 48px 88px;
+    padding: 20px 50px;
     border-radius: 30px;
     width: 500px;
     height: 400px;
@@ -112,7 +112,7 @@ input:focus {
     flex-direction: row;
     justify-content: center;
     gap: 18px;
-    margin: 80px auto 0 auto;
+    margin: 10% auto 0 auto;
 }
 
 footer {
@@ -120,12 +120,12 @@ footer {
     justify-content: center;
     align-items: flex-end;
     gap: 16px;
-    min-height: 201.97px;
+    min-height: 100px;
 }
 
 footer a {
     color: #42526e;
     text-decoration: none;
     padding: 8px;
-    margin-bottom: 42.7px;
+    margin-bottom: 20px;
 }
