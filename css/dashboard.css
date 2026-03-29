@@ -3,8 +3,8 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    height: calc(100vh - 100px);
     flex: 1;
-    height: 100%;
     margin-left: 232px;
 }
 
