@@ -10,7 +10,7 @@ function addHeader() {
 }
 
 function addSummary() {
-    let dashboardRef = document.getElementById('dashboardContent');
+    let dashboardRef = document.getElementById('summaryContent');
     if (!dashboardRef) return;
 
     dashboardRef.innerHTML += summaryTemplate();
