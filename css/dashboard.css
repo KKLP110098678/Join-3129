@@ -78,6 +78,22 @@ main {
     justify-content: center;
 }
 
+.task-in-board:hover {
+    cursor: pointer;
+    background-color: #005DFF;
+    color: white;
+    transform: scale(1.1);
+
+    .task-text {
+        color: white;
+    }
+
+    .task-icons {
+        outline: 3px solid white;
+        outline-offset: -8px;
+    }
+}
+
 /* lower content */
 .tasks-overview {
     width: 900px;
@@ -94,6 +110,18 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #D2E3FF;
+}
+
+.to-do:hover {
+    cursor: pointer;
+    background-color: white;
+    color: #005DFF;
+    transform: scale(1.1);
+
+    .task-text {
+        color: #005DFF;
+    }
 }
 
 .in-progress {
@@ -107,6 +135,22 @@ main {
     justify-content: center;
 }
 
+.in-progress:hover {
+    cursor: pointer;
+    background-color: #005DFF;
+    color: white;
+    transform: scale(1.1);
+
+    .task-text {
+        color: white;
+    }
+
+    .task-icons {
+        outline: 3px solid white;
+        outline-offset: -8px;
+    }
+}
+
 .awaiting-feedback {
     width: 200px;
     height: 220px;
@@ -116,6 +160,22 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.awaiting-feedback:hover {
+    cursor: pointer;
+    background-color: #005DFF;
+    color: white;
+    transform: scale(1.1);
+
+    .task-text {
+        color: white;
+    }
+
+    .task-icons {
+        outline: 3px solid white;
+        outline-offset: -8px;
+    }
 }
 
 .done {
@@ -129,6 +189,22 @@ main {
     justify-content: center;
 }
 
+.done:hover {
+    cursor: pointer;
+    background-color: #005DFF;
+    color: white;
+    transform: scale(1.1);
+
+    .task-text {
+        color: white;
+    }
+
+    .task-icons {
+        outline: 3px solid white;
+        outline-offset: -8px;
+    }
+}
+
 /* inside task information and design*/
 .tasks-amount {
     width: 120px;
@@ -140,14 +216,16 @@ main {
 .task-icons {
     height: 75px;
     width: 75px;
+    border-radius: 50%;
 }
 
 .task-text {
     width: 120px;
-    font-size: 24px;
+    font-size: 22px;
     color: #4589FF;
     text-align: center;
     margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 .task-text-white {
