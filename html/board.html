@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/buttons.css">
 </head>
 
 <body onload="init()">
@@ -46,21 +48,25 @@
         <div id="boardContent">
             <div class="upper-board">
                 <div class="searchbar">
-                    <input class="search-field" type="search" placeholder="Find Task">
-                    <button class="add-task-btn">Add task +</button>
+                    <div class="searchbar-input">
+                        <input class="search-field" type="search" placeholder="Find Task">
+                        <div class="seperationbar-input"></div>
+                        <button class="input-glass"><img src="../assets/icon/task/search.svg" alt=""></button>
+                    </div>
+                    <button class="add-task-btn btn-primary">Add task +</button>
                 </div>
                 <div class="tasksbar">
                     <div class="taskbar-tab">
                         <p>To do</p>
-                        <button>+</button>
+                        <button class="taskbar-btn">+</button>
                     </div>
                     <div class="taskbar-tab">
                         <p>In progress</p>
-                        <button>+</button>
+                        <button class="taskbar-btn">+</button>
                     </div>
                     <div class="taskbar-tab">
                         <p>Await feedback</p>
-                        <button>+</button>
+                        <button class="taskbar-btn">+</button>
                     </div>
                     <div class="taskbar-tab">
                         <p>Done</p>
@@ -69,10 +75,10 @@
             </div>
             <div class="lower-board">
                 <div class="lower-board-content">
-                    <div class="tab-content-box" id="toDoBox"></div>
-                    <div class="tab-content-box" id="progressBox"></div>
-                    <div class="tab-content-box" id="feedbackBox"></div>
-                    <div class="tab-content-box" id="doneBox"></div>
+                    <div class="tab-content-box drop-area" id="toDoBox"></div>
+                    <div class="tab-content-box drop-area" id="progressBox"></div>
+                    <div class="tab-content-box drop-area" id="feedbackBox"></div>
+                    <div class="tab-content-box drop-area" id="doneBox"></div>
                 </div>
             </div>
         </div>
@@ -82,5 +88,7 @@
 
 <script src="../script/script.js"></script>
 <script src="../templates/headerTemplate.js"></script>
+<script src="../script/dragNdrop.js"></script>
+<script src="../templates/taskTemplate.js"></script>
 
 </html>
