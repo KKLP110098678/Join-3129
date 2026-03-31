@@ -34,7 +34,29 @@ async function isUserNameTaken(userName) {
     return false;
   }
 }
+async function authenticateUser(inputEmail, inputPassword) {
+  try {
+    const usersRef = firebase.database().ref("users");
+    const snapshot = await usersRef.once("value");
+    const users = snapshot.val();
 
+    if (!users) return false;
+
+    for (let key in users) {
+      if (
+        users[key].email === inputEmail &&
+        users[key].password === inputPassword
+      ) {
+        return true;
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error authenticating user:", error);
+    return false;
+  }
+}
 
 async function isUserEmailTaken(inputEmail) {
   try {
