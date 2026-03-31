@@ -92,6 +92,18 @@ main {
     display: flex;
     justify-content: space-between;
     gap: 40px;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.taskbar-btn {
+    color: #4589FF;
+    background-color: transparent;
+    border: #4589FF 2px solid;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1;
 }
 
 .taskbar-tab {
