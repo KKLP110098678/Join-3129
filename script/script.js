@@ -1,6 +1,7 @@
 function init() {
     addSummary();
     addHeader();
+    addSidebar();
     updateBoard();
 }
 
@@ -15,4 +16,11 @@ function addSummary() {
     if (!summaryRef) return;
 
     summaryRef.innerHTML += summaryTemplate();
+}
+
+function addSidebar() {
+    let sidebarRef = document.getElementById('sidebarContent');
+    if (!sidebarRef) return;
+
+    sidebarRef.innerHTML += getSidebarTemplate();
 }
