@@ -87,3 +87,101 @@
 output.error {
 	color: #E60026;
 }
+
+.form-group {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.form-group label {
+	font-size: 19px;
+	font-weight: 700;
+	color: #42526E;
+}
+
+.form-group .optional {
+	font-weight: 400;
+}
+
+.form-group input {
+	outline: none;
+	border: 0;
+	border-bottom: 1px solid #D1D1D1;
+	padding: 16px 13px;
+}
+
+.form-group input#taskTitle {
+	font-size: 2rem;
+}
+
+#taskDescription {
+	border: 1px solid #D1D1D1;
+	border-radius: 0 10px 10px 10px;
+	outline: none;
+	resize: vertical;
+	padding: 16px;
+	font-size: 1rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+	background-image: url("../assets/icon/task/calendar.svg");
+	background-size: cover;
+	background-position: right center;
+}
+
+input {
+	font-size: 19px;
+}
+
+.radio-to-btn {
+	display: flex;
+	gap: 12px;
+}
+
+.radio-to-btn label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 16%);
+	padding: 14px 16px;
+	width: 100%;
+	border-bottom: solid transparent 2px;
+	gap: 10px;
+	cursor: pointer;
+	color: #000000;
+}
+
+
+label.low:hover {
+	border-bottom: #7ae229 2px solid;
+}
+
+label.medium:hover {
+	border-bottom: #ffa800 2px solid;
+}
+
+label.urgent:hover {
+	border-bottom: #ff3d00 2px solid;
+}
+
+.radio-to-btn input:checked + label.low {
+	background-color: #7ae229 !important;
+}
+
+.radio-to-btn input:checked + label.medium {
+	background-color: #ffa800 !important;
+}
+
+.radio-to-btn input:checked + label.urgent {
+	background-color: #ff3d00 !important;
+}
+
+.radio-to-btn input:checked + label img {
+	filter: brightness(0) invert(1);
+}
+
+.radio-to-btn input:checked + label {
+	color: white;
+}

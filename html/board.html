@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/buttons.css">
+    <link rel="stylesheet" href="../css/forms.css">
 </head>
 
 <body onload="init()">
@@ -74,12 +75,40 @@
             </div>
             <div class="form-content">
                 <div class="form-group">
-                    <label for="taskTitle">Title</label>
                     <input type="text" id="taskTitle" placeholder="Enter a title">
                 </div>
                 <div class="form-group">
-                    <label for="taskDescription">Description</label>
+                    <label for="taskDescription">
+                        Description
+                        <span class="optional">
+                            (optional)
+                        </span>
+                    </label>
                     <textarea id="taskDescription" rows="3" placeholder="Enter a description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate">Due Date</label>
+                    <input type="date" id="taskDueDate">
+                </div>
+                <div class="form-group">
+                    <label for="taskPriority">Priority</label>
+                    <div class="radio-to-btn">
+                        <input type="radio" name="urgent-priority" class="d-none" id="urgentPriority" value="urgent">
+                        <label for="urgentPriority" class="priority-label urgent">
+                            Urgent
+                            <img src="../assets/icon/taskManagement/urgent.svg" alt="">
+                        </label>
+                        <input type="radio" name="urgent-priority" class="d-none" id="mediumPriority" value="medium">
+                        <label for="mediumPriority" class="priority-label medium">
+                            Medium
+                            <img src="../assets/icon/taskManagement/medium.svg" alt="">
+                        </label>
+                        <input type="radio" name="urgent-priority" class="d-none" id="lowPriority" value="low">
+                        <label for="lowPriority" class="priority-label low">
+                            Low
+                            <img src="../assets/icon/taskManagement/low.svg" alt="">
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="taskCategory">Category</label>
@@ -87,18 +116,6 @@
                         <option value="User Story">User Story</option>
                         <option value="Technical Task">Technical Task</option>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="taskPriority">Priority</label>
-                    <select id="taskPriority">
-                        <option value="urgent">Urgent</option>
-                        <option value="medium" selected>Medium</option>
-                        <option value="low">Low</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="taskDueDate">Due Date</label>
-                    <input type="date" id="taskDueDate">
                 </div>
             </div>
             <input type="hidden" id="taskStatus" value="todo">
