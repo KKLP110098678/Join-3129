@@ -1,6 +1,7 @@
 function init() {
     addSummary();
     addHeader();
+    updateBoard();
 }
 
 function addHeader() {
