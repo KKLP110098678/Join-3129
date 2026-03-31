@@ -20,7 +20,7 @@
                 up</button></a></div>
     </header>
     <main>
-        <form class="login-form" onsubmit="">
+        <form class="login-form" onsubmit="loginUser(event)">
             <div class="login-form-header">
                 <span>Log in</span>
                 <div class="seperator"></div>
@@ -32,13 +32,13 @@
                 </div>
                 <div class="input-contaier">
                     <input type="password" id="password" name="password" placeholder="Password" required>
-                    <img src="../assets/icon/login/lock.svg" class="pointer" alt="Lock Icon">
+                    <img src="../assets/icon/login/lock.svg" id="password-toggle" class="pointer" alt="Lock Icon">
                 </div>
             </div>
             <span class="login-error-message d-none" id="login-error">Check your email and password. Please try again.</span>
             <div class="login-button-area">
-                <button class="btn-primary btn-login">Log in</button>
-                <button class="btn-light btn-login">Guest log in</button>
+                <button type="submit" class="btn-primary btn-login">Log in</button>
+                <button type="button" id="guest-login-button" class="btn-light btn-login">Guest log in</button>
             </div>
         </form>
     </main>
@@ -46,6 +46,11 @@
         <a href="../privacy-policy.html">Privacy Policy</a>
         <a href="../legalnotice.html">Legal Notice</a>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="../js/database/dbConfig.js"></script>
+    <script src="../js/database/userDB.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
