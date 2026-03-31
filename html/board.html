@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/board.css">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/buttons.css">
 </head>
 
 <body onload="init()">
@@ -46,8 +48,12 @@
         <div id="boardContent">
             <div class="upper-board">
                 <div class="searchbar">
-                    <input class="search-field" type="search" placeholder="Find Task">
-                    <button class="add-task-btn">Add task +</button>
+                    <div class="searchbar-input">
+                        <input class="search-field" type="search" placeholder="Find Task">
+                        <div class="seperationbar-input"></div>
+                        <button class="input-glass"><img src="../assets/icon/task/search.svg" alt=""></button>
+                    </div>
+                    <button class="add-task-btn btn-primary">Add task +</button>
                 </div>
                 <div class="tasksbar">
                     <div class="taskbar-tab">

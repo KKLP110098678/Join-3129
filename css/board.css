@@ -41,14 +41,45 @@ main {
     gap: 40px;
 }
 
-.search-field {
+.searchbar-input {
+    display: flex;
+    align-items: center;
     border: lightgray 2px solid;
     border-radius: 12px;
+    width: 320px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 8px;
+    gap: 8px;
 }
 
 .search-field {
-    width: 310px;
-    height: 50px;
+    flex: 1;
+    border: none;
+    outline: none;
+    height: 100%;
+    font-size: 14px;
+    background: transparent;
+}
+
+.seperationbar-input {
+    height: 32px;
+    width: 2px;
+    background-color: lightgray;
+    flex-shrink: 0;
+}
+
+.input-glass {
+    height: 32px;
+    width: 32px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .add-task-btn {
@@ -64,7 +95,7 @@ main {
 }
 
 .taskbar-tab {
-    width: 240px;
+    width: 260px;
     height: 30px;
     display: flex;
     justify-content: space-between;
@@ -87,7 +118,7 @@ main {
 }
 
 .tab-content-box {
-    width: 240px;
+    width: 260px;
     border: 1px lightgray solid;
     border-radius: 24px;
 }
