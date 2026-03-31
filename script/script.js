@@ -2,7 +2,12 @@ function init() {
     addSummary();
     addHeader();
     addSidebar();
-    updateBoard();
+    if (typeof updateBoard === 'function') {
+        updateBoard();
+    }
+    if (typeof renderContacts === 'function') {
+        renderContacts();
+    }
 }
 
 function addHeader() {

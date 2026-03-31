@@ -1,4 +1,4 @@
-function showContactDetails(name, email, phone, initials, colorClass) {
+function showContactDetails(index, name, email, phone, initials, colorClass) {
     let detailContainer = document.getElementById('contact-detail-view');
 
     detailContainer.innerHTML = `
