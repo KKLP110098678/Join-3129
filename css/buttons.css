@@ -69,3 +69,16 @@
     background-color: #E3EEFF;
     background-size: cover;
 }
+
+.btn-primary-with-icon {
+    background: #4589FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 23px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+}
