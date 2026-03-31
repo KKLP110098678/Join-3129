@@ -14,7 +14,7 @@
 
     const isAuthenticated = await authenticateUser(email, password);
     if (isAuthenticated) {
-        window.location.href = './board.html';
+        window.location.href = './summary.html';
     } else {
         showLoginError('Check your email and password. Please try again.');
     }
@@ -76,7 +76,7 @@ function showLoginError(message) {
 }
 
 function guestLogin() {
-    window.location.href = './board.html';
+    window.location.href = './summary.html';
 }
 
 function setupGuestLoginButton() {
