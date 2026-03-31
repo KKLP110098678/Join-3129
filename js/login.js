@@ -75,4 +75,15 @@ function showLoginError(message) {
     errorMessage.classList.remove('d-none');
 }
 
+function guestLogin() {
+    window.location.href = './board.html';
+}
+
+function setupGuestLoginButton() {
+    const guestButton = document.getElementById('guest-login-button');
+    if (!guestButton) return;
+    guestButton.addEventListener('click', guestLogin);
+}
+
 setupPasswordToggle();
+setupGuestLoginButton();

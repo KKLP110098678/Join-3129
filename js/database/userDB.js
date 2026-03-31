@@ -34,6 +34,7 @@ async function isUserNameTaken(userName) {
     return false;
   }
 }
+
 async function authenticateUser(inputEmail, inputPassword) {
   try {
     const usersRef = firebase.database().ref("users");
