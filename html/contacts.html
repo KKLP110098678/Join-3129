@@ -12,52 +12,12 @@
     <link rel="stylesheet" href="../css/contacts.css">
 </head>
 
-<body>
+<body onload="init()">
 
     <header class="header">
-        <div class="header-content">
-            <div class="header-logo">
-                <img src="../assets/icon/logo-white.svg" alt="join logo">
-            </div>
-            <div class="header-interaction">
-                <div>
-                    <h3 class="header-headline">Kanban Project Managment Tool</h3>
-                </div>
-                <div>
-                    <a><img class="help-icon" src="../assets/icon/questionmark.svg" alt="questionmark help link"></a>
-                </div>
-                <div class="user-icon-border">
-                    <div class="user-icon">
-                        <a>AA</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div id="headerContent" class="header-content"></div>
     </header>
-
-    <aside class="sidebar">
-
-        <nav class="menu">
-            <div class="menu-items-container">
-                <a href="./" class="menu-item active">
-                    <img src="../assets/icon/menuIcons/summary.svg"> Summary
-                </a>
-                <a href="#" class="menu-item">
-                    <img src="../assets/icon/menuIcons/add-task.svg" alt=""> Add Task
-                </a>
-                <a href="#" class="menu-item">
-                    <img src="../assets/icon/menuIcons/board.svg" alt=""> Board
-                </a>
-                <a href="#" class="menu-item">
-                    <img src="../assets/icon/menuIcons/contacts.svg" alt=""> Contacts
-                </a>
-            </div>
-            <div class="sidebar-footer">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Legal notice</a>
-            </div>
-        </nav>
-    </aside>
+    <aside id="sidebarContent"></aside>
 
     <main class="contacts-container">
         <section class="contact-list-section">
@@ -91,8 +51,9 @@
         </div>
     </main>
 
-
-
+    <script src="../script/script.js"></script>
+    <script src="../templates/headerTemplate.js"></script>
+    <script src="../templates/sidebarTemplate.js"></script>
 </body>
 
 </html>
