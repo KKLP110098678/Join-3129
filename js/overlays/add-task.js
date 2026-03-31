@@ -1,0 +1,27 @@
+// --- Add Task Form ---
+
+function openAddTaskForm(status) {
+  document.getElementById("taskStatus").value = status;
+  document.getElementById("addTaskOverlay").classList.add("visible");
+}
+
+function closeAddTaskForm() {
+  document.getElementById("addTaskOverlay").classList.remove("visible");
+  document.getElementById("taskTitle").value = "";
+  document.getElementById("taskDescription").value = "";
+  document.getElementById("taskCategory").value = "User Story";
+  document.getElementById("taskPriority").value = "medium";
+  document.getElementById("taskDueDate").value = "";
+}
+
+function closeOnBackdrop(event) {
+  if (event.target.id === "addTaskOverlay") {
+    closeAddTaskForm();
+  }
+}
+
+// --- Search / Filter ---
+
+function filterTasks() {
+  loadAndRenderTasks();
+}

@@ -1,0 +1,199 @@
+ body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            margin-left: 0;
+        }
+
+        .task-card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            cursor: grab;
+        }
+
+        .task-card:active {
+            cursor: grabbing;
+            opacity: 0.7;
+        }
+
+        .task-card-category {
+            font-size: 12px;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .category-user-story {
+            background: #0038FF;
+        }
+
+        .category-technical {
+            background: #1FD7C1;
+        }
+
+        .task-card-title {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .task-card-description {
+            font-size: 13px;
+            color: #A8A8A8;
+            margin-bottom: 8px;
+        }
+
+        .task-card-priority {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .priority-urgent {
+            color: #FF3D00;
+        }
+
+        .priority-medium {
+            color: #FFA800;
+        }
+
+        .priority-low {
+            color: #7AE229;
+        }
+
+        .tab-content-box {
+            min-height: 200px;
+            background: #F6F7F8;
+            transition: background 0.2s;
+        }
+
+        .tab-content-box.drag-over {
+            background: #E0E4EF;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #A8A8A8;
+            font-size: 14px;
+            padding: 20px;
+        }
+
+        /* Add Task Form */
+        .add-task-form {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 100;
+            justify-content: end;
+
+        }
+
+        .add-task-form.visible {
+            display: flex;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 30px 0 30px 30px;
+            padding: 40px;
+            width: 500px;
+            position: relative;
+        }
+
+        .form-container h2 {
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .form-buttons button {
+            padding: 10px 24px;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #FF3D00;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 6px;
+            text-align: right;
+        }
+
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+
+        #btn-close {
+            background: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #btn-close:hover {
+            background: #D2E3FF;
+        }
+
+        .btn-add {
+            background: none;
+            background-image: url(/assets/icon/board/btn-add.svg);
+            background-position: center;
+            border: none;
+            width: 24px;
+            height: 24px;
+            aspect-ratio: 1;
+        }
+
+        .btn-add:hover {
+            background-image: url(/assets/icon/board/btn-add-hover.svg);
+        }
+
+        .btn-add:active {
+            background-image: url(/assets/icon/board/btn-add-active.svg);
+        }
