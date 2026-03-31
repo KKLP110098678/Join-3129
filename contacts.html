@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+
+    <link rel="stylesheet" href="../css/standard.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/contacts.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="header-logo">
+                <img src="../assets/icon/logo-white.svg" alt="join logo">
+            </div>
+            <div class="header-interaction">
+                <div>
+                    <h3 class="header-headline">Kanban Project Managment Tool</h3>
+                </div>
+                <div>
+                    <a><img class="help-icon" src="../assets/icon/questionmark.svg" alt="questionmark help link"></a>
+                </div>
+                <div class="user-icon-border">
+                    <div class="user-icon">
+                        <a>AA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+
+        <nav class="menu">
+            <div class="menu-items-container">
+                <a href="./" class="menu-item active">
+                    <img src="../assets/icon/menuIcons/summary.svg"> Summary
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/add-task.svg" alt=""> Add Task
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/board.svg" alt=""> Board
+                </a>
+                <a href="#" class="menu-item">
+                    <img src="../assets/icon/menuIcons/contacts.svg" alt=""> Contacts
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Legal notice</a>
+            </div>
+        </nav>
+    </aside>
+
+    <main class="contacts-container">
+        <section class="contact-list-section">
+            <div class="button-container">
+                <button class="btn-add-contact">
+                    Add new contact <img src="icon-person-add.svg" alt="">
+                </button>
+            </div>
+
+            <div class="contact-list-scroll">
+                <div class="letter-group">
+                    <h2 class="index-letter">A</h2>
+                    <div class="divider"></div>
+
+                    <div class="contact-card">
+                        <div class="contact-initials bg-orange">AM</div>
+                        <div class="contact-info">
+                            <span class="contact-name">Anton Mayer</span>
+                            <span class="contact-email">antom@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-details-section" id="contactDetails">
+        </section>
+        
+        <div id="contact-detail-view" class="contact-detail-container">
+            <div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>
+        </div>
+    </main>
+
+
+
+</body>
+
+</html>

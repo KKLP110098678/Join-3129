@@ -1,0 +1,139 @@
+/* Hauptcontainer, der den Rest des Bildschirms einnimmt */
+.contacts-container {
+    display: flex;
+    height: calc(100vh - 100px);
+    /* Abzüglich Header-Höhe */
+    margin-left: 232px;
+    /* Breite deiner Sidebar */
+}
+
+.contact-list-section {
+    width: 400px;
+    background-color: white;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.contact-list-scroll {
+    overflow-y: auto;
+    /* Scrollbar nur hier */
+    flex-grow: 1;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s;
+}
+
+.contact-card:hover {
+    background-color: #f1f1f1;
+}
+
+.contact-initials {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 15px;
+    border: 2px solid white;
+}
+
+/* Farben für die Initialen */
+.bg-orange {
+    background-color: #FF7A00;
+}
+
+.bg-purple {
+    background-color: #9327FF;
+}
+
+.btn-add-contact {
+    background-color: #0062ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.btn-add-contact:hover {
+    background-color: #293241;
+}
+
+.contact-detail-container {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.contact-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.initials-big {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ff8a00;
+    /* Orange aus dem Bild */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.name-section h2 {
+    font-size: 32px;
+    margin: 0;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.action-buttons span {
+    cursor: pointer;
+    font-size: 14px;
+    color: #2A3647;
+}
+
+.info-headline {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.contact-data b {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.contact-data a {
+    color: #007CEE;
+    text-decoration: none;
+}
