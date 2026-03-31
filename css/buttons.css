@@ -74,11 +74,30 @@
     background: #4589FF;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 23px;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 16px 10px;
+}
+
+.btn-primary-with-icon:hover {
+    background: #005dff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary-with-icon:active {
+    color: #4589ff;
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.btn-primary-with-icon:active path {
+    fill: #4589ff;
+}
+
+.form-buttons .icon {
+    margin: 17px 0;
 }
