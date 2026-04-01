@@ -10,7 +10,6 @@ function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
-    document.getElementById("taskCategory").value = "User Story";
     document.getElementById("taskDueDate").value = "";
 }
 
@@ -28,4 +27,14 @@ function closeOnBackdrop(event) {
 
 function filterTasks() {
   loadAndRenderTasks();
+}
+
+function toggleCategoryDropdown() {
+  const dropdown = document.getElementById("categoryDropdown");
+  dropdown.classList.toggle("d-none");
+}
+
+function selectCategory(category) {
+  document.getElementById("taskCategory").value = category;
+  toggleCategoryDropdown();
 }
