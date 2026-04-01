@@ -56,3 +56,18 @@ function clearSubtaskInput() {
   const btnGroup = document.getElementById("subtaskBtnGroup");
   btnGroup.classList.add("d-none");
 }
+
+function showSubtaskEditInput() {
+  const editGroup = document.getElementById("editSubtaskGroup");
+  editGroup.classList.remove("d-none");
+}
+
+function saveSubtask() {
+  // Implement save logic here
+  hideEditSubtaskInput();
+}
+
+function hideEditSubtaskInput() {
+  const editGroup = document.getElementById("editSubtaskGroup");
+  editGroup.classList.add("d-none");
+}

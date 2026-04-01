@@ -350,3 +350,43 @@ div.dropdown-item:hover {
 	display: flex;
 	gap: 8px;
 }
+
+.list-item {
+	position: relative;
+	font-size: 1rem;
+	height: 32px;
+	display: flex;
+	align-items: center;
+	border-radius: 10px;
+}
+
+.list-item.subtask {
+	list-style-position: inside;
+}
+
+.list-item.subtask:hover {
+	background-color: #E3EEFF;
+}
+
+.bullet-point {
+	font-size: 1rem;
+	margin-right: 12px;
+	margin-left: 24px;
+}
+
+.edit-subtask-group {
+	position: relative;
+	display: flex;
+	top: -32px;
+	border: none;
+	outline: none;
+	height: 32px;
+	font-size: 1rem;
+	padding: 0 !important;
+}
+
+.edit-subtask-input {
+	width: 100%;
+	border: none;
+	outline: none;
+}
