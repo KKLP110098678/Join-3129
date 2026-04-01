@@ -44,3 +44,15 @@ function selectCategory(category) {
   document.getElementById("categoryInput").value = category;
   toggleCategoryDropdown();
 }
+
+function showSubtaskInputButtons() {
+  const btnGroup = document.getElementById("subtaskBtnGroup");
+  btnGroup.classList.remove("d-none");
+}
+
+function clearSubtaskInput() {
+  const subtaskInput = document.getElementById("subtaskInput");
+  subtaskInput.value = "";
+  const btnGroup = document.getElementById("subtaskBtnGroup");
+  btnGroup.classList.add("d-none");
+}
