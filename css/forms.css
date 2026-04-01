@@ -318,7 +318,7 @@ div.dropdown-item:hover {
 	align-items: center;
 	gap: 4px;
 	position: absolute;
-	right: 0;
+	right: 16px;
 }
 
 .subtask-input {
@@ -343,4 +343,10 @@ div.dropdown-item:hover {
 
 .input-btn:hover {
 	background-color: #D2E3FF;
+}
+
+.assignees {
+	margin-top: 8px;
+	display: flex;
+	gap: 8px;
 }
