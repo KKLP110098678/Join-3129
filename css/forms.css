@@ -292,3 +292,48 @@ div.dropdown-item:hover {
 .checkbox-masked:checked {
   filter: brightness(0) invert(1);
 }
+
+.input-btn-seperator {
+	width: 1px;
+	height: 24px;
+	background-color: #A8A8A8;
+}
+
+.subtask-input-group {
+	display: flex;
+	align-items: center;
+	margin-top: 8px;
+	position: relative;
+}
+
+.input-btn-group {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	position: absolute;
+	right: 0;
+}
+
+.subtask-input {
+	width: stretch;
+}
+
+.input-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	width: 24px;
+	height: 24px;
+}
+
+.input-btn:hover path {
+	fill: #005DFF;
+}
+
+.input-btn:hover {
+	background-color: #D2E3FF;
+}
