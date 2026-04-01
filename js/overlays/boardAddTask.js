@@ -11,6 +11,7 @@ function clearAddTaskForm() {
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
     document.getElementById("taskDueDate").value = "";
+    document.getElementById("categoryInput").value = "";
 }
 
 function closeAddTaskForm() {
@@ -29,12 +30,17 @@ function filterTasks() {
   loadAndRenderTasks();
 }
 
+function toggleAssignedToDropdown() {
+  const dropdown = document.getElementById("assignedToDropdown");
+  dropdown.classList.toggle("d-none");
+}
+
 function toggleCategoryDropdown() {
   const dropdown = document.getElementById("categoryDropdown");
   dropdown.classList.toggle("d-none");
 }
 
 function selectCategory(category) {
-  document.getElementById("taskCategory").value = category;
+  document.getElementById("categoryInput").value = category;
   toggleCategoryDropdown();
 }

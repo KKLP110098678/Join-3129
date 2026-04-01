@@ -219,3 +219,16 @@ main {
 #btn-close:hover {
   background: #d2e3ff;
 }
+
+.avatar-sm {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-color: #FF7A00;
+  color: white;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}

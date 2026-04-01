@@ -76,6 +76,7 @@
             <div class="form-content">
                 <div class="form-group">
                     <input type="text" id="taskTitle" placeholder="Enter a title">
+                    <output for="taskTitle">This field is required</output>
                 </div>
                 <div class="form-group">
                     <label for="taskDescription">
@@ -89,6 +90,7 @@
                 <div class="form-group">
                     <label for="taskDueDate">Due Date</label>
                     <input type="date" id="taskDueDate">
+                    <output for="taskDueDate">This field is required</output>
                 </div>
                 <div class="form-group">
                     <label for="taskPriority">Priority</label>
@@ -108,6 +110,69 @@
                             Low
                             <img src="../assets/icon/taskManagement/low.svg" alt="">
                         </label>
+                    </div>
+                </div>
+                <div class="form-group" id="assignedTo">
+                    <label for="assignedToInput">
+                        Assigned To
+                        <span class="optional">
+                            (optional)
+                        </span>
+                    </label>
+                    <div class="custom-dropdown" id="assignedTo">
+                        <div class="dropdown-input-container">
+                            <input
+                                type="text"
+                                class="dropdown-input"
+                                id="assignedToInput"
+                                placeholder="Select contacts to assign"
+                                readonly
+                                onclick="toggleAssignedToDropdown()"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="dropdown-toggle-btn"
+                                onclick="toggleAssignedToDropdown()"
+                            >
+                                <img
+                                    src="/assets/icon/task/dropdown-arrow.svg"
+                                    alt="dropdown arrow"
+                                    class="dropdown-arrow"
+                                />
+                            </button>
+                        </div>
+                        <div class="dropdown-list d-none" id="assignedToDropdown">
+                            <div
+                                class="dropdown-item contact"
+                            >
+                                <label class="contact-label">
+                                    <div class="dropdown-contact">
+                                        <div class="avatar-sm">AS</div>
+                                        Alice Schulz
+                                    </div>
+                                    <input type="checkbox" class="checkbox-masked">
+                                </label>
+                            </div>
+                            <div class="dropdown-item contact">
+                                <label class="contact-label">
+                                    <div class="dropdown-contact">
+                                        <div class="avatar-sm">BM</div>
+                                        Bob Martin
+                                    </div>
+                                    <input type="checkbox" class="checkbox-masked">
+                                </label>
+                            </div>
+                            <div class="dropdown-item contact">
+                                <label class="contact-label">
+                                    <div class="dropdown-contact">
+                                        <div class="avatar-sm">CM</div>
+                                        Charlie Maurer
+                                    </div>
+                                    <input type="checkbox" class="checkbox-masked">
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group" id="category-form-group">
@@ -137,24 +202,18 @@
                   </div>
                   <div class="dropdown-list d-none" id="categoryDropdown">
                     <div
-                      class="dropdown-item"
+                      class="dropdown-item category"
                       onclick="selectCategory('Technical Task')"
                     >
                       <label>Technical Task</label>
                     </div>
                     <div
-                      class="dropdown-item"
+                      class="dropdown-item category"
                       onclick="selectCategory('User Story')"
                     >
                       <label>User Story</label>
                     </div>
                   </div>
-                  <input
-                    type="hidden"
-                    name="category"
-                    id="taskCategory"
-                    required
-                  />
                 </div>
             </div>
             <input type="hidden" id="taskStatus" value="todo">
