@@ -223,10 +223,14 @@ label.urgent:hover {
 	width: calc(100% - 72px);
 	background-color: #fff;
 	border: 1px solid #D1D1D1;
+	border-top: none;
 	border-radius: 0 0 10px 10px;
 	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 	z-index: 1000;
 	box-sizing: border-box;
+	display: flex;
+    gap: 2px;
+    flex-direction: column;
 }
 
 .dropdown-item {
