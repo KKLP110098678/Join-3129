@@ -229,8 +229,11 @@ label.urgent:hover {
 	z-index: 1000;
 	box-sizing: border-box;
 	display: flex;
-    gap: 2px;
     flex-direction: column;
+}
+
+.dropdown-list.assigned-to {
+	gap: 2px;
 }
 
 .dropdown-item {
