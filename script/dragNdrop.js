@@ -11,6 +11,9 @@ let taskArrays = [
 ];
 
 function updateBoard() {
+    let boardRef = document.getElementById('boardContent');
+    if (!boardRef) return;
+
     taskArrays.forEach(taskArray => {
         const box = document.getElementById(taskArray.id);
         box.innerHTML = "";
