@@ -13,7 +13,7 @@
 
 .btn-primary:active {
     color: #4589ff;
-	background-color: white;
+    background-color: white;
 }
 
 .btn-primary:disabled {
@@ -40,6 +40,7 @@
     transform: translateX(-50%);
     left: 50%;
 }
+
 .btn-light {
     background: white;
     color: #a8a8a8;

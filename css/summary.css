@@ -53,7 +53,7 @@ main {
     border: 1px lightgray solid;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-    
+
     .task-amount-number-white {
         color: #4589FF;
     }

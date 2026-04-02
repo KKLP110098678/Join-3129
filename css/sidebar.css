@@ -8,6 +8,7 @@
     padding: 40px 0;
     position: fixed;
     left: 0;
+    top: 100px;
 }
 
 /* Menü-Links */
@@ -16,7 +17,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 10px;
 }
 
 .menu-item {
@@ -49,11 +49,16 @@
     padding: 0 40px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
 }
 
 .sidebar-footer a {
-    color: #A8A8A8;
+    color: black;
     text-decoration: none;
     font-size: 14px;
+}
+
+.sidebar-footer a:hover {
+    cursor: pointer;
+    color: #0038FF;
 }
