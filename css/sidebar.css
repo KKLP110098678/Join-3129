@@ -58,7 +58,7 @@
     font-size: 14px;
 }
 
-.sidebar-footera:hover {
+.sidebar-footer a:hover {
     cursor: pointer;
     color: #0038FF;
 }

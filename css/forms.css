@@ -1,19 +1,19 @@
 .input-icon-container {
-    border-bottom: 1px solid #D4D4D4;
-    padding: 12.5px 21px;
-    display: flex;
-    align-items: center;
+	border-bottom: 1px solid #D4D4D4;
+	padding: 12.5px 21px;
+	display: flex;
+	align-items: center;
 }
 
 .input-icon-container input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 19px;
+	border: none;
+	outline: none;
+	width: 100%;
+	font-size: 19px;
 }
 
 .input-icon-container img {
-    transform: translateX(50%);
+	transform: translateX(50%);
 }
 
 /* Checkbox styles */
@@ -167,23 +167,23 @@ label.urgent:hover {
 	border-bottom: #ff3d00 2px solid;
 }
 
-.radio-to-btn input:checked + label.low {
+.radio-to-btn input:checked+label.low {
 	background-color: #7ae229 !important;
 }
 
-.radio-to-btn input:checked + label.medium {
+.radio-to-btn input:checked+label.medium {
 	background-color: #ffa800 !important;
 }
 
-.radio-to-btn input:checked + label.urgent {
+.radio-to-btn input:checked+label.urgent {
 	background-color: #ff3d00 !important;
 }
 
-.radio-to-btn input:checked + label img {
+.radio-to-btn input:checked+label img {
 	filter: brightness(0) invert(1);
 }
 
-.radio-to-btn input:checked + label {
+.radio-to-btn input:checked+label {
 	color: white;
 }
 
@@ -216,6 +216,7 @@ label.urgent:hover {
 	width: 100%;
 	cursor: pointer;
 }
+
 .dropdown-list {
 	position: absolute;
 	left: 0;
@@ -229,7 +230,7 @@ label.urgent:hover {
 	z-index: 1000;
 	box-sizing: border-box;
 	display: flex;
-    flex-direction: column;
+	flex-direction: column;
 }
 
 .dropdown-list.assigned-to {
@@ -269,7 +270,7 @@ label.urgent:hover {
 }
 
 
-.dropdown-item.category label{
+.dropdown-item.category label {
 	padding-left: 16px;
 }
 
@@ -288,16 +289,16 @@ div.dropdown-item:hover {
 
 
 .contact-label:has(.checkbox-masked:checked) {
-  background-color: #4589FF;
-  color: white;
+	background-color: #4589FF;
+	color: white;
 }
 
 .contact-label:has(.checkbox-masked:checked):hover {
-  background-color: #005DFF;
+	background-color: #005DFF;
 }
 
 .checkbox-masked:checked {
-  filter: brightness(0) invert(1);
+	filter: brightness(0) invert(1);
 }
 
 .input-btn-seperator {
