@@ -106,6 +106,12 @@ main {
   line-height: 1;
 }
 
+.taskbar-btn:hover {
+  cursor: pointer;
+  color: #0038FF;
+  border-color: #0038FF;
+}
+
 .taskbar-tab {
   width: 260px;
   height: 30px;
