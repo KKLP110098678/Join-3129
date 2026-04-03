@@ -8,6 +8,8 @@
 body {
   line-height: 1.2;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .d-none {
