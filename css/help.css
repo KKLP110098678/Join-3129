@@ -24,9 +24,20 @@ main {
     width: 100%;
 }
 
+h1 {
+    font-size: 60px;
+}
+
 .back-arrow {
     background-color: transparent;
     border: none;
+}
+
+.back-arrow-img:hover {
+    cursor: pointer;
+    background-color: #D0e1ff;
+    border-radius: 50%;
+    transform: scale(1.1);
 }
 
 .whats-join {
@@ -35,12 +46,15 @@ main {
 }
 
 h2 {
-    margin-bottom: 12px;
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #4589FF;
 }
 
 .howto-join {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
 
 .explanation-point {
