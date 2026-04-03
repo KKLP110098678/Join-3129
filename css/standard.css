@@ -1,13 +1,25 @@
-body {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
   line-height: 1.2;
-  font-size: 1rem;
-  height: 100svh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .d-none {
   display: none !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.d-none {
+  display: none;
 }

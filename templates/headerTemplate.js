@@ -8,7 +8,7 @@ function headerTemplate() {
                     <h3 class="header-headline">Kanban Project Managment Tool</h3>
                 </div>
                 <div>
-                    <a><img class="help-icon" src="../assets/icon/questionmark.svg" alt="questionmark help link"></a>
+                    <a href="../html/help.html"><img class="help-icon" src="../assets/icon/questionmark.svg" alt="questionmark help link"></a>
                 </div>
                 <div class="user-icon-border">
                     <div class="user-icon">
