@@ -68,3 +68,38 @@ header {
     transform: scale(1.2);
     transform-origin: center;
 }
+
+/* header menu overlay*/
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+}
+
+.logout-menu {
+    position: absolute;
+    top: 102px; 
+    right: 4px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    z-index: 1000;
+    min-width: 140px;
+}
+
+.logout-menu a {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 4px 4px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+    color: #42526E;
+    text-align: end;
+}
+
+.logout-menu a:hover {
+    background-color: rgb(210, 227, 255);
+}
