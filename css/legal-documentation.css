@@ -1,0 +1,23 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: calc(100vh - 100px);
+    flex: 1;
+    margin-left: 232px;
+}
+
+h1 {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 33px;
+    font-weight: 700;
+    color: #4589FF;
+}
+
+li {
+    list-style-position: inside;
+}
