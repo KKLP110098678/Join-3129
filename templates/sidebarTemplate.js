@@ -1,6 +1,5 @@
 function getSidebarTemplate() {
     return `
-    <aside class="sidebar">
         <nav class="menu">
             <div class="menu-items-container">
                 <a href="../html/summary.html" class="menu-item active">
@@ -21,6 +20,5 @@ function getSidebarTemplate() {
                 <a href="../html/legal-notice.html">Legal notice</a>
             </div>
         </nav>
-    </aside>
     `;
 }
