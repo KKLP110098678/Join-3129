@@ -5,13 +5,19 @@ function init() {
     if (typeof updateBoard === 'function') {
         updateBoard();
     }
-    if (typeof renderContacts === 'function') {
+    if (typeof loadContacts === 'function') {
+        loadContacts();
+    } else if (typeof renderContacts === 'function') {
         renderContacts();
     }
     
     let dateInput = document.getElementById('taskDueDate');
     if (dateInput && !dateInput.value) {
         dateInput.value = new Date().toISOString().split('T')[0];
+    }
+
+    if (typeof renderAssignedToDropdown === 'function') {
+        renderAssignedToDropdown();
     }
 }
 

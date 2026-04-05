@@ -1,12 +1,27 @@
-let contacts = [
-    {
-        name: 'Anton Mayer',
-        email: 'antom@gmail.com',
-        phone: '+49 1111 111 11 1',
-        initials: 'AM',
-        color: 'bg-orange'
+let contacts = [];
+
+async function loadContacts() {
+    try {
+        let snapshot = await db.ref('contacts').once('value');
+        contacts = snapshot.val() || [];
+        renderContacts();
+        
+        // If we are on add-task and assigned to dropdown exists, re-render it
+        if (typeof renderAssignedToDropdown === 'function') {
+            renderAssignedToDropdown();
+        }
+    } catch(e) {
+        console.error("Error loading contacts from Firebase:", e);
     }
-];
+}
+
+async function saveContacts() {
+    try {
+        await db.ref('contacts').set(contacts);
+    } catch(e) {
+        console.error("Error saving contacts to Firebase:", e);
+    }
+}
 
 
 
@@ -40,6 +55,7 @@ function deleteContact(index) {
     // Setzt die rechte Seite wieder auf den Platzhalter-Text
     document.getElementById('contact-detail-view').innerHTML = '<div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>';
     
+    saveContacts();
     renderContacts();
 }
 
@@ -81,6 +97,7 @@ function addNewContact(event) {
         color: randomColor
     });
     
+    saveContacts();
     closeAddContactOverlay();
     renderContacts();
 }
@@ -120,6 +137,7 @@ function saveEditedContact(event) {
     contacts[index].phone = phone;
     contacts[index].initials = initials;
     
+    saveContacts();
     closeEditContactOverlay();
     renderContacts();
     

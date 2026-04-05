@@ -88,7 +88,7 @@
                                         <div class="avatar-sm">AS</div>
                                         Alice Schulz
                                     </div>
-                                    <input type="checkbox" class="checkbox-masked">
+                                    <input type="checkbox" class="checkbox-masked" onchange="updateAssignees()">
                                 </label>
                             </div>
                             <div class="dropdown-item contact">
@@ -97,7 +97,7 @@
                                         <div class="avatar-sm">BM</div>
                                         Bob Martin
                                     </div>
-                                    <input type="checkbox" class="checkbox-masked">
+                                    <input type="checkbox" class="checkbox-masked" onchange="updateAssignees()">
                                 </label>
                             </div>
                             <div class="dropdown-item contact">
@@ -106,7 +106,7 @@
                                         <div class="avatar-sm">CM</div>
                                         Charlie Maurer
                                     </div>
-                                    <input type="checkbox" class="checkbox-masked">
+                                    <input type="checkbox" class="checkbox-masked" onchange="updateAssignees()">
                                 </label>
                             </div>
                         </div>
@@ -246,6 +246,8 @@
 <script src="../js/database/firebase-app.js"></script>
 <script src="../js/database/firebase-database.js"></script>
 <script src="../js/database/dbConfig.js"></script>
+<script src="../script/contacts.js"></script>
+<script src="../js/overlays/boardAddTask.js"></script>
 <script src="../script/script.js"></script>
 <script src="../templates/headerTemplate.js"></script>
 <script src="../templates/sidebarTemplate.js"></script>
