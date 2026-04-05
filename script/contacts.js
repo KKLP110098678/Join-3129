@@ -11,18 +11,28 @@ let contacts = [
 
 
 function renderContacts() {
-    // 1. Das Element finden, in das wir die Kontakte laden wollen
     let listContainer = document.querySelector('.contact-list-scroll');
-    
-    // 2. Den Container leeren, damit sich Listen nicht doppeln
     listContainer.innerHTML = '';
 
-    // 3. Durch das Array schleifen und jeden Kontakt als HTML erzeugen
+    // Sort contacts by name
+    contacts.sort((a, b) => a.name.localeCompare(b.name));
+
+    let currentLetter = '';
+
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
+        let firstLetter = contact.name.charAt(0).toUpperCase();
+
+        if (firstLetter !== currentLetter) {
+            currentLetter = firstLetter;
+            listContainer.innerHTML += `
+                <div class="letter-separator">${currentLetter}</div>
+                <hr class="separator-line">
+            `;
+        }
         
         listContainer.innerHTML += `
-            <div class="contact-card" onclick="showContactDetails(${i}, '${contact.name}', '${contact.email}', '${contact.phone}', '${contact.initials}', '${contact.color}')">
+            <div id="contactCard_${i}" class="contact-card" onclick="showContactDetails(${i}, '${contact.name}', '${contact.email}', '${contact.phone}', '${contact.initials}', '${contact.color}')">
                 <div class="contact-initials ${contact.color}">${contact.initials}</div>
                 <div class="contact-info">
                     <span class="contact-name">${contact.name}</span>
@@ -125,5 +135,12 @@ function saveEditedContact(event) {
     
     let c = contacts[index];
     showContactDetails(index, c.name, c.email, c.phone, c.initials, c.color);
+}
+
+function closeMobileDetails() {
+    let detailContainer = document.getElementById('contact-detail-view');
+    if (detailContainer) {
+        detailContainer.classList.remove('show-mobile');
+    }
 }
 

@@ -35,6 +35,15 @@
     background-color: #f1f1f1;
 }
 
+.contact-card.active-card {
+    background-color: #2A3647;
+    color: white;
+}
+
+.contact-card.active-card:hover {
+    background-color: #2A3647;
+}
+
 .contact-initials {
     width: 42px;
     height: 42px;
@@ -236,3 +245,99 @@
 .bg-blue { background-color: #007CEE; }
 .bg-green { background-color: #1FD7C1; }
 .bg-pink { background-color: #FC71FF; }
+
+/* Lettern und Separator */
+.letter-separator {
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+.separator-line {
+    border: none;
+    border-top: 1px solid #D1D1D1;
+    margin: 0 40px 15px 40px;
+}
+
+.btn-add-contact-mobile {
+    display: none;
+}
+
+.back-arrow {
+    display: none;
+    cursor: pointer;
+}
+
+/* --- MOBILE RESPONSIVENESS (< 800px) --- */
+@media(max-width: 800px) {
+    .contacts-container {
+        margin-left: 0;
+        height: calc(100vh - 100px - 80px); /* header & bottom nav */
+        flex-direction: column;
+    }
+
+    .contact-list-section {
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .button-container {
+        display: none;
+    }
+
+    .contact-card {
+        margin: 0 20px;
+    }
+
+    .btn-add-contact-mobile {
+        display: flex;
+        background-color: #0062ea;
+        color: white;
+        border: none;
+        border-radius: 8px; /* Or 50% for circle */
+        width: 56px;
+        height: 56px;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 40;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+        cursor: pointer;
+    }
+
+    .btn-add-contact-mobile img {
+        width: 30px;
+    }
+
+    /* Details auf Mobile als Overlay / Fullscreen ausklappbar */
+    .contact-detail-container {
+        display: none; /* Erst nach klick zeigen */
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 100px - 80px);
+        background-color: #F6F7F8;
+        z-index: 50;
+        box-sizing: border-box;
+    }
+    
+    .contact-detail-container.show-mobile {
+        display: flex;
+    }
+
+    .back-arrow {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .overlay-content {
+        width: 90vw;
+        padding: 24px;
+        margin: 20px;
+    }
+}
