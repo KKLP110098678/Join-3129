@@ -28,3 +28,9 @@ h2 {
 li {
     list-style-position: inside;
 }
+
+.legal-documentation {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
