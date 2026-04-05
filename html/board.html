@@ -54,10 +54,99 @@
             </div>
             <div class="lower-board">
                 <div class="lower-board-content">
-                    <div class="tab-content-box drop-area" id="toDoBox"></div>
-                    <div class="tab-content-box drop-area" id="progressBox"></div>
-                    <div class="tab-content-box drop-area" id="feedbackBox"></div>
-                    <div class="tab-content-box drop-area" id="doneBox"></div>
+                    <div class="tab-content-box drop-area" id="toDoBox">
+                        <div class="task-element">No tasks To do</div>
+                    </div>
+                    <div class="tab-content-box drop-area" id="progressBox">
+                        <!-- Progress Card -->
+                        <div class="board-card">
+                            <div class="board-card-badge badge-user-story">User Story</div>
+                            <div class="board-card-content">
+                                <h3 class="board-card-title">Kochwelt Page &amp; Recipe Recommender</h3>
+                                <p class="board-card-desc">Build start page with recipe recommendation...</p>
+                            </div>
+                            <div class="board-card-progress">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 50%;"></div>
+                                </div>
+                                <span class="progress-text">1/2 Subtasks</span>
+                            </div>
+                            <div class="board-card-footer">
+                                <div class="board-card-avatars">
+                                    <div class="avatar-sm" style="background-color: #FF7A00; z-index: 3;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #1FD7C1; z-index: 2;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #462F8A; z-index: 1;">AM</div>
+                                </div>
+                                <div class="board-card-priority">
+                                    <img src="../assets/icon/taskManagement/medium.svg" alt="Medium">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content-box drop-area" id="feedbackBox">
+                        <!-- Feedback Card 1 -->
+                        <div class="board-card">
+                            <div class="board-card-badge badge-technical-task">Technical Task</div>
+                            <div class="board-card-content">
+                                <h3 class="board-card-title">HTML Base Template Creation</h3>
+                                <p class="board-card-desc">Create reusable HTML base templates...</p>
+                            </div>
+                            <div class="board-card-footer mt-2" style="margin-top: 8px;">
+                                <div class="board-card-avatars">
+                                    <div class="avatar-sm" style="background-color: #FC71FF; z-index: 3;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #0038FF; z-index: 2;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #9327FF; z-index: 1;">AM</div>
+                                </div>
+                                <div class="board-card-priority">
+                                    <img src="../assets/icon/taskManagement/low.svg" alt="Low">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Feedback Card 2 -->
+                        <div class="board-card">
+                            <div class="board-card-badge badge-user-story">User Story</div>
+                            <div class="board-card-content">
+                                <h3 class="board-card-title">Daily Kochwelt Recipe</h3>
+                                <p class="board-card-desc">Implement daily recipe and portion calculator...</p>
+                            </div>
+                            <div class="board-card-footer mt-2" style="margin-top: 8px;">
+                                <div class="board-card-avatars">
+                                    <div class="avatar-sm" style="background-color: #FFC701; z-index: 3;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #9327FF; z-index: 2;">AM</div>
+                                    <div class="avatar-sm" style="background-color: #FF5C00; z-index: 1;">TW</div>
+                                </div>
+                                <div class="board-card-priority">
+                                    <img src="../assets/icon/taskManagement/medium.svg" alt="Medium">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content-box drop-area" id="doneBox">
+                        <!-- Done Card -->
+                        <div class="board-card">
+                            <div class="board-card-badge badge-technical-task">Technical Task</div>
+                            <div class="board-card-content">
+                                <h3 class="board-card-title">CSS Architecture Planning</h3>
+                                <p class="board-card-desc">Define CSS naming conventions and structure...</p>
+                            </div>
+                            <div class="board-card-progress">
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill" style="width: 100%;"></div>
+                                </div>
+                                <span class="progress-text">2/2 Subtasks</span>
+                            </div>
+                            <div class="board-card-footer">
+                                <div class="board-card-avatars">
+                                    <div class="avatar-sm" style="background-color: #1FD7C1; z-index: 2;">SM</div>
+                                    <div class="avatar-sm" style="background-color: #9327FF; z-index: 1;">AM</div>
+                                </div>
+                                <div class="board-card-priority">
+                                    <img src="../assets/icon/taskManagement/urgent.svg" alt="Urgent">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

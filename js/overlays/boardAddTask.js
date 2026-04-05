@@ -10,8 +10,13 @@ function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
-    document.getElementById("taskDueDate").value = "";
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("taskDueDate").value = today;
     document.getElementById("categoryInput").value = "";
+}
+
+function clearForm() {
+    clearAddTaskForm();
 }
 
 function closeAddTaskForm() {
@@ -24,6 +29,30 @@ function closeOnBackdrop(event) {
   }
 }
 
+function renderAssignedToDropdown() {
+  let dropdown = document.getElementById("assignedToDropdown");
+  if (!dropdown) return;
+  
+  dropdown.innerHTML = '';
+  
+  if (typeof contacts !== 'undefined') {
+      for (let i = 0; i < contacts.length; i++) {
+          const contact = contacts[i];
+          dropdown.innerHTML += `
+          <div class="dropdown-item contact">
+              <label class="contact-label">
+                  <div class="dropdown-contact">
+                      <div class="avatar-sm ${contact.color}">${contact.initials}</div>
+                      ${contact.name}
+                  </div>
+                  <input type="checkbox" class="checkbox-masked" value="${contact.name}" onchange="updateAssignees()">
+              </label>
+          </div>
+          `;
+      }
+  }
+}
+
 // --- Search / Filter ---
 
 function filterTasks() {
@@ -33,6 +62,24 @@ function filterTasks() {
 function toggleAssignedToDropdown() {
   const dropdown = document.getElementById("assignedToDropdown");
   dropdown.classList.toggle("d-none");
+}
+
+function updateAssignees() {
+  const list = document.getElementById('assignedToDropdown');
+  const container = document.getElementById('assigneeIconsContainer');
+  if (!list || !container) return;
+
+  container.innerHTML = '';
+  const items = list.querySelectorAll('.dropdown-item.contact');
+  items.forEach(item => {
+      const checkbox = item.querySelector('.checkbox-masked');
+      if (checkbox && checkbox.checked) {
+          const avatar = item.querySelector('.avatar-sm');
+          if (avatar) {
+              container.appendChild(avatar.cloneNode(true));
+          }
+      }
+  });
 }
 
 function toggleCategoryDropdown() {
