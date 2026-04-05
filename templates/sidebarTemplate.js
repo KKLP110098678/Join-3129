@@ -2,7 +2,7 @@ function getSidebarTemplate() {
     return `
         <nav class="menu">
             <div class="menu-items-container">
-                <a href="../html/summary.html" class="menu-item active">
+                <a href="../html/summary.html" class="menu-item">
                     <img src="../assets/icon/menuIcons/summary.svg"> Summary
                 </a>
                 <a href="../html/add-task.html" class="menu-item">

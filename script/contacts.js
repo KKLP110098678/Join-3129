@@ -43,3 +43,87 @@ function deleteContact(index) {
     renderContacts();
 }
 
+
+function openAddContactOverlay() {
+    document.getElementById('addContactOverlay').classList.remove('d-none');
+}
+
+function closeAddContactOverlay() {
+    document.getElementById('addContactOverlay').classList.add('d-none');
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactPhone').value = '';
+}
+
+function addNewContact(event) {
+    event.preventDefault();
+    
+    let name = document.getElementById('contactName').value;
+    let email = document.getElementById('contactEmail').value;
+    let phone = document.getElementById('contactPhone').value;
+    
+    let nameParts = name.trim().split(' ');
+    let initials = '';
+    if (nameParts.length >= 2) {
+        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length-1].charAt(0).toUpperCase();
+    } else if (nameParts.length === 1) {
+        initials = nameParts[0].charAt(0).toUpperCase();
+    }
+    
+    let colors = ['bg-orange', 'bg-purple', 'bg-blue', 'bg-green', 'bg-pink'];
+    let randomColor = colors[Math.floor(Math.random() * colors.length)];
+    
+    contacts.push({
+        name: name,
+        email: email,
+        phone: phone,
+        initials: initials,
+        color: randomColor
+    });
+    
+    closeAddContactOverlay();
+    renderContacts();
+}
+
+
+function openEditContactOverlay(index) {
+    let contact = contacts[index];
+    document.getElementById('editContactIndex').value = index;
+    document.getElementById('editContactName').value = contact.name;
+    document.getElementById('editContactEmail').value = contact.email;
+    document.getElementById('editContactPhone').value = contact.phone;
+    document.getElementById('editContactOverlay').classList.remove('d-none');
+}
+
+function closeEditContactOverlay() {
+    document.getElementById('editContactOverlay').classList.add('d-none');
+}
+
+function saveEditedContact(event) {
+    event.preventDefault();
+    
+    let index = document.getElementById('editContactIndex').value;
+    let name = document.getElementById('editContactName').value;
+    let email = document.getElementById('editContactEmail').value;
+    let phone = document.getElementById('editContactPhone').value;
+    
+    let nameParts = name.trim().split(' ');
+    let initials = '';
+    if (nameParts.length >= 2) {
+        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length-1].charAt(0).toUpperCase();
+    } else if (nameParts.length === 1) {
+        initials = nameParts[0].charAt(0).toUpperCase();
+    }
+    
+    contacts[index].name = name;
+    contacts[index].email = email;
+    contacts[index].phone = phone;
+    contacts[index].initials = initials;
+    
+    closeEditContactOverlay();
+    renderContacts();
+    
+    let c = contacts[index];
+    showContactDetails(index, c.name, c.email, c.phone, c.initials, c.color);
+}
+

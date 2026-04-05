@@ -8,7 +8,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <div class="name-section">
                 <h2>${name}</h2>
                 <div class="action-buttons">
-                   <span onclick="editContact(0)">✏️ Edit</span>
+                   <span onclick="openEditContactOverlay(${index})">✏️ Edit</span>
                 <span onclick="deleteContact(${index})">🗑️ Delete</span>
 
                 </div>

@@ -22,7 +22,7 @@
     <main class="contacts-container">
         <section class="contact-list-section">
             <div class="button-container">
-                <button class="btn-add-contact">
+                <button class="btn-add-contact" onclick="openAddContactOverlay()">
                     Add new contact <img src="icon-person-add.svg" alt="">
                 </button>
             </div>
@@ -39,6 +39,45 @@
             <div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>
         </div>
     </main>
+
+    <!-- ADD CONTACT OVERLAY -->
+    <div id="addContactOverlay" class="overlay d-none">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>Add contact</h2>
+                <span class="close-btn" onclick="closeAddContactOverlay()">✖</span>
+            </div>
+            <form onsubmit="addNewContact(event)">
+                <input type="text" id="contactName" placeholder="Name" required>
+                <input type="email" id="contactEmail" placeholder="Email" required>
+                <input type="tel" id="contactPhone" placeholder="Phone" required>
+                <div class="overlay-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeAddContactOverlay()">Cancel ✖</button>
+                    <button type="submit" class="btn-create">Create contact ✓</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT CONTACT OVERLAY -->
+    <div id="editContactOverlay" class="overlay d-none">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>Edit contact</h2>
+                <span class="close-btn" onclick="closeEditContactOverlay()">✖</span>
+            </div>
+            <form id="editContactForm" onsubmit="saveEditedContact(event)">
+                <input type="hidden" id="editContactIndex">
+                <input type="text" id="editContactName" placeholder="Name" required>
+                <input type="email" id="editContactEmail" placeholder="Email" required>
+                <input type="tel" id="editContactPhone" placeholder="Phone" required>
+                <div class="overlay-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeEditContactOverlay()">Cancel ✖</button>
+                    <button type="submit" class="btn-create">Save ✓</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script src="../script/script.js"></script>
     <script src="../script/contacts.js"></script>

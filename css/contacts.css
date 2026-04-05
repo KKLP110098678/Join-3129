@@ -135,3 +135,104 @@
     color: #007CEE;
     text-decoration: none;
 }
+
+/* --- OVERLAY STYLES --- */
+.d-none {
+    display: none !important;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.overlay-header h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.overlay-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.overlay-content input {
+    padding: 10px 15px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.overlay-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-cancel {
+    background-color: white;
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    border-color: #00A6EB;
+    color: #00A6EB;
+}
+
+.btn-create {
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-create:hover {
+    background-color: #00A6EB;
+}
+
+/* weitere Farben */
+.bg-blue { background-color: #007CEE; }
+.bg-green { background-color: #1FD7C1; }
+.bg-pink { background-color: #FC71FF; }
