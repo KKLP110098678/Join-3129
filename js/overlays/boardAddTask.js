@@ -10,8 +10,13 @@ function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
-    document.getElementById("taskDueDate").value = "";
+    let today = new Date().toISOString().split('T')[0];
+    document.getElementById("taskDueDate").value = today;
     document.getElementById("categoryInput").value = "";
+}
+
+function clearForm() {
+    clearAddTaskForm();
 }
 
 function closeAddTaskForm() {

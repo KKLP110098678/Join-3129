@@ -1,0 +1,148 @@
+/* Add Task Page Layout */
+
+.add-task-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 60px 40px;
+    height: calc(100vh - 100px); /* Assuming header is 100px */
+    box-sizing: border-box;
+    margin-left: 232px; /* Assuming sidebar is 232px */
+    width: calc(100% - 232px);
+    background-color: #F6F7F8;
+    overflow-y: auto;
+}
+
+.add-task-page-container {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.page-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.page-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.page-form .form-group input:not([type="checkbox"], [type="radio"]) {
+    border: none;
+    border-bottom: 2px solid lightgray;
+    outline: none;
+    font-size: 19px;
+    padding: 12px 8px;
+    background-color: transparent;
+    transition: border-bottom-color 0.2s;
+}
+
+.page-form .form-group input:focus:not([type="checkbox"], [type="radio"]) {
+    border-bottom-color: #4589FF;
+}
+
+.page-form .form-group input#taskTitle {
+    font-size: 40px;
+    font-weight: 700;
+    padding: 8px 4px;
+}
+
+.page-form .form-group input#taskTitle::placeholder {
+    color: #D1D1D1;
+    font-weight: 400;
+}
+
+.page-form .form-group output {
+    font-size: 14px;
+    color: #FF8190; /* Error color */
+    visibility: hidden; /* Hide by default, javascript uses .show error maybe? */
+}
+
+.page-form .form-group.has-error output {
+    visibility: visible;
+}
+
+/* Description Textarea */
+.page-form #taskDescription {
+    border: 1px solid #D1D1D1;
+    border-radius: 0 10px 10px 10px;
+    padding: 16px;
+    font-size: 16px;
+    resize: vertical;
+    outline: none;
+    background-color: white;
+}
+
+.page-form #taskDescription:focus {
+    border-color: #4589FF;
+}
+
+/* Page Buttons at Bottom Right */
+.page-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-top: 24px;
+}
+
+.btn-clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: white;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 21px;
+    font-weight: 400;
+    color: #2A3647;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-clear:hover {
+    border-color: #4589FF;
+    color: #4589FF;
+    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
+.btn-primary-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 21px;
+}
+
+/* Category & Assignee Dropdowns */
+.dropdown-input-container {
+    background-color: white;
+    border-radius: 10px;
+    border-bottom: 2px solid lightgray;
+}
+
+.dropdown-input-container input {
+    border: none !important; /* override above rule for nested inside container */
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+    .add-task-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 40px 20px;
+        margin-bottom: 80px; /* Leave space for bottom nav */
+    }
+}
