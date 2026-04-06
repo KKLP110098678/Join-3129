@@ -57,6 +57,15 @@
     border: 2px solid white;
 }
 
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-email {
+    color: #4589FF;
+}
+
 /* Farben für die Initialen */
 .bg-orange {
     background-color: #FF7A00;

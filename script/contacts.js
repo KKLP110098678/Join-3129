@@ -51,7 +51,7 @@ function renderContacts() {
                 <div class="contact-initials ${contact.color}">${contact.initials}</div>
                 <div class="contact-info">
                     <span class="contact-name">${contact.name}</span>
-                    <span class="contact-email">${contact.email}</span>
+                    <a class="contact-email" href="mailto:${contact.email}">${contact.email}</a>
                 </div>
             </div>
         `;
