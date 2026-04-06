@@ -1,6 +1,8 @@
 function summaryTemplate() {
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
+    const firstName = getFirstName();
     return `
-        <p class="dashboard-headline">${getGreeting()}, User</p>
+        <p class="dashboard-headline ${isGuest ? 'guest' : 'user'}">${getGreeting()}${firstName ? `, <span class="username">${firstName}</span>` : ''}</p>
             <div class="active-tasks">
                 <div class="urgent-task-box">
                     <div class="urgent-task">
@@ -56,4 +58,11 @@ function summaryTemplate() {
             </div>
         `
     ;
+}
+
+function getFirstName() {
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
+    if (isGuest) return '';
+    const username = sessionStorage.getItem('username') || '';
+    return username.trim().split(' ')[0];
 }

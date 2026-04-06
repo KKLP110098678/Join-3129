@@ -12,7 +12,7 @@ function headerTemplate() {
                 </div>
                 <div class="user-icon-border" onclick="toggleLogoutMenu()">
                     <div class="user-icon">
-                        <a>AA</a>
+                        <a>${getInitials()}</a>
                     </div>
                 </div>
             </div>
@@ -36,4 +36,13 @@ function toggleLogoutMenu() {
 function closeLogoutMenu() {
     document.getElementById('logOutMenu').classList.add('d-none');
     document.getElementById('menuOverlay').classList.add('d-none');
+}
+
+function getInitials() {
+    const username = sessionStorage.getItem('username') || '';
+    const parts = username.trim().split(' ');
+    if (parts.length >= 2) {
+        return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return parts[0]?.[0]?.toUpperCase() || 'G';
 }

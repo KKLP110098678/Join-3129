@@ -1,15 +1,15 @@
 async function addNewUser(newUser) {
-    try {
-        const userRef = firebase.database().ref('users');
-        const newUserRef = userRef.push();
-        await newUserRef.set({
-            username: newUser.username,
-            email: newUser.email,
-            password: newUser.password
-        });
-    } catch (error) {
-        console.error('Error registering new user:', error);
-        } 
+  try {
+    const userRef = firebase.database().ref('users');
+    const newUserRef = userRef.push();
+    await newUserRef.set({
+      username: newUser.username,
+      email: newUser.email,
+      password: newUser.password
+    });
+  } catch (error) {
+    console.error('Error registering new user:', error);
+  }
 }
 
 
@@ -41,21 +41,21 @@ async function authenticateUser(inputEmail, inputPassword) {
     const snapshot = await usersRef.once("value");
     const users = snapshot.val();
 
-    if (!users) return false;
+    if (!users) return null;
 
     for (let key in users) {
       if (
         users[key].email === inputEmail &&
         users[key].password === inputPassword
       ) {
-        return true;
+        return users[key];
       }
     }
 
-    return false;
+    return null;
   } catch (error) {
     console.error("Error authenticating user:", error);
-    return false;
+    return null;
   }
 }
 
