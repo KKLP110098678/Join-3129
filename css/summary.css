@@ -95,6 +95,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .task-in-board {
@@ -310,6 +311,13 @@ main {
     font-size: 48px;
     color: white;
     margin: 0;
+}
+
+.task-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transform-style: preserve-3d;
 }
 
 /* greetings display */
