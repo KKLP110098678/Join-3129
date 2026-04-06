@@ -1,5 +1,4 @@
 function init() {
-    preventCache();
     initLayout();
     initBoard();
     initContacts();
@@ -66,14 +65,6 @@ function addSidebar() {
             link.classList.add('active');
         }
     });
-}
-
-function preventCache() {
-    window.onpageshow = function(event) {
-        if (event.persisted) {
-            window.location.reload();
-        }
-    };
 }
 
 function checkAuth() {

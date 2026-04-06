@@ -22,7 +22,7 @@ function headerTemplate() {
             <div id="logOutMenu" class="logout-menu d-none">
                 <a href="../html/legal-notice.html">Legal Notice</a>
                 <a href="../html/privacy-policy.html">Privacy Policy</a>
-                <a href="../html/login.html">Log out</a>
+                <button onclick="logout()">Log out</button>
             </div>
         `
     ;
@@ -45,4 +45,10 @@ function getInitials() {
         return (parts[0][0] + parts[1][0]).toUpperCase();
     }
     return parts[0]?.[0]?.toUpperCase() || 'G';
+}
+
+function logout() {
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('isGuest');
+    window.location.href = '../html/login.html';
 }

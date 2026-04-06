@@ -90,7 +90,8 @@ header {
     min-width: 140px;
 }
 
-.logout-menu a {
+.logout-menu a,
+.logout-menu button {
     text-decoration: none;
     font-size: 16px;
     padding: 4px 4px;
@@ -98,8 +99,14 @@ header {
     transition: background-color 0.2s;
     color: #42526E;
     text-align: end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
 }
 
-.logout-menu a:hover {
+.logout-menu a:hover,
+.logout-menu button:hover {
     background-color: rgb(210, 227, 255);
 }
