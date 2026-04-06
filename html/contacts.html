@@ -17,6 +17,7 @@
     <header class="header">
         <div id="headerContent" class="header-content"></div>
     </header>
+    
     <aside id="sidebarContent"></aside>
 
     <main class="contacts-container">
@@ -26,14 +27,14 @@
                     Add new contact <img src="icon-person-add.svg" alt="">
                 </button>
             </div>
-            
+
             <button class="btn-add-contact-mobile" onclick="openAddContactOverlay()">
                 <img src="../assets/icon/contacts/avatar-placeholder.svg" alt="">
             </button>
-            
-                <div class="contact-list-scroll">
-                    <!-- renderContacts() fügt hier die Kontakte ein -->
-                </div>
+
+            <div class="contact-list-scroll">
+                <!-- renderContacts() fügt hier die Kontakte ein -->
+            </div>
         </section>
 
         <section class="contact-details-section" id="contactDetails">
@@ -83,14 +84,15 @@
         </div>
     </div>
 
-    <script src="../js/database/firebase-app.js"></script>
-    <script src="../js/database/firebase-database.js"></script>
-    <script src="../js/database/dbConfig.js"></script>
-    <script src="../script/script.js"></script>
-    <script src="../script/contacts.js"></script>
-    <script src="../templates/headerTemplate.js"></script>
-    <script src="../templates/sidebarTemplate.js"></script>
-    <script src="../templates/contactsTemplate.js"></script>
 </body>
+
+<script src="../js/database/firebase-app.js"></script>
+<script src="../js/database/firebase-database.js"></script>
+<script src="../js/database/dbConfig.js"></script>
+<script src="../script/script.js"></script>
+<script src="../script/contacts.js"></script>
+<script src="../templates/headerTemplate.js"></script>
+<script src="../templates/sidebarTemplate.js"></script>
+<script src="../templates/contactsTemplate.js"></script>
 
 </html>

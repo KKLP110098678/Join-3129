@@ -1,28 +1,45 @@
 function init() {
+    preventCache();
+    initLayout();
+    initBoard();
+    initContacts();
+    initTaskForm();
+    checkAuth();
+}
+
+function initLayout() {
     addSummary();
     addHeader();
     addSidebar();
-    if (typeof updateBoard === 'function') {
-        updateBoard();
-    }
+}
+
+function initBoard() {
+    if (typeof updateBoard === 'function') updateBoard();
+}
+
+function initContacts() {
     if (typeof loadContacts === 'function') {
         loadContacts();
     } else if (typeof renderContacts === 'function') {
         renderContacts();
     }
-    
+}
+
+function initTaskForm() {
+    setDefaultDueDate();
+    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
+}
+
+function setDefaultDueDate() {
     let dateInput = document.getElementById('taskDueDate');
     if (dateInput && !dateInput.value) {
         dateInput.value = new Date().toISOString().split('T')[0];
-    }
-
-    if (typeof renderAssignedToDropdown === 'function') {
-        renderAssignedToDropdown();
     }
 }
 
 function addHeader() {
     let headerRef = document.getElementById('headerContent');
+    if (!headerRef) return;
 
     headerRef.innerHTML += headerTemplate();
 }
@@ -49,4 +66,21 @@ function addSidebar() {
             link.classList.add('active');
         }
     });
+}
+
+function preventCache() {
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            window.location.reload();
+        }
+    };
+}
+
+function checkAuth() {
+    const username = sessionStorage.getItem('username');
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
+
+    if (!username && !isGuest) {
+        window.location.href = '../html/login.html';
+    }
 }
