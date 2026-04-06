@@ -13,13 +13,17 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 8px 0 8px;
 }
 
 .contact-list-scroll {
     overflow-y: auto;
     /* Scrollbar nur hier */
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
 }
 
 .contact-card {
@@ -29,19 +33,21 @@
     cursor: pointer;
     border-radius: 10px;
     transition: background 0.2s;
+    width: 300px;
+    gap: 12px;
 }
 
 .contact-card:hover {
-    background-color: #f1f1f1;
+    background-color: #D0e1ff;
 }
 
 .contact-card.active-card {
-    background-color: #2A3647;
+    background-color: #4589FF;
     color: white;
-}
 
-.contact-card.active-card:hover {
-    background-color: #2A3647;
+    .contact-email {
+        color: white;
+    }
 }
 
 .contact-initials {
@@ -75,23 +81,30 @@
     background-color: #9327FF;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: calc(384px - 24px);
+}
+
 .btn-add-contact {
-    background-color: #0062ea;
+    background-color: #4589FF;
     color: white;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 24px;
+    font-weight: 200;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: 100%;
+    gap: 12px;
+    width: 300px;
 }
 
 .btn-add-contact:hover {
-    background-color: #293241;
+    background-color: #005DFF;
 }
 
 .contact-detail-container {
@@ -261,11 +274,15 @@
     font-size: 20px;
     font-weight: 400;
     margin-top: 15px;
+    align-self: flex-start;
 }
+
 .separator-line {
     border: none;
     border-top: 1px solid #D1D1D1;
-    margin: 0 40px 15px 40px;
+    margin-bottom: 8px;
+    align-self: center;
+    width: 300px;
 }
 
 .btn-add-contact-mobile {
