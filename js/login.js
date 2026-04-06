@@ -12,8 +12,9 @@
         return;
     }
 
-    const isAuthenticated = await authenticateUser(email, password);
-    if (isAuthenticated) {
+    const user = await authenticateUser(email, password);
+    if (user) {
+        sessionStorage.setItem('username', user.username);
         sessionStorage.removeItem('isGuest');
         window.location.href = './summary.html';
     } else {
@@ -78,6 +79,7 @@ function showLoginError(message) {
 
 function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
+    sessionStorage.removeItem('username');
     window.location.href = './summary.html';
 }
 
