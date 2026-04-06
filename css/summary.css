@@ -311,3 +311,19 @@ main {
     color: white;
     margin: 0;
 }
+
+/* greetings display */
+.dashboard-headline.guest {
+    font-size: 60px;
+    font-weight: bold;
+    color: #2A3647;
+}
+
+.dashboard-headline.user {
+    color: #2A3647;
+}
+
+.dashboard-headline.user .username {
+    font-weight: bold;
+    color: #4589FF;
+}
