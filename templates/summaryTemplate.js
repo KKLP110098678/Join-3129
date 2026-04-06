@@ -1,6 +1,7 @@
 function summaryTemplate() {
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
     return `
-        <p class="dashboard-headline">${getGreeting()}, User</p>
+        <p class="dashboard-headline">${getGreeting()}${isGuest ? '' : `, User`}</p>
             <div class="active-tasks">
                 <div class="urgent-task-box">
                     <div class="urgent-task">

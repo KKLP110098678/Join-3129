@@ -14,6 +14,7 @@
 
     const isAuthenticated = await authenticateUser(email, password);
     if (isAuthenticated) {
+        sessionStorage.removeItem('isGuest');
         window.location.href = './summary.html';
     } else {
         showLoginError('Check your email and password. Please try again.');
@@ -76,6 +77,7 @@ function showLoginError(message) {
 }
 
 function guestLogin() {
+    sessionStorage.setItem('isGuest', 'true');
     window.location.href = './summary.html';
 }
 
