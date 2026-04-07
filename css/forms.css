@@ -217,11 +217,17 @@ label.urgent:hover {
 	cursor: pointer;
 }
 
+.custom-dropdown {
+	position: relative;
+	width: 100%;
+}
+
 .dropdown-list {
 	position: absolute;
 	left: 0;
-	margin: 0 36px;
-	width: calc(100% - 72px);
+	top: calc(100% - 10px);
+	margin: 0;
+	width: 100%;
 	background-color: #fff;
 	border: 1px solid #D1D1D1;
 	border-top: none;
@@ -231,6 +237,8 @@ label.urgent:hover {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+	max-height: 250px;
+	overflow-y: auto;
 }
 
 .dropdown-list.assigned-to {

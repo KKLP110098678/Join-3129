@@ -4,12 +4,16 @@ async function loadContacts() {
     try {
         let snapshot = await db.ref('contacts').once('value');
         contacts = snapshot.val() || [];
-        renderContacts();
+        contacts = contacts.filter(c => c !== null);
         
-        // If we are on add-task and assigned to dropdown exists, re-render it
         if (typeof renderAssignedToDropdown === 'function') {
             renderAssignedToDropdown();
         }
+        
+        let listContainer = document.querySelector('.contact-list-scroll');
+        if (!listContainer) return;
+        renderContacts();
+        
     } catch(e) {
         console.error("Error loading contacts from Firebase:", e);
     }
@@ -27,6 +31,7 @@ async function saveContacts() {
 
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
+    if (!listContainer) return;
     listContainer.innerHTML = '';
 
     // Sort contacts by name
