@@ -3,10 +3,19 @@ let contacts = [];
 async function loadContacts() {
     try {
         let snapshot = await db.ref('contacts').once('value');
-        contacts = snapshot.val() || [];
-        renderContacts();
+        const val = snapshot.val();
         
-        // If we are on add-task and assigned to dropdown exists, re-render it
+        if (!val) {
+            contacts = [];
+        } else if (Array.isArray(val)) {
+            // null-Einträge rausfiltern (entstehen durch splice/delete)
+            contacts = val.filter(c => c !== null && c !== undefined);
+        } else {
+            // Firebase hat ein Objekt zurückgegeben → in Array umwandeln
+            contacts = Object.values(val).filter(c => c !== null && c !== undefined);
+        }
+        
+        renderContacts();
         if (typeof renderAssignedToDropdown === 'function') {
             renderAssignedToDropdown();
         }
@@ -27,6 +36,7 @@ async function saveContacts() {
 
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
+    if (!listContainer) return;
     listContainer.innerHTML = '';
 
     // Sort contacts by name
