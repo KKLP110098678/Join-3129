@@ -217,6 +217,10 @@ label.urgent:hover {
 	cursor: pointer;
 }
 
+.custom-dropdown {
+    position: relative;
+}
+
 .dropdown-list {
 	position: absolute;
 	left: 0;
@@ -231,6 +235,8 @@ label.urgent:hover {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
+	margin: 0;
+	width: 100%;
 }
 
 .dropdown-list.assigned-to {
