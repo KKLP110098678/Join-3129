@@ -65,21 +65,21 @@ function toggleAssignedToDropdown() {
 }
 
 function updateAssignees() {
-  const list = document.getElementById('assignedToDropdown');
-  const container = document.getElementById('assigneeIconsContainer');
-  if (!list || !container) return;
+    const list = document.getElementById('assignedToDropdown');
+    const container = document.getElementById('assigneeIconsContainer');
+    if (!list || !container) return;
 
-  container.innerHTML = '';
-  const items = list.querySelectorAll('.dropdown-item.contact');
-  items.forEach(item => {
-      const checkbox = item.querySelector('.checkbox-masked');
-      if (checkbox && checkbox.checked) {
-          const avatar = item.querySelector('.avatar-sm');
-          if (avatar) {
-              container.appendChild(avatar.cloneNode(true));
-          }
-      }
-  });
+    container.innerHTML = '';
+    const items = list.querySelectorAll('.dropdown-item.contact');
+    items.forEach(item => {
+        const checkbox = item.querySelector('.checkbox-masked');
+        if (checkbox && checkbox.checked) {
+            const avatar = item.querySelector('.avatar-sm');
+            if (avatar) {
+                container.appendChild(avatar.cloneNode(true));
+            }
+        }
+    });
 }
 
 function toggleCategoryDropdown() {

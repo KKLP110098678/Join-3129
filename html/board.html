@@ -221,41 +221,8 @@
                                     class="dropdown-arrow" />
                             </button>
                         </div>
-                        <div class="dropdown-list assigned-to d-none" id="assignedToDropdown">
-                            <div class="dropdown-item contact">
-                                <label class="contact-label">
-                                    <div class="dropdown-contact">
-                                        <div class="avatar-sm">AS</div>
-                                        Alice Schulz
-                                    </div>
-                                    <input type="checkbox" class="checkbox-masked">
-                                </label>
-                            </div>
-                            <div class="dropdown-item contact">
-                                <label class="contact-label">
-                                    <div class="dropdown-contact">
-                                        <div class="avatar-sm">BM</div>
-                                        Bob Martin
-                                    </div>
-                                    <input type="checkbox" class="checkbox-masked">
-                                </label>
-                            </div>
-                            <div class="dropdown-item contact">
-                                <label class="contact-label">
-                                    <div class="dropdown-contact">
-                                        <div class="avatar-sm">CM</div>
-                                        Charlie Maurer
-                                    </div>
-                                    <input type="checkbox" class="checkbox-masked">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="assignees">
-                            <div class="avatar-sm">RK</div>
-                            <div class="avatar-sm">JK</div>
-                            <div class="avatar-sm">CM</div>
-                            <div class="avatar-sm">AS</div>
-                        </div>
+                        <div class="dropdown-list assigned-to d-none" id="assignedToDropdown"></div>
+                        <div class="assignees" id="assigneeIconsContainer"></div>
                     </div>
                 </div>
                 <div class="form-group" id="category-form-group">
@@ -385,5 +352,6 @@
 <script src="../templates/headerTemplate.js"></script>
 <script src="../templates/sidebarTemplate.js"></script>
 <script src="../script/dragNdrop.js"></script>
+<script src="../script/contacts.js"></script>
 
 </html>
