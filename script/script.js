@@ -13,7 +13,7 @@ function initLayout() {
 }
 
 function initBoard() {
-    if (typeof updateBoard === 'function') updateBoard();
+    if (typeof loadTasks === 'function') loadTasks();
 }
 
 function initContacts() {
