@@ -34,3 +34,15 @@ li {
     flex-direction: column;
     gap: 35px;
 }
+
+.index-link {
+    color: #42526E;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.index-link:hover {
+    text-decoration: underline;
+    color: #005DFF;
+}
