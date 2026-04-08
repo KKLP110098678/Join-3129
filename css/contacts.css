@@ -13,13 +13,17 @@
     box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 20px 8px 0 8px;
 }
 
 .contact-list-scroll {
     overflow-y: auto;
     /* Scrollbar nur hier */
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 20px;
 }
 
 .contact-card {
@@ -29,10 +33,21 @@
     cursor: pointer;
     border-radius: 10px;
     transition: background 0.2s;
+    width: 300px;
+    gap: 12px;
 }
 
 .contact-card:hover {
-    background-color: #f1f1f1;
+    background-color: #D0e1ff;
+}
+
+.contact-card.active-card {
+    background-color: #4589FF;
+    color: white;
+
+    .contact-email {
+        color: white;
+    }
 }
 
 .contact-initials {
@@ -48,6 +63,15 @@
     border: 2px solid white;
 }
 
+.contact-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-email {
+    color: #4589FF;
+}
+
 /* Farben für die Initialen */
 .bg-orange {
     background-color: #FF7A00;
@@ -57,23 +81,30 @@
     background-color: #9327FF;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    width: calc(384px - 24px);
+}
+
 .btn-add-contact {
-    background-color: #0062ea;
+    background-color: #4589FF;
     color: white;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 24px;
+    font-weight: 200;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: 100%;
+    gap: 12px;
+    width: 300px;
 }
 
 .btn-add-contact:hover {
-    background-color: #293241;
+    background-color: #005DFF;
 }
 
 .contact-detail-container {
@@ -134,4 +165,205 @@
 .contact-data a {
     color: #007CEE;
     text-decoration: none;
+}
+
+/* --- OVERLAY STYLES --- */
+.d-none {
+    display: none !important;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.overlay-header h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.close-btn {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.overlay-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.overlay-content input {
+    padding: 10px 15px;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+.overlay-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-cancel {
+    background-color: white;
+    border: 1px solid #2A3647;
+    color: #2A3647;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover {
+    border-color: #00A6EB;
+    color: #00A6EB;
+}
+
+.btn-create {
+    background-color: #2A3647;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-create:hover {
+    background-color: #00A6EB;
+}
+
+/* weitere Farben */
+.bg-blue { background-color: #007CEE; }
+.bg-green { background-color: #1FD7C1; }
+.bg-pink { background-color: #FC71FF; }
+
+/* Lettern und Separator */
+.letter-separator {
+    padding: 15px 40px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 15px;
+    align-self: flex-start;
+}
+
+.separator-line {
+    border: none;
+    border-top: 1px solid #D1D1D1;
+    margin-bottom: 8px;
+    align-self: center;
+    width: 300px;
+}
+
+.btn-add-contact-mobile {
+    display: none;
+}
+
+.back-arrow {
+    display: none;
+    cursor: pointer;
+}
+
+/* --- MOBILE RESPONSIVENESS (< 800px) --- */
+@media(max-width: 800px) {
+    .contacts-container {
+        margin-left: 0;
+        height: calc(100vh - 100px - 80px); /* header & bottom nav */
+        flex-direction: column;
+    }
+
+    .contact-list-section {
+        width: 100%;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .button-container {
+        display: none;
+    }
+
+    .contact-card {
+        margin: 0 20px;
+    }
+
+    .btn-add-contact-mobile {
+        display: flex;
+        background-color: #0062ea;
+        color: white;
+        border: none;
+        border-radius: 8px; /* Or 50% for circle */
+        width: 56px;
+        height: 56px;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 40;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+        cursor: pointer;
+    }
+
+    .btn-add-contact-mobile img {
+        width: 30px;
+    }
+
+    /* Details auf Mobile als Overlay / Fullscreen ausklappbar */
+    .contact-detail-container {
+        display: none; /* Erst nach klick zeigen */
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100vw;
+        height: calc(100vh - 100px - 80px);
+        background-color: #F6F7F8;
+        z-index: 50;
+        box-sizing: border-box;
+    }
+    
+    .contact-detail-container.show-mobile {
+        display: flex;
+    }
+
+    .back-arrow {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+
+    .overlay-content {
+        width: 90vw;
+        padding: 24px;
+        margin: 20px;
+    }
 }

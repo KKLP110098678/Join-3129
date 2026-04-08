@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
 
+    <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
     <link rel="stylesheet" href="../css/standard.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
@@ -17,19 +18,24 @@
     <header class="header">
         <div id="headerContent" class="header-content"></div>
     </header>
+    
     <aside id="sidebarContent"></aside>
 
     <main class="contacts-container">
         <section class="contact-list-section">
             <div class="button-container">
-                <button class="btn-add-contact">
-                    Add new contact <img src="icon-person-add.svg" alt="">
+                <button class="btn-add-contact" onclick="openAddContactOverlay()">
+                    Add new contact <img src="../assets/icon/contacts/person_add.svg" alt="">
                 </button>
             </div>
-            
-                <div class="contact-list-scroll">
-                    <!-- renderContacts() fügt hier die Kontakte ein -->
-                </div>
+
+            <button class="btn-add-contact-mobile" onclick="openAddContactOverlay()">
+                <img src="../assets/icon/contacts/avatar-placeholder.svg" alt="">
+            </button>
+
+            <div class="contact-list-scroll">
+                <!-- renderContacts() fügt hier die Kontakte ein -->
+            </div>
         </section>
 
         <section class="contact-details-section" id="contactDetails">
@@ -40,11 +46,54 @@
         </div>
     </main>
 
-    <script src="../script/script.js"></script>
-    <script src="../script/contacts.js"></script>
-    <script src="../templates/headerTemplate.js"></script>
-    <script src="../templates/sidebarTemplate.js"></script>
-    <script src="../templates/contactsTemplate.js"></script>
+    <!-- ADD CONTACT OVERLAY -->
+    <div id="addContactOverlay" class="overlay d-none">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>Add contact</h2>
+                <span class="close-btn" onclick="closeAddContactOverlay()">✖</span>
+            </div>
+            <form onsubmit="addNewContact(event)">
+                <input type="text" id="contactName" placeholder="Name" required>
+                <input type="email" id="contactEmail" placeholder="Email" required>
+                <input type="tel" id="contactPhone" placeholder="Phone" required>
+                <div class="overlay-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeAddContactOverlay()">Cancel ✖</button>
+                    <button type="submit" class="btn-create">Create contact ✓</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT CONTACT OVERLAY -->
+    <div id="editContactOverlay" class="overlay d-none">
+        <div class="overlay-content">
+            <div class="overlay-header">
+                <h2>Edit contact</h2>
+                <span class="close-btn" onclick="closeEditContactOverlay()">✖</span>
+            </div>
+            <form id="editContactForm" onsubmit="saveEditedContact(event)">
+                <input type="hidden" id="editContactIndex">
+                <input type="text" id="editContactName" placeholder="Name" required>
+                <input type="email" id="editContactEmail" placeholder="Email" required>
+                <input type="tel" id="editContactPhone" placeholder="Phone" required>
+                <div class="overlay-buttons">
+                    <button type="button" class="btn-cancel" onclick="closeEditContactOverlay()">Cancel ✖</button>
+                    <button type="submit" class="btn-create">Save ✓</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
+
+<script src="../js/database/firebase-app.js"></script>
+<script src="../js/database/firebase-database.js"></script>
+<script src="../js/database/dbConfig.js"></script>
+<script src="../script/script.js"></script>
+<script src="../script/contacts.js"></script>
+<script src="../templates/headerTemplate.js"></script>
+<script src="../templates/sidebarTemplate.js"></script>
+<script src="../templates/contactsTemplate.js"></script>
 
 </html>
