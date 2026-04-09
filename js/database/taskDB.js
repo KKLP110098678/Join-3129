@@ -176,11 +176,11 @@ function openTaskDetail(taskId) {
     if (!task) return;
 
     document.getElementById('taskDetailContainer').innerHTML = taskDetailTemplate(task);
-    document.getElementById('taskDetailOverlay').classList.add('visible');
+    document.getElementById('taskDetailOverlay').showModal();
 }
 
 function closeTaskDetail() {
-    document.getElementById('taskDetailOverlay').classList.remove('visible');
+    document.getElementById('taskDetailOverlay').close();
 }
 
 function closeTaskDetailOnBackdrop(event) {

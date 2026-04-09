@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../css/board.css">
     <link rel="stylesheet" href="../css/buttons.css">
     <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/add-task-page.css">
 </head>
 
 <body onload="init()">
@@ -242,9 +243,9 @@
         </div>
     </div>
 
-    <div class="task-detail-overlay" id="taskDetailOverlay" onclick="closeTaskDetailOnBackdrop(event)">
+    <dialog id="taskDetailOverlay" onclick="closeTaskDetailOnBackdrop(event)">
         <div class="task-detail-container" id="taskDetailContainer"></div>
-    </div>
+    </dialog>
 
 </body>
 

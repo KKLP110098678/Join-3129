@@ -5,9 +5,11 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 60px 40px;
-    height: calc(100vh - 100px); /* Assuming header is 100px */
+    height: calc(100vh - 100px);
+    /* Assuming header is 100px */
     box-sizing: border-box;
-    margin-left: 232px; /* Assuming sidebar is 232px */
+    margin-left: 232px;
+    /* Assuming sidebar is 232px */
     width: calc(100% - 232px);
     background-color: #F6F7F8;
     overflow-y: auto;
@@ -61,8 +63,10 @@
 
 .page-form .form-group output {
     font-size: 14px;
-    color: #FF8190; /* Error color */
-    visibility: hidden; /* Hide by default, javascript uses .show error maybe? */
+    color: #FF8190;
+    /* Error color */
+    visibility: hidden;
+    /* Hide by default, javascript uses .show error maybe? */
 }
 
 .page-form .form-group.has-error output {
@@ -113,7 +117,7 @@
 .btn-clear:hover {
     border-color: #4589FF;
     color: #4589FF;
-    box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary-with-icon {
@@ -134,7 +138,8 @@
 }
 
 .dropdown-input-container input {
-    border: none !important; /* override above rule for nested inside container */
+    border: none !important;
+    /* override above rule for nested inside container */
 }
 
 /* Responsive */
@@ -143,6 +148,150 @@
         margin-left: 0;
         width: 100%;
         padding: 40px 20px;
-        margin-bottom: 80px; /* Leave space for bottom nav */
+        margin-bottom: 80px;
+        /* Leave space for bottom nav */
     }
+}
+
+/* task detail overlay*/
+#taskDetailOverlay {
+    border: #DDDDDD solid 1px;
+    border-radius: 24px;
+    padding: 0;
+    width: 500px;
+    height: 900px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#taskDetailOverlay::backdrop {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.task-detail-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 40px 32px;
+    gap: 20px;
+}
+
+.task-detail-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-card-badge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.task-detail-title {
+    font-size: 60px;
+}
+
+.task-detail-description {
+    font-size: 20px;
+}
+
+.task-detail-row {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.task-detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-detail-label {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4E5D77;
+}
+
+.task-detail-date {
+    font-size: 20px;
+}
+
+.task-detail-priority {
+    font-size: 20px;
+}
+
+.detail-assignees {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-assignee {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+}
+
+.detail-subtasks {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-subtask {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+}
+
+.task-detail-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.task-detail-seperator {
+    height: 24px;
+    border: #DDDDDD solid 1px;
+}
+
+.btn-detail-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    background-color: transparent;
+    gap: 12px;
+}
+
+.btn-detail-overlay:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: #4589FF;
+}
+
+.btn-detail-overlay-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 50%;
+    font-size: 22px;
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+}
+
+.btn-detail-overlay-close:hover {
+    cursor: pointer;
+    background-color: #b5d0ff;
 }
