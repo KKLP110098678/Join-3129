@@ -54,10 +54,21 @@
             </div>
             <div class="lower-board">
                 <div class="lower-board-content">
-                    <div class="tab-content-box drop-area" id="toDoBox"></div>
-                    <div class="tab-content-box drop-area" id="progressBox"></div>
-                    <div class="tab-content-box drop-area" id="feedbackBox"></div>
-                    <div class="tab-content-box drop-area" id="doneBox"></div>
+                    <div class="tab-content-box drop-area" id="toDoBox" ondragover="allowDrop(event)"
+                        ondragleave="dragLeave(event)" ondrop="drop(event, 'todo')">
+                    </div>
+
+                    <div class="tab-content-box drop-area" id="progressBox" ondragover="allowDrop(event)"
+                        ondragleave="dragLeave(event)" ondrop="drop(event, 'inprogress')">
+                    </div>
+
+                    <div class="tab-content-box drop-area" id="feedbackBox" ondragover="allowDrop(event)"
+                        ondragleave="dragLeave(event)" ondrop="drop(event, 'awaitfeedback')">
+                    </div>
+
+                    <div class="tab-content-box drop-area" id="doneBox" ondragover="allowDrop(event)"
+                        ondragleave="dragLeave(event)" ondrop="drop(event, 'done')">
+                    </div>
                 </div>
             </div>
         </div>

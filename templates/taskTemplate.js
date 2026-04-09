@@ -2,7 +2,10 @@ function boardCardTemplate(task) {
     const badgeClass = task.category === 'Technical Task' ? 'badge-technical-task' : 'badge-user-story';
 
     return `
-        <div class="board-card" id="task_${task.id}" onclick="openTaskDetail('${task.id}')">
+        <div class="board-card" id="task_${task.id}" 
+            draggable="true"
+            ondragstart="dragStart('${task.id}')"
+            onclick="openTaskDetail('${task.id}')">
             <div class="board-card-badge ${badgeClass}">${task.category}</div>
             <div class="board-card-content">
                 <h3 class="board-card-title">${task.title}</h3>
