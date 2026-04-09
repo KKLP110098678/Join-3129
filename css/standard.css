@@ -23,3 +23,59 @@ body {
 .d-none {
   display: none;
 }
+
+/* Shared UI Components */
+.avatar-sm {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.bg-orange { background-color: #FF7A00 !important; }
+.bg-purple { background-color: #9327FF !important; }
+.bg-blue { background-color: #007CEE !important; }
+.bg-green { background-color: #1FD7C1 !important; }
+.bg-pink { background-color: #FC71FF !important; }
+.bg-gray { background-color: #d1d1d1 !important; }
+
+/* Legal Content Pages Layout */
+.legal-content {
+  margin-left: 232px; 
+  padding: 60px 80px;
+  max-width: 1200px;
+  overflow-y: auto;
+  box-sizing: border-box;
+  height: calc(100vh - 100px); 
+}
+
+.legal-content h1 {
+  font-size: 61px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.legal-content h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.legal-content h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.legal-content p, .legal-content li {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}

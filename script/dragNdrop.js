@@ -1,13 +1,13 @@
-let todos = []
-let inProgress = []
-let awaitFeedback = []
-let done = []
+let todos = [];
+let inProgress = [];
+let awaitFeedback = [];
+let done = [];
 
 let taskArrays = [
-    { array: todos,         id: 'toDoBox',      label: 'No tasks To do' },
-    { array: inProgress,    id: 'progressBox',   label: 'No tasks In Progress' },
-    { array: awaitFeedback, id: 'feedbackBox',   label: 'No tasks Await Feedback' },
-    { array: done,          id: 'doneBox',       label: 'No tasks Done' },
+    { array: todos,         id: 'toDoBox',       label: 'No tasks To do', status: 'to do' },
+    { array: inProgress,    id: 'progressBox',   label: 'No tasks In Progress', status: 'in progress' },
+    { array: awaitFeedback, id: 'feedbackBox',   label: 'No tasks Await Feedback', status: 'await feedback' },
+    { array: done,          id: 'doneBox',       label: 'No tasks Done', status: 'done' },
 ];
 
 let currentDraggedTaskId = null;
