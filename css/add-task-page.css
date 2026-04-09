@@ -157,9 +157,8 @@
 #taskDetailOverlay {
     border: #DDDDDD solid 1px;
     border-radius: 24px;
-    padding: 0;
     width: 500px;
-    height: 900px;
+    min-height: 900px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -194,10 +193,14 @@
 
 .task-detail-title {
     font-size: 60px;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .task-detail-description {
     font-size: 20px;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .task-detail-row {
