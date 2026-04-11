@@ -18,6 +18,7 @@ function addTaskMain() {
 }
 
 async function initBoard() {
+    if (typeof loadContacts === 'function') await loadContacts();
     if (typeof loadTasks === 'function') await loadTasks();
     addSummary();
 }
