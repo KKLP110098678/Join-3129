@@ -1,3 +1,5 @@
+let protectedPages = ['board.html', 'contacts.html', 'add-task.html', 'summary.html'];
+
 async function init() {
     checkAuth();
     initLayout();
