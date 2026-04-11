@@ -11,7 +11,7 @@ async function saveNewTask() {
     let priorityRadios = document.querySelectorAll('input[name="urgent-priority"]');
     let priority = "medium";
     priorityRadios.forEach(radio => {
-        if(radio.checked) priority = radio.value;
+        if (radio.checked) priority = radio.value;
     });
 
     let assignedTo = [];
@@ -44,7 +44,7 @@ async function saveNewTask() {
     try {
         await db.ref('tasks').push(newTask);
         clearForm();
-        
+
         if (window.location.pathname.includes("board.html")) {
             closeAddTaskForm();
             if (typeof loadAndRenderTasks === 'function') {
@@ -63,11 +63,10 @@ async function saveNewTask() {
     }
 }
 
-
 function openAddTaskForm(status) {
-  document.getElementById("taskStatus").value = status;
-  document.getElementById("addTaskOverlay").classList.add("visible");
-  clearAddTaskForm();
+    document.getElementById("taskStatus").value = status;
+    document.getElementById("addTaskOverlay").classList.add("visible");
+    clearAddTaskForm();
 }
 
 function clearAddTaskForm() {
@@ -77,7 +76,7 @@ function clearAddTaskForm() {
     let today = new Date().toISOString().split('T')[0];
     document.getElementById("taskDueDate").value = today;
     document.getElementById("categoryInput").value = "";
-     document.querySelectorAll('#subtaskList .list-item.subtask').forEach(li => li.remove());
+    document.querySelectorAll('#subtaskList .list-item.subtask').forEach(li => li.remove());
 }
 
 function clearForm() {
@@ -85,20 +84,20 @@ function clearForm() {
 }
 
 function closeAddTaskForm() {
-  document.getElementById("addTaskOverlay").classList.remove("visible");
+    document.getElementById("addTaskOverlay").classList.remove("visible");
 }
 
 function closeOnBackdrop(event) {
-  if (event.target.id === "addTaskOverlay") {
-    closeAddTaskForm();
-  }
+    if (event.target.id === "addTaskOverlay") {
+        closeAddTaskForm();
+    }
 }
 
 function renderAssignedToDropdown() {
-  let dropdown = document.getElementById("assignedToDropdown");
-  if (!dropdown) return;
-  
-  dropdown.innerHTML = `
+    let dropdown = document.getElementById("assignedToDropdown");
+    if (!dropdown) return;
+
+    dropdown.innerHTML = `
       <div class="dropdown-item contact" style="border-bottom: 1px solid #ccc; justify-content: space-between;">
           <label class="contact-label" for="selectAllContacts" style="padding: 12px 16px; width: 100%;">
               <span style="font-weight: bold; font-size: 19px;">Select All</span>
@@ -106,11 +105,11 @@ function renderAssignedToDropdown() {
           </label>
       </div>
   `;
-  
-  if (typeof contacts !== 'undefined') {
-      for (let i = 0; i < contacts.length; i++) {
-          const contact = contacts[i];
-          dropdown.innerHTML += `
+
+    if (typeof contacts !== 'undefined') {
+        for (let i = 0; i < contacts.length; i++) {
+            const contact = contacts[i];
+            dropdown.innerHTML += `
           <div class="dropdown-item contact">
               <label class="contact-label" for="contact_cb_${i}">
                   <div class="dropdown-contact">
@@ -121,8 +120,8 @@ function renderAssignedToDropdown() {
               </label>
           </div>
           `;
-      }
-  }
+        }
+    }
 }
 
 function toggleAllContacts(selectAllCheckbox) {
@@ -136,95 +135,95 @@ function toggleAllContacts(selectAllCheckbox) {
 // --- Search / Filter ---
 
 function filterTasks() {
-  loadAndRenderTasks();
+    loadAndRenderTasks();
 }
 
 function toggleAssignedToDropdown() {
-  const dropdown = document.getElementById("assignedToDropdown");
-  dropdown.classList.toggle("d-none");
+    const dropdown = document.getElementById("assignedToDropdown");
+    dropdown.classList.toggle("d-none");
 }
 
 function updateAssignees() {
-  const list = document.getElementById('assignedToDropdown');
-  const container = document.querySelector('.assignees');
-  if (!list || !container) return;
+    const list = document.getElementById('assignedToDropdown');
+    const container = document.querySelector('.assignees');
+    if (!list || !container) return;
 
-  container.innerHTML = '';
-  
-  // Exclude 'selectAllContacts' checkbox when counting actual contacts
-  const items = list.querySelectorAll('.dropdown-item.contact');
-  let selectedAvatars = [];
-  
-  items.forEach(item => {
-      const checkbox = item.querySelector('.checkbox-masked.contact-checkbox');
-      if (checkbox && checkbox.checked) {
-          const avatar = item.querySelector('.avatar-sm');
-          if (avatar) {
-              selectedAvatars.push(avatar.cloneNode(true));
-          }
-      }
-  });
+    container.innerHTML = '';
 
-  const maxDisplay = 4;
-  
-  if (selectedAvatars.length <= maxDisplay) {
-      selectedAvatars.forEach(avatar => container.appendChild(avatar));
-  } else {
-      for (let i = 0; i < maxDisplay - 1; i++) {
-          container.appendChild(selectedAvatars[i]);
-      }
-      
-      let extraCount = selectedAvatars.length - (maxDisplay - 1);
-      let extraIndicator = document.createElement('div');
-      extraIndicator.className = 'avatar-sm bg-gray'; // You can define a fallback or general color
-      extraIndicator.style.backgroundColor = '#d1d1d1'; // fallback color for generic plus sign
-      extraIndicator.style.color = '#fff';
-      extraIndicator.innerText = '+' + extraCount;
-      
-      container.appendChild(extraIndicator);
-  }
+    // Exclude 'selectAllContacts' checkbox when counting actual contacts
+    const items = list.querySelectorAll('.dropdown-item.contact');
+    let selectedAvatars = [];
+
+    items.forEach(item => {
+        const checkbox = item.querySelector('.checkbox-masked.contact-checkbox');
+        if (checkbox && checkbox.checked) {
+            const avatar = item.querySelector('.avatar-sm');
+            if (avatar) {
+                selectedAvatars.push(avatar.cloneNode(true));
+            }
+        }
+    });
+
+    const maxDisplay = 4;
+
+    if (selectedAvatars.length <= maxDisplay) {
+        selectedAvatars.forEach(avatar => container.appendChild(avatar));
+    } else {
+        for (let i = 0; i < maxDisplay - 1; i++) {
+            container.appendChild(selectedAvatars[i]);
+        }
+
+        let extraCount = selectedAvatars.length - (maxDisplay - 1);
+        let extraIndicator = document.createElement('div');
+        extraIndicator.className = 'avatar-sm bg-gray'; // You can define a fallback or general color
+        extraIndicator.style.backgroundColor = '#d1d1d1'; // fallback color for generic plus sign
+        extraIndicator.style.color = '#fff';
+        extraIndicator.innerText = '+' + extraCount;
+
+        container.appendChild(extraIndicator);
+    }
 }
 
 function toggleCategoryDropdown() {
-  const dropdown = document.getElementById("categoryDropdown");
-  dropdown.classList.toggle("d-none");
+    const dropdown = document.getElementById("categoryDropdown");
+    dropdown.classList.toggle("d-none");
 }
 
 function selectCategory(category) {
-  document.getElementById("categoryInput").value = category;
-  toggleCategoryDropdown();
+    document.getElementById("categoryInput").value = category;
+    toggleCategoryDropdown();
 }
 
 function showSubtaskInputButtons() {
-  const btnGroup = document.getElementById("subtaskBtnGroup");
-  btnGroup.classList.remove("d-none");
+    const btnGroup = document.getElementById("subtaskBtnGroup");
+    btnGroup.classList.remove("d-none");
 }
 
 function clearSubtaskInput() {
-  const subtaskInput = document.getElementById("subtaskInput");
-  subtaskInput.value = "";
-  const btnGroup = document.getElementById("subtaskBtnGroup");
-  btnGroup.classList.add("d-none");
+    const subtaskInput = document.getElementById("subtaskInput");
+    subtaskInput.value = "";
+    const btnGroup = document.getElementById("subtaskBtnGroup");
+    btnGroup.classList.add("d-none");
 }
 
 function addSubtask() {
-  const input = document.getElementById("subtaskInput");
-  if (!input.value.trim()) return;
-  
-  currentSubtasks.push({
-      title: input.value.trim(),
-      completed: false
-  });
-  
-  clearSubtaskInput();
-  renderSubtasks();
+    const input = document.getElementById("subtaskInput");
+    if (!input.value.trim()) return;
+
+    currentSubtasks.push({
+        title: input.value.trim(),
+        completed: false
+    });
+
+    clearSubtaskInput();
+    renderSubtasks();
 }
 
 function renderSubtasks() {
     const list = document.getElementById("subtaskList");
     if (!list) return;
     list.innerHTML = "";
-    
+
     currentSubtasks.forEach((subtask, index) => {
         list.innerHTML += `
         <li class="list-item subtask" ondblclick="showSubtaskEditInput(${index})">
@@ -254,44 +253,44 @@ function removeSubtask(index) {
 let editingSubtaskIndex = null;
 
 function showSubtaskEditInput(index) {
-  const editGroup = document.getElementById("editSubtaskGroup");
-  const editInput = document.getElementById("EditSubtaskInput");
-  
-  if(editGroup && editInput) {
-      editingSubtaskIndex = index;
-      editInput.value = currentSubtasks[index].title;
-      editGroup.classList.remove("d-none");
-  }
+    const editGroup = document.getElementById("editSubtaskGroup");
+    const editInput = document.getElementById("EditSubtaskInput");
+
+    if (editGroup && editInput) {
+        editingSubtaskIndex = index;
+        editInput.value = currentSubtasks[index].title;
+        editGroup.classList.remove("d-none");
+    }
 }
 
 function saveSubtask() {
-  const editInput = document.getElementById("EditSubtaskInput");
-  if(editInput && editInput.value.trim() && editingSubtaskIndex !== null) {
-      currentSubtasks[editingSubtaskIndex].title = editInput.value.trim();
-  }
-  
-  editingSubtaskIndex = null;
-  hideEditSubtaskInput();
-  renderSubtasks();
+    const editInput = document.getElementById("EditSubtaskInput");
+    if (editInput && editInput.value.trim() && editingSubtaskIndex !== null) {
+        currentSubtasks[editingSubtaskIndex].title = editInput.value.trim();
+    }
+
+    editingSubtaskIndex = null;
+    hideEditSubtaskInput();
+    renderSubtasks();
 }
 
 function hideEditSubtaskInput() {
-  const editGroup = document.getElementById("editSubtaskGroup");
-  editGroup.classList.add("d-none");
+    const editGroup = document.getElementById("editSubtaskGroup");
+    editGroup.classList.add("d-none");
 }
 
 function addSubtask() {
     const input = document.getElementById('subtaskInput');
     const text = input.value.trim();
-    
+
     if (!text) return; // nichts eingegeben → abbrechen
-    
+
     const subtaskList = document.getElementById('subtaskList');
-    
+
     const li = document.createElement('li');
     li.classList.add('list-item', 'subtask');
     li.ondblclick = () => startEditSubtask(li);
-    
+
     li.innerHTML = `
         <span class="bullet-point">•</span>${text}
         <div class="input-btn-group">
@@ -308,7 +307,7 @@ function addSubtask() {
             </button>
         </div>
     `;
-    
+
     subtaskList.prepend(li); // vor editSubtaskGroup einfügen
     clearSubtaskInput();
 }
@@ -316,7 +315,7 @@ function addSubtask() {
 function startEditSubtask(li) {
     // Aktuellen Text auslesen (ohne Buttons)
     const currentText = li.childNodes[1].textContent.trim();
-    
+
     li.innerHTML = `
         <input type="text" class="edit-subtask-input" value="${currentText}">
         <div class="input-btn-group">
@@ -333,7 +332,7 @@ function startEditSubtask(li) {
             </button>
         </div>
     `;
-    
+
     li.querySelector('.edit-subtask-input').focus();
 }
 
@@ -343,7 +342,7 @@ function confirmEditSubtask(li) {
         li.remove();
         return;
     }
-    
+
     li.innerHTML = `
         <span class="bullet-point">•</span>${newText}
         <div class="input-btn-group">

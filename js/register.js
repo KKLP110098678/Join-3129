@@ -21,7 +21,6 @@ async function validateName(checkMode) {
     return true;
 }
 
-
 async function validateEmail(checkMode) {
     const emailInput = document.getElementById('email');
     const email = emailInput.value.trim();
@@ -111,7 +110,7 @@ function validateConfirmPassword(checkMode) {
         if (!checkMode) {
             if (confirmPassword === '') {
                 errorMessage.textContent = 'Please confirm your password.';
-            } else {            
+            } else {
                 errorMessage.textContent = 'Your passwords don\'t match. Please try again.';
             }
             errorMessage.classList.add('error');
@@ -150,4 +149,3 @@ async function registerUser(event) {
     await addNewUser(newUser);
     window.location.href = './login.html';
 }
-    

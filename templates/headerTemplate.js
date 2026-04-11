@@ -25,7 +25,7 @@ function headerTemplate() {
                 <button onclick="logout()">Log out</button>
             </div>
         `
-    ;
+        ;
 }
 
 function toggleLogoutMenu() {
