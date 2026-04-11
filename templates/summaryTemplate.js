@@ -1,11 +1,11 @@
-function summaryTemplate() {
+function summaryTemplate() { 
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
     const firstName = getFirstName();
     const counts = getTaskCounts();
     const urgentDeadline = counts.urgent > 0
-        ? `<p class="date-text-top">Todays Date</p>
+    ? `<p class="date-text-top">${counts.earliestDeadline ?? 'No date set'}</p>
        <p class="date-text">Upcoming Deadline</p>`
-        : `<p class="date-text-top">No urgent tasks</p>`;
+    : `<p class="date-text-top">No urgent tasks</p>`;
     return `
         <p class="dashboard-headline ${isGuest ? 'guest' : 'user'}">${getGreeting()}${firstName ? `, <span class="username">${firstName}</span>` : ''}</p>
             <div class="active-tasks">
@@ -93,8 +93,8 @@ function getTaskCounts() {
         urgent: urgentTasks.length,
         total: tasks.length,
         todo: tasks.filter(t => t.status === 'todo').length,
-        inProgress: tasks.filter(t => t.status === 'inProgress').length,
-        awaitFeedback: tasks.filter(t => t.status === 'awaitFeedback').length,
+        inProgress: tasks.filter(t => t.status === 'inprogress').length,
+        awaitFeedback: tasks.filter(t => t.status === 'awaitfeedback').length,
         done: tasks.filter(t => t.status === 'done').length,
         earliestDeadline: earliestDeadline ? earliestDeadline.toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' }) : null
     };

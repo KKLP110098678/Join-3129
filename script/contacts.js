@@ -3,25 +3,9 @@ let contacts = [];
 async function loadContacts() {
     try {
         let snapshot = await db.ref('contacts').once('value');
-<<<<<<< HEAD
         contacts = snapshot.val() || [];
         contacts = contacts.filter(c => c !== null);
         
-=======
-        const val = snapshot.val();
-        
-        if (!val) {
-            contacts = [];
-        } else if (Array.isArray(val)) {
-            // null-Einträge rausfiltern (entstehen durch splice/delete)
-            contacts = val.filter(c => c !== null && c !== undefined);
-        } else {
-            // Firebase hat ein Objekt zurückgegeben → in Array umwandeln
-            contacts = Object.values(val).filter(c => c !== null && c !== undefined);
-        }
-        
-        renderContacts();
->>>>>>> 19dcfe5f93a71be6daf250471ec4ba9b5e72f8f0
         if (typeof renderAssignedToDropdown === 'function') {
             renderAssignedToDropdown();
         }
@@ -42,8 +26,6 @@ async function saveContacts() {
         console.error("Error saving contacts to Firebase:", e);
     }
 }
-
-
 
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
@@ -182,4 +164,3 @@ function closeMobileDetails() {
         detailContainer.classList.remove('show-mobile');
     }
 }
-

@@ -1,19 +1,19 @@
-function init() {
+async function init() {
+    checkAuth();
     initLayout();
-    initBoard();
+    await initBoard();
     initContacts();
     initTaskForm();
-    checkAuth();
 }
 
 function initLayout() {
-    addSummary();
     addHeader();
     addSidebar();
 }
 
-function initBoard() {
-    if (typeof loadTasks === 'function') loadTasks();
+async function initBoard() {
+    if (typeof loadTasks === 'function') await loadTasks();
+    addSummary();
 }
 
 function initContacts() {
