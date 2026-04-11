@@ -9,6 +9,12 @@ async function init() {
 function initLayout() {
     addHeader();
     addSidebar();
+    addTaskMain();
+}
+
+function addTaskMain() {
+    const addTaskRef = document.getElementById('addTaskContent');
+    if (addTaskRef) addTaskRef.innerHTML = addTaskTemplate();
 }
 
 async function initBoard() {
