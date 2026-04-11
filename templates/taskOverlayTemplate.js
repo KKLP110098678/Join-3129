@@ -99,4 +99,3 @@ function taskDetailTemplate(task) {
         </div>
     `;
 }
-

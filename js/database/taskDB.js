@@ -15,17 +15,17 @@ async function loadTasks() {
         }
 
         updateBoard();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Laden der Tasks:', e);
     }
 }
 
 function updateBoard() {
     const columns = {
-        'todo':           document.getElementById('toDoBox'),
-        'inprogress':     document.getElementById('progressBox'),
-        'awaitfeedback':  document.getElementById('feedbackBox'),
-        'done':           document.getElementById('doneBox')
+        'todo': document.getElementById('toDoBox'),
+        'inprogress': document.getElementById('progressBox'),
+        'awaitfeedback': document.getElementById('feedbackBox'),
+        'done': document.getElementById('doneBox')
     };
 
     // Spalten leeren
@@ -35,10 +35,10 @@ function updateBoard() {
 
     // Leere Spalten mit Platzhalter befüllen
     const placeholders = {
-        'todo':          'No tasks To do',
-        'inprogress':    'No tasks In progress',
+        'todo': 'No tasks To do',
+        'inprogress': 'No tasks In progress',
         'awaitfeedback': 'No tasks Awaiting feedback',
-        'done':          'No tasks Done'
+        'done': 'No tasks Done'
     };
 
     // Tasks zählen pro Spalte
@@ -98,7 +98,7 @@ function renderPriorityIcon(priority) {
     const icons = {
         urgent: '../assets/icon/taskManagement/urgent.svg',
         medium: '../assets/icon/taskManagement/medium.svg',
-        low:    '../assets/icon/taskManagement/low.svg'
+        low: '../assets/icon/taskManagement/low.svg'
     };
     return `<img src="${icons[priority] || icons['medium']}" alt="${priority}">`;
 }
@@ -158,7 +158,7 @@ async function saveNewTask() {
         console.log('Task gespeichert:', newTask);
         clearAddTaskForm();
         closeAddTaskForm(); // falls du im Overlay bist
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Speichern:', e);
     }
 }
@@ -193,7 +193,7 @@ async function deleteTask(taskId) {
         tasks = tasks.filter(t => t.id !== taskId);
         closeTaskDetail();
         updateBoard();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Löschen:', e);
     }
 }
@@ -207,7 +207,7 @@ async function toggleSubtask(taskId, subtaskIndex) {
     try {
         await db.ref('tasks/' + taskId + '/subtasks').set(task.subtasks);
         updateBoard(); // Fortschrittsbalken aktualisieren
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Aktualisieren des Subtasks:', e);
     }
 }

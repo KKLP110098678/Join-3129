@@ -2,6 +2,7 @@
  * Rendert die Details eines Kontakts in den rechten Bereich.
  * @param {Object} contact - Das Kontakt-Objekt (z.B. {name: 'Anton Mayer', email: '...', color: '#ff8a00'})
  */
+
 function renderContactDetails(contact) {
     const container = document.getElementById('contact-detail-view');
 

@@ -25,14 +25,14 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <span>${phone}</span>
         </div>
     `;
-    
+
     // Aktive Markierung setzen
     document.querySelectorAll('.contact-card').forEach(card => card.classList.remove('active-card'));
     let currentCard = document.getElementById('contactCard_' + index);
-    if(currentCard) {
+    if (currentCard) {
         currentCard.classList.add('active-card');
     }
-    
+
     if (window.innerWidth <= 800) {
         detailContainer.classList.add('show-mobile');
     }

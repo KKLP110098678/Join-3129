@@ -1,21 +1,26 @@
-let protectedPages = ['board.html', 'contacts.html', 'summary.html', 'add-task.html'];
-
-function init() {
+async function init() {
+    checkAuth();
     initLayout();
-    initBoard();
+    await initBoard();
     initContacts();
     initTaskForm();
-    checkAuth();
 }
 
 function initLayout() {
-    addSummary();
     addHeader();
     addSidebar();
+    addTaskMain();
 }
 
-function initBoard() {
-    if (typeof loadTasks === 'function') loadTasks();
+function addTaskMain() {
+    const addTaskRef = document.getElementById('addTaskContent');
+    if (addTaskRef) addTaskRef.innerHTML = addTaskTemplate();
+}
+
+async function initBoard() {
+    if (typeof loadContacts === 'function') await loadContacts();
+    if (typeof loadTasks === 'function') await loadTasks();
+    addSummary();
 }
 
 function initContacts() {

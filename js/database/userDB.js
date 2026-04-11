@@ -12,7 +12,6 @@ async function addNewUser(newUser) {
   }
 }
 
-
 async function isUserNameTaken(userName) {
   try {
     const usersRef = firebase.database().ref("users");
