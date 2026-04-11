@@ -78,7 +78,9 @@ function checkAuth() {
     const username = sessionStorage.getItem('username');
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
 
-    if (!username && !isGuest) {
-        window.location.href = '../html/login.html';
+    if (protectedPages.some(page => window.location.pathname.includes(page))) {
+        if (!username && !isGuest) {
+            window.location.href = '../html/login.html';
+        }
     }
 }
