@@ -1,3 +1,5 @@
+let protectedPages = ['board.html', 'contacts.html', 'summary.html', 'add-task.html'];
+
 function init() {
     initLayout();
     initBoard();
@@ -71,7 +73,9 @@ function checkAuth() {
     const username = sessionStorage.getItem('username');
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
 
-    if (!username && !isGuest) {
-        window.location.href = '../html/login.html';
+    if (protectedPages.some(page => window.location.pathname.includes(page))) {
+        if (!username && !isGuest) {
+            window.location.href = '../html/login.html';
+        }
     }
 }
