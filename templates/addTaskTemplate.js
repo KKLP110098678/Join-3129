@@ -20,7 +20,7 @@ function addTaskTemplate() {
                     <output for="taskDueDate">This field is required</output>
                 </div>
                 <div class="form-group">
-                    <label for="taskPriority">Priority</label>
+                    <p class="form-label">Priority</p>
                     <div class="radio-to-btn">
                         <input type="radio" name="urgent-priority" class="d-none" id="urgentPriority" value="urgent">
                         <label for="urgentPriority" class="priority-label urgent">
@@ -57,7 +57,7 @@ function addTaskTemplate() {
                     </div>
                 </div>
                 <div class="form-group" id="category-form-group">
-                    <label for="category">Category</label>
+                    <p class="form-label">Category</p>
                     <div class="custom-dropdown" id="category">
                         <div class="dropdown-input-container">
                             <input type="text" class="dropdown-input" id="categoryInput"
@@ -68,18 +68,15 @@ function addTaskTemplate() {
                         </div>
                         <div class="dropdown-list d-none" id="categoryDropdown">
                             <div class="dropdown-item category" onclick="selectCategory('Technical Task')">
-                                <label>Technical Task</label>
+                                <span>Technical Task</span>
                             </div>
                             <div class="dropdown-item category" onclick="selectCategory('User Story')">
-                                <label>User Story</label>
+                                <span>User Story</span>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="subtasks">
-                            Subtasks
-                            <span class="optional">(optional)</span>
-                        </label>
+                        <p class="form-label">Subtasks <span class="optional">(optional)</span></p>
                         <div id="subtasksContainer">
                             <div class="subtask-input-group">
                                 <input type="text" class="subtask-input" id="subtaskInput"

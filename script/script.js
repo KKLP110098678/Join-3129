@@ -16,7 +16,15 @@ function initLayout() {
 
 function addTaskMain() {
     const addTaskRef = document.getElementById('addTaskContent');
-    if (addTaskRef) addTaskRef.innerHTML = addTaskTemplate();
+    if (!addTaskRef) return;
+    
+    addTaskRef.innerHTML = addTaskTemplate();
+    
+    const medium = document.getElementById('mediumPriority');
+    if (medium) medium.checked = true;
+    
+    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
+    if (typeof checkFormValidity === 'function') checkFormValidity();
 }
 
 async function initBoard() {
@@ -35,7 +43,6 @@ function initContacts() {
 
 function initTaskForm() {
     setDefaultDueDate();
-    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
 }
 
 function setDefaultDueDate() {
