@@ -68,10 +68,10 @@ function addTaskTemplate() {
                         </div>
                         <div class="dropdown-list d-none" id="categoryDropdown">
                             <div class="dropdown-item category" onclick="selectCategory('Technical Task')">
-                                <label>Technical Task</label>
+                                <span>Technical Task</span>
                             </div>
                             <div class="dropdown-item category" onclick="selectCategory('User Story')">
-                                <label>User Story</label>
+                                <span>User Story</span>
                             </div>
                         </div>
                     </div>
