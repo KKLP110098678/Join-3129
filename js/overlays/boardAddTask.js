@@ -1,63 +1,4 @@
-// --- Add Task Form ---
 let currentSubtasks = [];
-
-async function saveNewTask() {
-    let title = document.getElementById("taskTitle").value;
-    let description = document.getElementById("taskDescription").value;
-    let dueDate = document.getElementById("taskDueDate").value;
-    let category = document.getElementById("categoryInput").value;
-    let status = document.getElementById("taskStatus") ? document.getElementById("taskStatus").value : "todo";
-
-    let priorityRadios = document.querySelectorAll('input[name="urgent-priority"]');
-    let priority = "medium";
-    priorityRadios.forEach(radio => {
-        if (radio.checked) priority = radio.value;
-    });
-
-    let assignedTo = [];
-    let dropdownList = document.getElementById('assignedToDropdown');
-    if (dropdownList) {
-        dropdownList.querySelectorAll('.checkbox-masked').forEach(checkbox => {
-            if (checkbox.checked) assignedTo.push(checkbox.value);
-        });
-    }
-
-    if (!title || !dueDate || !category) {
-        console.warn('Missing required fields');
-        return;
-    }
-
-    let newTask = {
-        title,
-        description,
-        dueDate,
-        priority,
-        assignedTo,
-        category,
-        subtasks: currentSubtasks,
-        status
-    };
-
-    try {
-        await db.ref('tasks').push(newTask);
-        clearForm();
-
-        if (window.location.pathname.includes("board.html")) {
-            closeAddTaskForm();
-            if (typeof loadTasks === 'function') loadTasks();
-        } else {
-            window.location.href = "../html/board.html";
-        }
-    } catch (e) {
-        console.error("Error saving new task: ", e);
-    }
-}
-
-function openAddTaskForm(status) {
-    document.getElementById("taskStatus").value = status;
-    document.getElementById("addTaskOverlay").classList.add("visible");
-    clearAddTaskForm();
-}
 
 function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
@@ -118,7 +59,8 @@ function toggleAllContacts(selectAllCheckbox) {
     updateAssignees();
 }
 
-function toggleAssignedToDropdown() {
+function toggleAssignedToDropdown(event) {
+    if (event) event.stopPropagation();
     document.getElementById("assignedToDropdown").classList.toggle("d-none");
 }
 
@@ -155,7 +97,8 @@ function updateAssignees() {
     }
 }
 
-function toggleCategoryDropdown() {
+function toggleCategoryDropdown(event) {
+    if (event) event.stopPropagation();
     document.getElementById("categoryDropdown").classList.toggle("d-none");
 }
 
@@ -176,7 +119,6 @@ function clearSubtaskInput() {
 function addSubtask() {
     const input = document.getElementById("subtaskInput");
     if (!input.value.trim()) return;
-
     currentSubtasks.push({ title: input.value.trim(), completed: false });
     clearSubtaskInput();
     renderSubtasks();

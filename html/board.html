@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +29,7 @@
             <div class="upper-board">
                 <div class="searchbar">
                     <div class="searchbar-input">
-                        <input class="search-field" type="search" placeholder="Find Task">
+                        <input id="searchField" class="search-field" type="search" placeholder="Find Task">
                         <div class="seperationbar-input"></div>
                         <button class="input-glass"><img src="../assets/icon/task/search.svg" alt=""></button>
                     </div>
@@ -137,9 +137,9 @@
                     <div class="custom-dropdown" id="assignedTo">
                         <div class="dropdown-input-container">
                             <input type="text" class="dropdown-input" id="assignedToInput"
-                                placeholder="Select contacts to assign" readonly onclick="toggleAssignedToDropdown()"
+                                placeholder="Select contacts to assign" readonly onclick="toggleAssignedToDropdown(event)"
                                 required />
-                            <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedToDropdown()">
+                            <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedToDropdown(event)">
                                 <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow"
                                     class="dropdown-arrow" />
                             </button>
@@ -153,9 +153,9 @@
                     <div class="custom-dropdown" id="category">
                         <div class="dropdown-input-container">
                             <input type="text" class="dropdown-input" id="categoryInput"
-                                placeholder="Select task category" readonly onclick="toggleCategoryDropdown()"
+                                placeholder="Select task category" readonly onclick="toggleCategoryDropdown(event)"
                                 required />
-                            <button type="button" class="dropdown-toggle-btn" onclick="toggleCategoryDropdown()">
+                            <button type="button" class="dropdown-toggle-btn" onclick="toggleCategoryDropdown(event)">
                                 <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow"
                                     class="dropdown-arrow" />
                             </button>
