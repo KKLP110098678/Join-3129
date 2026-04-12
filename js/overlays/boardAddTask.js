@@ -8,6 +8,7 @@ function clearAddTaskForm() {
     document.getElementById("categoryInput").value = "";
     currentSubtasks = [];
     renderSubtasks();
+    checkFormValidity();
 }
 
 function clearForm() {
@@ -105,6 +106,7 @@ function toggleCategoryDropdown(event) {
 function selectCategory(category) {
     document.getElementById("categoryInput").value = category;
     toggleCategoryDropdown();
+    checkFormValidity();
 }
 
 function showSubtaskInputButtons() {
@@ -175,4 +177,19 @@ function saveSubtask() {
     editingSubtaskIndex = null;
     document.getElementById("editSubtaskGroup").classList.add("d-none");
     renderSubtasks();
+}
+
+function checkFormValidity() {
+    const titleEl = document.getElementById('taskTitle');
+    const dueDateEl = document.getElementById('taskDueDate');
+    const categoryEl = document.getElementById('categoryInput');
+    const btn = document.querySelector('.btn-primary-with-icon');
+
+    if (!btn || !titleEl || !dueDateEl || !categoryEl) return;
+
+    const isValid = titleEl.value.trim() !== '' && 
+                    dueDateEl.value !== '' && 
+                    categoryEl.value !== '';
+
+    btn.disabled = !isValid;
 }
