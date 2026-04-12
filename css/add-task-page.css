@@ -1,33 +1,29 @@
 /* Add Task Page Layout */
-
 .add-task-main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 60px 40px;
     height: calc(100vh - 100px);
-    /* Assuming header is 100px */
     box-sizing: border-box;
     margin-left: 232px;
-    /* Assuming sidebar is 232px */
-    width: calc(100% - 232px);
-    background-color: #F6F7F8;
-    overflow-y: auto;
+    overflow: hidden;
 }
 
 .add-task-page-container {
     width: 100%;
-    max-width: 600px;
+    height: 100%;
     display: flex;
-    flex-direction: column;
 }
 
 .page-form {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    width: 100%;
-    margin-bottom: 40px;
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 16px;
 }
 
 .page-form .form-group {
@@ -92,10 +88,11 @@
 .page-buttons {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     gap: 16px;
-    width: 100%;
-    margin-top: 24px;
+    height: 100%;
+    width: 50%;
+    flex-shrink: 0;
 }
 
 .btn-clear {
@@ -112,6 +109,7 @@
     color: #2A3647;
     cursor: pointer;
     transition: all 0.2s;
+    height: 56px;
 }
 
 .btn-clear:hover {
@@ -128,6 +126,28 @@
     border-radius: 10px;
     padding: 16px;
     font-size: 21px;
+    height: 56px;
+}
+
+.btn-primary-with-icon:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #4589FF;
+    color: white;
+    border: none;
+}
+
+.btn-primary-with-icon:not(:disabled) {
+    opacity: 1;
+    cursor: pointer;
+    background-color: #4589FF;
+    color: white;
+    border: none;
+}
+
+.btn-primary-with-icon:not(:disabled):hover {
+    background-color: #0038FF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Category & Assignee Dropdowns */
@@ -140,6 +160,22 @@
 .dropdown-input-container input {
     border: none !important;
     /* override above rule for nested inside container */
+}
+
+/* highlight checked */
+#urgentPriority:checked + .priority-label.urgent {
+    background-color: #FF3B30;
+    color: white;
+}
+
+#mediumPriority:checked + .priority-label.medium {
+    background-color: #FF9500;
+    color: white;
+}
+
+#lowPriority:checked + .priority-label.low {
+    background-color: #34C759;
+    color: white;
 }
 
 /* Responsive */
