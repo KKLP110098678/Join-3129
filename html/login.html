@@ -14,7 +14,7 @@
     <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
 </head>
 
-<body>
+<body onload="animateLogo()">
 
     <header>
         <img src="../assets/icon/logo-blue.svg" class="logo" alt="Join Logo">
@@ -52,7 +52,9 @@
         <a href="../privacy-policy.html">Privacy Policy</a>
         <a href="../legal-notice.html">Legal Notice</a>
     </footer>
-
+    <div class="animation-frame" id="animation-frame">
+         <img src="../assets/icon/logo-blue.svg" id="animation-logo" alt="Join Logo">
+    </div>
 </body>
 
 <script src="../js/database/firebase-app.js"></script>
@@ -60,5 +62,5 @@
 <script src="../js/database/firebaseConfig.js"></script>
 <script src="../js/database/userDB.js"></script>
 <script src="../script/login.js"></script>
-
+<script src="../script/logoAnimation.js"></script>
 </html>

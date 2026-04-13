@@ -134,3 +134,21 @@ footer a {
     padding: 8px;
     margin-bottom: 20px;
 }
+
+.animation-frame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: #4589FF;
+}
+
+#animation-logo {
+    filter: brightness(0) invert(1);
+    width: 265px;
+    height: 323.1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
