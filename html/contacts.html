@@ -48,40 +48,77 @@
 
     <!-- ADD CONTACT OVERLAY -->
     <div id="addContactOverlay" class="overlay d-none">
-        <div class="overlay-content">
-            <div class="overlay-header">
+        <div class="overlay-content form-overlay">
+            <div class="overlay-blue-part">
+                <span class="close-btn white-close-btn" onclick="closeAddContactOverlay()">✖</span>
+                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Add contact</h2>
-                <span class="close-btn" onclick="closeAddContactOverlay()">✖</span>
+                <p>Tasks are better with a team!</p>
+                <div class="blue-separator d-none"></div>
             </div>
-            <form onsubmit="addNewContact(event)">
-                <input type="text" id="contactName" placeholder="Name" required>
-                <input type="email" id="contactEmail" placeholder="Email" required>
-                <input type="tel" id="contactPhone" placeholder="Phone" required>
-                <div class="overlay-buttons">
-                    <button type="button" class="btn-cancel" onclick="closeAddContactOverlay()">Cancel ✖</button>
-                    <button type="submit" class="btn-create">Create contact ✓</button>
+            <div class="overlay-white-part">
+                <div class="overlay-avatar-container">
+                   <div class="avatar-circle">
+                       <img src="../assets/icon/sign/person.svg" alt="">
+                   </div>
                 </div>
-            </form>
+                <form onsubmit="addNewContact(event)">
+                    <div class="input-wrapper">
+                        <input type="text" id="contactName" placeholder="Name" required>
+                        <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="email" id="contactEmail" placeholder="Email" required>
+                        <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="tel" id="contactPhone" placeholder="Phone" required>
+                        <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="overlay-buttons form-buttons">
+                        <button type="button" class="btn-cancel" onclick="closeAddContactOverlay()">Cancel ✖</button>
+                        <button type="submit" class="btn-create">Create contact ✓</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     <!-- EDIT CONTACT OVERLAY -->
     <div id="editContactOverlay" class="overlay d-none">
-        <div class="overlay-content">
-            <div class="overlay-header">
+        <div class="overlay-content form-overlay">
+            <div class="overlay-blue-part">
+                <span class="close-btn white-close-btn" onclick="closeEditContactOverlay()">✖</span>
+                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Edit contact</h2>
-                <span class="close-btn" onclick="closeEditContactOverlay()">✖</span>
+                <div class="blue-separator d-none"></div>
             </div>
-            <form id="editContactForm" onsubmit="saveEditedContact(event)">
-                <input type="hidden" id="editContactIndex">
-                <input type="text" id="editContactName" placeholder="Name" required>
-                <input type="email" id="editContactEmail" placeholder="Email" required>
-                <input type="tel" id="editContactPhone" placeholder="Phone" required>
-                <div class="overlay-buttons">
-                    <button type="button" class="btn-cancel" onclick="closeEditContactOverlay()">Cancel ✖</button>
-                    <button type="submit" class="btn-create">Save ✓</button>
+            <div class="overlay-white-part">
+                <div class="overlay-avatar-container">
+                   <div class="avatar-circle">
+                       <img src="../assets/icon/sign/person.svg" alt="">
+                   </div>
                 </div>
-            </form>
+                <form id="editContactForm" onsubmit="saveEditedContact(event)">
+                    <input type="hidden" id="editContactIndex">
+                    <div class="input-wrapper">
+                        <input type="text" id="editContactName" placeholder="Name" required>
+                        <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="email" id="editContactEmail" placeholder="Email" required>
+                        <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="input-wrapper">
+                        <input type="tel" id="editContactPhone" placeholder="Phone" required>
+                        <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                    </div>
+                    <div class="overlay-buttons form-buttons">
+                        <button type="button" class="btn-cancel" onclick="closeEditContactOverlay()">Cancel ✖</button>
+                        <button type="submit" class="btn-create">Save ✓</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
