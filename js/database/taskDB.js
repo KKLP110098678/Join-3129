@@ -141,6 +141,8 @@ function openAddTaskForm(status) {
 function openTaskDetail(taskId) {
     const task = tasks.find(t => t.id === taskId);
     if (!task) return;
+    
+    document.getElementById('taskDetailOverlay').classList.remove('edit-mode');
     document.getElementById('taskDetailContainer').innerHTML = taskDetailTemplate(task);
     document.getElementById('taskDetailOverlay').showModal();
 }
@@ -173,5 +175,106 @@ async function toggleSubtask(taskId, subtaskIndex) {
         updateBoard();
     } catch(e) {
         console.error('Fehler beim Aktualisieren des Subtasks:', e);
+    }
+}
+
+function openEditTask(taskId) {
+    const task = tasks.find(t => t.id === taskId);
+    if (!task) return;
+
+    document.getElementById('taskDetailContainer').innerHTML = editTaskTemplate(task);
+    document.getElementById('taskDetailOverlay').classList.add('edit-mode'); // neu
+    renderEditAssignedToDropdown(task.assignees || []);
+}
+
+function renderEditAssignedToDropdown(selectedAssignees) {
+    const dropdown = document.getElementById('editAssignedToDropdown');
+    if (!dropdown) return;
+
+    dropdown.innerHTML = '';
+    contacts.forEach((contact, i) => {
+        const isChecked = selectedAssignees.includes(contact.name);
+        dropdown.innerHTML += `
+            <div class="dropdown-item contact">
+                <label class="contact-label" for="edit_cb_${i}">
+                    <div class="dropdown-contact">
+                        <div class="avatar-sm ${contact.color}">${contact.initials}</div>
+                        ${contact.name}
+                    </div>
+                    <input type="checkbox" id="edit_cb_${i}" class="checkbox-masked edit-contact-checkbox"
+                        value="${contact.name}" ${isChecked ? 'checked' : ''} onchange="updateEditAssignees()">
+                </label>
+            </div>
+        `;
+    });
+    updateEditAssignees();
+}
+
+function toggleEditAssignedToDropdown(event) {
+    if (event) event.stopPropagation();
+    document.getElementById('editAssignedToDropdown').classList.toggle('d-none');
+}
+
+function updateEditAssignees() {
+    const list = document.getElementById('editAssignedToDropdown');
+    const container = document.getElementById('editAssigneeIconsContainer');
+    if (!list || !container) return;
+
+    container.innerHTML = '';
+    const checkboxes = list.querySelectorAll('.edit-contact-checkbox:checked');
+    checkboxes.forEach(cb => {
+        const contact = contacts.find(c => c.name === cb.value);
+        if (contact) {
+            const avatar = document.createElement('div');
+            avatar.className = `avatar-sm ${contact.color}`;
+            avatar.innerText = contact.initials;
+            container.appendChild(avatar);
+        }
+    });
+}
+
+async function saveEditedTask(taskId) {
+    const title = document.getElementById('editTitle').value.trim();
+    const description = document.getElementById('editDescription').value.trim();
+    const dueDate = document.getElementById('editDueDate').value;
+
+    const priorityInput = document.querySelector('input[name="edit-priority"]:checked');
+    const priority = priorityInput ? priorityInput.value : 'medium';
+
+    const assignees = [];
+    document.querySelectorAll('.edit-contact-checkbox:checked').forEach(cb => {
+        assignees.push(cb.value);
+    });
+
+    if (!title || !dueDate) {
+        alert('Bitte Titel und Fälligkeitsdatum ausfüllen.');
+        return;
+    }
+
+    try {
+        await db.ref('tasks/' + taskId).update({
+            title,
+            description,
+            dueDate,
+            priority,
+            assignees
+        });
+
+        await loadTasks();
+        closeTaskDetail();
+    } catch(e) {
+        console.error('Fehler beim Bearbeiten:', e);
+    }
+}
+
+function closeTaskDetail() {
+    document.getElementById('taskDetailOverlay').classList.remove('edit-mode'); // neu
+    document.getElementById('taskDetailOverlay').close();
+}
+
+function closeTaskDetailOnBackdrop(event) {
+    if (event.target.id === 'taskDetailOverlay') {
+        document.getElementById('taskDetailOverlay').classList.remove('edit-mode');
+        closeTaskDetail();
     }
 }
