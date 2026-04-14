@@ -367,6 +367,18 @@ main {
     .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
         grid-column: span 2;
     }
+
+    .urgent-task-box {
+        height: 150px;
+    }
+
+    .to-do {
+        height: 106px;
+    }
+
+    .in-progress, .awaiting-feedback, .done, .task-in-board {
+        height: 152px;
+    }
 }
 
 @media (max-width: 800px) {
