@@ -102,7 +102,7 @@ function taskDetailTemplate(task) {
 
 function editTaskTemplate(task) {
     return `
-        <div class="task-detail-header">
+        <div class="task-detail-header edit-header">
             <button class="btn-detail-overlay-close" onclick="closeTaskDetail()">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 13.4L7.1 18.3C6.91667 18.4834 6.68333 18.575 6.4 18.575C6.11667 18.575 5.88333 18.4834 5.7 18.3C5.51667 18.1167 5.425 17.8834 5.425 17.6C5.425 17.3167 5.51667 17.0834 5.7 16.9L10.6 12L5.7 7.10005C5.51667 6.91672 5.425 6.68338 5.425 6.40005C5.425 6.11672 5.51667 5.88338 5.7 5.70005C5.88333 5.51672 6.11667 5.42505 6.4 5.42505C6.68333 5.42505 6.91667 5.51672 7.1 5.70005L12 10.6L16.9 5.70005C17.0833 5.51672 17.3167 5.42505 17.6 5.42505C17.8833 5.42505 18.1167 5.51672 18.3 5.70005C18.4833 5.88338 18.575 6.11672 18.575 6.40005C18.575 6.68338 18.4833 6.91672 18.3 7.10005L13.4 12L18.3 16.9C18.4833 17.0834 18.575 17.3167 18.575 17.6C18.575 17.8834 18.4833 18.1167 18.3 18.3C18.1167 18.4834 17.8833 18.575 17.6 18.575C17.3167 18.575 17.0833 18.4834 16.9 18.3L12 13.4Z" fill="#4589FF"/>
@@ -112,6 +112,7 @@ function editTaskTemplate(task) {
 
         <div class="edit-task-form">
             <div class="form-group">
+                <label for="editTitle">Title</label>
                 <input type="text" id="editTitle" value="${task.title}">
             </div>
             <div class="form-group">
@@ -134,7 +135,7 @@ function editTaskTemplate(task) {
                 </div>
             </div>
             <div class="form-group">
-                <label for="editAssignedTo">Assigned To</label>
+                <label for="editAssignedToInput">Assigned To <span class="optional">(optional)</span></label>
                 <div class="custom-dropdown">
                     <div class="dropdown-input-container">
                         <input type="text" class="dropdown-input" id="editAssignedToInput"
@@ -146,6 +147,30 @@ function editTaskTemplate(task) {
                     <div class="dropdown-list assigned-to d-none" id="editAssignedToDropdown"></div>
                     <div class="assignees" id="editAssigneeIconsContainer"></div>
                 </div>
+            </div>
+            <div class="form-group">
+                <p class="form-label">Subtasks <span class="optional">(optional)</span></p>
+                <div id="editSubtasksContainer">
+                    <div class="subtask-input-group">
+                        <input type="text" class="subtask-input" id="editSubtaskInput"
+                            placeholder="Add new subtask" onfocus="showEditSubtaskButtons()"
+                            onkeydown="if(event.key === 'Enter') addEditSubtask()">
+                        <div class="input-btn-group d-none" id="editSubtaskBtnGroup">
+                            <button type="button" class="input-btn" onclick="clearEditSubtaskInput()">
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="#4589FF"/>
+                                </svg>
+                            </button>
+                            <div class="input-btn-seperator"></div>
+                            <button type="button" class="input-btn" onclick="addEditSubtask()">
+                                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5.288 8.775L13.763 0.3C13.963 0.1 14.2005 0 14.4755 0C14.7505 0 14.988 0.1 15.188 0.3C15.388 0.5 15.488 0.7375 15.488 1.0125C15.488 1.2875 15.388 1.525 15.188 1.725L5.988 10.925C5.788 11.125 5.55467 11.225 5.288 11.225C5.02133 11.225 4.788 11.125 4.588 10.925L0.288 6.625C0.088 6.425 -0.00783333 6.1875 0.0005 5.9125C0.00883333 5.6375 0.113 5.4 0.313 5.2C0.513 5 0.7505 4.9 1.0255 4.9C1.3005 4.9 1.538 5 1.738 5.2L5.288 8.775Z" fill="#4589FF"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="subtask-list" id="editSubtaskList"></div>
             </div>
         </div>
 
