@@ -351,6 +351,9 @@ main {
         padding: 0 16px;
     }
 
+    .summary-cards {
+        perspective: none;
+    }
 
     .todo-link, .urgent-link {
         grid-column: span 4;
