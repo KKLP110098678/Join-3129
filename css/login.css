@@ -153,6 +153,13 @@ footer a {
     transform: translate(-50%, -50%);
 }
 
+.mobile-sign-up {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 @media screen and (max-width: 768px) {
     .logo {
         height: 80px;
@@ -168,5 +175,44 @@ footer a {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    main {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .mobile-sign-up {
+        display: flex;
+    }
+
+    .login-form {
+        width: 350px;
+        height: 400px;
+        padding: 20px;
+    }
+
+    .login-form-header span {
+        font-size: 38px;
+    }
+
+    .seperator {
+        width: 80px;
+        height: 2px;
+    }
+
+    .input-contaier {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .login-button-area {
+        flex-direction: column;
+        width: 50%;
+        gap: 12px;
+    }
+
+    .header-right {
+        display: none;
     }
 }
