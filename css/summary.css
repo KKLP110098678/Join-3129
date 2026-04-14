@@ -29,7 +29,6 @@ main {
 
 /* headline */
 .dashboard-headline {
-    width: 750px;
     height: 80px;
     font-size: 48px;
     margin-top: 0;
@@ -341,10 +340,17 @@ main {
     color: #4589FF;
 }
 
+.summary-cards {
+    width: 100%;
+}
+
 @media (max-width: 1250px) {
-    .summary-cards {
+    #summaryContent {
         width: 100%;
+        height: auto;
+        padding: 0 16px;
     }
+
 
     .todo-link, .urgent-link {
         grid-column: span 4;
@@ -357,5 +363,11 @@ main {
 
     .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
         grid-column: span 2;
+    }
+}
+
+@media (max-width: 800px) {
+    main {
+        margin-left: 0;
     }
 }
