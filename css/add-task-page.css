@@ -163,17 +163,17 @@
 }
 
 /* highlight checked */
-#urgentPriority:checked + .priority-label.urgent {
+#urgentPriority:checked+.priority-label.urgent {
     background-color: #FF3B30;
     color: white;
 }
 
-#mediumPriority:checked + .priority-label.medium {
+#mediumPriority:checked+.priority-label.medium {
     background-color: #FF9500;
     color: white;
 }
 
-#lowPriority:checked + .priority-label.low {
+#lowPriority:checked+.priority-label.low {
     background-color: #34C759;
     color: white;
 }
@@ -335,4 +335,38 @@
 .btn-detail-overlay-close:hover {
     cursor: pointer;
     background-color: #b5d0ff;
+}
+
+/* Edit Mode Overlay */
+#taskDetailOverlay.edit-mode {
+
+    .task-detail-header {
+        justify-content: flex-end;
+    }
+
+    .form-group {
+        margin-bottom: 40px;
+    }
+
+    #editDescription {
+        border-radius: 0 8px 8px 8px;
+        border-color: lightgray;
+        padding: 12px;
+        font-size: 20px;
+    }
+
+    #editTitle {
+        font-size: 32px;
+    }
+
+    .btn-save-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 21px;
+    height: 56px;
+    }
 }
