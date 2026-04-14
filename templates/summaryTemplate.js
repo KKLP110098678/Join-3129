@@ -8,70 +8,69 @@ function summaryTemplate() {
     : `<p class="date-text-top">No urgent tasks</p>`;
     return `
         <p class="dashboard-headline ${isGuest ? 'guest' : 'user'}">${getGreeting()}${firstName ? `, <span class="username">${firstName}</span>` : ''}</p>
-            <div class="active-tasks">
-                <a href="board.html" class="task-link">
-                    <div class="urgent-task-box">
-                        <div class="urgent-task">
-                            <div class="tasks-amount">
-                                <img class="task-icons icon-border" src="../assets/icon/summary/urgent.svg" alt="">
-                                <p class="task-amount-number-white">${counts.urgent}</p>
+                <div class="summary-cards">
+                    <a href="board.html" class="task-link urgent-link">
+                        <div class="urgent-task-box">
+                            <div class="urgent-task">
+                                <div class="tasks-amount">
+                                    <img class="task-icons icon-border" src="../assets/icon/summary/urgent.svg" alt="">
+                                    <p class="task-amount-number-white">${counts.urgent}</p>
+                                </div>
+                                <p class="task-text-white">Tasks Urgent</p>
                             </div>
-                            <p class="task-text-white">Tasks Urgent</p>
+                            <div class="seperation-line"></div>
+                            <div class="urgent-task-date">
+                                ${urgentDeadline}
+                            </div>
                         </div>
-                        <div class="seperation-line"></div>
-                        <div class="urgent-task-date">
-                            ${urgentDeadline}
+                    </a>
+                    <a href="board.html" class="task-link in-board-link">
+                        <div class="task-in-board">
+                            <div class="tasks-amount">
+                                <img class="task-icons" src="../assets/icon/summary/default.svg" alt="">
+                                <p class="task-amount-number">${counts.total}</p>
+                            </div>
+                            <p class="task-text">Task in Board</p>
                         </div>
-                    </div>
-                </a>
-                <a href="board.html" class="task-link">
-                    <div class="task-in-board">
-                        <div class="tasks-amount">
-                            <img class="task-icons" src="../assets/icon/summary/default.svg" alt="">
-                            <p class="task-amount-number">${counts.total}</p>
+                    </a>
+                    <a href="board.html" class="task-link todo-link">
+                        <div class="to-do">
+                            <div class="tasks-amount">
+                                <img class="task-icons" src="../assets/icon/summary/todo.svg" alt="">
+                                <p class="task-amount-number">${counts.todo}</p>
+                            </div>
+                            <p class="task-text">Tasks To-do</p>
                         </div>
-                        <p class="task-text">Task in Board</p>
-                    </div>
-                </a>
-            </div>
-            <div class="tasks-overview">
-                <a href="board.html" class="task-link">
-                    <div class="to-do">
-                        <div class="tasks-amount">
-                            <img class="task-icons" src="../assets/icon/summary/todo.svg" alt="">
-                            <p class="task-amount-number">${counts.todo}</p>
+                    </a>
+                    <a href="board.html" class="task-link in-progress-link">
+                        <div class="in-progress">
+                            <div class="tasks-amount">
+                                <img class="task-icons" src="../assets/icon/summary/in-progress.svg" alt="">
+                                <p class="task-amount-number">${counts.inProgress}</p>
+                            </div>
+                            <p class="task-text">Tasks in Progress</p>
                         </div>
-                        <p class="task-text">Tasks To-do</p>
-                    </div>
-                </a>
-                <a href="board.html" class="task-link">    
-                    <div class="in-progress">
-                        <div class="tasks-amount">
-                            <img class="task-icons" src="../assets/icon/summary/in-progress.svg" alt="">
-                            <p class="task-amount-number">${counts.inProgress}</p>
+                    </a>
+                    <a href="board.html" class="task-link awaiting-feedback-link">
+                        <div class="awaiting-feedback">
+                            <div class="tasks-amount">
+                                <img class="task-icons" src="../assets/icon/summary/await-feedback.svg" alt="">
+                                <p class="task-amount-number">${counts.awaitFeedback}</p>
+                            </div>
+                            <p class="task-text">Awaiting Feedback</p>
                         </div>
-                        <p class="task-text">Tasks in Progress</p>
-                    </div>
-                </a>
-                <a href="board.html" class="task-link">
-                    <div class="awaiting-feedback">
-                        <div class="tasks-amount">
-                            <img class="task-icons" src="../assets/icon/summary/await-feedback.svg" alt="">
-                            <p class="task-amount-number">${counts.awaitFeedback}</p>
+                    </a>
+                    <a href="board.html" class="task-link done-link">
+                        <div class="done">
+                            <div class="tasks-amount">
+                                <img class="task-icons" src="../assets/icon/summary/done.svg" alt="">
+                                <p class="task-amount-number">${counts.done}</p>
+                            </div>
+                            <p class="task-text">Tasks Done</p>
                         </div>
-                        <p class="task-text">Awaiting Feedback</p>
-                    </div>
-                </a>
-                <a href="board.html" class="task-link">
-                    <div class="done">
-                        <div class="tasks-amount">
-                            <img class="task-icons" src="../assets/icon/summary/done.svg" alt="">
-                            <p class="task-amount-number">${counts.done}</p>
-                        </div>
-                        <p class="task-text">Tasks Done</p>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+
         `
     ;
 }

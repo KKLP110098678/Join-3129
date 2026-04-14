@@ -11,12 +11,20 @@ main {
 }
 
 #summaryContent {
-    width: 900px;
+    width: 912px;
     height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 32px;
+    column-gap: 36px;
+    perspective: 500px;
 }
 
 /* headline */
@@ -29,17 +37,19 @@ main {
 }
 
 /* upper content */
-.active-tasks {
+/* .active-tasks {
     width: 900px;
     height: 200px;
     display: flex;
     gap: 20px;
     perspective: 500px;
+} */
+ .urgent-link {
+    grid-column: span 3;
 }
 
 .urgent-task-box {
     background-color: #4589FF;
-    width: 680px;
     height: 200px;
     border-radius: 24px;
     display: flex;
@@ -129,12 +139,12 @@ main {
 }
 
 /* lower content */
-.tasks-overview {
+/* .tasks-overview {
     width: 900px;
     display: flex;
     justify-content: space-between;
     perspective: 500px;
-}
+} */
 
 .to-do {
     width: 200px;
@@ -335,4 +345,63 @@ main {
 .dashboard-headline.user .username {
     font-weight: bold;
     color: #4589FF;
+}
+
+/* @media (max-width: 1250px) {
+    .urgent-link {
+        width: 100%;
+        order: -1;
+    }
+
+    .todo-link {
+        width: 100%;
+        order: -1;
+    }
+
+    .urgent-task-box, .to-do, .in-progress, .awaiting-feedback, .done, .task-in-board {
+        width: auto;
+    }
+
+    .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
+        width: calc(50% - 18px);
+    }
+
+    .urgent-task-box {
+        height: 150px;
+    }
+
+    .in-progress, .awaiting-feedback, .done, .task-in-board {
+        height: 152px;
+    }
+
+    .to-do {
+        height: 106px;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline-start: 40px;
+        padding-inline-end: 40px;
+        .task-text {
+            width: auto;
+        }
+    }
+} */
+
+@media (max-width: 1250px) {
+    .summary-cards {
+        width: 100%;
+    }
+
+    .todo-link, .urgent-link {
+        grid-column: span 4;
+        order: -1;
+    }
+
+    .to-do {
+        width: auto;
+    }
+
+    .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
+        grid-column: span 2;
+    }
+    
 }
