@@ -87,7 +87,6 @@ main {
 }
 
 .urgent-task {
-    width: 140px;
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -110,7 +109,6 @@ main {
 }
 
 .task-in-board {
-    width: 200px;
     height: 200px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -147,7 +145,6 @@ main {
 } */
 
 .to-do {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -172,7 +169,6 @@ main {
 }
 
 .in-progress {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -201,7 +197,6 @@ main {
 }
 
 .awaiting-feedback {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -230,7 +225,6 @@ main {
 }
 
 .done {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -347,45 +341,6 @@ main {
     color: #4589FF;
 }
 
-/* @media (max-width: 1250px) {
-    .urgent-link {
-        width: 100%;
-        order: -1;
-    }
-
-    .todo-link {
-        width: 100%;
-        order: -1;
-    }
-
-    .urgent-task-box, .to-do, .in-progress, .awaiting-feedback, .done, .task-in-board {
-        width: auto;
-    }
-
-    .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
-        width: calc(50% - 18px);
-    }
-
-    .urgent-task-box {
-        height: 150px;
-    }
-
-    .in-progress, .awaiting-feedback, .done, .task-in-board {
-        height: 152px;
-    }
-
-    .to-do {
-        height: 106px;
-        flex-direction: row;
-        justify-content: space-between;
-        padding-inline-start: 40px;
-        padding-inline-end: 40px;
-        .task-text {
-            width: auto;
-        }
-    }
-} */
-
 @media (max-width: 1250px) {
     .summary-cards {
         width: 100%;
@@ -402,9 +357,5 @@ main {
 
     .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
         grid-column: span 2;
-    }
-    
-    .task-in-board, .in-progress, .awaiting-feedback, .done {
-        width: auto;
     }
 }
