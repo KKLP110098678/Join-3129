@@ -178,6 +178,14 @@
     color: white;
 }
 
+.list-item.subtask .input-btn-group {
+    visibility: hidden;
+}
+
+.list-item.subtask:hover .input-btn-group {
+    visibility: visible;
+}
+
 /* Responsive */
 @media (max-width: 800px) {
     .add-task-main {
