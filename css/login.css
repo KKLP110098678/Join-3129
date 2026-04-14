@@ -159,4 +159,14 @@ footer a {
         width: 66px;
         margin: 40px 0 0 40px;
     }
+
+    #animation-logo {
+        filter: brightness(0) invert(1);
+        width: 265px;
+        height: 323.1px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 }
