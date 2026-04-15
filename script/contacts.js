@@ -3,11 +3,6 @@ let contacts = [];
 async function loadContacts() {
     try {
         let snapshot = await db.ref('contacts').once('value');
-<<<<<<< HEAD
-        contacts = snapshot.val() || [];
-        contacts = contacts.filter(c => c !== null);
-        
-=======
         const val = snapshot.val();
         
         if (!val) {
@@ -21,7 +16,6 @@ async function loadContacts() {
         }
         
         renderContacts();
->>>>>>> 19dcfe5f93a71be6daf250471ec4ba9b5e72f8f0
         if (typeof renderAssignedToDropdown === 'function') {
             renderAssignedToDropdown();
         }
