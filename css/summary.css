@@ -11,7 +11,7 @@ main {
 }
 
 #summaryContent {
-    width: 900px;
+    width: 912px;
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -19,27 +19,35 @@ main {
     justify-content: space-between;
 }
 
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 32px;
+    column-gap: 36px;
+    perspective: 500px;
+}
+
 /* headline */
 .dashboard-headline {
-    width: 750px;
-    height: 80px;
     font-size: 48px;
     margin-top: 0;
     text-align: center;
 }
 
 /* upper content */
-.active-tasks {
+/* .active-tasks {
     width: 900px;
     height: 200px;
     display: flex;
     gap: 20px;
     perspective: 500px;
+} */
+ .urgent-link {
+    grid-column: span 3;
 }
 
 .urgent-task-box {
     background-color: #4589FF;
-    width: 680px;
     height: 200px;
     border-radius: 24px;
     display: flex;
@@ -77,7 +85,6 @@ main {
 }
 
 .urgent-task {
-    width: 140px;
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -87,20 +94,18 @@ main {
 .seperation-line {
     height: 160px;
     width: 3px;
+    border-radius: 1.5px;
     background-color: white;
 }
 
 .urgent-task-date {
-    width: 270px;
     height: 120px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
 .task-in-board {
-    width: 200px;
     height: 200px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -129,15 +134,14 @@ main {
 }
 
 /* lower content */
-.tasks-overview {
+/* .tasks-overview {
     width: 900px;
     display: flex;
     justify-content: space-between;
     perspective: 500px;
-}
+} */
 
 .to-do {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -162,7 +166,6 @@ main {
 }
 
 .in-progress {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -191,7 +194,6 @@ main {
 }
 
 .awaiting-feedback {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -220,7 +222,6 @@ main {
 }
 
 .done {
-    width: 200px;
     height: 220px;
     border: 1px lightgray solid;
     border-radius: 24px;
@@ -335,4 +336,70 @@ main {
 .dashboard-headline.user .username {
     font-weight: bold;
     color: #4589FF;
+}
+
+.summary-cards {
+    width: 100%;
+}
+
+@media (max-width: 1250px) {
+    #summaryContent {
+        width: 100%;
+        height: auto;
+        padding: 0 16px;
+    }
+    
+    .summary-cards {
+        perspective: none;
+        column-gap: 15px;
+        row-gap: 24px;
+    }
+    
+    .seperation-line {
+        height: 118px;
+    }
+    
+    .todo-link, .urgent-link {
+        grid-column: span 4;
+        order: -1;
+    }
+    
+    .to-do {
+        width: auto;
+    }
+    
+    .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
+        grid-column: span 2;
+    }
+    
+    .urgent-task-box {
+        height: 150px;
+    }
+    
+    .to-do {
+        height: 106px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .in-progress, .awaiting-feedback, .done, .task-in-board {
+        height: 152px;
+    }
+}
+
+@media (max-width: 800px) {
+    main {
+        margin-left: 0;
+        margin-bottom: 80px;
+    }
+
+    .dashboard-headline {
+        display: none;
+    }
+}
+
+@media (max-width: 461px) {
+    .date-text-top, .date-text {
+        width: auto;
+    }
 }
