@@ -3,11 +3,6 @@ let contacts = [];
 async function loadContacts() {
     try {
         let snapshot = await db.ref('contacts').once('value');
-<<<<<<< HEAD
-        contacts = snapshot.val() || [];
-        contacts = contacts.filter(c => c !== null);
-        
-=======
         const val = snapshot.val();
         
         if (!val) {
@@ -16,21 +11,20 @@ async function loadContacts() {
             // null-Einträge rausfiltern (entstehen durch splice/delete)
             contacts = val.filter(c => c !== null && c !== undefined);
         } else {
-            // Firebase hat ein Objekt zurückgegeben → in Array umwandeln
+            // Firebase hat ein Objekt zurückgegeben -> in Array umwandeln
             contacts = Object.values(val).filter(c => c !== null && c !== undefined);
         }
         
         renderContacts();
->>>>>>> 19dcfe5f93a71be6daf250471ec4ba9b5e72f8f0
         if (typeof renderAssignedToDropdown === 'function') {
             renderAssignedToDropdown();
         }
-
+        
         let listContainer = document.querySelector('.contact-list-scroll');
         if (!listContainer) return;
         renderContacts();
-
-    } catch (e) {
+        
+    } catch(e) {
         console.error("Error loading contacts from Firebase:", e);
     }
 }
@@ -38,10 +32,12 @@ async function loadContacts() {
 async function saveContacts() {
     try {
         await db.ref('contacts').set(contacts);
-    } catch (e) {
+    } catch(e) {
         console.error("Error saving contacts to Firebase:", e);
     }
 }
+
+
 
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
@@ -64,7 +60,7 @@ function renderContacts() {
                 <hr class="separator-line">
             `;
         }
-
+        
         listContainer.innerHTML += `
             <div id="contactCard_${i}" class="contact-card" onclick="showContactDetails(${i}, '${contact.name}', '${contact.email}', '${contact.phone}', '${contact.initials}', '${contact.color}')">
                 <div class="contact-initials ${contact.color}">${contact.initials}</div>
@@ -77,15 +73,17 @@ function renderContacts() {
     }
 }
 
+
 function deleteContact(index) {
     contacts.splice(index, 1);
-
+    
     // Setzt die rechte Seite wieder auf den Platzhalter-Text
     document.getElementById('contact-detail-view').innerHTML = '<div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>';
-
+    
     saveContacts();
     renderContacts();
 }
+
 
 function openAddContactOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
@@ -100,22 +98,22 @@ function closeAddContactOverlay() {
 
 function addNewContact(event) {
     event.preventDefault();
-
+    
     let name = document.getElementById('contactName').value;
     let email = document.getElementById('contactEmail').value;
     let phone = document.getElementById('contactPhone').value;
-
+    
     let nameParts = name.trim().split(' ');
     let initials = '';
     if (nameParts.length >= 2) {
-        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length-1].charAt(0).toUpperCase();
     } else if (nameParts.length === 1) {
         initials = nameParts[0].charAt(0).toUpperCase();
     }
-
+    
     let colors = ['bg-orange', 'bg-purple', 'bg-blue', 'bg-green', 'bg-pink'];
     let randomColor = colors[Math.floor(Math.random() * colors.length)];
-
+    
     contacts.push({
         name: name,
         email: email,
@@ -123,11 +121,12 @@ function addNewContact(event) {
         initials: initials,
         color: randomColor
     });
-
+    
     saveContacts();
     closeAddContactOverlay();
     renderContacts();
 }
+
 
 function openEditContactOverlay(index) {
     let contact = contacts[index];
@@ -144,29 +143,29 @@ function closeEditContactOverlay() {
 
 function saveEditedContact(event) {
     event.preventDefault();
-
+    
     let index = document.getElementById('editContactIndex').value;
     let name = document.getElementById('editContactName').value;
     let email = document.getElementById('editContactEmail').value;
     let phone = document.getElementById('editContactPhone').value;
-
+    
     let nameParts = name.trim().split(' ');
     let initials = '';
     if (nameParts.length >= 2) {
-        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase();
+        initials = nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length-1].charAt(0).toUpperCase();
     } else if (nameParts.length === 1) {
         initials = nameParts[0].charAt(0).toUpperCase();
     }
-
+    
     contacts[index].name = name;
     contacts[index].email = email;
     contacts[index].phone = phone;
     contacts[index].initials = initials;
-
+    
     saveContacts();
     closeEditContactOverlay();
     renderContacts();
-
+    
     let c = contacts[index];
     showContactDetails(index, c.name, c.email, c.phone, c.initials, c.color);
 }
@@ -177,3 +176,4 @@ function closeMobileDetails() {
         detailContainer.classList.remove('show-mobile');
     }
 }
+
