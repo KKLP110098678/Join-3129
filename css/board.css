@@ -389,3 +389,94 @@ main {
   cursor: grabbing;
   opacity: 0.8;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 1000px) {
+  main {
+    padding-left: 0;
+    height: auto;
+    min-height: calc(100vh - 100px);
+  }
+
+  #boardContent {
+    padding: 24px 16px 120px 16px; /* space for bottom nav */
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .upper-board, .tasksbar, .lower-board, .lower-board-content {
+    display: contents;
+  }
+
+  .searchbar {
+    order: 1;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 24px;
+    gap: 0;
+  }
+
+  .searchbar-input {
+    width: 100%;
+  }
+
+  .add-task-btn {
+    display: none;
+  }
+
+  /* Weave the headers and boxes via CSS order */
+  .taskbar-tab:nth-child(1) { order: 2; }
+  #toDoBox { order: 3; }
+
+  .taskbar-tab:nth-child(2) { order: 4; }
+  #progressBox { order: 5; }
+
+  .taskbar-tab:nth-child(3) { order: 6; }
+  #feedbackBox { order: 7; }
+
+  .taskbar-tab:nth-child(4) { order: 8; }
+  #doneBox { order: 9; }
+
+  .taskbar-tab {
+    max-width: 100%;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  /* Make drop areas horizontally scrollable on mobile */
+  .tab-content-box {
+    max-width: 100%;
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 16px;
+    padding-bottom: 8px; /* space for scrollbar */
+  }
+
+  /* Mobile scrollbar styling */
+  .tab-content-box::-webkit-scrollbar {
+    height: 4px;
+  }
+  .tab-content-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .tab-content-box::-webkit-scrollbar-thumb {
+    background-color: #D1D1D1;
+    border-radius: 2px;
+  }
+
+  .board-card {
+    min-width: 250px;
+    margin-bottom: 0; 
+    flex-shrink: 0;
+  }
+
+  .task-element {
+    width: 100%;
+    min-width: 100%; /* forces placeholder to fill the row */
+  }
+}

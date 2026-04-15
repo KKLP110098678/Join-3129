@@ -145,11 +145,13 @@ function openTaskDetail(taskId) {
     document.getElementById('taskDetailOverlay').classList.remove('edit-mode');
     document.getElementById('taskDetailContainer').innerHTML = taskDetailTemplate(task);
     document.getElementById('taskDetailOverlay').showModal();
+    document.body.style.overflow = 'hidden';
 }
 
 function closeTaskDetail() {
     document.getElementById('taskDetailOverlay').classList.remove('edit-mode');
     document.getElementById('taskDetailOverlay').close();
+    document.body.style.overflow = '';
 }
 
 function closeTaskDetailOnBackdrop(event) {

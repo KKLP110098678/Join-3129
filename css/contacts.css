@@ -24,6 +24,31 @@
     flex-direction: column;
     align-items: center;
     padding-right: 20px;
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.contact-list-scroll:hover {
+    scrollbar-color: #a8a8a8 transparent; /* Firefox hover */
+}
+
+/* Chrome, Edge, Safari */
+.contact-list-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-list-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.contact-list-scroll::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+}
+
+.contact-list-scroll:hover::-webkit-scrollbar-thumb {
+    background-color: #A8A8A8;
 }
 
 .contact-card {
@@ -403,11 +428,17 @@
 
     .contact-card {
         margin: 0 20px;
+        width: calc(100% - 40px);
+        box-sizing: border-box;
+    }
+
+    .separator-line {
+        width: calc(100% - 40px);
     }
 
     .btn-add-contact-mobile {
         display: flex;
-        background-color: #0062ea;
+        background-color: #4589FF;
         color: white;
         border: none;
         border-radius: 8px; /* Or 50% for circle */
@@ -425,6 +456,7 @@
 
     .btn-add-contact-mobile img {
         width: 30px;
+        filter: brightness(0) invert(1);
     }
 
     /* Details auf Mobile als Overlay / Fullscreen ausklappbar */
