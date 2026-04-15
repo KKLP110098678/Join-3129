@@ -29,7 +29,6 @@ main {
 
 /* headline */
 .dashboard-headline {
-    height: 80px;
     font-size: 48px;
     margin-top: 0;
     text-align: center;
@@ -391,9 +390,10 @@ main {
 @media (max-width: 800px) {
     main {
         margin-left: 0;
+        margin-bottom: 80px;
     }
 
-    #summaryContent {
-        margin-bottom: 80px;
+    .dashboard-headline {
+        display: none;
     }
 }
