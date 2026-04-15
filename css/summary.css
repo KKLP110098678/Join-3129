@@ -99,11 +99,9 @@ main {
 }
 
 .urgent-task-date {
-    width: 270px;
     height: 120px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
 }
 
@@ -381,6 +379,7 @@ main {
     .to-do {
         height: 106px;
         flex-direction: row;
+        justify-content: space-between;
     }
     
     .in-progress, .awaiting-feedback, .done, .task-in-board {
@@ -396,5 +395,11 @@ main {
 
     .dashboard-headline {
         display: none;
+    }
+}
+
+@media (max-width: 461px) {
+    .date-text-top, .date-text {
+        width: auto;
     }
 }
