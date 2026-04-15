@@ -100,6 +100,12 @@ output.error {
 	color: #42526E;
 }
 
+.form-label {
+    font-size: 19px;
+    font-weight: 700;
+    color: #42526E;
+}
+
 .form-group .optional {
 	font-weight: 400;
 }
@@ -218,12 +224,8 @@ label.urgent:hover {
 }
 
 .custom-dropdown {
-<<<<<<< HEAD
 	position: relative;
 	width: 100%;
-=======
-    position: relative;
->>>>>>> 19dcfe5f93a71be6daf250471ec4ba9b5e72f8f0
 }
 
 .dropdown-list {
@@ -241,13 +243,8 @@ label.urgent:hover {
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
-<<<<<<< HEAD
 	max-height: 250px;
 	overflow-y: auto;
-=======
-	margin: 0;
-	width: 100%;
->>>>>>> 19dcfe5f93a71be6daf250471ec4ba9b5e72f8f0
 }
 
 .dropdown-list.assigned-to {

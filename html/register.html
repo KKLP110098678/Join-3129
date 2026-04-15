@@ -4,11 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/register.css" />
+  <title>Join - Sign up</title>
+
+  <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/standard.css" />
   <link rel="stylesheet" href="../css/forms.css">
+  <link rel="stylesheet" href="../css/register.css" />
   <link rel="stylesheet" href="../css/buttons.css" />
-  <title>Join</title>
+  <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
 </head>
 
 <body onload="init()">
@@ -16,7 +19,7 @@
   <div class="content">
 
     <header>
-      <img src="../assets/icon/logowhiteheader.svg" alt="Join Logo" />
+      <img src="../assets/icon/logowhiteheader.svg" class="logo" alt="Join Logo" />
     </header>
 
     <main>
@@ -35,7 +38,7 @@
                   placeholder="Username" required />
                 <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
               </div>
-              <output class="error-message" id="username-error" for="username">This field is required!</output>
+              <output class="error-message d-none" id="username-error" for="username">This field is required!</output>
             </div>
             <div class="field-container">
               <div class="input-icon-container" id="email-field">
@@ -43,7 +46,7 @@
                   placeholder="Email" required />
                 <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
               </div>
-              <output class="error-message" id="email-error" for="email">This field is required!</output>
+              <output class="error-message d-none" id="email-error" for="email">This field is required!</output>
             </div>
             <div class="field-container">
               <div class="input-icon-container" id="password-field">
@@ -51,7 +54,7 @@
                   name="password" placeholder="Password" required />
                 <img src="../assets/icon/sign/lock.svg" alt="Password Icon" />
               </div>
-              <output class="error-message" id="password-error" for="password">This field is required!</output>
+              <output class="error-message d-none" id="password-error" for="password">This field is required!</output>
             </div>
             <div class="field-container">
               <div class="input-icon-container" id="confirm-password-field">
@@ -59,7 +62,7 @@
                   id="confirm-password" name="confirm-password" placeholder="Confirm Password" required />
                 <img src="../assets/icon/sign/lock.svg" alt="Confirm Password Icon" />
               </div>
-              <output class="error-message" id="confirm-password-error" for="confirm-password">This field is
+              <output class="error-message d-none" id="confirm-password-error" for="confirm-password">This field is
                 required!</output>
             </div>
           </div>
@@ -74,7 +77,7 @@
             </label>
           </div>
           <button type="submit" class="btn-primary" id="submit-button" disabled>
-            Register
+            Sign up
             <span class="disabled-tooltip">Please fill out all fields and accept the privacy policy to proceed.</span>
           </button>
         </div>
@@ -88,13 +91,12 @@
 
   </div>
 
-
 </body>
 
 <script src="../script/script.js"></script>
 <script src="../js/database/firebase-app.js"></script>
 <script src="../js/database/firebase-database.js"></script>
-<script src="../js/register.js"></script>
+<script src="../script/register.js"></script>
 <script src="../js/database/dbConfig.js"></script>
 <script src="../js/database/userDB.js"></script>
 

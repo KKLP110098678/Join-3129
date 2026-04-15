@@ -5,6 +5,7 @@ main {
     align-items: center;
     justify-content: space-evenly;
     height: calc(100vh - 100px);
+    max-width: 1688px;
     flex: 1;
     margin-left: 232px;
 }

@@ -107,9 +107,10 @@ input:focus {
 
 .login-error-message {
     color: #ff0000;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 8px;
     font-weight: 600;
+    padding-left: 20px;
 }
 
 .login-button-area {
@@ -133,4 +134,92 @@ footer a {
     text-decoration: none;
     padding: 8px;
     margin-bottom: 20px;
+}
+
+.animation-frame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    background: #4589FF;
+}
+
+#animation-logo {
+    filter: brightness(0) invert(1);
+    width: 265px;
+    height: 323.1px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mobile-sign-up {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        height: 80px;
+        width: 66px;
+        margin: 40px 0 0 40px;
+    }
+
+    #animation-logo {
+        filter: brightness(0) invert(1);
+        width: 265px;
+        height: 323.1px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    main {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .mobile-sign-up {
+        display: flex;
+    }
+
+    .login-form {
+        max-width: 350px;
+        width: 90%;
+        height: 400px;
+        padding: 20px;
+    }
+
+    .login-form-header span {
+        font-size: 38px;
+    }
+
+    .seperator {
+        width: 80px;
+        height: 2px;
+    }
+
+    .input-contaier {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .login-button-area {
+        flex-direction: column;
+        width: 50%;
+        gap: 12px;
+    }
+
+    .header-right {
+        display: none;
+    }
+
+    .login-error-message {
+        padding-left: 10px;
+        Font-size: 10px;
+    }
 }

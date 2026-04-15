@@ -1,23 +1,36 @@
-function init() {
+let protectedPages = ['board.html', 'contacts.html', 'add-task.html', 'summary.html'];
+
+async function init() {
+    checkAuth();
     initLayout();
-    initBoard();
+    await initBoard();
     initContacts();
     initTaskForm();
-    checkAuth();
 }
 
 function initLayout() {
-    addSummary();
     addHeader();
     addSidebar();
+    addTaskMain();
 }
 
-function initBoard() {
-    if (typeof loadAndRenderTasks === 'function') {
-        loadAndRenderTasks();
-    } else if (typeof updateBoard === 'function') {
-        updateBoard();
-    }
+function addTaskMain() {
+    const addTaskRef = document.getElementById('addTaskContent');
+    if (!addTaskRef) return;
+    
+    addTaskRef.innerHTML = addTaskTemplate();
+    
+    const medium = document.getElementById('mediumPriority');
+    if (medium) medium.checked = true;
+    
+    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
+    if (typeof checkFormValidity === 'function') checkFormValidity();
+}
+
+async function initBoard() {
+    if (typeof loadContacts === 'function') await loadContacts();
+    if (typeof loadTasks === 'function') await loadTasks();
+    addSummary();
 }
 
 function initContacts() {
@@ -30,7 +43,6 @@ function initContacts() {
 
 function initTaskForm() {
     setDefaultDueDate();
-    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
 }
 
 function setDefaultDueDate() {
@@ -75,7 +87,9 @@ function checkAuth() {
     const username = sessionStorage.getItem('username');
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
 
-    if (!username && !isGuest) {
-        window.location.href = '../html/login.html';
+    if (protectedPages.some(page => window.location.pathname.includes(page))) {
+        if (!username && !isGuest) {
+            window.location.href = '../html/login.html';
+        }
     }
 }

@@ -12,6 +12,8 @@ async function validateName(checkMode) {
         if (!checkMode) {
             errorMessage.classList.add('error');
             usernameField.classList.add('error');
+            errorMessage.classList.remove('d-none');
+            usernameField.classList.remove('d-none');
         }
         return false;
     }
@@ -20,7 +22,6 @@ async function validateName(checkMode) {
     errorMessage.textContent = 'ㅤ'; // Clear error message
     return true;
 }
-
 
 async function validateEmail(checkMode) {
     const emailInput = document.getElementById('email');
@@ -38,6 +39,8 @@ async function validateEmail(checkMode) {
             }
             errorMessage.classList.add('error');
             emailField.classList.add('error');
+            errorMessage.classList.remove('d-none');
+            emailField.classList.remove('d-none');
         }
         return false;
     }
@@ -59,6 +62,8 @@ function validatePassword(checkMode) {
             errorMessage.textContent = buildPasswordErrorMessage(password);
             errorMessage.classList.add('error');
             passwordField.classList.add('error');
+            errorMessage.classList.remove('d-none');
+            passwordField.classList.remove('d-none');
         }
         return false;
     }
@@ -111,11 +116,13 @@ function validateConfirmPassword(checkMode) {
         if (!checkMode) {
             if (confirmPassword === '') {
                 errorMessage.textContent = 'Please confirm your password.';
-            } else {            
+            } else {
                 errorMessage.textContent = 'Your passwords don\'t match. Please try again.';
             }
             errorMessage.classList.add('error');
             confirmPasswordField.classList.add('error');
+            errorMessage.classList.remove('d-none');
+            confirmPasswordField.classList.remove('d-none');
         }
         return false;
     }
@@ -150,4 +157,3 @@ async function registerUser(event) {
     await addNewUser(newUser);
     window.location.href = './login.html';
 }
-    

@@ -117,7 +117,9 @@ main {
 }
 
 .taskbar-tab {
-  width: 260px;
+  max-width: 260px;
+  width: 100%;
+  flex: 1;
   height: 30px;
   display: flex;
   justify-content: space-between;
@@ -140,7 +142,11 @@ main {
 }
 
 .tab-content-box {
-  width: 260px;
+  max-width: 260px;
+  width: 100%;
+  height: fit-content;
+  flex: 1;
+  min-width: 0;
 }
 
 /* drag and drop area*/
@@ -252,11 +258,12 @@ main {
 /* --- Board Cards --- */
 .board-card {
   width: 100%;
+  max-width: 260px;
   background: white;
   border-radius: 20px;
   padding: 16px;
   box-sizing: border-box;
-  box-shadow: 0 0 10px 3px rgba(0,0,0,0.04);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -267,7 +274,7 @@ main {
 
 .board-card:hover {
   transform: rotate(2deg);
-  box-shadow: 0 0 14px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 0.06);
 }
 
 .board-card-badge {
@@ -298,6 +305,12 @@ main {
   font-weight: 700;
   color: #2A3647;
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .board-card-desc {
@@ -359,4 +372,20 @@ main {
 .board-card-priority img {
   width: 20px;
   height: 20px;
+}
+
+/* drag n drop */
+.drop-area.drag-over {
+  background-color: #E3EEFF;
+  border: 2px dashed #4589FF;
+  border-radius: 16px;
+}
+
+.board-card[draggable="true"] {
+  cursor: grab;
+}
+
+.board-card[draggable="true"]:active {
+  cursor: grabbing;
+  opacity: 0.8;
 }
