@@ -157,7 +157,7 @@ footer a {
     display: none;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 48px;
 }
 
 @media screen and (max-width: 768px) {
@@ -187,7 +187,8 @@ footer a {
     }
 
     .login-form {
-        width: 350px;
+        max-width: 350px;
+        width: 90%;
         height: 400px;
         padding: 20px;
     }
