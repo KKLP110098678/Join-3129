@@ -107,9 +107,10 @@ input:focus {
 
 .login-error-message {
     color: #ff0000;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 8px;
     font-weight: 600;
+    padding-left: 20px;
 }
 
 .login-button-area {
@@ -215,5 +216,10 @@ footer a {
 
     .header-right {
         display: none;
+    }
+
+    .login-error-message {
+        padding-left: 10px;
+        Font-size: 10px;
     }
 }
