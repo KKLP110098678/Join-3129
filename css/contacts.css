@@ -182,59 +182,146 @@
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
 }
 
 .overlay-content {
     background-color: white;
-    border-radius: 20px;
-    padding: 40px;
-    width: 400px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.overlay-header {
+    border-radius: 20px 0 0 20px;
+    width: 450px; /* Made slightly wider to fit perfectly, usually these are 450px or 500px in modern layouts */
+    height: 100vh;
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+    animation: slideInRight 0.3s ease-out forwards;
+}
+
+.overlay-blue-part {
+    background-color: #005DFF;
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
 }
 
-.overlay-header h2 {
-    margin: 0;
-    font-size: 32px;
-}
-
-.close-btn {
+.white-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
     font-size: 24px;
     cursor: pointer;
 }
 
-.overlay-content form {
+.overlay-logo {
+    width: 60px;
+    margin-bottom: 15px;
+}
+
+.overlay-blue-part h2 {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.overlay-blue-part p {
+    font-size: 18px;
+    margin: 0;
+    font-weight: 400;
+}
+
+.overlay-white-part {
+    background-color: white;
+    padding: 0 40px 40px 40px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    align-items: center;
+    flex-grow: 1;
 }
 
-.overlay-content input {
-    padding: 10px 15px;
-    border: 1px solid #D1D1D1;
-    border-radius: 10px;
+.overlay-avatar-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #D1D1D1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid white;
+    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+}
+
+.avatar-circle img {
+    width: 40px;
+    filter: brightness(0) invert(1);
+}
+
+.overlay-white-part form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: none;
+    border-bottom: 1px solid #D1D1D1;
     font-size: 16px;
     outline: none;
+    box-sizing: border-box;
+    background: transparent;
 }
 
-.overlay-buttons {
+.input-wrapper input::placeholder {
+    color: #D1D1D1;
+}
+
+.input-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    pointer-events: none;
+}
+
+.form-buttons {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     gap: 15px;
     margin-top: 20px;
 }
 
 .btn-cancel {
     background-color: white;
-    border: 1px solid #2A3647;
+    border: 1px solid #D1D1D1;
     color: #2A3647;
     border-radius: 8px;
     padding: 10px 20px;
@@ -248,7 +335,7 @@
 }
 
 .btn-create {
-    background-color: #2A3647;
+    background-color: #4589FF;
     color: white;
     border: none;
     border-radius: 8px;
@@ -257,11 +344,12 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 
 .btn-create:hover {
-    background-color: #00A6EB;
+    background-color: #005DFF;
 }
 
 /* weitere Farben */
