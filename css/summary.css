@@ -95,6 +95,7 @@ main {
 .seperation-line {
     height: 160px;
     width: 3px;
+    border-radius: 1.5px;
     background-color: white;
 }
 
