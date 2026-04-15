@@ -1,5 +1,6 @@
 body {
     background-color: #4589FF;
+    font-family: "Open Sans";
 }
 
 .content {
@@ -10,7 +11,8 @@ body {
     max-width: 1920px;
 }
 
-header, footer {
+header,
+footer {
     min-height: 201.97px;
 }
 
@@ -65,8 +67,17 @@ main {
 }
 
 .register-form-header span {
+    font-family: "Open Sans Bold";
     font-size: 48px;
     font-weight: 700;
+}
+
+.input-icon-container input {
+    border: none;
+    height: 30px;
+    width: 350px;
+    font-size: 16px;
+    color: #2c2c2c;
 }
 
 .seperator {
@@ -77,7 +88,8 @@ main {
 }
 
 .error-message {
-    padding: 1px 0;
+    padding: 1px 20px;
+    font-size: 13px;
 }
 
 button[type="submit"] {
@@ -115,5 +127,48 @@ button[type="submit"] {
 @media (max-height: 1013px) {
     footer {
         min-height: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    header {
+        min-height: auto;
+    }
+
+    .logo {
+        height: 80px;
+        width: 66px;
+        margin: 40px 0 0 40px;
+    }
+
+    .register-form {
+        width: 90%;
+        padding: 24px;
+    }
+
+    .register-form-header span {
+        font-size: 38px;
+    }
+
+    .seperator {
+        width: 80px;
+        height: 2px;
+    }
+
+    .register-form .back-btn {
+        width: 28px;
+        height: 28px;
+        top: 38px;
+        left: 28px;
+    }
+
+    .checkbox-container {
+        padding-top: 30px;
+    }
+
+    .checkbox-label {
+        font-size: 13px;
+        padding-left: 4px;
     }
 }
