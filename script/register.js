@@ -12,8 +12,8 @@ async function validateName(checkMode) {
         if (!checkMode) {
             errorMessage.classList.add('error');
             usernameField.classList.add('error');
-            errorMessage.classList.remove('d-none');
-            usernameField.classList.remove('d-none');
+            // errorMessage.classList.remove('d-none');
+            // usernameField.classList.remove('d-none');
         }
         return false;
     }
@@ -39,8 +39,8 @@ async function validateEmail(checkMode) {
             }
             errorMessage.classList.add('error');
             emailField.classList.add('error');
-            errorMessage.classList.remove('d-none');
-            emailField.classList.remove('d-none');
+            // errorMessage.classList.remove('d-none');
+            // emailField.classList.remove('d-none');
         }
         return false;
     }
@@ -62,8 +62,8 @@ function validatePassword(checkMode) {
             errorMessage.textContent = buildPasswordErrorMessage(password);
             errorMessage.classList.add('error');
             passwordField.classList.add('error');
-            errorMessage.classList.remove('d-none');
-            passwordField.classList.remove('d-none');
+            // errorMessage.classList.remove('d-none');
+            // passwordField.classList.remove('d-none');
         }
         return false;
     }
@@ -121,8 +121,8 @@ function validateConfirmPassword(checkMode) {
             }
             errorMessage.classList.add('error');
             confirmPasswordField.classList.add('error');
-            errorMessage.classList.remove('d-none');
-            confirmPasswordField.classList.remove('d-none');
+            // errorMessage.classList.remove('d-none');
+            // confirmPasswordField.classList.remove('d-none');
         }
         return false;
     }
