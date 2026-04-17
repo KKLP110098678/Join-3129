@@ -14,6 +14,7 @@ async function validateName(checkMode) {
             usernameField.classList.add('error');
             errorMessage.classList.remove('d-none');
             usernameField.classList.remove('d-none');
+
         }
         return false;
     }
