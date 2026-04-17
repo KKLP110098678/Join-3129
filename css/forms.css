@@ -311,10 +311,6 @@ div.dropdown-item:hover {
 	background-color: #005DFF;
 }
 
-.checkbox-masked:checked {
-	filter: brightness(0) invert(1);
-}
-
 .input-btn-seperator {
 	width: 1px;
 	height: 24px;
