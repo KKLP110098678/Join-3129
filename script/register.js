@@ -12,8 +12,9 @@ async function validateName(checkMode) {
         if (!checkMode) {
             errorMessage.classList.add('error');
             usernameField.classList.add('error');
-            // errorMessage.classList.remove('d-none');
-            // usernameField.classList.remove('d-none');
+            errorMessage.classList.remove('d-none');
+            usernameField.classList.remove('d-none');
+
         }
         return false;
     }
