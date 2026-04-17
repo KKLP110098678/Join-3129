@@ -14,13 +14,13 @@ async function validateName(checkMode) {
             usernameField.classList.add('error');
             errorMessage.classList.remove('d-none');
             usernameField.classList.remove('d-none');
-
         }
         return false;
     }
     errorMessage.classList.remove('error');
     usernameField.classList.remove('error');
-    errorMessage.textContent = 'ㅤ'; // Clear error message
+    errorMessage.classList.add('d-none');
+    errorMessage.textContent = '';
     return true;
 }
 
@@ -40,14 +40,15 @@ async function validateEmail(checkMode) {
             }
             errorMessage.classList.add('error');
             emailField.classList.add('error');
-            // errorMessage.classList.remove('d-none');
-            // emailField.classList.remove('d-none');
+            errorMessage.classList.remove('d-none');
+            emailField.classList.remove('d-none');
         }
         return false;
     }
     errorMessage.classList.remove('error');
     emailField.classList.remove('error');
-    errorMessage.textContent = 'ㅤ'; // Clear error message
+    errorMessage.classList.add('d-none');
+    errorMessage.textContent = '';
     return true;
 }
 
@@ -63,14 +64,15 @@ function validatePassword(checkMode) {
             errorMessage.textContent = buildPasswordErrorMessage(password);
             errorMessage.classList.add('error');
             passwordField.classList.add('error');
-            // errorMessage.classList.remove('d-none');
-            // passwordField.classList.remove('d-none');
+            errorMessage.classList.remove('d-none');
+            passwordField.classList.remove('d-none');
         }
         return false;
     }
     errorMessage.classList.remove('error');
     passwordField.classList.remove('error');
-    errorMessage.textContent = 'ㅤ'; // Clear error message
+    errorMessage.classList.add('d-none');
+    errorMessage.textContent = '';
     return true;
 }
 
@@ -122,14 +124,15 @@ function validateConfirmPassword(checkMode) {
             }
             errorMessage.classList.add('error');
             confirmPasswordField.classList.add('error');
-            // errorMessage.classList.remove('d-none');
-            // confirmPasswordField.classList.remove('d-none');
+            errorMessage.classList.remove('d-none');
+            confirmPasswordField.classList.remove('d-none');
         }
         return false;
     }
     errorMessage.classList.remove('error');
     confirmPasswordField.classList.remove('error');
-    errorMessage.textContent = 'ㅤ'; // Clear error message
+    errorMessage.classList.add('d-none');
+    errorMessage.textContent = '';
     return true;
 }
 
@@ -156,5 +159,73 @@ async function registerUser(event) {
         password: document.getElementById('password').value.trim()
     };
     await addNewUser(newUser);
+    await showSuccessOverlay(); 
     window.location.href = './login.html';
 }
+
+function showSuccessOverlay() {
+  return new Promise((resolve) => {
+    const overlay = document.getElementById("success-overlay");
+
+    overlay.classList.remove("hidden");
+
+    setTimeout(() => {
+      overlay.classList.add("show");
+    }, 10);
+
+    setTimeout(() => {
+      overlay.classList.remove("show");
+
+      setTimeout(() => {
+        overlay.classList.add("hidden");
+        resolve();
+      }, 300);
+    }, 2000);
+  });
+}
+
+function setupPasswordToggle(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (!input || !icon) return;
+
+    input.addEventListener('input', () => updatePasswordIconState(inputId, iconId));
+    icon.addEventListener('click', () => togglePasswordVisibility(inputId, iconId));
+
+    updatePasswordIconState(inputId, iconId);
+}
+
+function togglePasswordVisibility(inputId, iconId) {
+    const input = document.getElementById(inputId);
+
+    if (!input.value.trim()) return;
+
+    input.type = input.type === 'password' ? 'text' : 'password';
+
+    updatePasswordIconState(inputId, iconId);
+}
+
+function updatePasswordIconState(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(iconId);
+
+    if (!input || !icon) return;
+
+    if (input.value.trim().length === 0) {
+        icon.src = '../assets/icon/sign/lock.svg';
+        input.type = 'password';
+        return;
+    }
+
+    if (input.type === 'text') {
+        icon.src = '../assets/icon/sign/visibility-off.svg';
+    } else {
+        icon.src = '../assets/icon/sign/visibility.svg';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupPasswordToggle('password', 'password-toggle');
+    setupPasswordToggle('confirm-password', 'confirm-password-toggle');
+});
