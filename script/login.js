@@ -66,7 +66,7 @@ function togglePasswordVisibility() {
         updatePasswordIconState();
     } else {
         passwordInput.type = 'text';
-        toggleIcon.src = '../assets/icon/login/visibility-off.svg';
+        toggleIcon.src = '../assets/icon/login/visibility.svg';
         toggleIcon.alt = 'Visibility Off Icon';
     }
 }

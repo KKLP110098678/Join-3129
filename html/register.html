@@ -52,7 +52,7 @@
               <div class="input-icon-container" id="password-field">
                 <input onblur="validatePassword(); updateCheckboxDisabledState();" type="password" id="password"
                   name="password" placeholder="Password" required />
-                <img src="../assets/icon/sign/lock.svg" alt="Password Icon" />
+                <img src="../assets/icon/sign/lock.svg" id="password-toggle" alt="Password Icon" />
               </div>
               <output class="error-message d-none" id="password-error" for="password">This field is required!</output>
             </div>
@@ -60,7 +60,7 @@
               <div class="input-icon-container" id="confirm-password-field">
                 <input onblur="validateConfirmPassword(); updateCheckboxDisabledState();" type="password"
                   id="confirm-password" name="confirm-password" placeholder="Confirm Password" required />
-                <img src="../assets/icon/sign/lock.svg" alt="Confirm Password Icon" />
+                <img src="../assets/icon/sign/lock.svg" id="confirm-password-toggle" alt="Confirm Password Icon" />
               </div>
               <output class="error-message d-none" id="confirm-password-error" for="confirm-password">This field is
                 required!</output>
