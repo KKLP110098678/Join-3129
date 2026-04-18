@@ -440,7 +440,7 @@ body {
 
     .contact-list-scroll {
         margin-bottom: 100px;
-         /* Platz für den Button unten schaffen */
+        /* Platz für den Button unten schaffen */
     }
 
     .button-container {
@@ -481,6 +481,58 @@ body {
         filter: brightness(0) invert(1);
     }
 
+    .btn-change-contact-mobile {
+        display: flex;
+        background-color: #4589FF;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        /* Or 50% for circle */
+        width: 56px;
+        height: 56px;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        z-index: 40;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        cursor: pointer;
+    }
+
+    .btn-change-contact-mobile img {
+        width: 30px;
+        filter: brightness(0) invert(1);
+    }
+
+    .mobile-contact-action-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        bottom: 156px;
+        right: 76px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-bottom-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+        gap: 16px;
+        padding: 16px;
+        z-index: 1000;
+        width: 116px;
+        height: 100px;
+    }
+
+    .mobile-action-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: #2A3647;
+        cursor: pointer;
+    }
+
     /* Details auf Mobile als Overlay / Fullscreen ausklappbar */
     .contact-detail-container {
         display: none;
@@ -518,6 +570,7 @@ body {
     .contact-header {
         gap: 20px;
     }
+
     .initials-big {
         width: 80px;
         height: 80px;

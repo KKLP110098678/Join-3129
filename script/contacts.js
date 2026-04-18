@@ -82,6 +82,7 @@ function deleteContact(index) {
     
     saveContacts();
     renderContacts();
+    closeMobileDetails()
 }
 
 
@@ -177,3 +178,9 @@ function closeMobileDetails() {
     }
 }
 
+function showMobileContactActionMenu() {
+    let actionMenu = document.querySelector('.mobile-contact-action-menu');
+    if (actionMenu) {
+        actionMenu.classList.toggle('d-none');
+    }
+}
