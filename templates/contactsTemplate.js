@@ -13,9 +13,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
                 <h2>${name}</h2>
             </div>
         </div>
-        
         <div class="contact-data">
-            
             
             <b>Email</b>
             <a href="mailto:${email}">${email}</a>
@@ -31,6 +29,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <img src="../assets/icon/contacts/contact-details-menu.svg" alt="">
         </button>
         `;
+
     }
     else {
         detailContainer.innerHTML = `
