@@ -14,6 +14,9 @@
 
 .input-icon-container img {
 	transform: translateX(50%);
+	width: 24px;
+	height: 24px;
+	object-fit: contain;
 }
 
 /* Checkbox styles */
