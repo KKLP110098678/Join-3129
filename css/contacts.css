@@ -1,4 +1,8 @@
 /* Hauptcontainer, der den Rest des Bildschirms einnimmt */
+body {
+    font-family: "Open Sans";
+}
+
 .contacts-container {
     display: flex;
     height: calc(100vh - 100px);
@@ -30,7 +34,8 @@
 }
 
 .contact-list-scroll:hover {
-    scrollbar-color: #a8a8a8 transparent; /* Firefox hover */
+    scrollbar-color: #a8a8a8 transparent;
+    /* Firefox hover */
 }
 
 /* Chrome, Edge, Safari */
@@ -215,6 +220,7 @@
     from {
         transform: translateX(100%);
     }
+
     to {
         transform: translateX(0);
     }
@@ -223,7 +229,8 @@
 .overlay-content {
     background-color: white;
     border-radius: 20px 0 0 20px;
-    width: 450px; /* Made slightly wider to fit perfectly, usually these are 450px or 500px in modern layouts */
+    width: 450px;
+    /* Made slightly wider to fit perfectly, usually these are 450px or 500px in modern layouts */
     height: 100vh;
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
@@ -293,7 +300,7 @@
     justify-content: center;
     align-items: center;
     border: 3px solid white;
-    box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .avatar-circle img {
@@ -378,9 +385,17 @@
 }
 
 /* weitere Farben */
-.bg-blue { background-color: #007CEE; }
-.bg-green { background-color: #1FD7C1; }
-.bg-pink { background-color: #FC71FF; }
+.bg-blue {
+    background-color: #007CEE;
+}
+
+.bg-green {
+    background-color: #1FD7C1;
+}
+
+.bg-pink {
+    background-color: #FC71FF;
+}
 
 /* Lettern und Separator */
 .letter-separator {
@@ -409,10 +424,11 @@
 }
 
 /* --- MOBILE RESPONSIVENESS (< 800px) --- */
-@media(max-width: 800px) {
+@media screen and (max-width: 800px) {
     .contacts-container {
         margin-left: 0;
-        height: calc(100vh - 100px - 80px); /* header & bottom nav */
+        height: calc(100vh - 100px - 80px);
+        /* header & bottom nav */
         flex-direction: column;
     }
 
@@ -420,6 +436,11 @@
         width: 100%;
         padding: 0;
         box-shadow: none;
+    }
+
+    .contact-list-scroll {
+        margin-bottom: 100px;
+         /* Platz für den Button unten schaffen */
     }
 
     .button-container {
@@ -441,7 +462,8 @@
         background-color: #4589FF;
         color: white;
         border: none;
-        border-radius: 8px; /* Or 50% for circle */
+        border-radius: 8px;
+        /* Or 50% for circle */
         width: 56px;
         height: 56px;
         position: fixed;
@@ -450,7 +472,7 @@
         z-index: 40;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         cursor: pointer;
     }
 
@@ -461,17 +483,18 @@
 
     /* Details auf Mobile als Overlay / Fullscreen ausklappbar */
     .contact-detail-container {
-        display: none; /* Erst nach klick zeigen */
+        display: none;
+        /* Erst nach klick zeigen */
         position: fixed;
         top: 100px;
         left: 0;
         width: 100vw;
         height: calc(100vh - 100px - 80px);
-        background-color: #F6F7F8;
+        background-color: #ffffff;
         z-index: 50;
         box-sizing: border-box;
     }
-    
+
     .contact-detail-container.show-mobile {
         display: flex;
     }
@@ -486,5 +509,30 @@
         width: 90vw;
         padding: 24px;
         margin: 20px;
+    }
+
+    .info-headline {
+        font-size: 18px;
+    }
+
+    .contact-header {
+        gap: 20px;
+    }
+    .initials-big {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+
+    .name-section h2 {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .back-arrow {
+        position: absolute;
+        top: 35px;
+        right: 30px;
+        font-size: 20px;
     }
 }

@@ -111,3 +111,13 @@ header {
 .logout-menu button:hover {
     background-color: rgb(210, 227, 255);
 }
+
+@media screen and (max-width: 768px) {
+        .header-headline {
+        display: none;
+    }
+
+    .help-icon {
+        display: none;
+    }
+}
