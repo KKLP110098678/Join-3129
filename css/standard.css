@@ -44,16 +44,6 @@ body {
 .bg-pink { background-color: #FC71FF !important; }
 .bg-gray { background-color: #d1d1d1 !important; }
 
-/* Legal Content Pages Layout */
-.legal-content {
-  margin-left: 232px; 
-  padding: 60px 80px;
-  max-width: 1200px;
-  overflow-y: auto;
-  box-sizing: border-box;
-  height: calc(100vh - 100px); 
-}
-
 .legal-content h1 {
   font-size: 61px;
   font-weight: 700;
