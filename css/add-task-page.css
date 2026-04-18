@@ -8,6 +8,7 @@
     box-sizing: border-box;
     margin-left: 232px;
     overflow: hidden;
+    max-width: 1688px;
 }
 
 .add-task-page-container {
