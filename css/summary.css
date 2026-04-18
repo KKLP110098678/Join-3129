@@ -403,3 +403,46 @@ main {
         width: auto;
     }
 }
+
+@media (max-height: 844px) {
+    .task-text {
+        font-size: 18px;
+    }
+
+    .task-icons {
+        height: 60px;
+        width: 60px;
+    }
+
+    .task-amount-number {
+        font-size: 40px;
+    }
+
+    .in-progress, .awaiting-feedback, .done, .task-in-board {
+        height: 120px;
+    }
+
+    .summary-cards {
+        row-gap: 20px;
+    }
+}
+
+@media (max-height: 760px) {
+    .summary-cards {
+        row-gap: 8px;
+    }
+}
+
+@media (max-height: 720px) {
+    .urgent-task {
+        height: auto;
+    }
+
+    .urgent-task-box {
+        height: 130px;
+    }
+
+    .to-do {
+        height: 70px;
+    }
+}
