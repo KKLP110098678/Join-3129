@@ -8,6 +8,10 @@ main {
     padding: 72px 88px;
 }
 
+body {
+    height: auto;
+}
+
 header {
     position: fixed;
 }
@@ -33,6 +37,8 @@ li {
     display: flex;
     flex-direction: column;
     gap: 35px;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 .index-link {
@@ -45,4 +51,12 @@ li {
 .index-link:hover {
     text-decoration: underline;
     color: #005DFF;
+}
+
+@media (max-width: 800px) {
+    main {
+        margin-left: 0;
+        margin-bottom: 80px;
+        padding: 64px 16px;
+    }
 }
