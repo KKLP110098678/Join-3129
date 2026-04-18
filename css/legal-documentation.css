@@ -57,6 +57,18 @@ li {
     main {
         margin-left: 0;
         margin-bottom: 80px;
+    }
+}
+
+@media (max-width: 1110px) {
+    h1 {
+        font-size: 47px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+    main {
         padding: 64px 16px;
     }
 }
