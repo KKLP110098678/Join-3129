@@ -1,7 +1,7 @@
 function showContactDetails(index, name, email, phone, initials, colorClass) {
     let detailContainer = document.getElementById('contact-detail-view');
 
-    if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 800) {
 
         detailContainer.innerHTML = `
         <h3 class="info-headline">Contact Information</h3>
@@ -29,8 +29,8 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <img src="../assets/icon/contacts/contact-details-menu.svg" alt="">
         </button>
         `;
-
     }
+
     else {
         detailContainer.innerHTML = `
         <div class="back-arrow" onclick="closeMobileDetails()"><img src="../assets/icon/sign/backarrow.svg" alt="Back"></div>
@@ -40,8 +40,8 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <div class="name-section">
                 <h2>${name}</h2>
                 <div class="action-buttons">
-                   <span onclick="openEditContactOverlay(${index})">✏️ Edit</span>
-                <span onclick="openDeleteContactOverlay(${index})">🗑️ Delete</span>
+                    <span onclick="openEditContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit</span>
+                    <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
                 </div>
             </div>
         </div>
