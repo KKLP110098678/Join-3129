@@ -182,3 +182,23 @@ function showMobileContactActionMenu() {
         actionMenu.classList.toggle('d-none');
     }
 }
+
+let pendingDeleteIndex = null;
+
+function openDeleteContactOverlay(index) {
+    pendingDeleteIndex = index;
+    document.getElementById('deleteContactOverlay').classList.remove('d-none');
+}
+
+function closeDeleteContactOverlay() {
+    pendingDeleteIndex = null;
+    document.getElementById('deleteContactOverlay').classList.add('d-none');
+    showMobileContactActionMenu();
+}
+
+function confirmDeleteContact() {
+    if (pendingDeleteIndex !== null) {
+        deleteContact(pendingDeleteIndex);
+        closeDeleteContactOverlay();
+    }
+}

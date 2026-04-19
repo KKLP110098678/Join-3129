@@ -23,7 +23,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
         </div>
         <div class="mobile-contact-action-menu d-none">
             <span onclick="openEditContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit</span>
-            <span onclick="deleteContact(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
+            <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
         </div>
         <button class="btn-change-contact-mobile" onclick="showMobileContactActionMenu()">
             <img src="../assets/icon/contacts/contact-details-menu.svg" alt="">
@@ -41,7 +41,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
                 <h2>${name}</h2>
                 <div class="action-buttons">
                    <span onclick="openEditContactOverlay(${index})">✏️ Edit</span>
-                <span onclick="deleteContact(${index})">🗑️ Delete</span>
+                <span onclick="openDeleteContactOverlay(${index})">🗑️ Delete</span>
                 </div>
             </div>
         </div>

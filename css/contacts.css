@@ -226,6 +226,8 @@ body {
     }
 }
 
+
+
 .overlay-content {
     background-color: white;
     border-radius: 20px 0 0 20px;
@@ -382,6 +384,31 @@ body {
 
 .btn-create:hover {
     background-color: #005DFF;
+}
+
+.btn-delete {
+    background-color: #FF5C5C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}   
+
+.btn-delete:hover {
+    background-color: #fc3b3b;
+}
+
+.delete-warning-info {
+    text-align: center;
+    font-size: 18px;
+    color: #2A3647;
+    margin-top: 40px;
 }
 
 /* weitere Farben */
@@ -558,8 +585,6 @@ body {
 
     .overlay-content {
         width: 90vw;
-        padding: 24px;
-        margin: 20px;
     }
 
     .info-headline {
