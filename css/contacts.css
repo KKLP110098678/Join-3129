@@ -439,8 +439,7 @@ body {
     }
 
     .contact-list-scroll {
-        margin-bottom: 100px;
-        /* Platz für den Button unten schaffen */
+        margin: 100px 0px;
     }
 
     .button-container {

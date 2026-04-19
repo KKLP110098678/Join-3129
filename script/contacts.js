@@ -37,8 +37,6 @@ async function saveContacts() {
     }
 }
 
-
-
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
     if (!listContainer) return;
@@ -184,4 +182,3 @@ function showMobileContactActionMenu() {
         actionMenu.classList.toggle('d-none');
     }
 }
-

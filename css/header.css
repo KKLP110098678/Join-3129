@@ -79,7 +79,7 @@ header {
 .logout-menu {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.9);
-    top: 102px; 
+    top: 102px;
     right: 4px;
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
@@ -115,7 +115,12 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-        .header-headline {
+    header {
+        position: fixed;
+        top: 0;
+    }
+
+    .header-headline {
         display: none;
     }
 
