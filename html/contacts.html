@@ -7,6 +7,7 @@
     <title>Contacts</title>
 
     <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
+    <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/standard.css">
     <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/header.css">
@@ -118,6 +119,25 @@
                         <button type="submit" class="btn-create">Save ✓</button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- DELETE CONTACT CONFIRMATION OVERLAY -->
+    <div id="deleteContactOverlay" class="overlay d-none">
+        <div class="overlay-content form-overlay">
+            <div class="overlay-blue-part">
+                <span class="close-btn white-close-btn" onclick="closeDeleteContactOverlay()">✖</span>
+                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
+                <h2>Delete Contact</h2>
+                <p>Are you sure?</p>
+            </div>
+            <div class="overlay-white-part">
+                <p class="delete-warning-info">Do you really want to delete this contact? This action cannot be undone.</p>
+                <div class="overlay-buttons form-buttons" style="margin-top: 60px;">
+                    <button type="button" class="btn-cancel" onclick="closeDeleteContactOverlay()">Cancel</button>
+                    <button type="button" class="btn-delete" onclick="confirmDeleteContact()">Delete</button>
+                </div>
             </div>
         </div>
     </div>

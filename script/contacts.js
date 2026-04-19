@@ -37,8 +37,6 @@ async function saveContacts() {
     }
 }
 
-
-
 function renderContacts() {
     let listContainer = document.querySelector('.contact-list-scroll');
     if (!listContainer) return;
@@ -82,6 +80,7 @@ function deleteContact(index) {
     
     saveContacts();
     renderContacts();
+    closeMobileDetails()
 }
 
 
@@ -177,3 +176,29 @@ function closeMobileDetails() {
     }
 }
 
+function showMobileContactActionMenu() {
+    let actionMenu = document.querySelector('.mobile-contact-action-menu');
+    if (actionMenu) {
+        actionMenu.classList.toggle('d-none');
+    }
+}
+
+let pendingDeleteIndex = null;
+
+function openDeleteContactOverlay(index) {
+    pendingDeleteIndex = index;
+    document.getElementById('deleteContactOverlay').classList.remove('d-none');
+}
+
+function closeDeleteContactOverlay() {
+    pendingDeleteIndex = null;
+    document.getElementById('deleteContactOverlay').classList.add('d-none');
+    showMobileContactActionMenu();
+}
+
+function confirmDeleteContact() {
+    if (pendingDeleteIndex !== null) {
+        deleteContact(pendingDeleteIndex);
+        closeDeleteContactOverlay();
+    }
+}

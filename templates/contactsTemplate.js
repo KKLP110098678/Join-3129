@@ -1,8 +1,39 @@
 function showContactDetails(index, name, email, phone, initials, colorClass) {
     let detailContainer = document.getElementById('contact-detail-view');
 
-    detailContainer.innerHTML = `
-        <div class="back-arrow" onclick="closeMobileDetails()">⬅️ Back</div>
+    if (window.innerWidth <= 768) {
+
+        detailContainer.innerHTML = `
+        <h3 class="info-headline">Contact Information</h3>
+        <div class="back-arrow" onclick="closeMobileDetails()"><img src="../assets/icon/sign/backarrow.svg" alt="Back"></div>
+        <div class="contact-header">
+            <div class="initials-big ${colorClass}">${initials}</div>
+            
+            <div class="name-section">
+                <h2>${name}</h2>
+            </div>
+        </div>
+        <div class="contact-data">
+            
+            <b>Email</b>
+            <a href="mailto:${email}">${email}</a>
+            
+            <b>Phone</b>
+            <span>${phone}</span>
+        </div>
+        <div class="mobile-contact-action-menu d-none">
+            <span onclick="openEditContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit</span>
+            <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
+        </div>
+        <button class="btn-change-contact-mobile" onclick="showMobileContactActionMenu()">
+            <img src="../assets/icon/contacts/contact-details-menu.svg" alt="">
+        </button>
+        `;
+
+    }
+    else {
+        detailContainer.innerHTML = `
+        <div class="back-arrow" onclick="closeMobileDetails()"><img src="../assets/icon/sign/backarrow.svg" alt="Back"></div>
         <div class="contact-header">
             <div class="initials-big ${colorClass}">${initials}</div>
             
@@ -10,7 +41,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
                 <h2>${name}</h2>
                 <div class="action-buttons">
                    <span onclick="openEditContactOverlay(${index})">✏️ Edit</span>
-                <span onclick="deleteContact(${index})">🗑️ Delete</span>
+                <span onclick="openDeleteContactOverlay(${index})">🗑️ Delete</span>
                 </div>
             </div>
         </div>
@@ -25,7 +56,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <span>${phone}</span>
         </div>
     `;
-
+    }
     // Aktive Markierung setzen
     document.querySelectorAll('.contact-card').forEach(card => card.classList.remove('active-card'));
     let currentCard = document.getElementById('contactCard_' + index);
