@@ -458,21 +458,21 @@
     #taskDetailOverlay {
         width: calc(100vw - 32px);
         max-width: 400px;
-        min-height: 75vh;
+        min-height: auto;
         height: auto;
         max-height: 90vh;
         border-radius: 30px;
     }
 
     .task-detail-container {
-        min-height: 75vh;
+        min-height: auto;
         height: auto;
-        padding: 32px 24px;
+        padding: 32px 16px;
         overflow-y: auto;
     }
 
     .task-detail-title {
-        font-size: 36px;
+        font-size: 32px;
     }
 
     .task-detail-description {
@@ -488,5 +488,15 @@
     .detail-assignee,
     .detail-subtask {
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .task-detail-title {
+        font-size: 24px;
+    }
+    
+    .task-detail-container {
+        padding: 24px 12px;
     }
 }
