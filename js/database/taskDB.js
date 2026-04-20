@@ -66,11 +66,24 @@ function renderSubtaskProgress(task) {
 
 function renderAssigneeIcons(assignees) {
     if (!assignees || assignees.length === 0) return '';
-    return assignees.map((name, index) => {
+
+    const maxDisplay = 3;
+    let html = '';
+
+    const visible = assignees.slice(0, maxDisplay);
+    const extra = assignees.length - maxDisplay;
+
+    visible.forEach((name, index) => {
         const contact = contacts.find(c => c.name === name);
-        if (!contact) return '';
-        return `<div class="avatar-sm ${contact.color}" style="z-index: ${assignees.length - index}">${contact.initials}</div>`;
-    }).join('');
+        if (!contact) return;
+        html += `<div class="avatar-sm ${contact.color}" style="z-index: ${assignees.length - index}">${contact.initials}</div>`;
+    });
+
+    if (extra > 0) {
+        html += `<div class="avatar-sm" style="background-color: #d1d1d1; color: white; z-index: 0">+${extra}</div>`;
+    }
+
+    return html;
 }
 
 function renderPriorityIcon(priority) {
