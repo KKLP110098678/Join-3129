@@ -66,11 +66,23 @@ function renderSubtaskProgress(task) {
 
 function renderAssigneeIcons(assignees) {
     if (!assignees || assignees.length === 0) return '';
-    return assignees.map((name, index) => {
+    
+    const maxVisible = 4;
+    const toShow = assignees.slice(0, maxVisible);
+    const extraCount = assignees.length - maxVisible;
+
+    let html = toShow.map((name, index) => {
         const contact = contacts.find(c => c.name === name);
         if (!contact) return '';
+        // z-index ensures overlapping avatars look correct (left over right)
         return `<div class="avatar-sm ${contact.color}" style="z-index: ${assignees.length - index}">${contact.initials}</div>`;
     }).join('');
+
+    if (extraCount > 0) {
+        html += `<div class="avatar-sm bg-gray" style="z-index: 0">+${extraCount}</div>`;
+    }
+
+    return html;
 }
 
 function renderPriorityIcon(priority) {

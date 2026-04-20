@@ -492,7 +492,7 @@ body {
 }
 
 /* --- MOBILE RESPONSIVENESS (< 800px) --- */
-@media screen and (max-width: 800px) {
+@media(max-width: 1000px) {
     .contacts-container {
         margin-left: 0;
         height: calc(100vh - 100px - 80px);

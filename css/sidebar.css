@@ -56,7 +56,7 @@
     color: #0038FF;
 }
 
-@media(max-width: 800px) {
+@media(max-width: 1000px) {
     .menu {
         width: 100vw;
         height: 80px;
@@ -94,9 +94,13 @@
 
     .menu-item:hover,
     .menu-item.active {
-        background-color: rgb(210, 227, 255);
-        color: #0062ea;
+        background-color: transparent;
+        color: #0038FF;
         border-radius: 8px;
+    }
+
+    .menu-item.active img {
+        filter: brightness(0) saturate(100%) invert(16%) sepia(99%) saturate(7462%) hue-rotate(233deg) brightness(100%) contrast(108%);
     }
 
     .sidebar-footer {
