@@ -8,6 +8,7 @@ main {
     max-width: 1688px;
     flex: 1;
     margin-left: 232px;
+    overflow-y: auto;
 }
 
 #summaryContent {

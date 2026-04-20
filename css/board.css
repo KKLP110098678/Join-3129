@@ -10,6 +10,7 @@ main {
   flex: 1;
   box-sizing: border-box;
   padding-left: 232px;
+  overflow-y: auto;
 }
 
 #boardContent {
@@ -260,30 +261,30 @@ main {
   width: 100%;
   max-width: 260px;
   background: white;
-  border-radius: 20px;
-  padding: 16px;
+  border-radius: 24px;
+  padding: 18px;
   box-sizing: border-box;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 24px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.1s ease;
 }
 
 .board-card:hover {
-  transform: rotate(2deg);
-  box-shadow: 0 0 14px 4px rgba(0, 0, 0, 0.06);
+  transform: scale(1.02);
 }
 
 .board-card-badge {
   color: white;
   padding: 4px 16px;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   width: fit-content;
+  margin-bottom: 4px;
 }
 
 .badge-user-story {
@@ -303,7 +304,7 @@ main {
 .board-card-title {
   font-size: 16px;
   font-weight: 700;
-  color: #2A3647;
+  color: #4589FF;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -314,7 +315,7 @@ main {
 }
 
 .board-card-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: #A8A8A8;
   margin: 0;
   overflow: hidden;
@@ -330,6 +331,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  margin: 8px 0;
 }
 
 .progress-bar-bg {
@@ -349,12 +351,14 @@ main {
 .progress-text {
   font-size: 12px;
   color: black;
+  white-space: nowrap;
 }
 
 .board-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 4px;
 }
 
 .board-card-avatars {
@@ -365,13 +369,13 @@ main {
   width: 32px;
   height: 32px;
   font-size: 12px;
-  border: 1px solid white;
-  margin-right: -8px;
+  border: 2px solid white;
+  margin-right: -10px;
 }
 
 .board-card-priority img {
   width: 20px;
-  height: 20px;
+  height: 16px;
 }
 
 /* drag n drop */
@@ -394,15 +398,15 @@ main {
 @media (max-width: 1000px) {
   main {
     padding-left: 0;
-    height: auto;
-    min-height: calc(100vh - 100px);
+    height: calc(100vh - 160px); /* 80px header + 80px bottom nav */
+    margin-top: 0;
   }
 
   #boardContent {
-    padding: 24px 16px 120px 16px; /* space for bottom nav */
+    padding: 32px 16px 32px 16px; 
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: max-content;
   }
 
   .upper-board, .tasksbar, .lower-board, .lower-board-content {
@@ -413,12 +417,16 @@ main {
     order: 1;
     width: 100%;
     margin-top: 0;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
     gap: 0;
   }
 
   .searchbar-input {
     width: 100%;
+    height: 48px;
+    background-color: white;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
   }
 
   .add-task-btn {
@@ -442,19 +450,36 @@ main {
     max-width: 100%;
     margin-top: 24px;
     margin-bottom: 16px;
-    font-size: 24px;
+    padding-right: 8px;
+  }
+
+  .taskbar-tab p {
+    font-size: 27px;
+    font-weight: 700;
+    color: #2A3647;
+  }
+
+  .taskbar-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-width: 2px;
+    border-radius: 10px;
   }
 
   /* Make drop areas horizontally scrollable on mobile */
   .tab-content-box {
     max-width: 100%;
-    min-height: 50px;
+    min-height: 80px;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
     gap: 16px;
-    padding-bottom: 8px; /* space for scrollbar */
+    padding-bottom: 16px; /* space for scrollbar */
+    margin-bottom: 16px;
   }
 
   /* Mobile scrollbar styling */
@@ -470,13 +495,19 @@ main {
   }
 
   .board-card {
-    min-width: 250px;
+    min-width: 252px;
+    max-width: 252px;
     margin-bottom: 0; 
     flex-shrink: 0;
   }
 
   .task-element {
     width: 100%;
-    min-width: 100%; /* forces placeholder to fill the row */
+    min-width: 100%; 
+    height: 56px;
+    background-color: #E7E7E7;
+    border: 1px dashed #A8A8A8;
+    color: #A8A8A8;
+    border-radius: 10px;
   }
 }

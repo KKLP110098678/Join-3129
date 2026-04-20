@@ -110,3 +110,28 @@ header {
 .logout-menu button:hover {
     background-color: rgb(210, 227, 255);
 }
+
+@media (max-width: 1000px) {
+    header {
+        height: 80px;
+        justify-content: center;
+    }
+
+    .header-content {
+        padding: 0 16px;
+    }
+
+    .header-headline, .help-icon {
+        display: none;
+    }
+
+    .header-logo {
+        margin-left: 0;
+        width: 32px;
+        height: 32px;
+    }
+
+    .header-interaction {
+        margin-right: 0;
+    }
+}

@@ -10,6 +10,8 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  background-color: #F6F7F8;
 }
 
 .d-none {
