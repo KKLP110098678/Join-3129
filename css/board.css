@@ -399,17 +399,18 @@ main {
   main {
     padding-left: 0;
     height: calc(100vh - 160px); /* 80px header + 80px bottom nav */
-    margin-top: 0;
+    margin-top: 80px; /* Clear fixed header */
     justify-content: flex-start;
   }
 
   #boardContent {
-    padding: 32px 16px 100px 16px; 
-    display: flex;
-    flex-direction: column;
+    padding: 32px 16px 120px 16px; 
+    display: grid;
+    grid-template-columns: 1fr;
     height: max-content;
     width: 100%;
-    align-items: flex-start;
+    align-items: start;
+    box-sizing: border-box;
   }
 
   .upper-board, .tasksbar, .lower-board, .lower-board-content {
@@ -452,8 +453,8 @@ main {
 
   .taskbar-tab {
     max-width: 100%;
-    margin-top: 24px;
-    margin-bottom: 16px;
+    margin-top: 16px; /* Reduced from 24px */
+    margin-bottom: 8px; /* Reduced from 16px */
     padding-right: 0;
   }
 
@@ -471,26 +472,28 @@ main {
     justify-content: center;
     border: 2px solid #4589FF;
     color: #4589FF;
-    border-radius: 8px;
+    border-radius: 50%; /* Circular as in mockup */
     font-size: 24px;
     background: transparent;
   }
 
-  /* Make drop areas horizontally scrollable on mobile */
+  /* Make drop areas horizontally scrollable on mobile as shown in mockup */
   .tab-content-box {
     max-width: 100%;
-    min-height: 80px;
+    min-height: 50px; /* Reduced from 80px */
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
+    align-items: flex-start;
     gap: 16px;
-    padding-bottom: 16px; /* space for scrollbar */
-    margin-bottom: 16px;
+    margin-bottom: 8px; /* Consistent small gap before next header */
+    padding: 16px 4px;
     width: 100%;
+    box-sizing: border-box;
   }
 
-  /* Mobile scrollbar styling */
+  /* Custom scrollbar for horizontal task scrolling */
   .tab-content-box::-webkit-scrollbar {
     height: 4px;
   }
@@ -498,16 +501,22 @@ main {
     background: transparent;
   }
   .tab-content-box::-webkit-scrollbar-thumb {
-    background-color: #D1D1D1;
-    border-radius: 2px;
+    background: #D1D1D1;
+    border-radius: 10px;
   }
 
+
   .board-card {
-    min-width: 252px;
-    max-width: 252px;
+    min-width: 250px;
+    max-width: calc(100vw - 32px); /* Fit small screens */
     margin-bottom: 0; 
     flex-shrink: 0;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .board-card-title, .board-card-desc {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
   }
 
   .task-element {
@@ -524,12 +533,6 @@ main {
   }
 }
 
-@media screen and (max-width: 768px) {
-  main {
-    margin-top: 80px;
-    height: calc(100vh - 160px);
-  }
-}
 
 @media screen and (max-width: 450px) {
   .form-container {
