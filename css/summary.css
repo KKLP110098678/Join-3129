@@ -43,7 +43,7 @@ main {
     gap: 20px;
     perspective: 500px;
 } */
- .urgent-link {
+.urgent-link {
     grid-column: span 3;
 }
 
@@ -349,41 +349,48 @@ main {
         height: auto;
         padding: 0 16px;
     }
-    
+
     .summary-cards {
         perspective: none;
         column-gap: 15px;
         row-gap: 24px;
     }
-    
+
     .seperation-line {
         height: 118px;
     }
-    
-    .todo-link, .urgent-link {
+
+    .todo-link,
+    .urgent-link {
         grid-column: span 4;
         order: -1;
     }
-    
+
     .to-do {
         width: auto;
     }
-    
-    .in-board-link, .in-progress-link, .awaiting-feedback-link, .done-link {
+
+    .in-board-link,
+    .in-progress-link,
+    .awaiting-feedback-link,
+    .done-link {
         grid-column: span 2;
     }
-    
+
     .urgent-task-box {
         height: 150px;
     }
-    
+
     .to-do {
         height: 106px;
         flex-direction: row;
         justify-content: space-between;
     }
-    
-    .in-progress, .awaiting-feedback, .done, .task-in-board {
+
+    .in-progress,
+    .awaiting-feedback,
+    .done,
+    .task-in-board {
         height: 152px;
     }
 }
@@ -400,7 +407,9 @@ main {
 }
 
 @media (max-width: 461px) {
-    .date-text-top, .date-text {
+
+    .date-text-top,
+    .date-text {
         width: auto;
     }
 }
@@ -419,8 +428,11 @@ main {
         font-size: 40px;
     }
 
-    .in-progress, .awaiting-feedback, .done, .task-in-board {
-        height: 120px;
+    .in-progress,
+    .awaiting-feedback,
+    .done,
+    .task-in-board {
+
     }
 
     .summary-cards {
