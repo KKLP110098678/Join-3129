@@ -66,7 +66,6 @@ function renderSubtaskProgress(task) {
 
 function renderAssigneeIcons(assignees) {
     if (!assignees || assignees.length === 0) return '';
-    
     const maxVisible = 4;
     const toShow = assignees.slice(0, maxVisible);
     const extraCount = assignees.length - maxVisible;
