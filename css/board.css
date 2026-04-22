@@ -395,17 +395,23 @@ main {
   opacity: 0.8;
 }
 
+.search-field::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 1000px) {
   main {
     padding-left: 0;
-    height: calc(100vh - 160px); /* 80px header + 80px bottom nav */
-    margin-top: 80px; /* Clear fixed header */
+    height: calc(100vh - 160px);
+    /* 80px header + 80px bottom nav */
+    margin-top: 80px;
+    /* Clear fixed header */
     justify-content: flex-start;
   }
 
   #boardContent {
-    padding: 32px 16px 120px 16px; 
+    padding: 32px 16px 120px 16px;
     display: grid;
     grid-template-columns: 1fr;
     height: max-content;
@@ -414,7 +420,10 @@ main {
     box-sizing: border-box;
   }
 
-  .upper-board, .tasksbar, .lower-board, .lower-board-content {
+  .upper-board,
+  .tasksbar,
+  .lower-board,
+  .lower-board-content {
     display: contents;
   }
 
@@ -440,22 +449,44 @@ main {
   }
 
   /* Weave the headers and boxes via CSS order */
-  .taskbar-tab:nth-child(1) { order: 2; }
-  #toDoBox { order: 3; }
+  .taskbar-tab:nth-child(1) {
+    order: 2;
+  }
 
-  .taskbar-tab:nth-child(2) { order: 4; }
-  #progressBox { order: 5; }
+  #toDoBox {
+    order: 3;
+  }
 
-  .taskbar-tab:nth-child(3) { order: 6; }
-  #feedbackBox { order: 7; }
+  .taskbar-tab:nth-child(2) {
+    order: 4;
+  }
 
-  .taskbar-tab:nth-child(4) { order: 8; }
-  #doneBox { order: 9; }
+  #progressBox {
+    order: 5;
+  }
+
+  .taskbar-tab:nth-child(3) {
+    order: 6;
+  }
+
+  #feedbackBox {
+    order: 7;
+  }
+
+  .taskbar-tab:nth-child(4) {
+    order: 8;
+  }
+
+  #doneBox {
+    order: 9;
+  }
 
   .taskbar-tab {
     max-width: 100%;
-    margin-top: 16px; /* Reduced from 24px */
-    margin-bottom: 8px; /* Reduced from 16px */
+    margin-top: 16px;
+    /* Reduced from 24px */
+    margin-bottom: 8px;
+    /* Reduced from 16px */
     padding-right: 0;
   }
 
@@ -473,7 +504,8 @@ main {
     justify-content: center;
     border: 2px solid #4589FF;
     color: #4589FF;
-    border-radius: 50%; /* Circular as in mockup */
+    border-radius: 50%;
+    /* Circular as in mockup */
     font-size: 24px;
     background: transparent;
   }
@@ -481,14 +513,16 @@ main {
   /* Make drop areas horizontally scrollable on mobile as shown in mockup */
   .tab-content-box {
     max-width: 100%;
-    min-height: 50px; /* Reduced from 80px */
+    min-height: 50px;
+    /* Reduced from 80px */
     display: flex;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
     align-items: flex-start;
     gap: 16px;
-    margin-bottom: 8px; /* Consistent small gap before next header */
+    margin-bottom: 8px;
+    /* Consistent small gap before next header */
     padding: 16px 4px;
     width: 100%;
     box-sizing: border-box;
@@ -498,9 +532,11 @@ main {
   .tab-content-box::-webkit-scrollbar {
     height: 4px;
   }
+
   .tab-content-box::-webkit-scrollbar-track {
     background: transparent;
   }
+
   .tab-content-box::-webkit-scrollbar-thumb {
     background: #D1D1D1;
     border-radius: 10px;
@@ -509,20 +545,22 @@ main {
 
   .board-card {
     min-width: 250px;
-    max-width: calc(100vw - 32px); /* Fit small screens */
-    margin-bottom: 0; 
+    max-width: calc(100vw - 32px);
+    /* Fit small screens */
+    margin-bottom: 0;
     flex-shrink: 0;
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
   }
 
-  .board-card-title, .board-card-desc {
+  .board-card-title,
+  .board-card-desc {
     -webkit-line-clamp: unset;
     line-clamp: unset;
   }
 
   .task-element {
     width: 100%;
-    min-width: 100%; 
+    min-width: 100%;
     height: 56px;
     background-color: #E7E7E7;
     border: 1px dashed #A8A8A8;

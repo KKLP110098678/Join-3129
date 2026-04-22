@@ -30,7 +30,7 @@
             <div class="upper-board">
                 <div class="searchbar">
                     <div class="searchbar-input">
-                        <input id="searchField" class="search-field" type="search" placeholder="Find Task">
+                        <input id="searchField" class="search-field" type="search" placeholder="Find Task" oninput="filterTasks()">
                         <div class="seperationbar-input"></div>
                         <button class="input-glass"><img src="../assets/icon/task/search.svg" alt=""></button>
                     </div>
@@ -254,6 +254,7 @@
 <script src="../templates/sidebarTemplate.js"></script>
 <script src="../templates/taskOverlayTemplate.js"></script>
 <script src="../js/overlays/boardAddTask.js"></script>
+<script src="../script/board.js"></script>
 <script src="../script/dragNdrop.js"></script>
 <script src="../script/script.js"></script>
 
