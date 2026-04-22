@@ -36,7 +36,7 @@
   }
 
   .searchbar {
-    width: 100%;
+    width: 100vw;
     margin-top: 0;
     gap: 0;
     position: sticky;
@@ -44,6 +44,8 @@
     z-index: 10;
     background-color: #F6F7F8;
     padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   .searchbar-input {

@@ -74,11 +74,11 @@ function renderAssigneeIcons(assignees) {
         const contact = contacts.find(c => c.name === name);
         if (!contact) return '';
         // z-index ensures overlapping avatars look correct (left over right)
-        return `<div class="avatar-sm ${contact.color}" style="z-index: ${assignees.length - index}">${contact.initials}</div>`;
+        return `<div class="avatar-sm ${contact.color}">${contact.initials}</div>`;
     }).join('');
 
     if (extraCount > 0) {
-        html += `<div class="avatar-sm bg-gray" style="z-index: 0">+${extraCount}</div>`;
+        html += `<div class="avatar-sm bg-gray">+${extraCount}</div>`;
     }
 
     return html;
