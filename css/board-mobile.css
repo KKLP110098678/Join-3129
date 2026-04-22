@@ -1,0 +1,193 @@
+@media (max-width: 1150px) {
+  .board-card-badge {
+    font-size: 16px;
+  }
+
+  .board-card-footer {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 1000px) {
+  main {
+    padding-left: 0;
+    height: calc(100vh - 160px);
+    margin-top: 60px;
+    justify-content: flex-start;
+    display: flex;
+  }
+
+  #boardContent {
+    padding: 0 16px 120px 16px;
+    display: flex;
+    flex-direction: column;
+    height: max-content;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .upper-board {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .searchbar {
+    width: 100vw;
+    margin-top: 0;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #F6F7F8;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .searchbar-input {
+    width: 100%;
+    height: 48px;
+    background-color: white;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+    padding: 0 16px;
+  }
+
+  .add-task-btn {
+    display: none;
+  }
+
+  /* tabs und ihre wrapper transparent machen damit order greift */
+  .tasksbar,
+  .lower-board,
+  .lower-board-content {
+    display: contents;
+  }
+
+  /* tabs und boxen abwechselnd sortieren */
+  .taskbar-tab:nth-child(1) { order: 2; }
+  #toDoBox { order: 3; }
+  .taskbar-tab:nth-child(2) { order: 4; }
+  #progressBox { order: 5; }
+  .taskbar-tab:nth-child(3) { order: 6; }
+  #feedbackBox { order: 7; }
+  .taskbar-tab:nth-child(4) { order: 8; }
+  #doneBox { order: 9; }
+
+  /* upper-board muss auch contents sein damit searchbar order:1 bekommt */
+  .upper-board {
+    display: contents;
+  }
+
+  .searchbar {
+    order: 1;
+  }
+
+  .taskbar-tab {
+    max-width: 100%;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    padding-right: 0;
+  }
+
+  .taskbar-tab p {
+    font-size: 27px;
+    font-weight: 700;
+    color: #2A3647;
+  }
+
+  .taskbar-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #4589FF;
+    color: #4589FF;
+    border-radius: 50%;
+    font-size: 24px;
+    background: transparent;
+  }
+
+  .tab-content-box {
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px;
+    padding: 16px 4px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .tab-content-box::-webkit-scrollbar { height: 4px; }
+  .tab-content-box::-webkit-scrollbar-track { background: transparent; }
+  .tab-content-box::-webkit-scrollbar-thumb {
+    background: #D1D1D1;
+    border-radius: 10px;
+  }
+
+  .board-card {
+    width: 100%;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .board-card-badge {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+  }
+
+  .board-card-title,
+  .board-card-desc {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+  }
+
+  .task-element {
+    width: 100%;
+    min-width: 100%;
+    height: 56px;
+    background-color: #E7E7E7;
+    border: 1px dashed #A8A8A8;
+    color: #A8A8A8;
+    border-radius: 10px;
+  }
+
+  .board-card-footer {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 450px) {
+  .form-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+
+  .form-header {
+    margin: 24px 16px;
+  }
+
+  .form-header h2 {
+    font-size: 32px;
+  }
+
+  .form-content {
+    padding: 0 16px 120px 16px;
+  }
+
+  .form-buttons {
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 16px;
+    justify-content: center;
+    border-radius: 0;
+  }
+}

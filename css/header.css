@@ -15,8 +15,6 @@ header {
 }
 
 .header-logo {
-    width: 50px;
-    height: 50px;
     margin-left: 24px;
 }
 
@@ -117,11 +115,6 @@ header {
 @media (max-width: 1000px) {
     header {
         height: 80px;
-        justify-content: center;
-    }
-
-    .header-content {
-        padding: 0 16px;
     }
 
     .header-headline, .help-icon {
@@ -129,27 +122,19 @@ header {
     }
 
     .header-logo {
-        margin-left: 0;
-        width: 32px;
-        height: 32px;
+        margin-left: 16px;
+    }
+
+    .header-logo img {
+        height: 50px;
+        width: 50px;
     }
 
     .header-interaction {
-        margin-right: 0;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    header {
-        position: fixed;
-        top: 0;
+        margin-right: 16px;
     }
 
-    .header-headline {
-        display: none;
-    }
-
-    .help-icon {
-        display: none;
+    .logout-menu {
+        top: 82px;
     }
 }
