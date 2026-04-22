@@ -495,19 +495,14 @@ body {
 @media(max-width: 1000px) {
     .contacts-container {
         margin-left: 0;
-        height: calc(100vh - 100px - 80px);
+        height: calc(100vh - 80px - 80px);
         /* header & bottom nav */
-        flex-direction: column;
     }
 
     .contact-list-section {
         width: 100%;
         padding: 0;
         box-shadow: none;
-    }
-
-    .contact-list-scroll {
-        margin: 100px 0px;
     }
 
     .button-container {
