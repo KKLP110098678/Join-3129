@@ -1,0 +1,19 @@
+@media (max-width: 1050px) {
+    #taskDetailOverlay {
+        min-height: 800px;
+    }
+
+    .task-detail-container {
+        min-height: 800px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #taskDetailOverlay {
+        min-height: 700px;
+    }
+
+    .task-detail-container {
+        min-height: 700px;
+    }
+}

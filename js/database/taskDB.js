@@ -160,9 +160,14 @@ function openTaskDetail(taskId) {
 }
 
 function closeTaskDetail() {
-    document.getElementById('taskDetailOverlay').classList.remove('edit-mode');
-    document.getElementById('taskDetailOverlay').close();
-    document.body.style.overflow = '';
+    const overlay = document.getElementById('taskDetailOverlay');
+    overlay.classList.add('closing');
+    
+    setTimeout(() => {
+        overlay.classList.remove('closing');
+        overlay.classList.remove('edit-mode');
+        overlay.close();
+    }, 300);
 }
 
 function closeTaskDetailOnBackdrop(event) {
