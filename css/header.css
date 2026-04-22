@@ -138,18 +138,3 @@ header {
         top: 82px;
     }
 }
-
-@media screen and (max-width: 768px) {
-    header {
-        position: fixed;
-        top: 0;
-    }
-
-    .header-headline {
-        display: none;
-    }
-
-    .help-icon {
-        display: none;
-    }
-}

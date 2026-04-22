@@ -13,33 +13,37 @@
   main {
     padding-left: 0;
     height: calc(100vh - 160px);
-    margin-top: 80px;
+    margin-top: 60px;
     justify-content: flex-start;
+    display: flex;
   }
 
   #boardContent {
-    padding: 32px 16px 120px 16px;
-    display: grid;
-    grid-template-columns: 1fr;
+    padding: 0 16px 120px 16px;
+    display: flex;
+    flex-direction: column;
     height: max-content;
     width: 100%;
-    align-items: start;
     box-sizing: border-box;
   }
 
-  .upper-board,
-  .tasksbar,
-  .lower-board,
-  .lower-board-content {
-    display: contents;
+  .upper-board {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    margin-bottom: 0;
   }
 
   .searchbar {
-    order: 1;
     width: 100%;
     margin-top: 0;
-    margin-bottom: 32px;
     gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #F6F7F8;
+    padding-bottom: 32px;
   }
 
   .searchbar-input {
@@ -55,6 +59,14 @@
     display: none;
   }
 
+  /* tabs und ihre wrapper transparent machen damit order greift */
+  .tasksbar,
+  .lower-board,
+  .lower-board-content {
+    display: contents;
+  }
+
+  /* tabs und boxen abwechselnd sortieren */
   .taskbar-tab:nth-child(1) { order: 2; }
   #toDoBox { order: 3; }
   .taskbar-tab:nth-child(2) { order: 4; }
@@ -63,6 +75,15 @@
   #feedbackBox { order: 7; }
   .taskbar-tab:nth-child(4) { order: 8; }
   #doneBox { order: 9; }
+
+  /* upper-board muss auch contents sein damit searchbar order:1 bekommt */
+  .upper-board {
+    display: contents;
+  }
+
+  .searchbar {
+    order: 1;
+  }
 
   .taskbar-tab {
     max-width: 100%;
@@ -92,11 +113,7 @@
 
   .tab-content-box {
     max-width: 100%;
-    min-height: 50px;
     display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
     align-items: flex-start;
     gap: 16px;
     margin-bottom: 8px;
@@ -113,7 +130,7 @@
   }
 
   .board-card {
-    min-width: 250px;
+    width: 100%;
     margin-bottom: 0;
     flex-shrink: 0;
   }
@@ -138,6 +155,10 @@
     border: 1px dashed #A8A8A8;
     color: #A8A8A8;
     border-radius: 10px;
+  }
+
+  .board-card-footer {
+    flex-direction: row;
   }
 }
 
