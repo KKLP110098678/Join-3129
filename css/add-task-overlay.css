@@ -3,7 +3,7 @@
     border: #DDDDDD solid 1px;
     border-radius: 24px;
     width: 500px;
-    min-height: 900px;
+    max-height: 1000px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -16,7 +16,6 @@
 
 .task-detail-container {
     height: 100%;
-    min-height: 900px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -51,6 +50,7 @@
 
 .task-detail-description {
     font-size: 20px;
+    font-weight: 600;
     word-break: break-word;
     hyphens: auto;
 }
@@ -64,7 +64,7 @@
 .task-detail-section {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 20px;
 }
 
 .task-detail-label {
@@ -76,20 +76,24 @@
 .task-detail-date,
 .task-detail-priority {
     font-size: 20px;
+    font-weight: 600;
 }
 
 .detail-assignees,
 .detail-subtasks {
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    margin-left: 16px;
 }
 
 .detail-assignee,
 .detail-subtask {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 20px;
     font-size: 20px;
+    font-weight: 600;
 }
 
 .task-detail-footer {

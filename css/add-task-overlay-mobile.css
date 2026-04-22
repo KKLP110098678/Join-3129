@@ -1,0 +1,11 @@
+@media (max-width: 1050px) {
+    #taskDetailOverlay {
+        max-height: 800px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #taskDetailOverlay {
+        max-height: 700px;
+    }
+}
