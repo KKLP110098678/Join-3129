@@ -61,16 +61,13 @@
 .page-form .form-group output {
     font-size: 14px;
     color: #FF8190;
-    /* Error color */
     visibility: hidden;
-    /* Hide by default, javascript uses .show error maybe? */
 }
 
 .page-form .form-group.has-error output {
     visibility: visible;
 }
 
-/* Description Textarea */
 .page-form #taskDescription {
     border: 1px solid #D1D1D1;
     border-radius: 0 10px 10px 10px;
@@ -85,7 +82,7 @@
     border-color: #4589FF;
 }
 
-/* Page Buttons at Bottom Right */
+/* Page Buttons */
 .page-buttons {
     display: flex;
     justify-content: flex-end;
@@ -151,7 +148,7 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Category & Assignee Dropdowns */
+/* Dropdowns */
 .dropdown-input-container {
     background-color: white;
     border-radius: 10px;
@@ -160,25 +157,25 @@
 
 .dropdown-input-container input {
     border: none !important;
-    /* override above rule for nested inside container */
 }
 
-/* highlight checked */
-#urgentPriority:checked+.priority-label.urgent {
+/* Priority highlight */
+#urgentPriority:checked + .priority-label.urgent {
     background-color: #FF3B30;
     color: white;
 }
 
-#mediumPriority:checked+.priority-label.medium {
+#mediumPriority:checked + .priority-label.medium {
     background-color: #FF9500;
     color: white;
 }
 
-#lowPriority:checked+.priority-label.low {
+#lowPriority:checked + .priority-label.low {
     background-color: #34C759;
     color: white;
 }
 
+/* Subtask hover */
 .list-item.subtask .input-btn-group {
     visibility: hidden;
 }
@@ -187,87 +184,7 @@
     visibility: visible;
 }
 
-/* Responsive */
-@media (max-width: 1000px) {
-    .add-task-main {
-        margin-left: 0;
-        width: 100%;
-        padding: 24px 16px 0 16px;
-        margin-bottom: 0;
-        height: calc(100vh - 100px);
-        overflow: hidden;
-    }
-
-    .add-task-page-container {
-        flex-direction: column;
-        height: 100%;
-        width: 100%;
-        overflow-y: auto;
-        overflow-x: hidden;
-        padding-bottom: 120px;
-        /* Important: Gives space for the bottom menu! */
-    }
-
-    .page-form {
-        width: 100%;
-        height: auto;
-        overflow-y: visible;
-        padding-right: 0;
-        padding-bottom: 0;
-    }
-
-    .page-form .form-group input#taskTitle {
-        font-size: 32px;
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .page-buttons {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: center;
-        gap: 16px;
-        margin-top: 24px;
-        padding-bottom: 24px;
-    }
-
-    .btn-clear,
-    .btn-primary-with-icon {
-        flex: 1;
-        font-size: 18px;
-        padding: 12px;
-    }
-
-    /* Adjust Priority Buttons for mobile flat look */
-    .radio-to-btn {
-        gap: 8px;
-        /* Slightly tighter gap on mobile */
-    }
-
-    .radio-to-btn label {
-        box-shadow: none;
-        border: 1px solid #D1D1D1;
-        border-bottom: 1px solid #D1D1D1;
-        /* Override desktop specific transparent bottom */
-        padding: 12px 0px;
-        /* Slightly tighter padding to fit small screens perfectly */
-    }
-
-    .radio-to-btn input:checked+label.urgent {
-        border-color: #ff3d00 !important;
-    }
-
-    .radio-to-btn input:checked+label.medium {
-        border-color: #ffa800 !important;
-    }
-
-    .radio-to-btn input:checked+label.low {
-        border-color: #7ae229 !important;
-    }
-}
-
-/* task detail overlay*/
+/* Task Detail Overlay */
 #taskDetailOverlay {
     border: #DDDDDD solid 1px;
     border-radius: 24px;
@@ -292,13 +209,10 @@
     box-sizing: border-box;
     padding: 40px 32px;
     gap: 20px;
-
-    /* Hide scrollbar for Firefox, IE and Edge */
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 .task-detail-container::-webkit-scrollbar {
     display: none;
 }
@@ -345,31 +259,18 @@
     color: #4E5D77;
 }
 
-.task-detail-date {
-    font-size: 20px;
-}
-
+.task-detail-date,
 .task-detail-priority {
     font-size: 20px;
 }
 
-.detail-assignees {
-    display: flex;
-    flex-direction: column;
-}
-
-.detail-assignee {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 20px;
-}
-
+.detail-assignees,
 .detail-subtasks {
     display: flex;
     flex-direction: column;
 }
 
+.detail-assignee,
 .detail-subtask {
     display: flex;
     align-items: center;
@@ -424,51 +325,98 @@
     background-color: #b5d0ff;
 }
 
-/* Edit Mode Overlay */
-#taskDetailOverlay.edit-mode {
-
-    .task-detail-header {
-        justify-content: flex-end;
-    }
-
-    .form-group {
-        margin-bottom: 40px;
-    }
-
-    #editDescription {
-        border-radius: 0 8px 8px 8px;
-        border-color: lightgray;
-        padding: 12px;
-        font-size: 20px;
-    }
-
-    #editTitle {
-        font-size: 32px;
-    }
-
-    .btn-save-edit {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: 10px;
-        padding: 16px;
-        font-size: 21px;
-        height: 56px;
-    }
+/* Edit Mode */
+#taskDetailOverlay.edit-mode .task-detail-header {
+    justify-content: flex-end;
 }
 
-/* Mobile Responsiveness for Task Detail Overlay */
-@media (max-width: 1150px) {
-    .board-card-badge {
-        font-size: 18px;
+#taskDetailOverlay.edit-mode .form-group {
+    margin-bottom: 40px;
+}
+
+#taskDetailOverlay.edit-mode #editDescription {
+    border-radius: 0 8px 8px 8px;
+    border-color: lightgray;
+    padding: 12px;
+    font-size: 20px;
+}
+
+#taskDetailOverlay.edit-mode #editTitle {
+    font-size: 32px;
+}
+
+#taskDetailOverlay.edit-mode .btn-save-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 21px;
+    height: 56px;
+}
+
+/* Mobile */
+@media (max-width: 1000px) {
+    .add-task-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 24px 16px 0 16px;
+        height: calc(100vh - 100px);
+        overflow: hidden;
     }
 
-    .board-card-footer {
-        display: flex;
+    .add-task-page-container {
         flex-direction: column;
-        gap: 12px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-bottom: 120px;
     }
+
+    .page-form {
+        width: 100%;
+        height: auto;
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    .page-form .form-group input#taskTitle {
+        font-size: 32px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .page-buttons {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 24px;
+        padding-bottom: 24px;
+    }
+
+    .btn-clear,
+    .btn-primary-with-icon {
+        flex: 1;
+        font-size: 18px;
+        padding: 12px;
+    }
+
+    .radio-to-btn {
+        gap: 8px;
+    }
+
+    .radio-to-btn label {
+        box-shadow: none;
+        border: 1px solid #D1D1D1;
+        padding: 12px 0px;
+    }
+
+    .radio-to-btn input:checked + label.urgent { border-color: #ff3d00 !important; }
+    .radio-to-btn input:checked + label.medium { border-color: #ffa800 !important; }
+    .radio-to-btn input:checked + label.low { border-color: #7ae229 !important; }
 }
 
 @media (max-width: 800px) {
@@ -488,17 +436,9 @@
         overflow-y: auto;
     }
 
-    .task-detail-title {
-        font-size: 32px;
-    }
-
-    .task-detail-description {
-        font-size: 16px;
-    }
-
-    .task-detail-label {
-        font-size: 16px;
-    }
+    .task-detail-title { font-size: 32px; }
+    .task-detail-description { font-size: 16px; }
+    .task-detail-label { font-size: 16px; }
 
     .task-detail-date,
     .task-detail-priority,
@@ -508,12 +448,7 @@
     }
 }
 
-@media screen and (max-width: 350px) {
-    .task-detail-title {
-        font-size: 24px;
-    }
-
-    .task-detail-container {
-        padding: 24px 12px;
-    }
+@media (max-width: 350px) {
+    .task-detail-title { font-size: 24px; }
+    .task-detail-container { padding: 24px 12px; }
 }
