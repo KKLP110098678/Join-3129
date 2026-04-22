@@ -414,7 +414,7 @@ main {
     }
 }
 
-@media (max-height: 844px) {
+@media (max-height: 844px) and (max-width: 1250px) {
     .task-text {
         font-size: 18px;
     }
@@ -440,13 +440,13 @@ main {
     }
 }
 
-@media (max-height: 760px) {
+@media (max-height: 760px) and (max-width: 1250px) {
     .summary-cards {
         row-gap: 8px;
     }
 }
 
-@media (max-height: 720px) {
+@media (max-height: 720px) and (max-width: 1250px) {
     .urgent-task {
         height: auto;
     }
