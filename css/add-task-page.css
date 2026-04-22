@@ -204,7 +204,8 @@
         width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
-        padding-bottom: 120px; /* Important: Gives space for the bottom menu! */
+        padding-bottom: 120px;
+        /* Important: Gives space for the bottom menu! */
     }
 
     .page-form {
@@ -231,33 +232,37 @@
         padding-bottom: 24px;
     }
 
-    .btn-clear, .btn-primary-with-icon {
+    .btn-clear,
+    .btn-primary-with-icon {
         flex: 1;
-        font-size: 18px; 
+        font-size: 18px;
         padding: 12px;
     }
 
     /* Adjust Priority Buttons for mobile flat look */
     .radio-to-btn {
-        gap: 8px; /* Slightly tighter gap on mobile */
+        gap: 8px;
+        /* Slightly tighter gap on mobile */
     }
 
     .radio-to-btn label {
         box-shadow: none;
         border: 1px solid #D1D1D1;
-        border-bottom: 1px solid #D1D1D1; /* Override desktop specific transparent bottom */
-        padding: 12px 0px; /* Slightly tighter padding to fit small screens perfectly */
+        border-bottom: 1px solid #D1D1D1;
+        /* Override desktop specific transparent bottom */
+        padding: 12px 0px;
+        /* Slightly tighter padding to fit small screens perfectly */
     }
 
-    .radio-to-btn input:checked + label.urgent {
+    .radio-to-btn input:checked+label.urgent {
         border-color: #ff3d00 !important;
     }
 
-    .radio-to-btn input:checked + label.medium {
+    .radio-to-btn input:checked+label.medium {
         border-color: #ffa800 !important;
     }
 
-    .radio-to-btn input:checked + label.low {
+    .radio-to-btn input:checked+label.low {
         border-color: #7ae229 !important;
     }
 }
@@ -287,7 +292,7 @@
     box-sizing: border-box;
     padding: 40px 32px;
     gap: 20px;
-    
+
     /* Hide scrollbar for Firefox, IE and Edge */
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -454,6 +459,18 @@
 }
 
 /* Mobile Responsiveness for Task Detail Overlay */
+@media (max-width: 1150px) {
+    .board-card-badge {
+        font-size: 18px;
+    }
+
+    .board-card-footer {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
 @media (max-width: 800px) {
     #taskDetailOverlay {
         width: calc(100vw - 32px);
@@ -495,7 +512,7 @@
     .task-detail-title {
         font-size: 24px;
     }
-    
+
     .task-detail-container {
         padding: 24px 12px;
     }

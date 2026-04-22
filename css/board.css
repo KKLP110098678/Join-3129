@@ -284,8 +284,7 @@ main {
   border-radius: 8px;
   font-size: 16px;
   font-weight: 400;
-  width: fit-content;
-  margin-bottom: 4px;
+  width: 100%;
 }
 
 .badge-user-story {
