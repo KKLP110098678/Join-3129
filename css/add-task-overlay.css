@@ -3,7 +3,7 @@
     border: #DDDDDD solid 1px;
     border-radius: 24px;
     width: 500px;
-    min-height: 1000px;
+    min-height: 900px;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -14,10 +14,9 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
-.task-detail-container {
-    height: 100%;
+.task-detail-container { 
     width: 100%;
-    min-height: 1000px;
+    min-height: 900px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
