@@ -53,14 +53,7 @@ li {
     color: #005DFF;
 }
 
-@media (max-width: 800px) {
-    main {
-        margin-left: 0;
-        margin-bottom: 80px;
-    }
-}
-
-@media (max-width: 1110px) {
+@media (max-width: 1000px) {
     h1 {
         font-size: 47px;
     }
@@ -68,7 +61,16 @@ li {
     h2 {
         font-size: 23px;
     }
+
     main {
+        margin-left: 0;
+        margin-bottom: 80px;
         padding: 64px 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    h1 {
+        font-size: 28px;
     }
 }
