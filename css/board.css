@@ -11,6 +11,7 @@ main {
   box-sizing: border-box;
   padding-left: 232px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 #boardContent {
