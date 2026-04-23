@@ -144,7 +144,6 @@ main {
 }
 
 .tab-content-box {
-  overflow-x: auto;
   max-width: 260px;
   width: 100%;
   min-width: 0;
