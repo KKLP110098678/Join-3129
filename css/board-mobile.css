@@ -14,6 +14,7 @@
     padding-left: 0;
     height: calc(100vh - 160px);
     margin-top: 60px;
+    margin-bottom: 80px;
     justify-content: flex-start;
     display: flex;
   }
