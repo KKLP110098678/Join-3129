@@ -21,7 +21,8 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <b>Phone</b>
             <span>${phone}</span>
         </div>
-        <div class="mobile-contact-action-menu d-none">
+        <div id="mobileActionOverlay" class="menu-overlay d-none" onclick="hideMobileContactActionMenu()"></div>
+        <div class="mobile-contact-action-menu d-none" id="mobileContactActionMenu">
             <span onclick="openEditContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit</span>
             <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
         </div>
