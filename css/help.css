@@ -65,3 +65,14 @@ h2 {
 .highlight-join {
     color: #4589FF;
 }
+
+@media (max-width: 1000px) {
+    main {
+        margin-left: 0;
+        margin-bottom: 80px;
+    }
+
+    #helpContent {
+        padding: 40px;
+    }
+}
