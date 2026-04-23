@@ -20,6 +20,7 @@ function headerTemplate() {
              <div id="menuOverlay" class="menu-overlay d-none" onclick="closeLogoutMenu()"></div>
 
             <div id="logOutMenu" class="logout-menu d-none">
+                <a href="../html/help.html" class="help-link-mobile">Help</a>
                 <a href="../html/legal-notice.html">Legal Notice</a>
                 <a href="../html/privacy-policy.html">Privacy Policy</a>
                 <button onclick="logout()">Log out</button>

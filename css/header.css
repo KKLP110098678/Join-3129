@@ -113,6 +113,10 @@ header {
     background-color: rgb(210, 227, 255);
 }
 
+.help-link-mobile {
+    display: none;
+}
+
 @media (max-width: 1000px) {
     header {
         height: 80px;
@@ -138,4 +142,8 @@ header {
     .logout-menu {
         top: 72px;
     }
+
+    .help-link-mobile {
+    display: block;
+}
 }
