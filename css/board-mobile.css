@@ -14,6 +14,7 @@
     padding-left: 0;
     height: calc(100vh - 160px);
     margin-top: 60px;
+    margin-bottom: 80px;
     justify-content: flex-start;
     display: flex;
   }
@@ -36,7 +37,6 @@
   }
 
   .searchbar {
-    width: 100vw;
     margin-top: 0;
     gap: 0;
     position: sticky;
@@ -44,8 +44,6 @@
     z-index: 10;
     background-color: #F6F7F8;
     padding-bottom: 32px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   .searchbar-input {
@@ -113,6 +111,7 @@
   }
 
   .tab-content-box {
+    overflow-x: auto;
     max-width: 100%;
     display: flex;
     align-items: flex-start;

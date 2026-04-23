@@ -146,8 +146,6 @@ main {
 .tab-content-box {
   max-width: 260px;
   width: 100%;
-  height: fit-content;
-  flex: 1;
   min-width: 0;
 }
 
