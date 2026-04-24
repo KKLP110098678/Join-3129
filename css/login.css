@@ -165,6 +165,7 @@ footer a {
 
     header {
         min-height: auto;
+        margin-bottom: 30px;
     }
 
     .logo {
@@ -185,7 +186,7 @@ footer a {
 
     main {
         flex-direction: column;
-        gap: 40px;
+        gap: 0px;
     }
 
     .mobile-sign-up {
