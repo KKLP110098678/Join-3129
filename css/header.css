@@ -122,7 +122,8 @@ header {
         height: 80px;
     }
 
-    .header-headline, .help-icon {
+    .header-headline,
+    .help-icon {
         display: none;
     }
 
@@ -144,6 +145,6 @@ header {
     }
 
     .help-link-mobile {
-    display: block;
-}
+        display: block;
+    }
 }
