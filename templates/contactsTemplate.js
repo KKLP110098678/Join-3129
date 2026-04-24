@@ -1,7 +1,7 @@
 function showContactDetails(index, name, email, phone, initials, colorClass) {
     let detailContainer = document.getElementById('contact-detail-view');
 
-        if (window.innerWidth <= 800) {
+        if (window.innerWidth <= 1000) {
 
         detailContainer.innerHTML = `
         <h3 class="info-headline">Contact Information</h3>
@@ -65,7 +65,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
         currentCard.classList.add('active-card');
     }
 
-    if (window.innerWidth <= 800) {
+    if (window.innerWidth <= 1000) {
         detailContainer.classList.add('show-mobile');
     }
 }
