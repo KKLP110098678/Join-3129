@@ -11,6 +11,7 @@ main {
   box-sizing: border-box;
   padding-left: 232px;
   overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 #boardContent {
@@ -83,6 +84,15 @@ main {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+.input-glass:hover {
+  background-color: #d2e3ff;
+  border-radius: 12px;
+}
+
+.input-glass:hover img {
+  filter: invert(40%) sepia(100%) saturate(500%) hue-rotate(190deg);
 }
 
 .add-task-btn {
@@ -210,14 +220,15 @@ main {
 
 .form-buttons {
   display: flex;
+  justify-content: flex-end;
   background: white;
-  flex-direction: row-reverse;
+  flex-direction: row;
   width: 100%;
   border-radius: 0 0 30px 30px;
 }
 
-.form-buttons button {
-  margin: 16px 40px 24px 0;
+.form-buttons {
+  gap: 12px;
 }
 
 #btn-close {
@@ -386,4 +397,8 @@ main {
 .board-card[draggable="true"]:active {
   cursor: grabbing;
   opacity: 0.8;
+}
+
+.form-buttons .btn-clear-mobile {
+  display: none;
 }

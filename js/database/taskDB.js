@@ -243,7 +243,11 @@ function updateEditAssignees() {
 
     container.innerHTML = '';
     const checkboxes = list.querySelectorAll('.edit-contact-checkbox:checked');
-    checkboxes.forEach(cb => {
+    const maxDisplay = 3;
+    const total = checkboxes.length;
+
+    checkboxes.forEach((cb, index) => {
+        if (index >= maxDisplay) return;
         const contact = contacts.find(c => c.name === cb.value);
         if (contact) {
             const avatar = document.createElement('div');
@@ -252,6 +256,15 @@ function updateEditAssignees() {
             container.appendChild(avatar);
         }
     });
+
+    if (total > maxDisplay) {
+        const extra = document.createElement('div');
+        extra.className = 'avatar-sm';
+        extra.style.backgroundColor = '#d1d1d1';
+        extra.style.color = 'white';
+        extra.innerText = `+${total - maxDisplay}`;
+        container.appendChild(extra);
+    }
 }
 
 function renderEditSubtasks() {
