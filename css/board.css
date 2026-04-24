@@ -229,8 +229,8 @@ main {
   border-radius: 0 0 30px 30px;
 }
 
-.form-buttons button {
-  margin: 16px 40px 24px 0;
+.form-buttons {
+  gap: 12px;
 }
 
 #btn-close {
