@@ -86,6 +86,15 @@ main {
   flex-shrink: 0;
 }
 
+.input-glass:hover {
+    background-color: #d2e3ff;
+    border-radius: 12px;
+}
+
+.input-glass:hover img {
+    filter: invert(40%) sepia(100%) saturate(500%) hue-rotate(190deg);
+}
+
 .add-task-btn {
   background-color: #4589ff;
   box-sizing: border-box;
