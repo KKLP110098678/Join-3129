@@ -619,8 +619,15 @@ body {
         font-size: 24px;
     }
 
+    .overlay {
+        align-items: center;
+        justify-content: center;
+    }
+
     .overlay-content {
         width: 90vw;
+        height: auto;
+        border-radius: 20px;
     }
 
     .info-headline {
