@@ -69,14 +69,37 @@
   }
 
   /* tabs und boxen abwechselnd sortieren */
-  .taskbar-tab:nth-child(1) { order: 2; }
-  #toDoBox { order: 3; }
-  .taskbar-tab:nth-child(2) { order: 4; }
-  #progressBox { order: 5; }
-  .taskbar-tab:nth-child(3) { order: 6; }
-  #feedbackBox { order: 7; }
-  .taskbar-tab:nth-child(4) { order: 8; }
-  #doneBox { order: 9; }
+  .taskbar-tab:nth-child(1) {
+    order: 2;
+  }
+
+  #toDoBox {
+    order: 3;
+  }
+
+  .taskbar-tab:nth-child(2) {
+    order: 4;
+  }
+
+  #progressBox {
+    order: 5;
+  }
+
+  .taskbar-tab:nth-child(3) {
+    order: 6;
+  }
+
+  #feedbackBox {
+    order: 7;
+  }
+
+  .taskbar-tab:nth-child(4) {
+    order: 8;
+  }
+
+  #doneBox {
+    order: 9;
+  }
 
   /* upper-board muss auch contents sein damit searchbar order:1 bekommt */
   .upper-board {
@@ -123,8 +146,14 @@
     box-sizing: border-box;
   }
 
-  .tab-content-box::-webkit-scrollbar { height: 4px; }
-  .tab-content-box::-webkit-scrollbar-track { background: transparent; }
+  .tab-content-box::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .tab-content-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   .tab-content-box::-webkit-scrollbar-thumb {
     background: #D1D1D1;
     border-radius: 10px;
@@ -160,6 +189,15 @@
 
   .board-card-footer {
     flex-direction: row;
+  }
+
+  .form-buttons {
+    box-sizing: border-box;
+    padding: 0 36px 0 36px;
+  }
+
+  .form-buttons .btn-clear-mobile {
+    display: flex;
   }
 }
 
