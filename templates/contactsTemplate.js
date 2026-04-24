@@ -27,7 +27,7 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
             <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button"><img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete</span>
         </div>
         <button class="btn-change-contact-mobile" onclick="showMobileContactActionMenu()">
-            <img src="../assets/icon/contacts/contact-details-menu.svg" alt="">
+            <img src="../assets/icon/contacts/contact-details-menu.svg" alt="Edit and Delete Menu">
         </button>
         `;
     }
@@ -69,3 +69,4 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
         detailContainer.classList.add('show-mobile');
     }
 }
+

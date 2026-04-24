@@ -114,6 +114,13 @@ function openEditContactOverlay(index) {
     document.getElementById('editContactName').value = contact.name;
     document.getElementById('editContactEmail').value = contact.email;
     document.getElementById('editContactPhone').value = contact.phone;
+    
+    // Set avatar initials and color
+    let avatar = document.getElementById('editContactAvatar');
+    let initialsSpan = document.getElementById('editContactInitials');
+    avatar.className = 'avatar-circle ' + contact.color;
+    initialsSpan.textContent = contact.initials;
+    
     document.getElementById('editContactOverlay').classList.remove('d-none');
 }
 

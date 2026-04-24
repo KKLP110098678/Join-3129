@@ -271,13 +271,13 @@ body {
 
 .overlay-blue-part h2 {
     font-size: 32px;
-    margin: 0 0 10px 0;
+    margin: 0 0 35px 0;
     font-weight: 700;
 }
 
 .overlay-blue-part p {
     font-size: 18px;
-    margin: 0;
+    margin: 0 0 35px 0;
     font-weight: 400;
 }
 
@@ -291,8 +291,8 @@ body {
 }
 
 .overlay-avatar-container {
-    margin-top: 30px;
-    margin-bottom: 30px;
+    position: relative;
+    top: -45px;
 }
 
 .avatar-circle {
@@ -310,6 +310,11 @@ body {
 .avatar-circle img {
     width: 40px;
     filter: brightness(0) invert(1);
+}
+
+.avatar-initials {
+    color: white;
+    font-size: 36px;
 }
 
 .overlay-white-part form {
