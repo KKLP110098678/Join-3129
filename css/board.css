@@ -53,6 +53,10 @@ main {
   gap: 8px;
 }
 
+.searchbar-input:focus-within {
+  border-color: #4589FF;
+}
+
 .search-field {
   flex: 1;
   border: none;
@@ -96,11 +100,11 @@ main {
 }
 
 .input-glass:active {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .input-glass:active img {
-    filter: invert(15%) sepia(100%) saturate(1000%) hue-rotate(210deg);
+  filter: invert(15%) sepia(100%) saturate(1000%) hue-rotate(210deg);
 }
 
 .add-task-btn {
