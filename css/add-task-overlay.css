@@ -71,12 +71,16 @@
     font-size: 24px;
     font-weight: 700;
     color: #4E5D77;
+    min-width: 120px
 }
 
 .task-detail-date,
 .task-detail-priority {
     font-size: 20px;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
 }
 
 .detail-assignees,
@@ -94,6 +98,27 @@
     gap: 20px;
     font-size: 20px;
     font-weight: 600;
+}
+
+.detail-subtask input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    flex-shrink: 0;
+    background-image: url('../assets/icon/board/check-empty.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.detail-subtask input[type="checkbox"]:checked {
+    background-image: url('../assets/icon/board/check.svg');
+}
+
+.detail-subtask:hover {
+    background-color: #d2e3ff;
 }
 
 .task-detail-footer {

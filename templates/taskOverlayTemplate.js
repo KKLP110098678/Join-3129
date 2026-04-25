@@ -65,7 +65,7 @@ function taskDetailTemplate(task) {
         <p class="task-detail-description">${task.description || ''}</p>
         <div class="task-detail-row">
             <span class="task-detail-label">Due date:</span>
-            <span class="task-detail-date">${task.dueDate}</span>
+            <span class="task-detail-date">${formatDate(task.dueDate)}</span>
         </div>
         <div class="task-detail-row">
             <span class="task-detail-label">Priority:</span>
@@ -121,7 +121,7 @@ function editTaskTemplate(task) {
             </div>
             <div class="form-group">
                 <label for="editDueDate">Due Date</label>
-                <input type="date" id="editDueDate" value="${task.dueDate}">
+                <input type="date" id="editDueDate" value="${formatDate(task.dueDate)}">
             </div>
             <div class="form-group">
                 <p class="form-label">Priority</p>
@@ -183,4 +183,10 @@ function editTaskTemplate(task) {
             </button>
         </div>
     `;
+}
+
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const [year, month, day] = dateString.split('-');
+    return `${day}.${month}.${year}`;
 }

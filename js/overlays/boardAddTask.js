@@ -209,3 +209,21 @@ function checkFormValidity() {
 
     btn.disabled = !isValid;
 }
+
+document.addEventListener('click', function(event) {
+    const assignedToDropdown = document.getElementById('assignedToDropdown');
+    const categoryDropdown = document.getElementById('categoryDropdown');
+    const editAssignedToDropdown = document.getElementById('editAssignedToDropdown');
+
+    if (assignedToDropdown && !assignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
+        assignedToDropdown.classList.add('d-none');
+    }
+
+    if (categoryDropdown && !categoryDropdown.closest('.custom-dropdown').contains(event.target)) {
+        categoryDropdown.classList.add('d-none');
+    }
+
+    if (editAssignedToDropdown && !editAssignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
+        editAssignedToDropdown.classList.add('d-none');
+    }
+});

@@ -56,6 +56,14 @@
     color: #0038FF;
 }
 
+.sidebar-footer a.active {
+    background-color: #4589FF;
+    color: white;
+    border-radius: 8px;
+    padding: 4px 8px;
+    width: fit-content;
+}
+
 @media(max-width: 1000px) {
     .menu {
         width: 100vw;
