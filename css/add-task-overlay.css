@@ -80,6 +80,7 @@
     font-weight: 600;
     display: flex;
     justify-content: center;
+    gap: 12px;
 }
 
 .detail-assignees,
