@@ -137,6 +137,11 @@ main {
   border-color: #0038FF;
 }
 
+.taskbar-btn:active {
+  color: gray;
+  border-color: gray;
+}
+
 .taskbar-tab {
   max-width: 260px;
   width: 100%;
