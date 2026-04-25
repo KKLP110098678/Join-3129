@@ -145,6 +145,8 @@ input {
 .radio-to-btn {
 	display: flex;
 	gap: 12px;
+	width: 100%;
+	padding: 2px;
 }
 
 .radio-to-btn label {
@@ -153,13 +155,16 @@ input {
 	justify-content: center;
 	border-radius: 10px;
 	box-shadow: 0 0 4px rgba(0, 0, 0, 16%);
-	padding: 14px 16px;
+	padding: 14px 8px;
 	width: 100%;
 	border-bottom: solid transparent 2px;
 	gap: 10px;
 	cursor: pointer;
 	color: #000000;
 	font-weight: 400;
+	flex: 1;
+	min-width: 0;
+	font-size: 18px;
 }
 
 
