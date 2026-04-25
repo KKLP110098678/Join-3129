@@ -95,6 +95,14 @@ main {
   filter: invert(40%) sepia(100%) saturate(500%) hue-rotate(190deg);
 }
 
+.input-glass:active {
+    background-color: transparent;
+}
+
+.input-glass:active img {
+    filter: invert(15%) sepia(100%) saturate(1000%) hue-rotate(210deg);
+}
+
 .add-task-btn {
   background-color: #4589ff;
   box-sizing: border-box;
