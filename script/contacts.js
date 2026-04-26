@@ -329,3 +329,19 @@ function validateEditContactPhone() {
     clearContactFieldError('editContactPhone');
     return true;
 }
+
+function closeOverlayOnBackground(event, overlayId) {
+    if (event.target.id === overlayId) {
+        switch(overlayId) {
+            case 'addContactOverlay':
+                closeAddContactOverlay();
+                break;
+            case 'editContactOverlay':
+                closeEditContactOverlay();
+                break;
+            case 'deleteContactOverlay':
+                closeDeleteContactOverlay();
+                break;
+        }
+    }
+}
