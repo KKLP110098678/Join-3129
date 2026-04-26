@@ -121,7 +121,7 @@ function editTaskTemplate(task) {
             </div>
             <div class="form-group">
                 <label for="editDueDate">Due Date</label>
-                <input type="date" id="editDueDate" value="${formatDate(task.dueDate)}">
+                <input type="date" id="editDueDate" value="${task.dueDate}">
             </div>
             <div class="form-group">
                 <p class="form-label">Priority</p>
