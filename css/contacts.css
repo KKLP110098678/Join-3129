@@ -270,14 +270,14 @@ body {
 }
 
 .overlay-blue-part h2 {
-    font-size: 32px;
-    margin: 0 0 35px 0;
-    font-weight: 700;
+    font-size: 40px;
+    margin: 0 0 12px 0;
+    font-family: "Open Sans Bold";
 }
 
 .overlay-blue-part p {
     font-size: 18px;
-    margin: 0 0 35px 0;
+    margin: 0 0 12px 0;
     font-weight: 400;
 }
 
@@ -320,7 +320,7 @@ body {
 .overlay-white-part form {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 14px;
     width: 100%;
 }
 
@@ -338,10 +338,33 @@ body {
     outline: none;
     box-sizing: border-box;
     background: transparent;
+    transition: border-color 0.2s ease;
+}
+
+.input-wrapper input:focus {
+    border-bottom-color: #4589FF;
 }
 
 .input-wrapper input::placeholder {
     color: #D1D1D1;
+}
+
+.input-wrapper.error input {
+    border-bottom-color: #E60026;
+}
+
+.field-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.field-container .error-message {
+    color: #E60026;
+    font-size: 13px;
+    margin-top: 8px;
+    font-weight: 600;
+    padding-left: 10px;
 }
 
 .input-icon {
