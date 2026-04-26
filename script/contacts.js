@@ -1,10 +1,19 @@
 let contacts = [];
 
+// --- Firebase Ref ---
+
+function getContactsRef() {
+    if (isGuest()) {
+        return db.ref('guest/contacts');
+    }
+    return db.ref(`users/${getUserKey()}/contacts`);
+}
+
 // --- Firebase ---
 
 async function loadContacts() {
     try {
-        let snapshot = await db.ref('contacts').once('value');
+        let snapshot = await getContactsRef().once('value');
         const val = snapshot.val();
 
         if (!val) {
@@ -30,7 +39,7 @@ async function loadContacts() {
 
 async function saveContacts() {
     try {
-        await db.ref('contacts').set(contacts);
+        await getContactsRef().set(contacts);
     } catch(e) {
         console.error("Error saving contacts to Firebase:", e);
     }
@@ -114,12 +123,12 @@ function openEditContactOverlay(index) {
     document.getElementById('editContactName').value = contact.name;
     document.getElementById('editContactEmail').value = contact.email;
     document.getElementById('editContactPhone').value = contact.phone;
-    
+
     let avatar = document.getElementById('editContactAvatar');
     let initialsSpan = document.getElementById('editContactInitials');
     avatar.className = 'avatar-circle ' + contact.color;
     initialsSpan.textContent = contact.initials;
-    
+
     document.getElementById('editContactOverlay').classList.remove('d-none');
 }
 

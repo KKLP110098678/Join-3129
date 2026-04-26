@@ -14,7 +14,6 @@
 
     const user = await authenticateUser(email, password);
     if (user) {
-        sessionStorage.setItem('username', user.username);
         sessionStorage.removeItem('isGuest');
         window.location.href = './summary.html';
     } else {
@@ -80,6 +79,7 @@ function showLoginError(message) {
 function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userKey');
     window.location.href = './summary.html';
 }
 

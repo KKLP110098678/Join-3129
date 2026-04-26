@@ -1,81 +1,85 @@
 async function addNewUser(newUser) {
-  try {
-    const userRef = firebase.database().ref('users');
-    const newUserRef = userRef.push();
-    await newUserRef.set({
-      username: newUser.username,
-      email: newUser.email,
-      password: newUser.password
-    });
-  } catch (error) {
-    console.error('Error registering new user:', error);
-  }
-}
-
-async function isUserNameTaken(userName) {
-  try {
-    const usersRef = firebase.database().ref("users");
-
-    const snapshot = await usersRef.once("value");
-    const users = snapshot.val();
-
-    if (!users) return false;
-
-    for (let key in users) {
-      if (users[key].username === userName) {
-        return true;
-      }
+    try {
+        const userRef = firebase.database().ref('users');
+        const newUserRef = userRef.push();
+        await newUserRef.set({
+            username: newUser.username,
+            email: newUser.email,
+            password: newUser.password
+        });
+    } catch (error) {
+        console.error('Error registering new user:', error);
     }
-
-    return false;
-  } catch (error) {
-    console.error("Error checking username:", error);
-    return false;
-  }
 }
 
 async function authenticateUser(inputEmail, inputPassword) {
-  try {
-    const usersRef = firebase.database().ref("users");
-    const snapshot = await usersRef.once("value");
-    const users = snapshot.val();
+    try {
+        const usersRef = firebase.database().ref("users");
+        const snapshot = await usersRef.once("value");
+        const users = snapshot.val();
 
-    if (!users) return null;
+        if (!users) return null;
 
-    for (let key in users) {
-      if (
-        users[key].email === inputEmail &&
-        users[key].password === inputPassword
-      ) {
-        return users[key];
-      }
+        for (let key in users) {
+            if (
+                users[key].email === inputEmail &&
+                users[key].password === inputPassword
+            ) {
+                sessionStorage.setItem('userKey', key); // neu
+                sessionStorage.setItem('username', users[key].username); // neu
+                return users[key];
+            }
+        }
+
+        return null;
+    } catch (error) {
+        console.error("Error authenticating user:", error);
+        return null;
     }
+}
 
-    return null;
-  } catch (error) {
-    console.error("Error authenticating user:", error);
-    return null;
-  }
+async function isUserNameTaken(userName) {
+    try {
+        const usersRef = firebase.database().ref("users");
+        const snapshot = await usersRef.once("value");
+        const users = snapshot.val();
+
+        if (!users) return false;
+
+        for (let key in users) {
+            if (users[key].username === userName) return true;
+        }
+
+        return false;
+    } catch (error) {
+        console.error("Error checking username:", error);
+        return false;
+    }
 }
 
 async function isUserEmailTaken(inputEmail) {
-  try {
-    const usersRef = firebase.database().ref("users");
+    try {
+        const usersRef = firebase.database().ref("users");
+        const snapshot = await usersRef.once("value");
+        const users = snapshot.val();
 
-    const snapshot = await usersRef.once("value");
-    const users = snapshot.val();
+        if (!users) return false;
 
-    if (!users) return false;
+        for (let key in users) {
+            if (users[key].email === inputEmail) return true;
+        }
 
-    for (let key in users) {
-      if (users[key].email === inputEmail) {
-        return true;
-      }
+        return false;
+    } catch (error) {
+        console.error("Error checking user Email:", error);
+        return false;
     }
+}
 
-    return false;
-  } catch (error) {
-    console.error("Error checking user Email:", error);
-    return false;
-  }
+function getUserKey() {
+    return sessionStorage.getItem('userKey');
+}
+
+function isGuest() {
+    return sessionStorage.getItem('isGuest') === 'true';
 }

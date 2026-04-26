@@ -85,10 +85,11 @@ function addSidebar() {
 
 function checkAuth() {
     const username = sessionStorage.getItem('username');
+    const userKey = sessionStorage.getItem('userKey');
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
 
     if (protectedPages.some(page => window.location.pathname.includes(page))) {
-        if (!username && !isGuest) {
+        if (!isGuest && (!username || !userKey)) {
             window.location.href = '../html/login.html';
         }
     }

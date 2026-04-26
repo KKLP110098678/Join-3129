@@ -50,6 +50,7 @@ function getInitials() {
 
 function logout() {
     sessionStorage.removeItem('username');
+    sessionStorage.removeItem('userKey');
     sessionStorage.removeItem('isGuest');
     window.location.href = '../html/login.html';
 }
