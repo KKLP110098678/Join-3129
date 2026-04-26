@@ -7,10 +7,27 @@
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if (!email || !password) {
-        showLoginError('Please enter both email and password.');
+    // Validate email format
+    if (!email) {
+        showFieldError('email', 'Please enter your email address.');
         return;
     }
+    
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        showFieldError('email', 'Please enter a valid email address.');
+        return;
+    }
+    
+    clearFieldError('email');
+
+    // Validate password
+    if (!password) {
+        showFieldError('password', 'Please enter your password.');
+        return;
+    }
+    
+    clearFieldError('password');
 
     const user = await authenticateUser(email, password);
     if (user) {
@@ -19,6 +36,60 @@
     } else {
         showLoginError('Check your email and password. Please try again.');
     }
+}
+
+function showFieldError(fieldId, message) {
+    const field = document.getElementById(`${fieldId}-field`);
+    const errorMessage = document.getElementById(`${fieldId}-error`);
+    
+    if (field && errorMessage) {
+        errorMessage.textContent = message;
+        errorMessage.classList.add('error');
+        field.classList.add('error');
+        errorMessage.classList.remove('d-none');
+        field.classList.remove('d-none');
+    }
+}
+
+function clearFieldError(fieldId) {
+    const field = document.getElementById(`${fieldId}-field`);
+    const errorMessage = document.getElementById(`${fieldId}-error`);
+    
+    if (field && errorMessage) {
+        errorMessage.classList.remove('error');
+        field.classList.remove('error');
+        errorMessage.classList.add('d-none');
+        errorMessage.textContent = '';
+    }
+}
+
+function validateEmail() {
+    const emailInput = document.getElementById('username');
+    const email = emailInput.value.trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (email === '' || !emailPattern.test(email)) {
+        if (email === '') {
+            showFieldError('email', 'Please enter your email address.');
+        } else {
+            showFieldError('email', 'Please enter a valid email address.');
+        }
+        return false;
+    }
+    clearFieldError('email');
+    return true;
+}
+
+function validatePassword() {
+    const passwordInput = document.getElementById('password');
+    const password = passwordInput.value.trim();
+
+    if (password === '') {
+        showFieldError('password', 'Please enter your password.');
+        return false;
+    }
+    clearFieldError('password');
+    return true;
 }
 
 function setupPasswordToggle() {

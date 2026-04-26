@@ -30,17 +30,26 @@
                 <div class="seperator"></div>
             </div>
             <div class="login-form-body">
-                <div class="input-contaier">
-                    <input type="email" id="username" name="username" placeholder="Email" required>
-                    <img src="../assets/icon/login/mail.svg" alt="Mail Icon">
+                <div class="field-container">
+                    <div class="input-icon-container" id="email-field">
+                        <input onblur="validateEmail();" type="email" id="username" name="username" placeholder="Email"
+                            required>
+                        <img src="../assets/icon/login/mail.svg" alt="Mail Icon">
+                    </div>
+                    <output class="error-message d-none" id="email-error" for="username">This field is
+                        required!</output>
                 </div>
-                <div class="input-contaier">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                    <img src="../assets/icon/login/lock.svg" id="password-toggle" class="pointer" alt="Lock Icon">
+                <div class="field-container">
+                    <div class="input-icon-container" id="password-field">
+                        <input onblur="validatePassword();" type="password" id="password" name="password"
+                            placeholder="Password" required>
+                        <img src="../assets/icon/login/lock.svg" id="password-toggle" class="pointer" alt="Lock Icon">
+                    </div>
+                    <output class="error-message d-none" id="password-error" for="password">This field is
+                        required!</output>
+                    <span class="login-error-message d-none" id="login-error"></span>
                 </div>
             </div>
-            <span class="login-error-message d-none" id="login-error">Check your email and password. Please try
-                again.</span>
             <div class="login-button-area">
                 <button type="submit" class="btn-primary btn-login">Log in</button>
                 <button type="button" id="guest-login-button" class="btn-light btn-login">Guest log in</button>
@@ -56,7 +65,7 @@
         <a href="../html/legal-notice.html">Legal Notice</a>
     </footer>
     <div class="animation-frame" id="animation-frame">
-         <img src="../assets/icon/logo-blue.svg" id="animation-logo" alt="Join Logo">
+        <img src="../assets/icon/logo-blue.svg" id="animation-logo" alt="Join Logo">
     </div>
 </body>
 
@@ -66,4 +75,5 @@
 <script src="../js/database/userDB.js"></script>
 <script src="../script/login.js"></script>
 <script src="../script/logoAnimation.js"></script>
+
 </html>
