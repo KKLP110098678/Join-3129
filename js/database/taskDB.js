@@ -7,26 +7,26 @@ async function loadTasks() {
         const val = snapshot.val();
         tasks = !val ? [] : Object.entries(val).map(([id, task]) => ({ id, ...task }));
         updateBoard();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Laden der Tasks:', e);
     }
 }
 
 function updateBoard() {
     const columns = {
-        'todo':          document.getElementById('toDoBox'),
-        'inprogress':    document.getElementById('progressBox'),
+        'todo': document.getElementById('toDoBox'),
+        'inprogress': document.getElementById('progressBox'),
         'awaitfeedback': document.getElementById('feedbackBox'),
-        'done':          document.getElementById('doneBox')
+        'done': document.getElementById('doneBox')
     };
 
     Object.values(columns).forEach(col => { if (col) col.innerHTML = ''; });
 
     const placeholders = {
-        'todo':          'No tasks To do',
-        'inprogress':    'No tasks In progress',
+        'todo': 'No tasks To do',
+        'inprogress': 'No tasks In progress',
         'awaitfeedback': 'No tasks Awaiting feedback',
-        'done':          'No tasks Done'
+        'done': 'No tasks Done'
     };
 
     const counts = { todo: 0, inprogress: 0, awaitfeedback: 0, done: 0 };
@@ -88,7 +88,7 @@ function renderPriorityIcon(priority) {
     const icons = {
         urgent: '../assets/icon/taskManagement/urgent.svg',
         medium: '../assets/icon/taskManagement/medium.svg',
-        low:    '../assets/icon/taskManagement/low.svg'
+        low: '../assets/icon/taskManagement/low.svg'
     };
     return `<img src="${icons[priority] || icons['medium']}" alt="${priority}">`;
 }
@@ -131,17 +131,20 @@ async function saveNewTask() {
     try {
         await db.ref('tasks').push(newTask);
         clearAddTaskForm();
-        showTaskAddedPopup();
 
         if (window.location.pathname.includes("board.html")) {
-            closeAddTaskForm();
+            showTaskAddedPopup();
             await loadTasks();
-        } else {
             setTimeout(() => {
-            window.location.href = "../html/board.html";
-        }, 2000);
-    }
-    } catch(e) {
+                closeAddTaskForm();
+            }, 2000);
+        } else {
+            showTaskAddedPopup();
+            setTimeout(() => {
+                window.location.href = "../html/board.html";
+            }, 2000);
+        }
+    } catch (e) {
         console.error('Fehler beim Speichern:', e);
     }
 }
@@ -180,7 +183,7 @@ function openTaskDetail(taskId) {
 function closeTaskDetail() {
     const overlay = document.getElementById('taskDetailOverlay');
     overlay.classList.add('closing');
-    
+
     setTimeout(() => {
         overlay.classList.remove('closing');
         overlay.classList.remove('edit-mode');
@@ -198,7 +201,7 @@ async function deleteTask(taskId) {
         tasks = tasks.filter(t => t.id !== taskId);
         closeTaskDetail();
         updateBoard();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Löschen:', e);
     }
 }
@@ -210,7 +213,7 @@ async function toggleSubtask(taskId, subtaskIndex) {
     try {
         await db.ref('tasks/' + taskId + '/subtasks').set(task.subtasks);
         updateBoard();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Aktualisieren des Subtasks:', e);
     }
 }
@@ -399,7 +402,7 @@ async function saveEditedTask(taskId) {
 
         await loadTasks();
         closeTaskDetail();
-    } catch(e) {
+    } catch (e) {
         console.error('Fehler beim Bearbeiten:', e);
     }
 }

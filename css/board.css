@@ -242,6 +242,7 @@ main {
   flex-direction: row;
   width: 100%;
   border-radius: 0 0 30px 30px;
+  padding: 0 48px 24px 0;
 }
 
 .form-buttons {
