@@ -48,8 +48,8 @@
     </main>
 
     <!-- ADD CONTACT OVERLAY -->
-    <div id="addContactOverlay" class="overlay d-none">
-        <div class="overlay-content form-overlay">
+    <div id="addContactOverlay" class="overlay d-none" onclick="closeOverlayOnBackground(event, 'addContactOverlay')">
+        <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeAddContactOverlay()"><img src="../assets/icon/contacts/close-white.svg" alt="X" onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'" onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
                 <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
@@ -64,17 +64,26 @@
                    </div>
                 </div>
                 <form onsubmit="addNewContact(event)">
-                    <div class="input-wrapper">
-                        <input type="text" id="contactName" placeholder="Name" required>
-                        <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateContactName()" type="text" id="contactName" placeholder="Name" required>
+                            <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="contactName-error" for="contactName">This field is required!</output>
                     </div>
-                    <div class="input-wrapper">
-                        <input type="email" id="contactEmail" placeholder="Email" required>
-                        <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateContactEmail()" type="email" id="contactEmail" placeholder="Email" required>
+                            <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="contactEmail-error" for="contactEmail">This field is required!</output>
                     </div>
-                    <div class="input-wrapper">
-                        <input type="tel" id="contactPhone" placeholder="Phone" required>
-                        <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateContactPhone()" type="tel" id="contactPhone" placeholder="Phone" required>
+                            <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="contactPhone-error" for="contactPhone">This field is required!</output>
                     </div>
                     <div class="overlay-buttons form-buttons">
                         <button type="button" class="btn-cancel-add" onclick="closeAddContactOverlay()">Cancel ✖</button>
@@ -86,12 +95,13 @@
     </div>
 
     <!-- EDIT CONTACT OVERLAY -->
-    <div id="editContactOverlay" class="overlay d-none">
-        <div class="overlay-content form-overlay">
+    <div id="editContactOverlay" class="overlay-edit-contact d-none" onclick="closeOverlayOnBackground(event, 'editContactOverlay')">
+        <div class="overlay-content-edit-contact form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeEditContactOverlay()"><img src="../assets/icon/contacts/close-white.svg" alt="X" onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'" onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
                 <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Edit contact</h2>
+                <p>Tasks are better with a team!</p>
                 <div class="blue-separator d-none"></div>
             </div>
             <div class="overlay-white-part">
@@ -102,17 +112,26 @@
                 </div>
                 <form id="editContactForm" onsubmit="saveEditedContact(event)">
                     <input type="hidden" id="editContactIndex">
-                    <div class="input-wrapper">
-                        <input type="text" id="editContactName" placeholder="Name" required>
-                        <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateEditContactName()" type="text" id="editContactName" placeholder="Name" required>
+                            <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="editContactName-error" for="editContactName">This field is required!</output>
                     </div>
-                    <div class="input-wrapper">
-                        <input type="email" id="editContactEmail" placeholder="Email" required>
-                        <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateEditContactEmail()" type="email" id="editContactEmail" placeholder="Email" required>
+                            <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="editContactEmail-error" for="editContactEmail">This field is required!</output>
                     </div>
-                    <div class="input-wrapper">
-                        <input type="tel" id="editContactPhone" placeholder="Phone" required>
-                        <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                    <div class="field-container">
+                        <div class="input-wrapper">
+                            <input onblur="validateEditContactPhone()" type="tel" id="editContactPhone" placeholder="Phone" required>
+                            <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                        </div>
+                        <output class="error-message d-none" id="editContactPhone-error" for="editContactPhone">This field is required!</output>
                     </div>
                     <div class="overlay-buttons form-buttons">
                         <button type="button" class="btn-cancel" onclick="closeEditContactOverlay()">Cancel</button>
@@ -124,8 +143,8 @@
     </div>
 
     <!-- DELETE CONTACT CONFIRMATION OVERLAY -->
-    <div id="deleteContactOverlay" class="overlay d-none">
-        <div class="overlay-content form-overlay">
+    <div id="deleteContactOverlay" class="overlay d-none" onclick="closeOverlayOnBackground(event, 'deleteContactOverlay')">
+        <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeDeleteContactOverlay()"><img src="../assets/icon/contacts/close-white.svg" alt="X" onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'" onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
                 <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
