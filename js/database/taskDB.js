@@ -131,16 +131,34 @@ async function saveNewTask() {
     try {
         await db.ref('tasks').push(newTask);
         clearAddTaskForm();
+        showTaskAddedPopup();
 
         if (window.location.pathname.includes("board.html")) {
             closeAddTaskForm();
             await loadTasks();
         } else {
+            setTimeout(() => {
             window.location.href = "../html/board.html";
-        }
+        }, 2000);
+    }
     } catch(e) {
         console.error('Fehler beim Speichern:', e);
     }
+}
+
+function showTaskAddedPopup() {
+    const popup = document.createElement('div');
+    popup.className = 'task-added-popup';
+    popup.innerHTML = `
+        Task added to board
+        <img src="../assets/icon/menuicons/board.svg" alt="">
+    `;
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('fade-out');
+        setTimeout(() => popup.remove(), 400);
+    }, 2000);
 }
 
 function openAddTaskForm(status) {

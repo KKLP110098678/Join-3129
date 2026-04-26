@@ -185,6 +185,42 @@
     visibility: visible;
 }
 
+/*task added pop up*/
+.task-added-popup {
+    position: fixed;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background-color: #4589FF;
+    color: white;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    animation: slideUp 0.3s ease forwards;
+}
+
+.task-added-popup img {
+    filter: brightness(0) invert(1);
+}
+
+.task-added-popup.fade-out {
+    animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes slideUp {
+    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
+    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
 /* Mobile */
 @media (max-width: 1000px) {
     .add-task-main {
