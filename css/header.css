@@ -1,3 +1,4 @@
+/* Header */
 header {
     width: 100%;
     height: 100px;
@@ -15,16 +16,25 @@ header {
     position: relative;
 }
 
+/* Logo */
 .header-logo {
     margin-left: 24px;
 }
 
+/* Interaction */
 .header-interaction {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 24px;
     margin-right: 24px;
+}
+
+.header-headline {
+    color: white;
+    font-size: 16px;
+    font-weight: 100;
+    cursor: pointer;
 }
 
 .help-icon:hover {
@@ -34,20 +44,22 @@ header {
     transform-origin: center;
 }
 
-.header-headline {
-    color: white;
-    font-size: 16px;
-    font-weight: 100;
+.help-link-mobile {
+    display: none;
 }
 
-.header-headline {
-    cursor: pointer;
-}
-
+/* User Icon */
 .user-icon-border {
     border: 2px solid white;
     border-radius: 50%;
     padding: 2px;
+}
+
+.user-icon-border:hover {
+    cursor: pointer;
+    display: inline-block;
+    transform: scale(1.2);
+    transform-origin: center;
 }
 
 .user-icon {
@@ -61,14 +73,7 @@ header {
     color: rgb(69, 137, 255);
 }
 
-.user-icon-border:hover {
-    cursor: pointer;
-    display: inline-block;
-    transform: scale(1.2);
-    transform-origin: center;
-}
-
-/* header menu overlay*/
+/* Logout Menu */
 .menu-overlay {
     position: fixed;
     inset: 0;
@@ -113,10 +118,7 @@ header {
     background-color: rgb(210, 227, 255);
 }
 
-.help-link-mobile {
-    display: none;
-}
-
+/* Mobile */
 @media (max-width: 1000px) {
     header {
         height: 80px;

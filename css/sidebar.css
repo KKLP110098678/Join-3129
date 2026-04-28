@@ -1,4 +1,4 @@
-/* Menü-Links */
+/* Sidebar */
 .menu {
     display: flex;
     flex-direction: column;
@@ -13,6 +13,12 @@
     padding: 40px 0;
 }
 
+.menu-items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu Items */
 .menu-item {
     display: flex;
     align-items: center;
@@ -26,18 +32,17 @@
     margin-right: 16px;
 }
 
-/* Aktiver Link oder Hover-Effekt */
-.menu-item:hover,
-.menu-item.active {
-    background-color: rgb(210, 227, 255);
-}
-
 .menu-item img {
     margin-right: 15px;
     width: 24px;
 }
 
-/* Footer Links ganz unten */
+.menu-item:hover,
+.menu-item.active {
+    background-color: rgb(210, 227, 255);
+}
+
+/* Sidebar Footer */
 .sidebar-footer {
     padding: 0 40px;
     display: flex;
@@ -64,7 +69,8 @@
     width: fit-content;
 }
 
-@media(max-width: 1000px) {
+/* Mobile */
+@media (max-width: 1000px) {
     .menu {
         width: 100vw;
         height: 80px;
