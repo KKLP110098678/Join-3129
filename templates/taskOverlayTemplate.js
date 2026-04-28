@@ -1,4 +1,14 @@
+
 function boardCardTemplate(task) {
+    const moveMenuMapping = {
+        'todo': [['', ''], ['In Progress', 'inProgress']],
+        'inprogress': [['Todo', 'todo'], ['Awaiting feedback', 'awaitfeedback']],
+        'awaitfeedback': [['In progress', 'inprogress'], ['Done', 'done']],
+        'done': [['Awaiting feedback', ''], ['awaitfeedback', '']]
+    };
+    const normalizedStatus = (task.status || 'todo').toLowerCase().replace(/[\s_-]/g, '');
+    const menuStatus = normalizedStatus === 'awaitingfeedback' ? 'awaitfeedback' : normalizedStatus;
+    const moveMenuOptions = moveMenuMapping[menuStatus] || moveMenuMapping['todo'];
     const badgeClass = task.category === 'Technical Task' ? 'badge-technical-task' : 'badge-user-story';
 
     return `
@@ -18,6 +28,34 @@ function boardCardTemplate(task) {
                         </g>
                     </svg>
                 </button>
+                <div class="move-task-menu d-none" id="moveMenu_${task.id}" onclick="event.stopPropagation()">
+                    <span class="move-menu-title">Move to</span>
+                    <div class="move-to-buttons">
+                        <button class="move-task-option" onclick="moveTask('${task.id}', '${moveMenuOptions[0][1]}')">
+                        <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <mask id="mask0_56660_6262" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="20" height="20">
+                                <rect y="-1" width="20" height="20" fill="#D9D9D9"/>
+                            </mask>
+                            <g mask="url(#mask0_56660_6262)">
+                                <path d="M9.16578 5.52083L5.08245 9.60417C4.91578 9.77083 4.72134 9.85069 4.49911 9.84375C4.27689 9.83681 4.08245 9.75 3.91578 9.58333C3.763 9.41667 3.68314 9.22222 3.6762 9C3.66925 8.77778 3.74911 8.58333 3.91578 8.41667L9.41578 2.91667C9.49911 2.83333 9.58939 2.77431 9.68661 2.73958C9.78384 2.70486 9.888 2.6875 9.99911 2.6875C10.1102 2.6875 10.2144 2.70486 10.3116 2.73958C10.4088 2.77431 10.4991 2.83333 10.5824 2.91667L16.0824 8.41667C16.2352 8.56944 16.3116 8.76042 16.3116 8.98958C16.3116 9.21875 16.2352 9.41667 16.0824 9.58333C15.9158 9.75 15.7179 9.83333 15.4887 9.83333C15.2595 9.83333 15.0616 9.75 14.8949 9.58333L10.8324 5.52083V14.8333C10.8324 15.0694 10.7526 15.2674 10.5929 15.4271C10.4331 15.5868 10.2352 15.6667 9.99911 15.6667C9.763 15.6667 9.56509 15.5868 9.40536 15.4271C9.24564 15.2674 9.16578 15.0694 9.16578 14.8333V5.52083Z" fill="white"/>
+                            </g>
+                        </svg>
+
+                            ${moveMenuOptions[0][0]}
+                        </button>
+                        <button class="move-task-option" onclick="moveTask('${task.id}', '${moveMenuOptions[1][1]}')">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <mask id="mask0_56660_6258" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="20" height="20">
+                                    <rect width="20" height="20" fill="#D9D9D9"/>
+                                </mask>
+                                <g mask="url(#mask0_56660_6258)">
+                                    <path d="M9.16667 13.4793V4.16683C9.16667 3.93072 9.24653 3.7328 9.40625 3.57308C9.56597 3.41336 9.76389 3.3335 10 3.3335C10.2361 3.3335 10.434 3.41336 10.5938 3.57308C10.7535 3.7328 10.8333 3.93072 10.8333 4.16683V13.4793L14.9167 9.396C15.0833 9.22933 15.2778 9.14947 15.5 9.15641C15.7222 9.16336 15.9167 9.25016 16.0833 9.41683C16.2361 9.5835 16.316 9.77794 16.3229 10.0002C16.3299 10.2224 16.25 10.4168 16.0833 10.5835L10.5833 16.0835C10.5 16.1668 10.4097 16.2259 10.3125 16.2606C10.2153 16.2953 10.1111 16.3127 10 16.3127C9.88889 16.3127 9.78472 16.2953 9.6875 16.2606C9.59028 16.2259 9.5 16.1668 9.41667 16.0835L3.91667 10.5835C3.76389 10.4307 3.6875 10.2397 3.6875 10.0106C3.6875 9.78141 3.76389 9.5835 3.91667 9.41683C4.08333 9.25016 4.28125 9.16683 4.51042 9.16683C4.73958 9.16683 4.9375 9.25016 5.10417 9.41683L9.16667 13.4793Z" fill="white"/>
+                                </g>
+                            </svg>
+                            ${moveMenuOptions[1][0]}
+                        </button>
+                    </div>
+                </div>
             </div>
             <div class="board-card-content">
                 <h3 class="board-card-title">${task.title}</h3>
@@ -34,6 +72,11 @@ function boardCardTemplate(task) {
             </div>
         </div>
     `;
+}
+
+function openMoveTaskMenu(taskId) {
+    const menu = document.getElementById(`moveMenu_${taskId}`);
+        menu.classList.toggle('d-none');
 }
 
 function taskDetailTemplate(task) {
