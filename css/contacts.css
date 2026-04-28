@@ -101,6 +101,7 @@ body {
 
 .contact-email {
     color: #4589FF;
+    word-break: break-word;
 }
 
 /* Farben für die Initialen */
