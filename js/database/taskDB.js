@@ -231,6 +231,7 @@ function openEditTask(taskId) {
     editSubtasks = task.subtasks ? [...task.subtasks] : [];
     document.getElementById('taskDetailContainer').innerHTML = editTaskTemplate(task);
     document.getElementById('taskDetailOverlay').classList.add('edit-mode');
+    document.getElementById('editAssignedToInput').value = ''; // neu
     renderEditAssignedToDropdown(task.assignees || []);
     renderEditSubtasks();
 }
@@ -421,4 +422,21 @@ function formatDate(dateString) {
     if (!dateString) return '';
     const [year, month, day] = dateString.split('-');
     return `${day}.${month}.${year}`;
+}
+
+function filterEditAssignedToDropdown(searchValue) {
+    const dropdown = document.getElementById('editAssignedToDropdown');
+    if (!dropdown) return;
+
+    dropdown.classList.remove('d-none');
+
+    const items = dropdown.querySelectorAll('.dropdown-item.contact');
+    items.forEach(item => {
+        const name = item.querySelector('.dropdown-contact')?.textContent.trim().toLowerCase();
+        if (name && name.includes(searchValue.toLowerCase())) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
 }

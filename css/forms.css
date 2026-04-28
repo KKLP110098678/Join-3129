@@ -242,7 +242,6 @@ label.urgent:hover {
 .dropdown-list {
 	position: absolute;
 	left: 0;
-	top: calc(100% - 10px);
 	margin: 0;
 	width: 100%;
 	background-color: #fff;

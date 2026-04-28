@@ -6,6 +6,7 @@ function clearAddTaskForm() {
     document.getElementById("taskDescription").value = "";
     document.getElementById("taskDueDate").value = new Date().toISOString().split('T')[0];
     document.getElementById("categoryInput").value = "";
+    document.getElementById('assignedToInput').value = '';
     currentSubtasks = [];
     renderSubtasks();
     checkFormValidity();
@@ -238,3 +239,21 @@ document.addEventListener('click', function(event) {
         editAssignedToDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
     }
 });
+
+function filterAssignedToDropdown(searchValue) {
+    const dropdown = document.getElementById('assignedToDropdown');
+    if (!dropdown) return;
+
+    // dropdown öffnen falls geschlossen
+    dropdown.classList.remove('d-none');
+
+    const items = dropdown.querySelectorAll('.dropdown-item.contact');
+    items.forEach(item => {
+        const name = item.querySelector('.dropdown-contact')?.textContent.trim().toLowerCase();
+        if (name && name.includes(searchValue.toLowerCase())) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
