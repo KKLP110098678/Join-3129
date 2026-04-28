@@ -132,6 +132,10 @@ output.error {
 	font-size: 1rem;
 }
 
+#taskDescription:focus {
+	border-color: #005DFF;
+}
+
 input[type="date"]::-webkit-calendar-picker-indicator {
 	background-image: url("../assets/icon/task/calendar.svg");
 	background-size: cover;
