@@ -270,6 +270,7 @@ label.urgent:hover {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	cursor: pointer;
 	gap: 8px;
 	border-radius: 10px;
 }
