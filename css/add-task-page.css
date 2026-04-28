@@ -247,7 +247,7 @@
         width: 100%;
         height: auto;
         overflow-y: visible;
-        padding-right: 4px;
+        padding-right: 8px;
     }
 
     .page-form .form-group input#taskTitle {
