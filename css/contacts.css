@@ -138,6 +138,15 @@ body {
     background-color: #005DFF;
 }
 
+.btn-add-contact:active {
+    background-color: #FFFFFF;
+    color: #4589FF;
+}
+
+.btn-add-contact:active path {
+    fill: #4589FF;
+}
+
 .contact-detail-container {
     padding: 40px;
     display: flex;
