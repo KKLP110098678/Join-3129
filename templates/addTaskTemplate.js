@@ -47,7 +47,9 @@ function addTaskTemplate() {
                     <div class="custom-dropdown" id="assignedTo">
                         <div class="dropdown-input-container">
                             <input type="text" class="dropdown-input" id="assignedToInput"
-                                placeholder="Select contacts to assign" readonly onclick="toggleAssignedToDropdown()" required />
+                                placeholder="Select contacts to assign"
+                                oninput="filterAssignedToDropdown(this.value)"
+                                onclick="toggleAssignedToDropdown(event)" />
                             <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedToDropdown()">
                                 <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow" />
                             </button>

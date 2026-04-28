@@ -37,7 +37,7 @@ async function drop(event, newStatus) {
     task.status = newStatus;
 
     try {
-        await db.ref('tasks/' + currentDraggedTaskId + '/status').set(newStatus);
+        await getTasksRef().child(currentDraggedTaskId).child('status').set(newStatus);
         updateBoard();
     } catch(e) {
         console.error('Fehler beim Verschieben:', e);

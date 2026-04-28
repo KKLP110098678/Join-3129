@@ -6,6 +6,7 @@ function clearAddTaskForm() {
     document.getElementById("taskDescription").value = "";
     document.getElementById("taskDueDate").value = new Date().toISOString().split('T')[0];
     document.getElementById("categoryInput").value = "";
+    document.getElementById('assignedToInput').value = '';
     currentSubtasks = [];
     renderSubtasks();
     checkFormValidity();
@@ -62,7 +63,11 @@ function toggleAllContacts(selectAllCheckbox) {
 
 function toggleAssignedToDropdown(event) {
     if (event) event.stopPropagation();
-    document.getElementById("assignedToDropdown").classList.toggle("d-none");
+    const dropdown = document.getElementById('assignedToDropdown');
+    dropdown.classList.toggle('d-none');
+    
+    const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
+    arrow.classList.toggle('open');
 }
 
 function updateAssignees() {
@@ -100,7 +105,11 @@ function updateAssignees() {
 
 function toggleCategoryDropdown(event) {
     if (event) event.stopPropagation();
-    document.getElementById("categoryDropdown").classList.toggle("d-none");
+    const dropdown = document.getElementById('categoryDropdown');
+    dropdown.classList.toggle('d-none');
+    
+    const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
+    arrow.classList.toggle('open');
 }
 
 function selectCategory(category) {
@@ -217,13 +226,34 @@ document.addEventListener('click', function(event) {
 
     if (assignedToDropdown && !assignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
         assignedToDropdown.classList.add('d-none');
+        assignedToDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
     }
 
     if (categoryDropdown && !categoryDropdown.closest('.custom-dropdown').contains(event.target)) {
         categoryDropdown.classList.add('d-none');
+        categoryDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
     }
 
     if (editAssignedToDropdown && !editAssignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
         editAssignedToDropdown.classList.add('d-none');
+        editAssignedToDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
     }
 });
+
+function filterAssignedToDropdown(searchValue) {
+    const dropdown = document.getElementById('assignedToDropdown');
+    if (!dropdown) return;
+
+    // dropdown öffnen falls geschlossen
+    dropdown.classList.remove('d-none');
+
+    const items = dropdown.querySelectorAll('.dropdown-item.contact');
+    items.forEach(item => {
+        const name = item.querySelector('.dropdown-contact')?.textContent.trim().toLowerCase();
+        if (name && name.includes(searchValue.toLowerCase())) {
+            item.style.display = '';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}

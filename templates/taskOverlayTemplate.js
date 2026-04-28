@@ -139,7 +139,9 @@ function editTaskTemplate(task) {
                 <div class="custom-dropdown">
                     <div class="dropdown-input-container">
                         <input type="text" class="dropdown-input" id="editAssignedToInput"
-                            placeholder="Select contacts to assign" readonly onclick="toggleEditAssignedToDropdown(event)"/>
+                            placeholder="Select contacts to assign"
+                            oninput="filterEditAssignedToDropdown(this.value)"
+                            onclick="toggleEditAssignedToDropdown(event)"/>
                         <button type="button" class="dropdown-toggle-btn" onclick="toggleEditAssignedToDropdown(event)">
                             <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow"/>
                         </button>
