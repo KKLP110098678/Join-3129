@@ -335,8 +335,8 @@ body {
 }
 
 .overlay-avatar-container {
-    position: relative;
-    top: -45px;
+    margin-top: 32px;
+    margin-bottom: 12px;
 }
 
 .avatar-circle {
@@ -584,6 +584,12 @@ body {
         margin-left: 0;
         height: calc(100vh - 80px - 80px);
         /* header & bottom nav */
+    }
+
+    .overlay-avatar-container {
+        position: relative;
+        top: -45px;
+        margin: 0;
     }
 
     .contact-list-section {
