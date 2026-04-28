@@ -59,12 +59,6 @@
     font-weight: 400;
 }
 
-.page-form .form-group output {
-    font-size: 14px;
-    color: #FF8190;
-    visibility: hidden;
-}
-
 .page-form .form-group.has-error output {
     visibility: visible;
 }
