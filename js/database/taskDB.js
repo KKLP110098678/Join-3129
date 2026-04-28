@@ -260,7 +260,11 @@ function renderEditAssignedToDropdown(selectedAssignees) {
 
 function toggleEditAssignedToDropdown(event) {
     if (event) event.stopPropagation();
-    document.getElementById('editAssignedToDropdown').classList.toggle('d-none');
+    const dropdown = document.getElementById('editAssignedToDropdown');
+    dropdown.classList.toggle('d-none');
+    
+    const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
+    arrow.classList.toggle('open');
 }
 
 function updateEditAssignees() {
