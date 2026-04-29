@@ -288,6 +288,16 @@ main {
 }
 
 /* Board Cards */
+.board-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn-move-card-mobile {
+  display: none;
+}
+
 .board-card {
   width: 100%;
   max-width: 260px;
@@ -424,9 +434,24 @@ main {
 }
 
 .form-content output {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .form-content .form-group.has-error output {
-    visibility: visible;
+  visibility: visible;
+}
+
+@media screen and (max-width: 768px) {
+  .btn-move-card-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px 1px rgba(131, 131, 131, 0.4);
+    background-color: #f4f4f4;
+    border: none;
+    cursor: pointer;
+  }
 }
