@@ -257,3 +257,32 @@ function filterAssignedToDropdown(searchValue) {
         }
     });
 }
+
+function showFieldError(fieldId, message) {
+    const output = document.querySelector(`output[for="${fieldId}"]`);
+    if (output) {
+        output.textContent = message;
+        output.style.visibility = 'visible';
+        output.closest('.form-group')?.classList.add('has-error');
+    }
+}
+
+function clearFieldError(fieldId) {
+    const output = document.querySelector(`output[for="${fieldId}"]`);
+    if (output) {
+        output.style.visibility = 'hidden';
+        output.textContent = '';
+        output.closest('.form-group')?.classList.remove('has-error');
+    }
+}
+
+function validateTaskField(fieldId) {
+    const el = document.getElementById(fieldId);
+    if (!el) return;
+
+    if (el.value.trim() === '') {
+        showFieldError(fieldId, 'This field is required!');
+    } else {
+        clearFieldError(fieldId);
+    }
+}

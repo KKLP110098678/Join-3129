@@ -60,6 +60,10 @@
     font-weight: 400;
 }
 
+.page-form .form-group output {
+    visibility: hidden;
+}
+
 .page-form .form-group.has-error output {
     visibility: visible;
 }

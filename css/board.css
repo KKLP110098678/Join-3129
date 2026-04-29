@@ -422,3 +422,11 @@ main {
   cursor: grabbing;
   opacity: 0.8;
 }
+
+.form-content output {
+    visibility: hidden;
+}
+
+.form-content .form-group.has-error output {
+    visibility: visible;
+}

@@ -1,10 +1,11 @@
 function addTaskTemplate() {
     return `
         <div class="add-task-page-container">
-            <div class="form-content page-form">
-                
+            <div class="form-content page-form">                
                 <div class="form-group">
-                    <input type="text" id="taskTitle" placeholder="Enter a title" oninput="checkFormValidity()">
+                    <input type="text" id="taskTitle" placeholder="Enter a title" 
+                        oninput="checkFormValidity()" 
+                        onblur="validateTaskField('taskTitle')">
                     <output for="taskTitle">This field is required</output>
                 </div>
                 <div class="form-group">
@@ -16,7 +17,9 @@ function addTaskTemplate() {
                 </div>
                 <div class="form-group">
                     <label for="taskDueDate">Due Date</label>
-                    <input type="date" id="taskDueDate" oninput="checkFormValidity()">
+                    <input type="date" id="taskDueDate" 
+                        oninput="checkFormValidity()" 
+                        onblur="validateTaskField('taskDueDate')">
                     <output for="taskDueDate">This field is required</output>
                 </div>
                 <div class="form-group">
