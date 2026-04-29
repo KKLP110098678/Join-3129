@@ -466,11 +466,17 @@ main {
   border-radius: 8px;
   font-size: 16px;
   background: transparent;
+  color: #FFF;
 }
 
 .move-task-option:active {
-  background-color: #d2e3ff;
+  background-color: #E3EEFF;
+  color: #4589FF;
   cursor: pointer;
+}
+
+.move-task-option:active path {
+  fill: #4589FF;
 }
 
 .move-menu-title {
@@ -486,5 +492,11 @@ main {
 @media (pointer: coarse) {
   .move-task-btn {
     display: block;
+  }
+}
+
+@media (pointer: fine) {
+  .move-task-menu {
+    display: none;
   }
 }
