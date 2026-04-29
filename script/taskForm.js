@@ -244,7 +244,6 @@ function filterAssignedToDropdown(searchValue) {
     const dropdown = document.getElementById('assignedToDropdown');
     if (!dropdown) return;
 
-    // dropdown öffnen falls geschlossen
     dropdown.classList.remove('d-none');
 
     const items = dropdown.querySelectorAll('.dropdown-item.contact');
