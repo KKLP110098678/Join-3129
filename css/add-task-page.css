@@ -18,6 +18,7 @@
     scrollbar-width: thin;
 }
 
+/* Form */
 .page-form {
     display: flex;
     flex-direction: column;
@@ -111,38 +112,6 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary-with-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    border-radius: 10px;
-    padding: 16px;
-    font-size: 21px;
-    height: 56px;
-}
-
-.btn-primary-with-icon:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    background-color: #4589FF;
-    color: white;
-    border: none;
-}
-
-.btn-primary-with-icon:not(:disabled) {
-    opacity: 1;
-    cursor: pointer;
-    background-color: #4589FF;
-    color: white;
-    border: none;
-}
-
-.btn-primary-with-icon:not(:disabled):hover {
-    background-color: #0038FF;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-
 /* Dropdowns */
 .dropdown-input-container {
     background-color: white;
@@ -162,7 +131,7 @@
     transform: rotate(180deg);
 }
 
-/* Priority highlight */
+/* Priority */
 #urgentPriority:checked + .priority-label.urgent {
     background-color: #FF3B30;
     color: white;
@@ -178,7 +147,7 @@
     color: white;
 }
 
-/* Subtask hover */
+/* Subtasks */
 .list-item.subtask .input-btn-group {
     visibility: hidden;
 }
@@ -187,7 +156,7 @@
     visibility: visible;
 }
 
-/*task added pop up*/
+/* Task Added Popup */
 .task-added-popup {
     position: fixed;
     bottom: 50%;
@@ -269,8 +238,7 @@
         padding-right: 12px;
     }
 
-    .btn-clear,
-    .btn-primary-with-icon {
+    .btn-clear {
         flex: 1;
         font-size: 18px;
         padding: 12px;

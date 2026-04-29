@@ -1,3 +1,4 @@
+/* Primary Button */
 .btn-primary {
     background: #4589FF;
     color: white;
@@ -23,6 +24,7 @@
     position: relative;
 }
 
+/* Disabled Tooltip */
 .disabled-tooltip {
     display: none;
 }
@@ -41,6 +43,7 @@
     left: 50%;
 }
 
+/* Light Button */
 .btn-light {
     background: white;
     color: #a8a8a8;
@@ -54,6 +57,7 @@
     background-color: rgb(243, 243, 243);
 }
 
+/* Back Button */
 .back-btn {
     background: url('../assets/icon/sign/backarrow.svg') no-repeat center;
     background-color: transparent;
@@ -71,21 +75,25 @@
     background-size: cover;
 }
 
+/* Primary Button with Icon */
 .btn-primary-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     background: #4589FF;
     color: white;
     border: none;
     border-radius: 10px;
-    font-size: 23px;
+    font-size: 21px;
+    height: 56px;
+    padding: 16px;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .btn-primary-with-icon:hover {
-    background: #005dff;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    background: #0038FF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary-with-icon:active {
@@ -94,9 +102,20 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }
 
-
 .btn-primary-with-icon:active path {
     fill: #4589ff;
+}
+
+.btn-primary-with-icon:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background-color: #4589FF;
+    color: white;
+}
+
+.btn-primary-with-icon:not(:disabled):hover {
+    background-color: #0038FF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .form-buttons .icon {

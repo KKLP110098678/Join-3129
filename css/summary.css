@@ -1,4 +1,4 @@
-/* whole content */
+/* Layout */
 main {
     display: flex;
     flex-direction: column;
@@ -20,29 +20,39 @@ main {
     justify-content: space-between;
 }
 
+/* Summary Cards */
 .summary-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     row-gap: 32px;
     column-gap: 36px;
     perspective: 500px;
+    width: 100%;
 }
 
-/* headline */
+/* Headline */
 .dashboard-headline {
     font-size: 48px;
     margin-top: 0;
     text-align: center;
 }
 
-/* upper content */
-/* .active-tasks {
-    width: 900px;
-    height: 200px;
-    display: flex;
-    gap: 20px;
-    perspective: 500px;
-} */
+.dashboard-headline.guest {
+    font-size: 60px;
+    font-weight: bold;
+    color: #2A3647;
+}
+
+.dashboard-headline.user {
+    color: #2A3647;
+}
+
+.dashboard-headline.user .username {
+    font-weight: bold;
+    color: #4589FF;
+}
+
+/* Urgent Task Box */
 .urgent-link {
     grid-column: span 3;
 }
@@ -63,27 +73,13 @@ main {
     border: 1px lightgray solid;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-amount-number-white {
-        color: #4589FF;
-    }
-
-    .task-text-white {
-        color: #4589FF;
-    }
-
-    .seperation-line {
-        background-color: #005DFF;
-    }
-
-    .date-text-top {
-        color: #4589FF;
-    }
-
-    .date-text {
-        color: #4589FF;
-    }
 }
+
+.urgent-task-box:hover .task-amount-number-white { color: #4589FF; }
+.urgent-task-box:hover .task-text-white { color: #4589FF; }
+.urgent-task-box:hover .seperation-line { background-color: #005DFF; }
+.urgent-task-box:hover .date-text-top { color: #4589FF; }
+.urgent-task-box:hover .date-text { color: #4589FF; }
 
 .urgent-task {
     height: 120px;
@@ -106,6 +102,7 @@ main {
     justify-content: center;
 }
 
+/* Task In Board */
 .task-in-board {
     height: 200px;
     border: 1px lightgray solid;
@@ -123,25 +120,12 @@ main {
     color: white;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-text {
-        color: white;
-    }
-
-    .task-icons {
-        outline: 3px solid white;
-        outline-offset: -8px;
-    }
 }
 
-/* lower content */
-/* .tasks-overview {
-    width: 900px;
-    display: flex;
-    justify-content: space-between;
-    perspective: 500px;
-} */
+.task-in-board:hover .task-text { color: white; }
+.task-in-board:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
 
+/* To Do */
 .to-do {
     height: 220px;
     border: 1px lightgray solid;
@@ -160,12 +144,11 @@ main {
     color: #005DFF;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-text {
-        color: #005DFF;
-    }
 }
 
+.to-do:hover .task-text { color: #005DFF; }
+
+/* In Progress */
 .in-progress {
     height: 220px;
     border: 1px lightgray solid;
@@ -183,17 +166,12 @@ main {
     color: white;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-text {
-        color: white;
-    }
-
-    .task-icons {
-        outline: 3px solid white;
-        outline-offset: -8px;
-    }
 }
 
+.in-progress:hover .task-text { color: white; }
+.in-progress:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+
+/* Awaiting Feedback */
 .awaiting-feedback {
     height: 220px;
     border: 1px lightgray solid;
@@ -211,17 +189,12 @@ main {
     color: white;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-text {
-        color: white;
-    }
-
-    .task-icons {
-        outline: 3px solid white;
-        outline-offset: -8px;
-    }
 }
 
+.awaiting-feedback:hover .task-text { color: white; }
+.awaiting-feedback:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+
+/* Done */
 .done {
     height: 220px;
     border: 1px lightgray solid;
@@ -239,18 +212,12 @@ main {
     color: white;
     transform: translateZ(30px);
     border-radius: 0 24px 24px 24px;
-
-    .task-text {
-        color: white;
-    }
-
-    .task-icons {
-        outline: 3px solid white;
-        outline-offset: -8px;
-    }
 }
 
-/* inside task information and design*/
+.done:hover .task-text { color: white; }
+.done:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+
+/* Task Info */
 .tasks-amount {
     width: 120px;
     display: flex;
@@ -323,31 +290,16 @@ main {
     transform-style: preserve-3d;
 }
 
-/* greetings display */
-.dashboard-headline.guest {
-    font-size: 60px;
-    font-weight: bold;
-    color: #2A3647;
-}
-
-.dashboard-headline.user {
-    color: #2A3647;
-}
-
-.dashboard-headline.user .username {
-    font-weight: bold;
-    color: #4589FF;
-}
-
-.summary-cards {
-    width: 100%;
-}
-
+/* Responsive */
 @media (max-width: 1250px) {
     #summaryContent {
         width: 100%;
         height: auto;
         padding: 0 16px;
+    }
+
+    .dashboard-headline {
+        margin-bottom: 16px;
     }
 
     .summary-cards {
@@ -368,6 +320,9 @@ main {
 
     .to-do {
         width: auto;
+        height: 106px;
+        flex-direction: row;
+        justify-content: space-evenly;
     }
 
     .in-board-link,
@@ -381,12 +336,6 @@ main {
         height: 150px;
     }
 
-    .to-do {
-        height: 106px;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
     .in-progress,
     .awaiting-feedback,
     .done,
@@ -395,7 +344,7 @@ main {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     main {
         margin-left: 0;
         margin-bottom: 80px;
@@ -404,9 +353,6 @@ main {
     .dashboard-headline {
         display: none;
     }
-}
-
-@media (max-width: 461px) {
 
     .date-text-top,
     .date-text {
@@ -414,7 +360,18 @@ main {
     }
 }
 
-@media (max-height: 844px) and (max-width: 1250px) {
+@media (max-width: 400px) {
+    .task-text-white {
+        width: 120px;
+    }
+
+    .date-text-top,
+    .date-text {
+        font-size: 18px;
+    }
+}
+
+@media (max-height: 844px) {
     .task-text {
         font-size: 18px;
     }
@@ -432,7 +389,7 @@ main {
     .awaiting-feedback,
     .done,
     .task-in-board {
-
+        height: 120px;
     }
 
     .summary-cards {
@@ -440,13 +397,13 @@ main {
     }
 }
 
-@media (max-height: 760px) and (max-width: 1250px) {
+@media (max-height: 760px) {
     .summary-cards {
         row-gap: 8px;
     }
 }
 
-@media (max-height: 720px) and (max-width: 1250px) {
+@media (max-height: 720px) {
     .urgent-task {
         height: auto;
     }

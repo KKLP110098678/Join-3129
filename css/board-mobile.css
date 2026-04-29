@@ -28,15 +28,17 @@
     box-sizing: border-box;
   }
 
-  .upper-board {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 100%;
-    margin-bottom: 0;
+  /* display: contents macht upper-board transparent damit order greift */
+  .upper-board,
+  .tasksbar,
+  .lower-board,
+  .lower-board-content {
+    display: contents;
   }
 
+  /* Searchbar */
   .searchbar {
+    order: 1;
     margin-top: 0;
     gap: 0;
     position: sticky;
@@ -59,54 +61,15 @@
     display: none;
   }
 
-  /* tabs und ihre wrapper transparent machen damit order greift */
-  .tasksbar,
-  .lower-board,
-  .lower-board-content {
-    display: contents;
-  }
-
-  /* tabs und boxen abwechselnd sortieren */
-  .taskbar-tab:nth-child(1) {
-    order: 2;
-  }
-
-  #toDoBox {
-    order: 3;
-  }
-
-  .taskbar-tab:nth-child(2) {
-    order: 4;
-  }
-
-  #progressBox {
-    order: 5;
-  }
-
-  .taskbar-tab:nth-child(3) {
-    order: 6;
-  }
-
-  #feedbackBox {
-    order: 7;
-  }
-
-  .taskbar-tab:nth-child(4) {
-    order: 8;
-  }
-
-  #doneBox {
-    order: 9;
-  }
-
-  /* upper-board muss auch contents sein damit searchbar order:1 bekommt */
-  .upper-board {
-    display: contents;
-  }
-
-  .searchbar {
-    order: 1;
-  }
+  /* Tabs und Boxen abwechselnd sortieren */
+  .taskbar-tab:nth-child(1) { order: 2; }
+  #toDoBox { order: 3; }
+  .taskbar-tab:nth-child(2) { order: 4; }
+  #progressBox { order: 5; }
+  .taskbar-tab:nth-child(3) { order: 6; }
+  #feedbackBox { order: 7; }
+  .taskbar-tab:nth-child(4) { order: 8; }
+  #doneBox { order: 9; }
 
   .taskbar-tab {
     max-width: 100%;
@@ -133,6 +96,7 @@
     background: transparent;
   }
 
+  /* Tab Content */
   .tab-content-box {
     overflow-x: auto;
     max-width: 100%;
@@ -145,19 +109,24 @@
     box-sizing: border-box;
   }
 
-  .tab-content-box::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .tab-content-box::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
+  .tab-content-box::-webkit-scrollbar { height: 4px; }
+  .tab-content-box::-webkit-scrollbar-track { background: transparent; }
   .tab-content-box::-webkit-scrollbar-thumb {
     background: #D1D1D1;
     border-radius: 10px;
   }
 
+  .task-element {
+    width: 100%;
+    min-width: 100%;
+    height: 56px;
+    background-color: #E7E7E7;
+    border: 1px dashed #A8A8A8;
+    color: #A8A8A8;
+    border-radius: 10px;
+  }
+
+  /* Board Cards */
   .board-card {
     width: 100%;
     margin-bottom: 0;
@@ -176,30 +145,21 @@
     line-clamp: unset;
   }
 
-  .task-element {
-    width: 100%;
-    min-width: 100%;
-    height: 56px;
-    background-color: #E7E7E7;
-    border: 1px dashed #A8A8A8;
-    color: #A8A8A8;
-    border-radius: 10px;
-  }
-
   .board-card-footer {
     flex-direction: row;
   }
 
+  /* Add Task Form Overlay */
   .form-container {
     width: 100%;
-    height: calc(100% - 80px)
+    height: calc(100% - 80px);
   }
 
   .form-buttons {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
-    padding: 0 36px 0 36px;
+    padding: 0 36px;
   }
 
   .form-buttons .btn-clear-mobile {

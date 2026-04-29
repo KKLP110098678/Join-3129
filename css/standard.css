@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +6,7 @@
   font-family: "Open Sans";
 }
 
+/* Body */
 body {
   line-height: 1.2;
   height: 100vh;
@@ -13,6 +15,7 @@ body {
   background-color: #F6F7F8;
 }
 
+/* Utilities */
 .d-none {
   display: none !important;
 }
@@ -21,11 +24,7 @@ body {
   cursor: pointer;
 }
 
-.d-none {
-  display: none;
-}
-
-/* Shared UI Components */
+/* Avatar */
 .avatar-sm {
   width: 42px;
   height: 42px;
@@ -38,13 +37,32 @@ body {
   font-size: 1rem;
 }
 
-.bg-orange { background-color: #FF7A00 !important; }
-.bg-purple { background-color: #9327FF !important; }
-.bg-blue { background-color: #007CEE !important; }
-.bg-green { background-color: #1FD7C1 !important; }
-.bg-pink { background-color: #FC71FF !important; }
-.bg-gray { background-color: #d1d1d1 !important; }
+/* Avatar Colors */
+.bg-orange {
+  background-color: #FF7A00 !important;
+}
 
+.bg-purple {
+  background-color: #9327FF !important;
+}
+
+.bg-blue {
+  background-color: #007CEE !important;
+}
+
+.bg-green {
+  background-color: #1FD7C1 !important;
+}
+
+.bg-pink {
+  background-color: #FC71FF !important;
+}
+
+.bg-gray {
+  background-color: #d1d1d1 !important;
+}
+
+/* Legal Content */
 .legal-content h1 {
   font-size: 61px;
   font-weight: 700;
@@ -65,12 +83,14 @@ body {
   margin-bottom: 12px;
 }
 
-.legal-content p, .legal-content li {
+.legal-content p,
+.legal-content li {
   font-size: 16px;
   line-height: 1.5;
   margin-bottom: 16px;
 }
 
+/* Output */
 output {
   color: red;
 }
