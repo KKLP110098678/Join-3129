@@ -496,7 +496,11 @@ main {
 
 @media (pointer: coarse) {
   .move-task-btn {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -505,6 +509,7 @@ main {
     display: none;
   }
 
-.form-content .form-group.has-error output {
+  .form-content .form-group.has-error output {
     visibility: visible;
+  }
 }

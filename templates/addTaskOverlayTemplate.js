@@ -80,8 +80,21 @@ function boardCardTemplate(task) {
 
 function openMoveTaskMenu(taskId) {
     const menu = document.getElementById(`moveMenu_${taskId}`);
-        menu.classList.toggle('d-none');
+    menu.classList.toggle('d-none');
 }
+
+// Schließt das Move-Menü beim Klicken auf den Hintergrund
+document.addEventListener('click', function(event) {
+    const allMoveMenus = document.querySelectorAll('.move-task-menu');
+    allMoveMenus.forEach(menu => {
+        if (!menu.classList.contains('d-none')) {
+            const moveBtn = menu.previousElementSibling;
+            if (!menu.contains(event.target) && !moveBtn.contains(event.target)) {
+                menu.classList.add('d-none');
+            }
+        }
+    });
+});
 
 function taskDetailTemplate(task) {
     const badgeClass = task.category === 'Technical Task' ? 'badge-technical-task' : 'badge-user-story';
