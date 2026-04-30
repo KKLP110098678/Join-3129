@@ -52,5 +52,6 @@ function logout() {
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userKey');
     sessionStorage.removeItem('isGuest');
+    sessionStorage.removeItem('greetingShown');
     window.location.href = '../html/login.html';
 }

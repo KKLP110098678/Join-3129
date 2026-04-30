@@ -64,6 +64,7 @@ function addSummary() {
     if (!summaryRef) return;
 
     summaryRef.innerHTML += summaryTemplate();
+    animateSummaryGreeting();
 }
 
 function addSidebar() {
