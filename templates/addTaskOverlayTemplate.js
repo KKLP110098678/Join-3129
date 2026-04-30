@@ -121,3 +121,8 @@ function addTaskOverlayTemplate() {
         </div>
     `;
 }
+
+function openMoveTaskMenu(taskId) {
+    const menu = document.getElementById(`moveMenu_${taskId}`);
+    menu.classList.toggle('d-none');
+}
