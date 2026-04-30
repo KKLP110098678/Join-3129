@@ -8,7 +8,7 @@ function boardCardTemplate(task) {
             onclick="openTaskDetail('${task.id}')">
             <div class="board-card-header">
                 <div class="board-card-badge ${badgeClass}">${task.category}</div>
-                <button class="btn-move-card-mobile"><img src="../assets/icon/board/swap_horiz.svg" alt="Move"></button>
+                <button onclick="openMobileMoveMenu()" class="btn-move-card-mobile"><img src="../assets/icon/board/swap_horiz.svg" alt="Move"></button>
             </div>
             <div class="board-card-content">
                 <h3 class="board-card-title">${task.title}</h3>
