@@ -223,6 +223,14 @@
     height: 56px;
 }
 
+.form-content output {
+    visibility: hidden;
+}
+
+.form-content .form-group.has-error output {
+    visibility: visible;
+}
+
 /* Mobile */
 @media (max-width: 1050px) {
     #taskDetailOverlay {
