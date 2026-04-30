@@ -121,6 +121,19 @@ function addNewContact(event) {
     saveContacts();
     closeAddContactOverlay();
     renderContacts();
+    showContactAddedPopup();
+}
+
+function showContactAddedPopup() {
+    const popup = document.createElement('div');
+    popup.className = 'contact-added-popup';
+    popup.textContent = 'Contact successfully created';
+    document.body.appendChild(popup);
+
+    setTimeout(() => {
+        popup.classList.add('fade-out');
+        setTimeout(() => popup.remove(), 400);
+    }, 2000);
 }
 
 // --- Edit Contact ---
