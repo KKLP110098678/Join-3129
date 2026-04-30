@@ -423,9 +423,87 @@ main {
   opacity: 0.8;
 }
 
-.form-content output {
-    visibility: hidden;
+.form-buttons .btn-clear-mobile {
+  display: none;
 }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.move-task-btn {
+  cursor: pointer;
+  display: none;
+  background: #F4F4F4;
+  border: none;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  width: 24px;
+  height: 26px;
+  border-radius: 6px;
+}
+
+.move-task-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  background: #0038FF;
+  border-radius: 20px 0 20px 20px;
+}
+
+.move-to-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+}
+
+.move-task-option {
+  min-height: 28px;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: transparent;
+  color: #FFF;
+}
+
+.move-task-option:active {
+  background-color: #E3EEFF;
+  color: #4589FF;
+  cursor: pointer;
+}
+
+.move-task-option:active path {
+  fill: #4589FF;
+}
+
+.move-menu-title {
+  display: block;
+  font-size: 17px;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+  padding-top: 13px;
+  padding-left: 17px;
+}
+
+@media (pointer: coarse) {
+  .move-task-btn {
+    display: block;
+  }
+}
+
+@media (pointer: fine) {
+  .move-task-menu {
+    display: none;
+  }
 
 .form-content .form-group.has-error output {
     visibility: visible;
