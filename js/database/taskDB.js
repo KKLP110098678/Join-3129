@@ -172,8 +172,10 @@ function showTaskAddedPopup() {
 
 function openAddTaskForm(status) {
     const normalizedStatus = status.replace(/\s+/g, '').toLowerCase();
-    document.getElementById("taskStatus").value = normalizedStatus;
-    document.getElementById("addTaskOverlay").classList.add("visible");
+    const container = document.getElementById('addTaskOverlayContainer');
+    container.innerHTML = addTaskOverlayTemplate();
+    document.getElementById('taskStatus').value = normalizedStatus;
+    document.getElementById('addTaskOverlay').classList.add('visible');
     clearAddTaskForm();
 }
 

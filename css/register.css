@@ -1,8 +1,10 @@
+/* Body */
 body {
     background-color: #4589FF;
     font-family: "Open Sans";
 }
 
+/* Layout */
 .content {
     display: flex;
     flex-direction: column;
@@ -11,11 +13,17 @@ body {
     max-width: 1920px;
 }
 
+/* Header */
 header,
 footer {
     min-height: 201.97px;
 }
 
+header img {
+    margin: 80px 0 0 77px;
+}
+
+/* Footer */
 footer {
     display: flex;
     justify-content: center;
@@ -35,16 +43,14 @@ footer a:hover {
     border-radius: 8px;
 }
 
-header img {
-    margin: 80px 0 0 77px;
-}
-
+/* Main */
 main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Register Form */
 .register-form {
     padding: 48px 88px;
     background: white;
@@ -72,13 +78,6 @@ main {
     font-weight: 700;
 }
 
-.input-icon-container input {
-    border: none;
-    height: 30px;
-    font-size: 16px;
-    color: #2c2c2c;
-}
-
 .seperator {
     width: 150px;
     height: 3px;
@@ -86,11 +85,20 @@ main {
     border-radius: 1.5px;
 }
 
+/* Input */
+.input-icon-container input {
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    color: #2c2c2c;
+}
+
 .error-message {
     padding: 1px 20px;
     font-size: 13px;
 }
 
+/* Submit Button */
 button[type="submit"] {
     display: flex;
     margin: 0 auto;
@@ -98,6 +106,7 @@ button[type="submit"] {
     font-size: 19px;
 }
 
+/* Checkbox */
 .checkbox-label {
     display: flex;
     align-items: center;
@@ -117,6 +126,7 @@ button[type="submit"] {
     text-shadow: 1px 1px 1px #005DFF, 0px 1px 1px #005DFF;
 }
 
+/* Success Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -133,9 +143,13 @@ button[type="submit"] {
     transition: opacity 0.3s ease;
 }
 
+.overlay.show {
+    opacity: 1;
+}
+
 .overlay-box {
     background: #4589FF;
-    color:white;
+    color: white;
     font-family: "Open Sans Bold";
     font-weight: 700;
     padding: 20px 40px;
@@ -145,20 +159,15 @@ button[type="submit"] {
     transition: transform 0.3s ease;
 }
 
-/* Visible state */
-.overlay.show {
-    opacity: 1;
-}
-
 .overlay.show .overlay-box {
     transform: scale(1);
 }
 
-/* Hidden state */
 .hidden {
     display: none;
 }
 
+/* Responsive */
 @media (min-width: 768px) {
     .register-form {
         width: 598px;
@@ -172,7 +181,6 @@ button[type="submit"] {
 }
 
 @media screen and (max-width: 768px) {
-
     header {
         min-height: auto;
     }
