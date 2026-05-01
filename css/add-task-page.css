@@ -216,6 +216,11 @@
         overflow-y: auto;
         overflow-x: hidden;
         padding-bottom: 120px;
+        scrollbar-width: none;
+    }
+
+    .add-task-page-container::-webkit-scrollbar {
+        display: none;
     }
 
     .page-form {
