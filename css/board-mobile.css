@@ -19,6 +19,21 @@
     display: flex;
   }
 
+  .form-container {
+    height: calc(100% - 160px);
+    top: 80px;
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .add-task-form {
+    background: rgba(255, 255, 255, 0.01);
+  }
+
+  #taskDetailOverlay {
+    border-radius: 0;
+  }
+
   #boardContent {
     padding: 0 16px 120px 16px;
     display: flex;
@@ -62,14 +77,37 @@
   }
 
   /* Tabs und Boxen abwechselnd sortieren */
-  .taskbar-tab:nth-child(1) { order: 2; }
-  #toDoBox { order: 3; }
-  .taskbar-tab:nth-child(2) { order: 4; }
-  #progressBox { order: 5; }
-  .taskbar-tab:nth-child(3) { order: 6; }
-  #feedbackBox { order: 7; }
-  .taskbar-tab:nth-child(4) { order: 8; }
-  #doneBox { order: 9; }
+  .taskbar-tab:nth-child(1) {
+    order: 2;
+  }
+
+  #toDoBox {
+    order: 3;
+  }
+
+  .taskbar-tab:nth-child(2) {
+    order: 4;
+  }
+
+  #progressBox {
+    order: 5;
+  }
+
+  .taskbar-tab:nth-child(3) {
+    order: 6;
+  }
+
+  #feedbackBox {
+    order: 7;
+  }
+
+  .taskbar-tab:nth-child(4) {
+    order: 8;
+  }
+
+  #doneBox {
+    order: 9;
+  }
 
   .taskbar-tab {
     max-width: 100%;
@@ -109,8 +147,14 @@
     box-sizing: border-box;
   }
 
-  .tab-content-box::-webkit-scrollbar { height: 4px; }
-  .tab-content-box::-webkit-scrollbar-track { background: transparent; }
+  .tab-content-box::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .tab-content-box::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
   .tab-content-box::-webkit-scrollbar-thumb {
     background: #D1D1D1;
     border-radius: 10px;
@@ -149,17 +193,11 @@
     flex-direction: row;
   }
 
-  /* Add Task Form Overlay */
-  .form-container {
-    width: 100%;
-    height: calc(100% - 80px);
-  }
-
   .form-buttons {
     display: flex;
     justify-content: space-around;
     box-sizing: border-box;
-    padding: 0 36px;
+    padding: 5px 36px;
   }
 
   .form-buttons .btn-clear-mobile {
