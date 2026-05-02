@@ -9,7 +9,7 @@ function summaryTemplate() {
     return `
         <p class="dashboard-headline ${isGuest ? 'guest' : 'user'}">${getGreeting()}${firstName ? `, <span class="username">${firstName}</span>` : ''}</p>
                 <div class="summary-cards">
-                    <a href="board.html" class="task-link urgent-link">
+                    <a href="../board.html" class="task-link urgent-link">
                         <div class="urgent-task-box">
                             <div class="urgent-task">
                                 <div class="tasks-amount">
@@ -24,7 +24,7 @@ function summaryTemplate() {
                             </div>
                         </div>
                     </a>
-                    <a href="board.html" class="task-link in-board-link">
+                    <a href="../board.html" class="task-link in-board-link">
                         <div class="task-in-board">
                             <div class="tasks-amount">
                                 <img class="task-icons" src="../assets/icon/summary/default.svg" alt="">
@@ -33,7 +33,7 @@ function summaryTemplate() {
                             <p class="task-text">Task in Board</p>
                         </div>
                     </a>
-                    <a href="board.html" class="task-link todo-link">
+                    <a href="../board.html" class="task-link todo-link">
                         <div class="to-do">
                             <div class="tasks-amount">
                                 <img class="task-icons" src="../assets/icon/summary/todo.svg" alt="">
@@ -42,7 +42,7 @@ function summaryTemplate() {
                             <p class="task-text">Tasks To-do</p>
                         </div>
                     </a>
-                    <a href="board.html" class="task-link in-progress-link">
+                    <a href="../board.html" class="task-link in-progress-link">
                         <div class="in-progress">
                             <div class="tasks-amount">
                                 <img class="task-icons" src="../assets/icon/summary/in-progress.svg" alt="">
@@ -51,7 +51,7 @@ function summaryTemplate() {
                             <p class="task-text">Tasks in Progress</p>
                         </div>
                     </a>
-                    <a href="board.html" class="task-link awaiting-feedback-link">
+                    <a href="../board.html" class="task-link awaiting-feedback-link">
                         <div class="awaiting-feedback">
                             <div class="tasks-amount">
                                 <img class="task-icons" src="../assets/icon/summary/await-feedback.svg" alt="">
@@ -60,7 +60,7 @@ function summaryTemplate() {
                             <p class="task-text">Awaiting Feedback</p>
                         </div>
                     </a>
-                    <a href="board.html" class="task-link done-link">
+                    <a href="../board.html" class="task-link done-link">
                         <div class="done">
                             <div class="tasks-amount">
                                 <img class="task-icons" src="../assets/icon/summary/done.svg" alt="">
