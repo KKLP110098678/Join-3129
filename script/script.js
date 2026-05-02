@@ -1,4 +1,4 @@
-let protectedPages = ['/', 'index.html', 'board.html', 'contacts.html', 'add-task.html'];
+let protectedPages = ['index.html', 'board.html', 'contacts.html', 'add-task.html'];
 
 async function init() {
     checkAuth();
@@ -89,7 +89,10 @@ function checkAuth() {
     const userKey = sessionStorage.getItem('userKey');
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
 
-    if (protectedPages.some(page => window.location.pathname.includes(page))) {
+    const path = window.location.pathname;
+    const isProtected = path === '/' || protectedPages.some(page => path.endsWith(page));
+
+    if (isProtected) {
         if (!isGuest && (!username || !userKey)) {
             window.location.href = '../html/login.html';
         }
