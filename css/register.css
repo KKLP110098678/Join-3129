@@ -2,6 +2,7 @@
 body {
     background-color: #4589FF;
     font-family: "Open Sans";
+    align-items: center;
 }
 
 /* Layout */
@@ -11,6 +12,7 @@ body {
     justify-content: space-between;
     min-height: 100svh;
     max-width: 1920px;
+    width: 100%;
 }
 
 /* Header */
