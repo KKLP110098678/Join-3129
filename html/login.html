@@ -16,57 +16,56 @@
 
 <body onload="animateLogo()">
 
-    <header>
-        <img src="../assets/icon/logo-blue.svg" class="logo" alt="Join Logo">
-        <div class="header-right"><span class="sign-up-info">Not a Join user?</span><a
-                href="../html/register.html"><button class="btn-primary btn-login">Sign
-                    up</button></a></div>
-    </header>
-
-    <main>
-        <form class="login-form" onsubmit="loginUser(event)">
-            <div class="login-form-header">
-                <span>Log in</span>
-                <div class="seperator"></div>
-            </div>
-            <div class="login-form-body">
-                <div class="field-container">
-                    <div class="input-icon-container" id="email-field">
-                        <input onblur="validateEmail();" type="email" id="username" name="username" placeholder="Email"
-                            required>
-                        <img src="../assets/icon/login/mail.svg" alt="Mail Icon">
-                    </div>
-                    <output class="error-message d-none" id="email-error" for="username">This field is
-                        required!</output>
+    <div class="login-content">
+        <header>
+            <img src="../assets/icon/logo-blue.svg" class="logo" alt="Join Logo">
+            <div class="header-right"><span class="sign-up-info">Not a Join user?</span><a
+                    href="../html/register.html"><button class="btn-primary btn-login">Sign
+                        up</button></a></div>
+        </header>
+        <main>
+            <form class="login-form" onsubmit="loginUser(event)">
+                <div class="login-form-header">
+                    <span>Log in</span>
+                    <div class="seperator"></div>
                 </div>
-                <div class="field-container">
-                    <div class="input-icon-container" id="password-field">
-                        <input onblur="validatePassword();" type="password" id="password" name="password"
-                            placeholder="Password" required>
-                        <img src="../assets/icon/login/lock.svg" id="password-toggle" class="pointer" alt="Lock Icon">
+                <div class="login-form-body">
+                    <div class="field-container">
+                        <div class="input-icon-container" id="email-field">
+                            <input onblur="validateEmail();" type="email" id="username" name="username" placeholder="Email"
+                                required>
+                            <img src="../assets/icon/login/mail.svg" alt="Mail Icon">
+                        </div>
+                        <output class="error-message d-none" id="email-error" for="username">This field is
+                            required!</output>
                     </div>
-                    <output class="error-message d-none" id="password-error" for="password">This field is
-                        required!</output>
-                    <span class="login-error-message d-none" id="login-error"></span>
+                    <div class="field-container">
+                        <div class="input-icon-container" id="password-field">
+                            <input onblur="validatePassword();" type="password" id="password" name="password"
+                                placeholder="Password" required>
+                            <img src="../assets/icon/login/lock.svg" id="password-toggle" class="pointer" alt="Lock Icon">
+                        </div>
+                        <output class="error-message d-none" id="password-error" for="password">This field is
+                            required!</output>
+                        <span class="login-error-message d-none" id="login-error"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="login-button-area">
-                <button type="submit" class="btn-primary btn-login">Log in</button>
-                <button type="button" id="guest-login-button" class="btn-light btn-login">Guest log in</button>
-            </div>
-        </form>
-        <div class="mobile-sign-up"><span class="sign-up-info">Not a Join user?</span><a
-                href="../html/register.html"><button class="btn-primary btn-login">Sign
-                    up</button></a></div>
-    </main>
-
-    <footer>
-        <a href="../html/privacy-policy.html">Privacy Policy</a>
-        <a href="../html/legal-notice.html">Legal Notice</a>
-    </footer>
-
-    <div class="animation-frame" id="animation-frame">
-        <img src="../assets/icon/logo-blue.svg" id="animation-logo" alt="Join Logo">
+                <div class="login-button-area">
+                    <button type="submit" class="btn-primary btn-login">Log in</button>
+                    <button type="button" id="guest-login-button" class="btn-light btn-login">Guest log in</button>
+                </div>
+            </form>
+            <div class="mobile-sign-up"><span class="sign-up-info">Not a Join user?</span><a
+                    href="../html/register.html"><button class="btn-primary btn-login">Sign
+                        up</button></a></div>
+        </main>
+        <footer>
+            <a href="../html/privacy-policy.html">Privacy Policy</a>
+            <a href="../html/legal-notice.html">Legal Notice</a>
+        </footer>
+        <div class="animation-frame" id="animation-frame">
+            <img src="../assets/icon/logo-blue.svg" id="animation-logo" alt="Join Logo">
+        </div>
     </div>
 
 </body>
