@@ -78,7 +78,6 @@ main {
 .btn-login {
     padding: 6px 30px;
     font-size: 17px;
-    width: 110%;
 }
 
 .login-button-area {
@@ -285,4 +284,7 @@ footer a {
         padding-left: 10px;
         font-size: 10px;
     }
+    .btn-login {
+    width: 110%;
+}
 }
