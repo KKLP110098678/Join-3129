@@ -216,11 +216,20 @@
         overflow-y: auto;
         overflow-x: hidden;
         padding-bottom: 120px;
-        scrollbar-width: none;
+        scrollbar-width: thin;
     }
 
     .add-task-page-container::-webkit-scrollbar {
-        display: none;
+        width: 4px;
+    }
+
+    .add-task-page-container::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .add-task-page-container::-webkit-scrollbar-thumb {
+        background: #D1D1D1;
+        border-radius: 10px;
     }
 
     .page-form {
