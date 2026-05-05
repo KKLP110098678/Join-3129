@@ -1,5 +1,5 @@
 function animateLogo() {
-    const animationFrame = document.getElementById('animation-frame');
+    const animationBackground = document.getElementById('animation-background');
     const animationLogo = document.getElementById('animation-logo');
 
     const isMobile = window.innerWidth <= 768;
@@ -23,13 +23,13 @@ function animateLogo() {
 
         animationLogo.style.filter = 'brightness(1) invert(0)';
         animationLogo.style.transition = 'height 1s, width 1s, left 1s, top 1s, filter 1s, transform 1s';
-        animationFrame.style.opacity = '0';
-        animationFrame.style.transition = 'opacity 3s';
+        animationBackground.style.opacity = '0';
+        animationBackground.style.transition = 'opacity 3s';
     }, 100);
 
     // Hide animation after 3 seconds
     setTimeout(() => {
-        animationFrame.style.display = 'none';
+        animationBackground.style.display = 'none';
     }, 3000);
 }
 

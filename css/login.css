@@ -206,14 +206,24 @@ footer a {
 }
 
 /* Animation */
-.animation-frame {
+.animation-background {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
     background: #4589FF;
+}
+
+.animation-frame {
+    max-width: 1440px;
+    width:  100%;
+    height: 100%;
+    position: relative;
 }
 
 #animation-logo {
