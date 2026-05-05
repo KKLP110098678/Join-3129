@@ -1,19 +1,19 @@
 function getGreetingMessage() {
     const hour = new Date().getHours();
-    const isGuest = sessionStorage.getItem('isGuest') === 'true';
-    const username = sessionStorage.getItem('username') || '';
-    const firstName = isGuest ? '' : username.trim().split(' ')[0];
 
-    let greeting;
     if (hour >= 6 && hour < 12) {
-        greeting = 'Good morning';
+        return 'Good morning';
     } else if (hour >= 12 && hour < 18) {
-        greeting = 'Good day';
-    } else {
-        greeting = 'Good evening';
+        return 'Good day';
     }
 
-    return firstName ? `${greeting}, ${firstName}!` : `${greeting}!`;
+    return 'Good evening';
+}
+
+function getGreetingName() {
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
+    const username = sessionStorage.getItem('username') || '';
+    return isGuest ? '' : username.trim();
 }
 
 function animateSummaryGreeting() {
@@ -36,22 +36,52 @@ function animateSummaryGreeting() {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0 24px;
+        box-sizing: border-box;
         z-index: 500;
         pointer-events: none;
     `;
 
-    const greetingText = document.createElement('p');
-    greetingText.textContent = getGreetingMessage();
+    const greetingText = document.createElement('div');
     greetingText.style.cssText = `
-        font-size: 60px;
-        font-weight: 700;
-        color: #2A3647;
+        width: min(100%, 640px);
+        max-width: 100%;
         text-align: center;
-        padding: 0 24px;
         opacity: 1;
         transform: translateY(0);
         transition: opacity 0.8s ease, transform 0.8s ease;
+        line-height: 1.05;
     `;
+
+    const greetingName = getGreetingName();
+    const greetingLine = document.createElement('span');
+    greetingLine.textContent = greetingName ? `${getGreetingMessage()},` : getGreetingMessage();
+    greetingLine.style.cssText = `
+        display: block;
+        font-size: 24px;
+        font-weight: 500;
+        color: #2A3647;
+        margin-bottom: 8px;
+    `;
+    if (greetingName) {
+        const nameLine = document.createElement('strong');
+        nameLine.textContent = `${greetingName}!`;
+        nameLine.style.cssText = `
+            display: block;
+            font-size: clamp(34px, 8vw, 52px);
+            font-weight: 800;
+            color: #005DFF;
+            line-height: 1.05;
+            word-break: break-word;
+            white-space: normal;
+        `;
+        greetingText.appendChild(greetingLine);
+        greetingText.appendChild(nameLine);
+    } else {
+        greetingLine.style.fontSize = '36px';
+        greetingLine.style.fontWeight = '700';
+        greetingText.appendChild(greetingLine);
+    }
 
     overlay.appendChild(greetingText);
     document.body.appendChild(overlay);
