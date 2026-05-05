@@ -32,7 +32,7 @@
     const user = await authenticateUser(email, password);
     if (user) {
         sessionStorage.removeItem('isGuest');
-        window.location.href = './summary.html';
+        window.location.href = '../index.html';
     } else {
         showLoginError('Check your email and password. Please try again.');
     }
@@ -151,7 +151,7 @@ function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userKey');
-    window.location.href = './summary.html';
+    window.location.href = '../index.html';
 }
 
 function setupGuestLoginButton() {
