@@ -11,13 +11,27 @@ function getContactsRef() {
 
 // --- Firebase ---
 
+const defaultContacts = [
+    { name: 'Anton Mayer', email: 'anton@gmail.com', phone: '+49 1111 111 11 1', initials: 'AM', color: 'bg-orange' },
+    { name: 'Anja Schulz', email: 'schulz@hotmail.com', phone: '+49 1111 111 11 1', initials: 'AS', color: 'bg-purple' },
+    { name: 'Benedikt Ziegler', email: 'benedikt@gmail.com', phone: '+49 1111 111 11 1', initials: 'BZ', color: 'bg-blue' },
+    { name: 'David Eisenberg', email: 'davidberg@gmail.com', phone: '+49 1111 111 11 1', initials: 'DE', color: 'bg-pink' },
+    { name: 'Eva Fischer', email: 'eva@gmail.com', phone: '+49 1111 111 11 1', initials: 'EF', color: 'bg-green' },
+    { name: 'Emmanuel Mauer', email: 'emmanuelma@gmail.com', phone: '+49 1111 111 11 1', initials: 'EM', color: 'bg-orange' },
+    { name: 'Marcel Bauer', email: 'bauer@gmail.com', phone: '+49 1111 111 11 1', initials: 'MB', color: 'bg-purple' },
+    { name: 'Tatjana Wolf', email: 'wolf@gmail.com', phone: '+49 1111 111 11 1', initials: 'TW', color: 'bg-blue' },
+    { name: 'Sebastian Hesse', email: 'sebastian@gmail.com', phone: '+49 1111 111 11 1', initials: 'SH', color: 'bg-pink' },
+    { name: 'Sven Becker', email: 'becker@gmail.com', phone: '+49 1111 111 11 1', initials: 'SB', color: 'bg-green' }
+];
+
 async function loadContacts() {
     try {
         let snapshot = await getContactsRef().once('value');
         const val = snapshot.val();
 
-        if (!val) {
-            contacts = [];
+        if (!val || Object.keys(val).length === 0) {
+            contacts = [...defaultContacts];
+            await saveContacts();
         } else if (Array.isArray(val)) {
             contacts = val.filter(c => c !== null && c !== undefined);
         } else {

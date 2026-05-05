@@ -37,6 +37,26 @@ function renderAssignedToDropdown() {
         </div>
     `;
 
+    const currentUser = sessionStorage.getItem('username');
+    if (currentUser && currentUser.trim() !== '') {
+        let nameParts = currentUser.trim().split(' ');
+        let initials = nameParts.length >= 2 
+            ? (nameParts[0][0] + nameParts[1][0]).toUpperCase() 
+            : (nameParts[0]?.[0]?.toUpperCase() || 'U');
+
+        dropdown.innerHTML += `
+            <div class="dropdown-item contact">
+                <label class="contact-label" for="contact_cb_user">
+                    <div class="dropdown-contact">
+                        <div class="avatar-sm bg-blue">${initials}</div>
+                        ${currentUser} (You)
+                    </div>
+                    <input type="checkbox" id="contact_cb_user" class="checkbox-masked contact-checkbox" value="${currentUser}" onchange="updateAssignees()">
+                </label>
+            </div>
+        `;
+    }
+
     if (typeof contacts !== 'undefined') {
         contacts.forEach((contact, i) => {
             dropdown.innerHTML += `
