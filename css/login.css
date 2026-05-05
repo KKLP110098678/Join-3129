@@ -78,6 +78,7 @@ main {
 .btn-login {
     padding: 6px 30px;
     font-size: 17px;
+    width: 110%;
 }
 
 .login-button-area {
