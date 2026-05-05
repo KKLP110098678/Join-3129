@@ -1,4 +1,22 @@
 function headerTemplate() {
+    const username = sessionStorage.getItem('username');
+    const userKey = sessionStorage.getItem('userKey');
+    const isGuest = sessionStorage.getItem('isGuest') === 'true';
+    const loggedIn = isGuest || (username && userKey);
+
+    if (!loggedIn) {
+        return `
+            <div class="header-logo">
+                <img src="../assets/icon/logo-white.svg" alt="join logo">
+            </div>
+            <div class="header-interaction">
+                <div>
+                    <h3 class="header-headline">Kanban Project Management Tool</h3>
+                </div>
+            </div>
+        `;
+    }
+
     return `
             <div class="header-logo">
                 <img src="../assets/icon/logo-white.svg" alt="join logo">
