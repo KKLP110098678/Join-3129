@@ -15,7 +15,7 @@ body {
     flex-direction: column;
     justify-content: space-between;
     min-height: 100dvh;
-    max-width: 1920px;
+    max-width: 1440px;
     width: 100%;
 }
 
@@ -208,6 +208,8 @@ footer a {
 /* Animation */
 .animation-frame {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
