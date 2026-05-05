@@ -176,6 +176,7 @@ function openAddTaskForm(status) {
     container.innerHTML = addTaskOverlayTemplate();
     document.getElementById('taskStatus').value = normalizedStatus;
     document.getElementById('addTaskOverlay').classList.add('visible');
+    renderAssignedToDropdown();
     clearAddTaskForm();
 }
 
