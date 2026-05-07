@@ -15,6 +15,8 @@ main {
     margin-left: 232px;
     margin-top: 100px;
     padding: 72px 88px;
+    max-width: calc(1920px - 232px);
+    width: 100%;
 }
 
 /* Typography */
