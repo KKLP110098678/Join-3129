@@ -38,10 +38,6 @@
     background: rgba(255, 255, 255, 0.01);
   }
 
-  #taskDetailOverlay {
-    border-radius: 0;
-  }
-
   #boardContent {
     padding: 0 16px 120px 16px;
     display: flex;
