@@ -43,7 +43,7 @@ function addTaskTemplate() {
                     </div>
                 </div>
                 <div class="form-group" id="assignedTo">
-                    <label for="assignedToInput">
+                    <label>
                         Assigned To
                         <span class="optional">(optional)</span>
                     </label>

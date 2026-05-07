@@ -188,7 +188,7 @@ function editTaskTemplate(task) {
                 </div>
             </div>
             <div class="form-group">
-                <label for="editAssignedToInput">Assigned To <span class="optional">(optional)</span></label>
+                <label>Assigned To <span class="optional">(optional)</span></label>
                 <div class="custom-dropdown">
                     <div class="dropdown-input-container">
                         <input type="text" class="dropdown-input" id="editAssignedToInput"
