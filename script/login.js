@@ -1,4 +1,4 @@
-﻿async function loginUser(event) {
+async function loginUser(event) {
     event.preventDefault();
 
     const emailInput = document.getElementById('username');
@@ -147,10 +147,17 @@ function showLoginError(message) {
     errorMessage.classList.remove('d-none');
 }
 
-function guestLogin() {
+async function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userKey');
+    
+    try {
+        await firebase.database().ref('guest/tasks').set(null);
+    } catch(e) {
+        console.error('Error resetting guest tasks:', e);
+    }
+    
     window.location.href = '../index.html';
 }
 
