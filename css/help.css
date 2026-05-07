@@ -8,6 +8,8 @@ main {
     margin-left: 232px;
     min-height: 0;
     overflow-y: auto;
+    max-width: calc(1920px - 232px);
+    width: 100%;
 }
 
 #helpContent {
