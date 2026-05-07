@@ -47,8 +47,12 @@ function initTaskForm() {
 
 function setDefaultDueDate() {
     let dateInput = document.getElementById('taskDueDate');
-    if (dateInput && !dateInput.value) {
-        dateInput.value = new Date().toISOString().split('T')[0];
+    if (dateInput) {
+        let today = new Date().toISOString().split('T')[0];
+        if (!dateInput.value) {
+            dateInput.value = today;
+        }
+        dateInput.min = today;
     }
 }
 

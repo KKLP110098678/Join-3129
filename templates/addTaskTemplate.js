@@ -3,7 +3,7 @@ function addTaskTemplate() {
         <div class="add-task-page-container">
             <div class="form-content page-form">                
                 <div class="form-group">
-                    <input type="text" id="taskTitle" placeholder="Enter a title" 
+                    <input type="text" id="taskTitle" placeholder="Enter a title *" 
                         oninput="checkFormValidity()" 
                         onblur="validateTaskField('taskTitle')">
                     <output for="taskTitle">This field is required</output>

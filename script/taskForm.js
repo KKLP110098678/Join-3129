@@ -4,12 +4,24 @@ function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
-    document.getElementById("taskDueDate").value = new Date().toISOString().split('T')[0];
+    document.getElementById("taskDueDate").value = "";
     document.getElementById("categoryInput").value = "";
     document.getElementById('assignedToInput').value = '';
+    
+    // Clear assigned contacts
+    document.querySelectorAll('.contact-checkbox').forEach(cb => cb.checked = false);
+    if (typeof updateAssignees === 'function') {
+        updateAssignees();
+    }
+
     currentSubtasks = [];
     renderSubtasks();
     checkFormValidity();
+
+    // Clear validation errors
+    clearFieldError('taskTitle');
+    clearFieldError('taskDueDate');
+    clearFieldError('categoryInput');
 }
 
 function clearForm() {

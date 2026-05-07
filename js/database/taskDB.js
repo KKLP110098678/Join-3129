@@ -269,6 +269,7 @@ function openAddTaskForm(status) {
     document.getElementById('taskStatus').value = normalizedStatus;
     document.getElementById('addTaskOverlay').classList.add('visible');
     clearAddTaskForm();
+    if (typeof setDefaultDueDate === 'function') setDefaultDueDate();
 }
 
 function openTaskDetail(taskId) {
@@ -326,6 +327,13 @@ function openEditTask(taskId) {
     document.getElementById('taskDetailContainer').innerHTML = editTaskTemplate(task);
     document.getElementById('taskDetailOverlay').classList.add('edit-mode');
     document.getElementById('editAssignedToInput').value = ''; // neu
+    
+    // Min date set to today
+    let dateInput = document.getElementById('editDueDate');
+    if (dateInput) {
+        dateInput.min = new Date().toISOString().split('T')[0];
+    }
+
     renderEditAssignedToDropdown(task.assignees || []);
     renderEditSubtasks();
 }

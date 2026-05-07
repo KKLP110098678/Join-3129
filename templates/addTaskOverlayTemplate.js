@@ -10,7 +10,7 @@ function addTaskOverlayTemplate() {
         </div>
         <div class="form-content">
             <div class="form-group">
-                <input type="text" id="taskTitle" placeholder="Enter a title" onblur="validateTaskField('taskTitle')">
+                <input type="text" id="taskTitle" placeholder="Enter a title *" onblur="validateTaskField('taskTitle')">
                 <output for="taskTitle">This field is required</output>
             </div>
             <div class="form-group">
