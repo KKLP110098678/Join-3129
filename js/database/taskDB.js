@@ -199,7 +199,9 @@ async function saveNewTask() {
     const status = document.getElementById('taskStatus').value || 'todo';
 
     if (!title || !dueDate || !category) {
-        alert('Bitte Titel, Fälligkeitsdatum und Kategorie ausfüllen.');
+        validateTaskField('taskTitle');
+        validateTaskField('taskDueDate');
+        validateTaskField('categoryInput');
         return;
     }
 

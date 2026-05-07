@@ -65,9 +65,15 @@
     color: #42526E;
 }
 
-/* Output */
-output.error {
+/* Output & Error States */
+output.error,
+.form-group.has-error output {
     color: #E60026;
+}
+
+.form-group.has-error input:not([type="checkbox"]),
+.form-group.has-error .dropdown-input-container {
+    border-bottom-color: #E60026;
 }
 
 /* Inputs */

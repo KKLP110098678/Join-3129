@@ -84,6 +84,7 @@ function addTaskOverlayTemplate() {
                         </div>
                     </div>
                 </div>
+                <output for="categoryInput">This field is required</output>
                 <div class="form-group">
                     <p class="form-label">Subtasks <span class="optional">(optional)</span></p>
                     <div id="subtasksContainer">

@@ -247,8 +247,6 @@ function checkFormValidity() {
     const isValid = titleEl.value.trim() !== '' && 
                     dueDateEl.value !== '' && 
                     categoryEl.value !== '';
-
-    btn.disabled = !isValid;
 }
 
 document.addEventListener('click', function(event) {
