@@ -160,29 +160,30 @@ async function registerUser(event) {
     };
     await addNewUser(newUser);
     await createDefaultContacts(newUser);
-    await showSuccessOverlay(); 
+    await createDefaultTasks(newUser);
+    await showSuccessOverlay();
     window.location.href = './login.html';
 }
 
 function showSuccessOverlay() {
-  return new Promise((resolve) => {
-    const overlay = document.getElementById("success-overlay");
+    return new Promise((resolve) => {
+        const overlay = document.getElementById("success-overlay");
 
-    overlay.classList.remove("hidden");
+        overlay.classList.remove("hidden");
 
-    setTimeout(() => {
-      overlay.classList.add("show");
-    }, 10);
+        setTimeout(() => {
+            overlay.classList.add("show");
+        }, 10);
 
-    setTimeout(() => {
-      overlay.classList.remove("show");
+        setTimeout(() => {
+            overlay.classList.remove("show");
 
-      setTimeout(() => {
-        overlay.classList.add("hidden");
-        resolve();
-      }, 300);
-    }, 2000);
-  });
+            setTimeout(() => {
+                overlay.classList.add("hidden");
+                resolve();
+            }, 300);
+        }, 2000);
+    });
 }
 
 function setupPasswordToggle(inputId, iconId) {
