@@ -199,18 +199,20 @@
 
   .form-buttons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 12px;
     box-sizing: border-box;
-    padding: 5px 36px;
+    padding: 16px;
   }
 
-  .form-buttons .btn-clear-mobile {
-    display: flex;
-    max-width: 140px;
-  }
-
+  .form-buttons .btn-clear-mobile,
   .form-buttons .btn-primary-with-icon {
-    max-width: 160px;
+    display: flex;
+    flex: 1;
+    white-space: nowrap;
+    justify-content: center;
+    padding: 12px;
+    font-size: 18px;
   }
 }
 
