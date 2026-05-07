@@ -1,4 +1,4 @@
-@media (max-width: 1150px) {
+@media (max-width: 1200px) {
   .board-card-badge {
     font-size: 16px;
   }
@@ -6,6 +6,14 @@
   .board-card-footer {
     flex-direction: column;
     gap: 12px;
+  }
+
+  .board-card {
+    padding: 12px;
+  }
+
+  .board-card-badge {
+    padding: 4px 8px;
   }
 }
 
