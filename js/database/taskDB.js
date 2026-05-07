@@ -19,6 +19,98 @@ async function loadTasks() {
     }
 }
 
+async function createDefaultTasks(newUser) {
+    try {
+        const userKey = await getUserKeyByEmail(newUser.email);
+        if (!userKey) return;
+
+        const tasksRef = firebase.database().ref(`users/${userKey}/tasks`);
+
+        const defaultTasks = [
+            {
+                title: 'Design Review',
+                description: 'Review the latest UI designs and provide feedback to the design team.',
+                dueDate: '2026-05-20',
+                category: 'User Story',
+                priority: 'medium',
+                status: 'todo',
+                assignees: [],
+                subtasks: [
+                    { title: 'Check color scheme', done: false },
+                    { title: 'Review typography', done: false },
+                    { title: 'Check mobile responsiveness', done: false }
+                ],
+                createdAt: new Date().toISOString()
+            },
+            {
+                title: 'Fix Login Bug',
+                description: 'Users are unable to log in with special characters in their password. Investigate and fix.',
+                dueDate: '2026-05-15',
+                category: 'Technical Task',
+                priority: 'urgent',
+                status: 'inprogress',
+                assignees: [],
+                subtasks: [
+                    { title: 'Reproduce the bug', done: true },
+                    { title: 'Find root cause', done: false },
+                    { title: 'Deploy fix', done: false }
+                ],
+                createdAt: new Date().toISOString()
+            },
+            {
+                title: 'Write Unit Tests',
+                description: 'Write unit tests for the authentication module to ensure stability.',
+                dueDate: '2026-05-25',
+                category: 'Technical Task',
+                priority: 'medium',
+                status: 'todo',
+                assignees: [],
+                subtasks: [
+                    { title: 'Test login function', done: false },
+                    { title: 'Test registration function', done: false }
+                ],
+                createdAt: new Date().toISOString()
+            },
+            {
+                title: 'Customer Onboarding Flow',
+                description: 'Improve the onboarding experience for new customers based on user feedback.',
+                dueDate: '2026-06-01',
+                category: 'User Story',
+                priority: 'low',
+                status: 'awaitfeedback',
+                assignees: [],
+                subtasks: [
+                    { title: 'Update welcome email', done: true },
+                    { title: 'Add tooltip guides', done: true },
+                    { title: 'Create tutorial video', done: false }
+                ],
+                createdAt: new Date().toISOString()
+            },
+            {
+                title: 'Database Optimization',
+                description: 'Optimize database queries to improve overall application performance.',
+                dueDate: '2026-05-10',
+                category: 'Technical Task',
+                priority: 'urgent',
+                status: 'done',
+                assignees: [],
+                subtasks: [
+                    { title: 'Analyze slow queries', done: true },
+                    { title: 'Add indexes', done: true },
+                    { title: 'Test performance improvements', done: true }
+                ],
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        for (const task of defaultTasks) {
+            await tasksRef.push(task);
+        }
+    } catch (e) {
+        console.error('Error creating default tasks:', e);
+    }
+}
+
 function updateBoard() {
     const columns = {
         'todo': document.getElementById('toDoBox'),
