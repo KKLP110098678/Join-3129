@@ -159,6 +159,7 @@ async function registerUser(event) {
         password: document.getElementById('password').value.trim()
     };
     await addNewUser(newUser);
+    await createDefaultContacts(newUser);
     await showSuccessOverlay(); 
     window.location.href = './login.html';
 }
