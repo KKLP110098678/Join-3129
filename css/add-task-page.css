@@ -270,6 +270,7 @@
         box-shadow: none;
         border: 1px solid #D1D1D1;
         padding: 12px 0px;
+        font-size: 15px;
     }
 
     .radio-to-btn input:checked + label.urgent { border-color: #ff3d00 !important; }
