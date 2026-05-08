@@ -299,3 +299,20 @@
         border-color: #7ae229 !important;
     }
 }
+
+
+@media (max-width: 400px) {
+    .radio-to-btn {
+        font-size: 10px;
+    }
+
+    .radio-to-btn img {
+        height: 14px;
+        width: 14px;
+    }
+
+    .radio-to-btn label {
+        gap: 4px;
+        padding: 12px 4px;
+    }
+}
