@@ -126,4 +126,12 @@ function addTaskOverlayTemplate() {
 function openMoveTaskMenu(taskId) {
     const menu = document.getElementById(`moveMenu_${taskId}`);
     menu.classList.toggle('d-none');
+    if (!menu.classList.contains('d-none')) {
+        document.addEventListener('click', function closeMenu(e) {
+            if (!menu.contains(e.target)) {
+                menu.classList.add('d-none');
+                document.removeEventListener('click', closeMenu);
+            }
+        });
+    }
 }
