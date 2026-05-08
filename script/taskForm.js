@@ -4,10 +4,9 @@ function clearAddTaskForm() {
     document.getElementById("mediumPriority").checked = true;
     document.getElementById("taskTitle").value = "";
     document.getElementById("taskDescription").value = "";
-    document.getElementById("taskDueDate").value = "";
     document.getElementById("categoryInput").value = "";
     document.getElementById('assignedToInput').value = '';
-    
+
     // Clear assigned contacts
     document.querySelectorAll('.contact-checkbox').forEach(cb => cb.checked = false);
     if (typeof updateAssignees === 'function') {
@@ -52,8 +51,8 @@ function renderAssignedToDropdown() {
     const currentUser = sessionStorage.getItem('username');
     if (currentUser && currentUser.trim() !== '') {
         let nameParts = currentUser.trim().split(' ');
-        let initials = nameParts.length >= 2 
-            ? (nameParts[0][0] + nameParts[1][0]).toUpperCase() 
+        let initials = nameParts.length >= 2
+            ? (nameParts[0][0] + nameParts[1][0]).toUpperCase()
             : (nameParts[0]?.[0]?.toUpperCase() || 'U');
 
         dropdown.innerHTML += `
@@ -97,7 +96,7 @@ function toggleAssignedToDropdown(event) {
     if (event) event.stopPropagation();
     const dropdown = document.getElementById('assignedToDropdown');
     dropdown.classList.toggle('d-none');
-    
+
     const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
     arrow.classList.toggle('open');
 }
@@ -139,7 +138,7 @@ function toggleCategoryDropdown(event) {
     if (event) event.stopPropagation();
     const dropdown = document.getElementById('categoryDropdown');
     dropdown.classList.toggle('d-none');
-    
+
     const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
     arrow.classList.toggle('open');
 }
@@ -244,12 +243,12 @@ function checkFormValidity() {
 
     if (!btn || !titleEl || !dueDateEl || !categoryEl) return;
 
-    const isValid = titleEl.value.trim() !== '' && 
-                    dueDateEl.value !== '' && 
-                    categoryEl.value !== '';
+    const isValid = titleEl.value.trim() !== '' &&
+        dueDateEl.value !== '' &&
+        categoryEl.value !== '';
 }
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     const assignedToDropdown = document.getElementById('assignedToDropdown');
     const categoryDropdown = document.getElementById('categoryDropdown');
     const editAssignedToDropdown = document.getElementById('editAssignedToDropdown');

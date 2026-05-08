@@ -16,7 +16,7 @@ function addTaskTemplate() {
                     <textarea id="taskDescription" rows="3" placeholder="Enter a description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="taskDueDate">Due Date</label>
+                    <label for="taskDueDate">Due Date *</label>
                     <input type="date" id="taskDueDate" 
                         oninput="checkFormValidity()" 
                         onblur="validateTaskField('taskDueDate')">
@@ -62,7 +62,7 @@ function addTaskTemplate() {
                     </div>
                 </div>
                 <div class="form-group" id="category-form-group">
-                    <p class="form-label">Category</p>
+                    <p class="form-label">Category *</p>
                     <div class="custom-dropdown" id="category">
                         <div class="dropdown-input-container">
                             <input type="text" class="dropdown-input" id="categoryInput"
