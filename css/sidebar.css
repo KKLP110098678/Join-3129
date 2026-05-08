@@ -70,7 +70,7 @@
 }
 
 /* Mobile */
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .menu {
         width: 100vw;
         height: 80px;

@@ -432,6 +432,7 @@ main {
   justify-content: space-between;
   align-items: center;
   position: relative;
+  gap: 8px;
 }
 
 .move-task-btn {

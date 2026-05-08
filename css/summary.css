@@ -75,11 +75,25 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.urgent-task-box:hover .task-amount-number-white { color: #4589FF; }
-.urgent-task-box:hover .task-text-white { color: #4589FF; }
-.urgent-task-box:hover .seperation-line { background-color: #005DFF; }
-.urgent-task-box:hover .date-text-top { color: #4589FF; }
-.urgent-task-box:hover .date-text { color: #4589FF; }
+.urgent-task-box:hover .task-amount-number-white {
+    color: #4589FF;
+}
+
+.urgent-task-box:hover .task-text-white {
+    color: #4589FF;
+}
+
+.urgent-task-box:hover .seperation-line {
+    background-color: #005DFF;
+}
+
+.urgent-task-box:hover .date-text-top {
+    color: #4589FF;
+}
+
+.urgent-task-box:hover .date-text {
+    color: #4589FF;
+}
 
 .urgent-task {
     height: 120px;
@@ -122,8 +136,14 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.task-in-board:hover .task-text { color: white; }
-.task-in-board:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+.task-in-board:hover .task-text {
+    color: white;
+}
+
+.task-in-board:hover .task-icons {
+    outline: 3px solid white;
+    outline-offset: -8px;
+}
 
 /* To Do */
 .to-do {
@@ -146,7 +166,9 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.to-do:hover .task-text { color: #005DFF; }
+.to-do:hover .task-text {
+    color: #005DFF;
+}
 
 /* In Progress */
 .in-progress {
@@ -168,8 +190,14 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.in-progress:hover .task-text { color: white; }
-.in-progress:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+.in-progress:hover .task-text {
+    color: white;
+}
+
+.in-progress:hover .task-icons {
+    outline: 3px solid white;
+    outline-offset: -8px;
+}
 
 /* Awaiting Feedback */
 .awaiting-feedback {
@@ -191,8 +219,14 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.awaiting-feedback:hover .task-text { color: white; }
-.awaiting-feedback:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+.awaiting-feedback:hover .task-text {
+    color: white;
+}
+
+.awaiting-feedback:hover .task-icons {
+    outline: 3px solid white;
+    outline-offset: -8px;
+}
 
 /* Done */
 .done {
@@ -214,8 +248,14 @@ main {
     border-radius: 0 24px 24px 24px;
 }
 
-.done:hover .task-text { color: white; }
-.done:hover .task-icons { outline: 3px solid white; outline-offset: -8px; }
+.done:hover .task-text {
+    color: white;
+}
+
+.done:hover .task-icons {
+    outline: 3px solid white;
+    outline-offset: -8px;
+}
 
 /* Task Info */
 .tasks-amount {
@@ -344,7 +384,7 @@ main {
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     main {
         margin-left: 0;
         margin-bottom: 80px;

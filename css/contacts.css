@@ -34,12 +34,19 @@ body {
     scrollbar-color: #a8a8a8 transparent;
 }
 
-.contact-list-scroll::-webkit-scrollbar { width: 8px; }
-.contact-list-scroll::-webkit-scrollbar-track { background: transparent; }
+.contact-list-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-list-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
 .contact-list-scroll::-webkit-scrollbar-thumb {
     background-color: transparent;
     border-radius: 4px;
 }
+
 .contact-list-scroll:hover::-webkit-scrollbar-thumb {
     background-color: #A8A8A8;
 }
@@ -132,9 +139,19 @@ body {
     width: 300px;
 }
 
-.btn-add-contact:hover { cursor: pointer; background-color: #005DFF; }
-.btn-add-contact:active { background-color: #FFFFFF; color: #4589FF; }
-.btn-add-contact:active path { fill: #4589FF; }
+.btn-add-contact:hover {
+    cursor: pointer;
+    background-color: #005DFF;
+}
+
+.btn-add-contact:active {
+    background-color: #FFFFFF;
+    color: #4589FF;
+}
+
+.btn-add-contact:active path {
+    fill: #4589FF;
+}
 
 /* Contact Detail */
 .contact-detail-container {
@@ -223,13 +240,25 @@ body {
 }
 
 @keyframes slideUp {
-    from { transform: translateX(-50%) translateY(100px); opacity: 0; }
-    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+    from {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
 }
 
 @keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 /* Overlay */
@@ -260,13 +289,23 @@ body {
 }
 
 @keyframes slideInRight {
-    from { transform: translateX(100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 @keyframes slideInLeft {
-    from { transform: translateX(-100%); }
-    to { transform: translateX(0); }
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
 
 .overlay-content {
@@ -506,8 +545,8 @@ body {
     cursor: pointer;
 }
 
-/* Responsive 1080px */
-@media (max-width: 1080px) {
+/* Responsive 1000px */
+@media (max-width: 1100px) {
     .contact-list-section {
         width: 300px;
     }
@@ -544,10 +583,7 @@ body {
     .action-buttons {
         margin-top: 15px;
     }
-}
 
-/* Responsive 1000px */
-@media (max-width: 1000px) {
     .contacts-container {
         margin-left: 0;
         height: calc(100vh - 80px - 80px);

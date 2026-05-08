@@ -170,15 +170,15 @@ button[type="submit"] {
 }
 
 /* Responsive */
-@media (min-width: 768px) {
-    .register-form {
-        width: 598px;
-    }
-}
-
 @media (max-height: 1013px) {
     footer {
         min-height: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .register-form {
+        width: 598px;
     }
 }
 

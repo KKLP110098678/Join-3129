@@ -22,13 +22,23 @@
 }
 
 @keyframes slideInFromRight {
-    from { transform: translate(100%, -50%); }
-    to { transform: translate(-50%, -50%); }
+    from {
+        transform: translate(100%, -50%);
+    }
+
+    to {
+        transform: translate(-50%, -50%);
+    }
 }
 
 @keyframes slideOutToRight {
-    from { transform: translate(-50%, -50%); }
-    to { transform: translate(100%, -50%); }
+    from {
+        transform: translate(-50%, -50%);
+    }
+
+    to {
+        transform: translate(100%, -50%);
+    }
 }
 
 /* Task Detail Container */
@@ -230,6 +240,12 @@
 
 .form-content .form-group.has-error output {
     visibility: visible;
+}
+
+@media (max-width: 1300px) {
+    .board-card-badge {
+        font-size: 16px;
+    }
 }
 
 /* Mobile */
