@@ -258,3 +258,15 @@
         padding: 20px 16px;
     }
 }
+
+@media (max-width: 500px) {
+    .task-detail-title {
+        font-size: 48px;
+    }
+}
+
+@media (max-width: 350px) {
+    .task-detail-title {
+        font-size: 32px;
+    }
+}
