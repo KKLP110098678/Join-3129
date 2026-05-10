@@ -1,90 +1,109 @@
 let currentSubtasks = [];
 
+
+/**
+ * Setzt alle Formularfelder des Add-Task-Formulars zurück.
+ */
 function clearAddTaskForm() {
-    document.getElementById("mediumPriority").checked = true;
-    document.getElementById("taskTitle").value = "";
-    document.getElementById("taskDescription").value = "";
-    document.getElementById("categoryInput").value = "";
+    document.getElementById('mediumPriority').checked = true;
+    document.getElementById('taskTitle').value = '';
+    document.getElementById('taskDescription').value = '';
+    document.getElementById('categoryInput').value = '';
     document.getElementById('assignedToInput').value = '';
 
-    // Clear assigned contacts
     document.querySelectorAll('.contact-checkbox').forEach(cb => cb.checked = false);
-    if (typeof updateAssignees === 'function') {
-        updateAssignees();
-    }
+    if (typeof updateAssignees === 'function') updateAssignees();
 
     currentSubtasks = [];
     renderSubtasks();
     checkFormValidity();
 
-    // Clear validation errors
     clearFieldError('taskTitle');
     clearFieldError('taskDueDate');
     clearFieldError('categoryInput');
 }
 
+
+/**
+ * Alias für clearAddTaskForm – hält externe Aufrufe kompatibel.
+ */
 function clearForm() {
     clearAddTaskForm();
 }
 
+
+/**
+ * Schließt das Add-Task-Overlay.
+ */
 function closeAddTaskForm() {
-    document.getElementById("addTaskOverlay").classList.remove("visible");
+    document.getElementById('addTaskOverlay').classList.remove('visible');
 }
 
+
+/**
+ * Schließt das Overlay beim Klick auf den Hintergrund.
+ * @param {MouseEvent} event - Das Klick-Event.
+ */
 function closeOnBackdrop(event) {
-    if (event.target.id === "addTaskOverlay") closeAddTaskForm();
+    if (event.target.id === 'addTaskOverlay') closeAddTaskForm();
 }
 
+
+/**
+ * Gibt die Initialen eines Benutzernamens zurück.
+ * @param {string} username - Der vollständige Benutzername.
+ * @returns {string} Die Initialen (max. 2 Zeichen).
+ */
+function getUserInitials(username) {
+    const parts = username.trim().split(' ');
+    return parts.length >= 2
+        ? (parts[0][0] + parts[1][0]).toUpperCase()
+        : (parts[0]?.[0]?.toUpperCase() || 'U');
+}
+
+
+/**
+ * Rendert den aktuellen Nutzer als erste Option im Dropdown.
+ * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ */
+function renderCurrentUserOption(dropdown) {
+    const currentUser = sessionStorage.getItem('username')?.trim();
+    if (!currentUser) return;
+
+    const initials = getUserInitials(currentUser);
+    dropdown.innerHTML += assignedToCurrentUserTemplate(currentUser, initials);
+}
+
+
+/**
+ * Rendert alle Kontakte als Optionen im Dropdown.
+ * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ */
+function renderContactOptions(dropdown) {
+    if (typeof contacts === 'undefined') return;
+    contacts.forEach((contact, i) => {
+        dropdown.innerHTML += assignedToContactTemplate(contact, i);
+    });
+}
+
+
+/**
+ * Rendert das Assigned-To-Dropdown vollständig neu.
+ */
 function renderAssignedToDropdown() {
-    let dropdown = document.getElementById("assignedToDropdown");
+    const dropdown = document.getElementById('assignedToDropdown');
     if (!dropdown) return;
 
-    dropdown.innerHTML = `
-        <div class="dropdown-item contact" style="border-bottom: 1px solid #ccc; justify-content: space-between;">
-            <label class="contact-label" for="selectAllContacts" style="padding: 12px 16px; width: 100%;">
-                <span style="font-weight: bold; font-size: 19px;">Select All</span>
-                <input type="checkbox" id="selectAllContacts" class="checkbox-masked" onchange="toggleAllContacts(this)">
-            </label>
-        </div>
-    `;
-
-    const currentUser = sessionStorage.getItem('username');
-    if (currentUser && currentUser.trim() !== '') {
-        let nameParts = currentUser.trim().split(' ');
-        let initials = nameParts.length >= 2
-            ? (nameParts[0][0] + nameParts[1][0]).toUpperCase()
-            : (nameParts[0]?.[0]?.toUpperCase() || 'U');
-
-        dropdown.innerHTML += `
-            <div class="dropdown-item contact">
-                <label class="contact-label" for="contact_cb_user">
-                    <div class="dropdown-contact">
-                        <div class="avatar-sm bg-blue">${initials}</div>
-                        ${currentUser} (You)
-                    </div>
-                    <input type="checkbox" id="contact_cb_user" class="checkbox-masked contact-checkbox" value="${currentUser}" onchange="updateAssignees()">
-                </label>
-            </div>
-        `;
-    }
-
-    if (typeof contacts !== 'undefined') {
-        contacts.forEach((contact, i) => {
-            dropdown.innerHTML += `
-                <div class="dropdown-item contact">
-                    <label class="contact-label" for="contact_cb_${i}">
-                        <div class="dropdown-contact">
-                            <div class="avatar-sm ${contact.color}">${contact.initials}</div>
-                            ${contact.name}
-                        </div>
-                        <input type="checkbox" id="contact_cb_${i}" class="checkbox-masked contact-checkbox" value="${contact.name}" onchange="updateAssignees()">
-                    </label>
-                </div>
-            `;
-        });
-    }
+    dropdown.innerHTML = assignedToSelectAllTemplate();
+    renderCurrentUserOption(dropdown);
+    renderContactOptions(dropdown);
 }
 
+
+/**
+ * Setzt alle Kontakt-Checkboxen auf den Wert der Select-All-Checkbox.
+ * @param {HTMLInputElement} selectAllCheckbox - Die Select-All-Checkbox.
+ */
 function toggleAllContacts(selectAllCheckbox) {
     document.querySelectorAll('.contact-checkbox').forEach(cb => {
         cb.checked = selectAllCheckbox.checked;
@@ -92,225 +111,236 @@ function toggleAllContacts(selectAllCheckbox) {
     updateAssignees();
 }
 
+
+/**
+ * Öffnet oder schließt das Assigned-To-Dropdown.
+ * @param {MouseEvent} event - Das Klick-Event.
+ */
 function toggleAssignedToDropdown(event) {
     if (event) event.stopPropagation();
     const dropdown = document.getElementById('assignedToDropdown');
     dropdown.classList.toggle('d-none');
-
-    const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
-    arrow.classList.toggle('open');
+    dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow').classList.toggle('open');
 }
 
-function updateAssignees() {
-    const list = document.getElementById('assignedToDropdown');
-    const container = document.querySelector('.assignees');
-    if (!list || !container) return;
 
-    container.innerHTML = '';
-    const items = list.querySelectorAll('.dropdown-item.contact');
-    let selectedAvatars = [];
-
-    items.forEach(item => {
+/**
+ * Sammelt die Avatar-Elemente aller ausgewählten Kontakte.
+ * @returns {HTMLElement[]} Array der Avatar-Elemente.
+ */
+function getSelectedAvatars() {
+    const items = document.getElementById('assignedToDropdown')?.querySelectorAll('.dropdown-item.contact');
+    const avatars = [];
+    items?.forEach(item => {
         const checkbox = item.querySelector('.checkbox-masked.contact-checkbox');
-        if (checkbox && checkbox.checked) {
-            const avatar = item.querySelector('.avatar-sm');
-            if (avatar) selectedAvatars.push(avatar.cloneNode(true));
-        }
+        const avatar = item.querySelector('.avatar-sm');
+        if (checkbox?.checked && avatar) avatars.push(avatar.cloneNode(true));
     });
+    return avatars;
+}
+
+
+/**
+ * Erstellt ein "+N"-Avatar-Element für überzählige Kontakte.
+ * @param {number} count - Anzahl der nicht angezeigten Kontakte.
+ * @returns {HTMLElement} Das Extra-Avatar-Element.
+ */
+function createExtraAvatar(count) {
+    const extra = document.createElement('div');
+    extra.className = 'avatar-sm';
+    extra.style.backgroundColor = '#d1d1d1';
+    extra.style.color = '#fff';
+    extra.innerText = `+${count}`;
+    return extra;
+}
+
+
+/**
+ * Rendert die ausgewählten Assignee-Avatare im Formular.
+ */
+function updateAssignees() {
+    const container = document.querySelector('.assignees');
+    if (!container) return;
 
     const maxDisplay = 4;
-    if (selectedAvatars.length <= maxDisplay) {
-        selectedAvatars.forEach(avatar => container.appendChild(avatar));
+    const avatars = getSelectedAvatars();
+    container.innerHTML = '';
+
+    if (avatars.length <= maxDisplay) {
+        avatars.forEach(avatar => container.appendChild(avatar));
     } else {
-        for (let i = 0; i < maxDisplay - 1; i++) {
-            container.appendChild(selectedAvatars[i]);
-        }
-        let extra = document.createElement('div');
-        extra.className = 'avatar-sm';
-        extra.style.backgroundColor = '#d1d1d1';
-        extra.style.color = '#fff';
-        extra.innerText = '+' + (selectedAvatars.length - (maxDisplay - 1));
-        container.appendChild(extra);
+        for (let i = 0; i < maxDisplay - 1; i++) container.appendChild(avatars[i]);
+        container.appendChild(createExtraAvatar(avatars.length - (maxDisplay - 1)));
     }
 }
 
+
+/**
+ * Öffnet oder schließt das Kategorie-Dropdown.
+ * @param {MouseEvent} event - Das Klick-Event.
+ */
 function toggleCategoryDropdown(event) {
     if (event) event.stopPropagation();
     const dropdown = document.getElementById('categoryDropdown');
     dropdown.classList.toggle('d-none');
-
-    const arrow = dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow');
-    arrow.classList.toggle('open');
+    dropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow').classList.toggle('open');
 }
 
+
+/**
+ * Wählt eine Kategorie aus und schließt das Dropdown.
+ * @param {string} category - Die gewählte Kategorie.
+ */
 function selectCategory(category) {
-    document.getElementById("categoryInput").value = category;
+    document.getElementById('categoryInput').value = category;
     toggleCategoryDropdown();
     checkFormValidity();
 }
 
+
+/**
+ * Zeigt die Subtask-Eingabe-Buttons an.
+ */
 function showSubtaskInputButtons() {
-    document.getElementById("subtaskBtnGroup").classList.remove("d-none");
+    document.getElementById('subtaskBtnGroup').classList.remove('d-none');
 }
 
+
+/**
+ * Leert das Subtask-Eingabefeld und versteckt die Buttons.
+ */
 function clearSubtaskInput() {
-    document.getElementById("subtaskInput").value = "";
-    document.getElementById("subtaskBtnGroup").classList.add("d-none");
+    document.getElementById('subtaskInput').value = '';
+    document.getElementById('subtaskBtnGroup').classList.add('d-none');
 }
 
+
+/**
+ * Fügt einen neuen Subtask zur Liste hinzu.
+ */
 function addSubtask() {
-    const input = document.getElementById("subtaskInput");
+    const input = document.getElementById('subtaskInput');
     if (!input.value.trim()) return;
     currentSubtasks.push({ title: input.value.trim(), completed: false });
     clearSubtaskInput();
     renderSubtasks();
 }
 
-function renderSubtasks() {
-    const list = document.getElementById("subtaskList");
-    if (!list) return;
-    list.innerHTML = "";
 
+/**
+ * Rendert alle Subtasks in der Liste.
+ */
+function renderSubtasks() {
+    const list = document.getElementById('subtaskList');
+    if (!list) return;
+    list.innerHTML = '';
     currentSubtasks.forEach((subtask, index) => {
-        list.innerHTML += `
-            <li class="list-item subtask" ondblclick="showSubtaskEditInput(${index})">
-                <span class="bullet-point">•</span>${subtask.title}
-                <div class="input-btn-group">
-                    <button class="input-btn" type="button" onclick="showSubtaskEditInput(${index})">
-                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2 16.25H3.4L12.025 7.625L10.625 6.225L2 14.85V16.25ZM16.3 6.175L12.05 1.975L13.45 0.575C13.8333 0.191667 14.3042 0 14.8625 0C15.4208 0 15.8917 0.191667 16.275 0.575L17.675 1.975C18.0583 2.35833 18.2583 2.82083 18.275 3.3625C18.2917 3.90417 18.1083 4.36667 17.725 4.75L16.3 6.175ZM14.85 7.65L4.25 18.25H0V14L10.6 3.4L14.85 7.65Z" fill="#4589FF"/>
-                        </svg>
-                    </button>
-                    <div class="input-btn-seperator"></div>
-                    <button class="input-btn" type="button" onclick="removeSubtask(${index})">
-                        <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z" fill="#4589FF"/>
-                        </svg>
-                    </button>
-                </div>
-            </li>`;
+        list.innerHTML += subtaskItemTemplate(subtask, index);
     });
 }
 
+
+/**
+ * Entfernt einen Subtask anhand seines Index.
+ * @param {number} index - Der Index des zu entfernenden Subtasks.
+ */
 function removeSubtask(index) {
     currentSubtasks.splice(index, 1);
     renderSubtasks();
 }
 
-let editingSubtaskIndex = null;
 
+/**
+ * Zeigt das Bearbeitungsfeld für einen Subtask an.
+ * @param {number} index - Der Index des zu bearbeitenden Subtasks.
+ */
 function showSubtaskEditInput(index) {
     const list = document.getElementById('subtaskList');
     const items = list.querySelectorAll('.list-item.subtask');
-    const item = items[index];
-    const currentTitle = currentSubtasks[index].title;
-
-    item.innerHTML = `
-        <input type="text" class="edit-subtask-input" value="${currentTitle}"
-            onkeydown="if(event.key === 'Enter') confirmSubtaskEdit(${index})">
-        <div class="input-btn-group">
-            <button class="input-btn" type="button" onclick="removeSubtask(${index})">
-                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 18C2.45 18 1.97917 17.8042 1.5875 17.4125C1.19583 17.0208 1 16.55 1 16V3C0.716667 3 0.479167 2.90417 0.2875 2.7125C0.0958333 2.52083 0 2.28333 0 2C0 1.71667 0.0958333 1.47917 0.2875 1.2875C0.479167 1.09583 0.716667 1 1 1H5C5 0.716667 5.09583 0.479167 5.2875 0.2875C5.47917 0.0958333 5.71667 0 6 0H10C10.2833 0 10.5208 0.0958333 10.7125 0.2875C10.9042 0.479167 11 0.716667 11 1H15C15.2833 1 15.5208 1.09583 15.7125 1.2875C15.9042 1.47917 16 1.71667 16 2C16 2.28333 15.9042 2.52083 15.7125 2.7125C15.5208 2.90417 15.2833 3 15 3V16C15 16.55 14.8042 17.0208 14.4125 17.4125C14.0208 17.8042 13.55 18 13 18H3ZM3 3V16H13V3H3ZM5 13C5 13.2833 5.09583 13.5208 5.2875 13.7125C5.47917 13.9042 5.71667 14 6 14C6.28333 14 6.52083 13.9042 6.7125 13.7125C6.90417 13.5208 7 13.2833 7 13V6C7 5.71667 6.90417 5.47917 6.7125 5.2875C6.52083 5.09583 6.28333 5 6 5C5.71667 5 5.47917 5.09583 5.2875 5.2875C5.09583 5.47917 5 5.71667 5 6V13ZM9 13C9 13.2833 9.09583 13.5208 9.2875 13.7125C9.47917 13.9042 9.71667 14 10 14C10.2833 14 10.5208 13.9042 10.7125 13.7125C10.9042 13.5208 11 13.2833 11 13V6C11 5.71667 10.9042 5.47917 10.7125 5.2875C10.5208 5.09583 10.2833 5 10 5C9.71667 5 9.47917 5.09583 9.2875 5.2875C9.09583 5.47917 9 5.71667 9 6V13Z" fill="#4589FF"/>
-                </svg>
-            </button>
-            <div class="input-btn-seperator"></div>
-            <button class="input-btn" type="button" onclick="confirmSubtaskEdit(${index})">
-                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.288 8.775L13.763 0.3C13.963 0.1 14.2005 0 14.4755 0C14.7505 0 14.988 0.1 15.188 0.3C15.388 0.5 15.488 0.7375 15.488 1.0125C15.488 1.2875 15.388 1.525 15.188 1.725L5.988 10.925C5.788 11.125 5.55467 11.225 5.288 11.225C5.02133 11.225 4.788 11.125 4.588 10.925L0.288 6.625C0.088 6.425 -0.00783333 6.1875 0.0005 5.9125C0.00883333 5.6375 0.113 5.4 0.313 5.2C0.513 5 0.7505 4.9 1.0255 4.9C1.3005 4.9 1.538 5 1.738 5.2L5.288 8.775Z" fill="#4589FF"/>
-                </svg>
-            </button>
-        </div>
-    `;
-    item.querySelector('.edit-subtask-input').focus();
+    items[index].innerHTML = subtaskEditTemplate(index, currentSubtasks[index].title);
+    items[index].querySelector('.edit-subtask-input').focus();
 }
 
+
+/**
+ * Bestätigt die Bearbeitung eines Subtasks.
+ * @param {number} index - Der Index des bearbeiteten Subtasks.
+ */
 function confirmSubtaskEdit(index) {
     const list = document.getElementById('subtaskList');
     const items = list.querySelectorAll('.list-item.subtask');
     const input = items[index].querySelector('.edit-subtask-input');
-    if (input && input.value.trim()) {
-        currentSubtasks[index].title = input.value.trim();
-    }
+    if (input?.value.trim()) currentSubtasks[index].title = input.value.trim();
     renderSubtasks();
 }
 
+
+/**
+ * Prüft ob alle Pflichtfelder ausgefüllt sind und aktiviert ggf. den Submit-Button.
+ */
 function checkFormValidity() {
     const titleEl = document.getElementById('taskTitle');
     const dueDateEl = document.getElementById('taskDueDate');
     const categoryEl = document.getElementById('categoryInput');
     const btn = document.querySelector('.btn-primary-with-icon');
-
     if (!btn || !titleEl || !dueDateEl || !categoryEl) return;
 
     const isValid = titleEl.value.trim() !== '' &&
         dueDateEl.value !== '' &&
         categoryEl.value !== '';
+
+    btn.disabled = !isValid;
 }
 
-document.addEventListener('click', function (event) {
-    const assignedToDropdown = document.getElementById('assignedToDropdown');
-    const categoryDropdown = document.getElementById('categoryDropdown');
-    const editAssignedToDropdown = document.getElementById('editAssignedToDropdown');
 
-    if (assignedToDropdown && !assignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
-        assignedToDropdown.classList.add('d-none');
-        assignedToDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
-    }
-
-    if (categoryDropdown && !categoryDropdown.closest('.custom-dropdown').contains(event.target)) {
-        categoryDropdown.classList.add('d-none');
-        categoryDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
-    }
-
-    if (editAssignedToDropdown && !editAssignedToDropdown.closest('.custom-dropdown').contains(event.target)) {
-        editAssignedToDropdown.classList.add('d-none');
-        editAssignedToDropdown.closest('.custom-dropdown').querySelector('.dropdown-arrow')?.classList.remove('open');
-    }
-});
-
-function filterAssignedToDropdown(searchValue) {
-    const dropdown = document.getElementById('assignedToDropdown');
-    if (!dropdown) return;
-
-    dropdown.classList.remove('d-none');
-
-    const items = dropdown.querySelectorAll('.dropdown-item.contact');
-    items.forEach(item => {
-        const name = item.querySelector('.dropdown-contact')?.textContent.trim().toLowerCase();
-        if (name && name.includes(searchValue.toLowerCase())) {
-            item.style.display = '';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
-
-function showFieldError(fieldId, message) {
-    const output = document.querySelector(`output[for="${fieldId}"]`);
-    if (output) {
-        output.textContent = message;
-        output.style.visibility = 'visible';
-        output.closest('.form-group')?.classList.add('has-error');
-    }
-}
-
-function clearFieldError(fieldId) {
-    const output = document.querySelector(`output[for="${fieldId}"]`);
-    if (output) {
-        output.style.visibility = 'hidden';
-        output.textContent = '';
-        output.closest('.form-group')?.classList.remove('has-error');
-    }
-}
-
+/**
+ * Validiert ein einzelnes Pflichtfeld und zeigt ggf. einen Fehler an.
+ * @param {string} fieldId - Die ID des zu prüfenden Felds.
+ */
 function validateTaskField(fieldId) {
     const el = document.getElementById(fieldId);
     if (!el) return;
-
     if (el.value.trim() === '') {
         showFieldError(fieldId, 'This field is required!');
     } else {
         clearFieldError(fieldId);
     }
 }
+
+
+/**
+ * Filtert die Kontakte im Assigned-To-Dropdown anhand eines Suchwerts.
+ * @param {string} searchValue - Der Suchwert aus dem Suchfeld.
+ */
+function filterAssignedToDropdown(searchValue) {
+    const dropdown = document.getElementById('assignedToDropdown');
+    if (!dropdown) return;
+    dropdown.classList.remove('d-none');
+
+    dropdown.querySelectorAll('.dropdown-item.contact').forEach(item => {
+        const name = item.querySelector('.dropdown-contact')?.textContent.trim().toLowerCase();
+        item.style.display = name?.includes(searchValue.toLowerCase()) ? '' : 'none';
+    });
+}
+
+
+/**
+ * Schließt ein Dropdown wenn außerhalb geklickt wird.
+ * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ */
+function closeDropdownOnOutsideClick(dropdown) {
+    if (!dropdown) return;
+    dropdown.classList.add('d-none');
+    dropdown.closest('.custom-dropdown')?.querySelector('.dropdown-arrow')?.classList.remove('open');
+}
+
+
+document.addEventListener('click', function (event) {
+    const dropdownIds = ['assignedToDropdown', 'categoryDropdown', 'editAssignedToDropdown'];
+    dropdownIds.forEach(id => {
+        const dropdown = document.getElementById(id);
+        if (dropdown && !dropdown.closest('.custom-dropdown').contains(event.target)) {
+            closeDropdownOnOutsideClick(dropdown);
+        }
+    });
+});

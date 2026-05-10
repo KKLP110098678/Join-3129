@@ -1,134 +1,158 @@
+/**
+ * Gibt alle Nutzer aus Firebase zurück.
+ * @returns {Promise<Object|null>} Das Nutzer-Objekt oder null.
+ */
+async function getAllUsers() {
+    const snapshot = await firebase.database().ref('users').once('value');
+    return snapshot.val();
+}
+
+
+/**
+ * Registriert einen neuen Nutzer in Firebase.
+ * @param {{ username: string, email: string, password: string }} newUser
+ */
 async function addNewUser(newUser) {
     try {
-        const userRef = firebase.database().ref('users');
-        const newUserRef = userRef.push();
-        await newUserRef.set({
+        await firebase.database().ref('users').push({
             username: newUser.username,
             email: newUser.email,
             password: newUser.password
         });
-    } catch (error) {
-        console.error('Error registering new user:', error);
+    } catch (e) {
+        console.error('Error registering new user:', e);
     }
 }
 
-async function createDefaultContacts(newUser) {
-    try {
-        const userKey = await getUserKeyByEmail(newUser.email);
-        if (!userKey) return;
 
-        const contactsRef = firebase.database().ref(`users/${userKey}/contacts`);
-
-        const nameParts = newUser.username.trim().split(' ');
-        const initials = nameParts.length >= 2
-            ? nameParts[0].charAt(0).toUpperCase() + nameParts[nameParts.length - 1].charAt(0).toUpperCase()
-            : nameParts[0].charAt(0).toUpperCase();
-
-        const colors = ['bg-orange', 'bg-purple', 'bg-blue', 'bg-green', 'bg-pink'];
-
-        const defaultContacts = [
-            { name: newUser.username, email: newUser.email, phone: '', initials, color: colors[0] },
-            { name: 'Anna Müller', email: 'anna.mueller@example.com', phone: '+49 151 12345678', initials: 'AM', color: colors[1] },
-            { name: 'Ben Schmidt', email: 'ben.schmidt@example.com', phone: '+49 152 23456789', initials: 'BS', color: colors[2] },
-            { name: 'Clara Weber', email: 'clara.weber@example.com', phone: '+49 153 34567890', initials: 'CW', color: colors[3] },
-            { name: 'David Koch', email: 'david.koch@example.com', phone: '+49 154 45678901', initials: 'DK', color: colors[4] },
-            { name: 'Eva Bauer', email: 'eva.bauer@example.com', phone: '+49 155 56789012', initials: 'EB', color: colors[0] },
-            { name: 'Felix Wagner', email: 'felix.wagner@example.com', phone: '+49 156 67890123', initials: 'FW', color: colors[1] },
-            { name: 'Greta Fischer', email: 'greta.fischer@example.com', phone: '+49 157 78901234', initials: 'GF', color: colors[2] },
-            { name: 'Hans Meyer', email: 'hans.meyer@example.com', phone: '+49 158 89012345', initials: 'HM', color: colors[3] },
-            { name: 'Ida Schulz', email: 'ida.schulz@example.com', phone: '+49 159 90123456', initials: 'IS', color: colors[4] },
-            { name: 'Jonas Becker', email: 'jonas.becker@example.com', phone: '+49 160 01234567', initials: 'JB', color: colors[0] },
-        ];
-
-        await contactsRef.set(defaultContacts);
-    } catch(e) {
-        console.error('Error creating default contacts:', e);
-    }
-}
-
+/**
+ * Gibt den Firebase-Key eines Nutzers anhand seiner E-Mail zurück.
+ * @param {string} email - Die E-Mail-Adresse des Nutzers.
+ * @returns {Promise<string|null>} Der Firebase-Key oder null.
+ */
 async function getUserKeyByEmail(email) {
     try {
-        const snapshot = await firebase.database().ref('users').once('value');
-        const users = snapshot.val();
+        const users = await getAllUsers();
         if (!users) return null;
-        for (let key in users) {
-            if (users[key].email === email) return key;
-        }
-        return null;
-    } catch(e) {
+        return Object.keys(users).find(key => users[key].email === email) || null;
+    } catch (e) {
         console.error('Error getting user key:', e);
         return null;
     }
 }
 
+
+/**
+ * Erstellt den eigenen Kontakteintrag des neuen Nutzers.
+ * @param {{ username: string, email: string }} newUser
+ * @returns {{ name: string, email: string, phone: string, initials: string, color: string }}
+ */
+function buildUserContact(newUser) {
+    return {
+        name: newUser.username,
+        email: newUser.email,
+        phone: '',
+        initials: getInitialsFromName(newUser.username),
+        color: 'bg-orange'
+    };
+}
+
+
+/**
+ * Erstellt Standard-Kontakte für einen neu registrierten Nutzer.
+ * @param {{ username: string, email: string }} newUser
+ */
+async function createDefaultContacts(newUser) {
+    try {
+        const userKey = await getUserKeyByEmail(newUser.email);
+        if (!userKey) return;
+
+        const response = await fetch('../data/defaultContacts.json');
+        const loadedDefaults = await response.json();
+        const allContacts = [buildUserContact(newUser), ...loadedDefaults];
+
+        await firebase.database().ref(`users/${userKey}/contacts`).set(allContacts);
+    } catch (e) {
+        console.error('Error creating default contacts:', e);
+    }
+}
+
+
+/**
+ * Authentifiziert einen Nutzer anhand von E-Mail und Passwort.
+ * @param {string} inputEmail - Die eingegebene E-Mail.
+ * @param {string} inputPassword - Das eingegebene Passwort.
+ * @returns {Promise<Object|null>} Der Nutzer oder null.
+ */
 async function authenticateUser(inputEmail, inputPassword) {
     try {
-        const usersRef = firebase.database().ref("users");
-        const snapshot = await usersRef.once("value");
-        const users = snapshot.val();
-
+        const users = await getAllUsers();
         if (!users) return null;
 
-        for (let key in users) {
-            if (
-                users[key].email === inputEmail &&
-                users[key].password === inputPassword
-            ) {
-                sessionStorage.setItem('userKey', key); // neu
-                sessionStorage.setItem('username', users[key].username); // neu
-                return users[key];
-            }
-        }
+        const entry = Object.entries(users).find(([, user]) =>
+            user.email === inputEmail && user.password === inputPassword
+        );
 
-        return null;
-    } catch (error) {
-        console.error("Error authenticating user:", error);
+        if (!entry) return null;
+
+        const [key, user] = entry;
+        sessionStorage.setItem('userKey', key);
+        sessionStorage.setItem('username', user.username);
+        return user;
+    } catch (e) {
+        console.error('Error authenticating user:', e);
         return null;
     }
 }
 
+
+/**
+ * Prüft ob ein Benutzername bereits vergeben ist.
+ * @param {string} userName - Der zu prüfende Benutzername.
+ * @returns {Promise<boolean>} True wenn vergeben.
+ */
 async function isUserNameTaken(userName) {
     try {
-        const usersRef = firebase.database().ref("users");
-        const snapshot = await usersRef.once("value");
-        const users = snapshot.val();
-
+        const users = await getAllUsers();
         if (!users) return false;
-
-        for (let key in users) {
-            if (users[key].username === userName) return true;
-        }
-
-        return false;
-    } catch (error) {
-        console.error("Error checking username:", error);
+        return Object.values(users).some(user => user.username === userName);
+    } catch (e) {
+        console.error('Error checking username:', e);
         return false;
     }
 }
 
+
+/**
+ * Prüft ob eine E-Mail-Adresse bereits registriert ist.
+ * @param {string} inputEmail - Die zu prüfende E-Mail.
+ * @returns {Promise<boolean>} True wenn vergeben.
+ */
 async function isUserEmailTaken(inputEmail) {
     try {
-        const usersRef = firebase.database().ref("users");
-        const snapshot = await usersRef.once("value");
-        const users = snapshot.val();
-
+        const users = await getAllUsers();
         if (!users) return false;
-
-        for (let key in users) {
-            if (users[key].email === inputEmail) return true;
-        }
-
-        return false;
-    } catch (error) {
-        console.error("Error checking user Email:", error);
+        return Object.values(users).some(user => user.email === inputEmail);
+    } catch (e) {
+        console.error('Error checking user email:', e);
         return false;
     }
 }
 
+
+/**
+ * Gibt den Firebase-Key des eingeloggten Nutzers zurück.
+ * @returns {string|null} Der Firebase-Key.
+ */
 function getUserKey() {
     return sessionStorage.getItem('userKey');
 }
 
+
+/**
+ * Prüft ob der aktuelle Nutzer ein Gast ist.
+ * @returns {boolean} True wenn Gast.
+ */
 function isGuest() {
     return sessionStorage.getItem('isGuest') === 'true';
 }

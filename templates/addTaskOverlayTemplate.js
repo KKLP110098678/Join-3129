@@ -1,3 +1,7 @@
+/**
+ * Gibt das vollständige Add-Task-Overlay als HTML-String zurück.
+ * @returns {string} Das HTML des Add-Task-Overlays.
+ */
 function addTaskOverlayTemplate() {
     return `
         <div class="form-header">
@@ -10,7 +14,7 @@ function addTaskOverlayTemplate() {
         </div>
         <div class="form-content">
             <div class="form-group">
-                <input type="text" id="taskTitle" placeholder="Enter a title *" onblur="validateTaskField('taskTitle')">
+                <input type="text" id="taskTitle" placeholder="Enter a title *" oninput="checkFormValidity()" onblur="validateTaskField('taskTitle')">
                 <output for="taskTitle">This field is required</output>
             </div>
             <div class="form-group">
@@ -22,7 +26,7 @@ function addTaskOverlayTemplate() {
             </div>
             <div class="form-group">
                 <label for="taskDueDate">Due Date</label>
-                <input type="date" id="taskDueDate" onblur="validateTaskField('taskDueDate')">
+                <input type="date" id="taskDueDate" oninput="checkFormValidity()" onblur="validateTaskField('taskDueDate')">
                 <output for="taskDueDate">This field is required</output>
             </div>
             <div class="form-group">
@@ -123,15 +127,22 @@ function addTaskOverlayTemplate() {
     `;
 }
 
+
+/**
+ * Öffnet oder schließt das Verschiebe-Menü eines Tasks.
+ * Schließt das Menü automatisch beim Klick außerhalb.
+ * @param {string} taskId - Die ID des Tasks.
+ */
 function openMoveTaskMenu(taskId) {
     const menu = document.getElementById(`moveMenu_${taskId}`);
     menu.classList.toggle('d-none');
-    if (!menu.classList.contains('d-none')) {
-        document.addEventListener('click', function closeMenu(e) {
-            if (!menu.contains(e.target)) {
-                menu.classList.add('d-none');
-                document.removeEventListener('click', closeMenu);
-            }
-        });
-    }
+
+    if (menu.classList.contains('d-none')) return;
+
+    document.addEventListener('click', function closeMenu(e) {
+        if (!menu.contains(e.target)) {
+            menu.classList.add('d-none');
+            document.removeEventListener('click', closeMenu);
+        }
+    });
 }
