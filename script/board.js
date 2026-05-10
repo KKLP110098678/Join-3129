@@ -111,3 +111,17 @@ function filterTasks() {
     renderPlaceholders(columns, counts, placeholders);
     renderFilteredTasks(filtered, columns);
 }
+
+
+/**
+ * Aktualisiert das Board mit allen aktuellen Tasks.
+ */
+function updateBoard() {
+    const columns = getColumns();
+    const placeholders = getPlaceholders();
+    const counts = countTasksByStatus(tasks);
+
+    clearColumns(columns);
+    renderPlaceholders(columns, counts, placeholders);
+    renderFilteredTasks(tasks, columns);
+}
