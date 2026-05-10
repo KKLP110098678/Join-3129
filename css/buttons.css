@@ -112,6 +112,7 @@
     cursor: not-allowed;
     background-color: #4589FF;
     color: white;
+    pointer-events: none;
 }
 
 .btn-primary-with-icon:not(:disabled):hover {

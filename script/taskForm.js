@@ -18,9 +18,7 @@ function clearAddTaskForm() {
     renderSubtasks();
     checkFormValidity();
 
-    clearFieldError('taskTitle');
-    clearFieldError('taskDueDate');
-    clearFieldError('categoryInput');
+    document.querySelectorAll('output').forEach(o => o.style.visibility = 'hidden');
 }
 
 
@@ -299,12 +297,28 @@ function checkFormValidity() {
  */
 function validateTaskField(fieldId) {
     const el = document.getElementById(fieldId);
-    if (!el) return;
+    const output = document.querySelector(`output[for="${fieldId}"]`);
+    if (!el || !output) return;
+
     if (el.value.trim() === '') {
-        showFieldError(fieldId, 'This field is required!');
+        output.style.visibility = 'visible';
+        output.style.color = 'red';
     } else {
-        clearFieldError(fieldId);
+        output.style.visibility = 'hidden';
     }
+}
+
+
+/**
+ * Zeigt Validierungsfehler an wenn der Create-Button noch disabled ist.
+ * @param {MouseEvent} event - Das Klick-Event.
+ */
+function handleDisabledButtonClick(event) {
+    const btn = event.currentTarget.querySelector('.btn-primary-with-icon');
+    if (!btn?.disabled) return;
+    validateTaskField('taskTitle');
+    validateTaskField('taskDueDate');
+    validateTaskField('categoryInput');
 }
 
 
