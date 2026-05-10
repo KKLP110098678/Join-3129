@@ -1,171 +1,129 @@
-async function loginUser(event) {
-    event.preventDefault();
+/**
+ * Prüft ob eine E-Mail-Adresse dem erwarteten Format entspricht.
+ * @param {string} email - Die zu prüfende E-Mail-Adresse.
+ * @returns {boolean} True wenn das Format gültig ist.
+ */
+function isValidEmailFormat(email) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
 
-    const emailInput = document.getElementById('username');
-    const passwordInput = document.getElementById('password');
 
-    const email = emailInput.value.trim();
-    const password = passwordInput.value.trim();
-
-    // Validate email format
+/**
+ * Validiert das E-Mail-Feld und zeigt ggf. einen Fehler an.
+ * @returns {boolean} True wenn die E-Mail gültig ist.
+ */
+function validateEmail() {
+    const email = getInputValue('username');
     if (!email) {
         showFieldError('email', 'Please enter your email address.');
-        return;
+        return false;
     }
-    
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    if (!isValidEmailFormat(email)) {
         showFieldError('email', 'Please enter a valid email address.');
-        return;
+        return false;
     }
-    
     clearFieldError('email');
+    return true;
+}
 
-    // Validate password
+
+/**
+ * Validiert das Passwort-Feld und zeigt ggf. einen Fehler an.
+ * @returns {boolean} True wenn das Passwort eingegeben wurde.
+ */
+function validatePassword() {
+    const password = getInputValue('password');
     if (!password) {
         showFieldError('password', 'Please enter your password.');
-        return;
+        return false;
     }
-    
     clearFieldError('password');
+    return true;
+}
 
+
+/**
+ * Zeigt eine allgemeine Login-Fehlermeldung an.
+ * @param {string} message - Die anzuzeigende Fehlermeldung.
+ */
+function showLoginError(message) {
+    const errorMessage = document.getElementById('login-error');
+    if (!errorMessage) return;
+    errorMessage.textContent = message;
+    errorMessage.classList.remove('d-none');
+}
+
+
+/**
+ * Leitet nach erfolgreichem Login zur Hauptseite weiter.
+ */
+function handleLoginSuccess() {
+    sessionStorage.removeItem('isGuest');
+    window.location.href = '../index.html';
+}
+
+
+/**
+ * Verarbeitet den Login-Versuch nach erfolgreicher Validierung.
+ * @param {string} email - Die eingegebene E-Mail-Adresse.
+ * @param {string} password - Das eingegebene Passwort.
+ */
+async function submitLogin(email, password) {
     const user = await authenticateUser(email, password);
     if (user) {
-        sessionStorage.removeItem('isGuest');
-        window.location.href = '../index.html';
+        handleLoginSuccess();
     } else {
         showLoginError('Check your email and password. Please try again.');
     }
 }
 
-function showFieldError(fieldId, message) {
-    const field = document.getElementById(`${fieldId}-field`);
-    const errorMessage = document.getElementById(`${fieldId}-error`);
-    
-    if (field && errorMessage) {
-        errorMessage.textContent = message;
-        errorMessage.classList.add('error');
-        field.classList.add('error');
-        errorMessage.classList.remove('d-none');
-        field.classList.remove('d-none');
-    }
+
+/**
+ * Verarbeitet das Login-Formular beim Absenden.
+ * @param {SubmitEvent} event - Das Submit-Event des Formulars.
+ */
+async function loginUser(event) {
+    event.preventDefault();
+    const emailValid = validateEmail();
+    const passwordValid = validatePassword();
+    if (!emailValid || !passwordValid) return;
+
+    const email = getInputValue('username');
+    const password = getInputValue('password');
+    await submitLogin(email, password);
 }
 
-function clearFieldError(fieldId) {
-    const field = document.getElementById(`${fieldId}-field`);
-    const errorMessage = document.getElementById(`${fieldId}-error`);
-    
-    if (field && errorMessage) {
-        errorMessage.classList.remove('error');
-        field.classList.remove('error');
-        errorMessage.classList.add('d-none');
-        errorMessage.textContent = '';
-    }
-}
 
-function validateEmail() {
-    const emailInput = document.getElementById('username');
-    const email = emailInput.value.trim();
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (email === '' || !emailPattern.test(email)) {
-        if (email === '') {
-            showFieldError('email', 'Please enter your email address.');
-        } else {
-            showFieldError('email', 'Please enter a valid email address.');
-        }
-        return false;
-    }
-    clearFieldError('email');
-    return true;
-}
-
-function validatePassword() {
-    const passwordInput = document.getElementById('password');
-    const password = passwordInput.value.trim();
-
-    if (password === '') {
-        showFieldError('password', 'Please enter your password.');
-        return false;
-    }
-    clearFieldError('password');
-    return true;
-}
-
-function setupPasswordToggle() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.getElementById('password-toggle');
-
-    if (!passwordInput || !toggleIcon) return;
-
-    passwordInput.addEventListener('input', updatePasswordIconState);
-    toggleIcon.addEventListener('click', togglePasswordVisibility);
-    updatePasswordIconState();
-}
-
-function updatePasswordIconState() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.getElementById('password-toggle');
-
-    if (!passwordInput || !toggleIcon) return;
-
-    if (passwordInput.value.trim().length === 0) {
-        toggleIcon.src = '../assets/icon/login/lock.svg';
-        toggleIcon.alt = 'Lock Icon';
-        passwordInput.type = 'password';
-        return;
-    }
-
-    if (passwordInput.type === 'text') {
-        toggleIcon.src = '../assets/icon/login/visibility-off.svg';
-        toggleIcon.alt = 'Visibility Off Icon';
-    } else {
-        toggleIcon.src = '../assets/icon/login/visibility.svg';
-        toggleIcon.alt = 'Visibility Icon';
-    }
-}
-
-function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.getElementById('password-toggle');
-
-    if (!passwordInput || !toggleIcon) return;
-
-    if (passwordInput.type === 'text') {
-        passwordInput.type = 'password';
-        updatePasswordIconState();
-    } else {
-        passwordInput.type = 'text';
-        toggleIcon.src = '../assets/icon/login/visibility.svg';
-        toggleIcon.alt = 'Visibility Off Icon';
-    }
-}
-
-function showLoginError(message) {
-    const errorMessage = document.getElementById('login-error');
-    errorMessage.textContent = message;
-    errorMessage.classList.remove('d-none');
-}
-
+/**
+ * Setzt den Guest-Login zurück und leitet zur Hauptseite weiter.
+ */
 async function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('userKey');
-    
+
     try {
         await firebase.database().ref('guest/tasks').set(null);
-    } catch(e) {
+    } catch (e) {
         console.error('Error resetting guest tasks:', e);
     }
-    
+
     window.location.href = '../index.html';
 }
 
+
+/**
+ * Richtet den Guest-Login-Button ein.
+ */
 function setupGuestLoginButton() {
     const guestButton = document.getElementById('guest-login-button');
     if (!guestButton) return;
     guestButton.addEventListener('click', guestLogin);
 }
 
-setupPasswordToggle();
-setupGuestLoginButton();
+
+document.addEventListener('DOMContentLoaded', () => {
+    setupPasswordToggle('password', 'password-toggle');
+    setupGuestLoginButton();
+});

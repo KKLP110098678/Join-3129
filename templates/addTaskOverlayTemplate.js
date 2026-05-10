@@ -1,3 +1,7 @@
+/**
+ * Gibt das vollständige Add-Task-Overlay als HTML-String zurück.
+ * @returns {string} Das HTML des Add-Task-Overlays.
+ */
 function addTaskOverlayTemplate() {
     return `
         <div class="form-header">
@@ -123,15 +127,22 @@ function addTaskOverlayTemplate() {
     `;
 }
 
+
+/**
+ * Öffnet oder schließt das Verschiebe-Menü eines Tasks.
+ * Schließt das Menü automatisch beim Klick außerhalb.
+ * @param {string} taskId - Die ID des Tasks.
+ */
 function openMoveTaskMenu(taskId) {
     const menu = document.getElementById(`moveMenu_${taskId}`);
     menu.classList.toggle('d-none');
-    if (!menu.classList.contains('d-none')) {
-        document.addEventListener('click', function closeMenu(e) {
-            if (!menu.contains(e.target)) {
-                menu.classList.add('d-none');
-                document.removeEventListener('click', closeMenu);
-            }
-        });
-    }
+
+    if (menu.classList.contains('d-none')) return;
+
+    document.addEventListener('click', function closeMenu(e) {
+        if (!menu.contains(e.target)) {
+            menu.classList.add('d-none');
+            document.removeEventListener('click', closeMenu);
+        }
+    });
 }
