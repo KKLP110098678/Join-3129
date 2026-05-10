@@ -45,6 +45,16 @@ function isValidEmail(email) {
 
 
 /**
+ * Prüft ob eine Telefonnummer nur erlaubte Zeichen enthält.
+ * @param {string} phone - Die zu prüfende Telefonnummer.
+ * @returns {boolean} True wenn gültig.
+ */
+function isValidPhone(phone) {
+    return /^[0-9+\s\-()]+$/.test(phone);
+}
+
+
+/**
  * Validiert das Name-Feld des Add-Kontakt-Formulars.
  * @returns {boolean} True wenn gültig.
  */
@@ -76,6 +86,7 @@ function validateContactEmail() {
 function validateContactPhone() {
     const phone = document.getElementById('contactPhone').value.trim();
     if (!phone) { showContactFieldError('contactPhone', 'Please enter a phone number.'); return false; }
+    if (!isValidPhone(phone)) { showContactFieldError('contactPhone', 'Only numbers are allowed.'); return false; }
     clearContactFieldError('contactPhone');
     return true;
 }
@@ -113,6 +124,7 @@ function validateEditContactEmail() {
 function validateEditContactPhone() {
     const phone = document.getElementById('editContactPhone').value.trim();
     if (!phone) { showContactFieldError('editContactPhone', 'Please enter a phone number.'); return false; }
+    if (!isValidPhone(phone)) { showContactFieldError('editContactPhone', 'Only numbers are allowed.'); return false; }
     clearContactFieldError('editContactPhone');
     return true;
 }
@@ -305,8 +317,8 @@ function showMobileContactActionMenu() {
  * Versteckt das mobile Kontakt-Aktionsmenü.
  */
 function hideMobileContactActionMenu() {
-    document.getElementById('mobileContactActionMenu').classList.add('d-none');
-    document.getElementById('mobileActionOverlay').classList.add('d-none');
+    document.getElementById('mobileContactActionMenu')?.classList.add('d-none');
+    document.getElementById('mobileActionOverlay')?.classList.add('d-none');
 }
 
 
