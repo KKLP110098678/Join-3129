@@ -290,6 +290,7 @@ function deleteContact(index) {
     contacts.splice(index, 1);
     document.getElementById('contact-detail-view').innerHTML =
         '<div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>';
+    clearContactDetailSelection();
     saveContacts();
     renderContacts();
     closeMobileDetails();

@@ -8,6 +8,71 @@
  * @param {string} colorClass - Die CSS-Farbklasse.
  * @returns {string} HTML-String der mobilen Detailansicht.
  */
+let selectedContactDetails = null;
+let contactsResizeHandlerAttached = false;
+
+
+function isMobileContactsView() {
+    return window.innerWidth <= 1100;
+}
+
+
+function clearContactDetailSelection() {
+    selectedContactDetails = null;
+}
+
+
+function renderSelectedContactDetails() {
+    if (!selectedContactDetails) return;
+
+    const detailContainer = document.getElementById('contact-detail-view');
+    if (!detailContainer) return;
+
+    const isMobile = isMobileContactsView();
+    const currentContact = contacts[selectedContactDetails.index];
+    if (!currentContact) return;
+
+    detailContainer.innerHTML = isMobile
+        ? contactDetailMobileTemplate(
+            selectedContactDetails.index,
+            currentContact.name,
+            currentContact.email,
+            currentContact.phone,
+            currentContact.initials,
+            currentContact.color
+        )
+        : contactDetailDesktopTemplate(
+            selectedContactDetails.index,
+            currentContact.name,
+            currentContact.email,
+            currentContact.phone,
+            currentContact.initials,
+            currentContact.color
+        );
+
+    if (isMobile) {
+        detailContainer.classList.add('show-mobile');
+    } else {
+        detailContainer.classList.remove('show-mobile');
+        hideMobileContactActionMenu();
+    }
+
+    markActiveContactCard(selectedContactDetails.index);
+}
+
+
+function attachContactsResizeHandler() {
+    if (contactsResizeHandlerAttached) return;
+
+    window.addEventListener('resize', () => {
+        if (!selectedContactDetails) return;
+        renderSelectedContactDetails();
+    });
+
+    contactsResizeHandlerAttached = true;
+}
+
+
 function contactDetailMobileTemplate(index, name, email, phone, initials, colorClass) {
     return `
         <h3 class="info-headline">Contact Information</h3>
@@ -102,12 +167,19 @@ function markActiveContactCard(index) {
  */
 function showContactDetails(index, name, email, phone, initials, colorClass) {
     const detailContainer = document.getElementById('contact-detail-view');
-    const isMobile = window.innerWidth <= 1000;
+    const isMobile = isMobileContactsView();
+
+    attachContactsResizeHandler();
+    selectedContactDetails = { index };
 
     detailContainer.innerHTML = isMobile
         ? contactDetailMobileTemplate(index, name, email, phone, initials, colorClass)
         : contactDetailDesktopTemplate(index, name, email, phone, initials, colorClass);
 
     markActiveContactCard(index);
-    if (isMobile) detailContainer.classList.add('show-mobile');
+    if (isMobile) {
+        detailContainer.classList.add('show-mobile');
+    } else {
+        detailContainer.classList.remove('show-mobile');
+    }
 }
