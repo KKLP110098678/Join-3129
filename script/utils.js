@@ -53,14 +53,14 @@ function updatePasswordIconState(inputId, iconId) {
     if (!input || !icon) return;
 
     if (!input.value.trim()) {
-        icon.src = '../assets/icon/login/lock.svg';
+        icon.src = '/assets/icon/login/lock.svg';
         input.type = 'password';
         return;
     }
 
     icon.src = input.type === 'text'
-        ? '../assets/icon/login/visibility-off.svg'
-        : '../assets/icon/login/visibility.svg';
+        ? '/assets/icon/login/visibility-off.svg'
+        : '/assets/icon/login/visibility.svg';
 }
 
 
