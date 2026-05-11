@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Board</title>
+    <script>
+        const pathSegments = window.location.pathname.split('/').filter(s => s && !s.endsWith('.html'));
+        const filtered = pathSegments.filter(s => s !== 'html');
+        const basePath = '/' + filtered.join('/') + '/';
+        document.write(`<base href="${basePath}">`);\n    </script>
 
-    <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/standard.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/board.css">
-    <link rel="stylesheet" href="../css/buttons.css">
-    <link rel="stylesheet" href="../css/forms.css">
-    <link rel="stylesheet" href="../css/add-task-page.css">
-    <link rel="stylesheet" href="../css/board-mobile.css">
-    <link rel="stylesheet" href="../css/add-task-overlay.css">
+    <link rel="icon" type="image/svg" href="assets/icon/logo-blue.svg">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/add-task-page.css">
+    <link rel="stylesheet" href="css/board-mobile.css">
+    <link rel="stylesheet" href="css/add-task-overlay.css">
 </head>
 
 <body onload="init()">
@@ -35,7 +40,7 @@
                         <input id="searchField" class="search-field" type="search" placeholder="Find Task"
                             oninput="filterTasks()">
                         <div class="seperationbar-input"></div>
-                        <button class="input-glass"><img src="../assets/icon/task/search.svg" alt=""></button>
+                        <button class="input-glass"><img src="assets/icon/task/search.svg" alt=""></button>
                     </div>
                     <button class="add-task-btn btn-primary" onclick="openAddTaskForm('todo')">Add task +</button>
                 </div>
@@ -89,22 +94,23 @@
 
 </body>
 
-<script src="../js/database/firebase-app.js"></script>
-<script src="../js/database/firebase-database.js"></script>
-<script src="../js/database/firebaseConfig.js"></script>
-<script src="../js/database/userDB.js"></script>
-<script src="../script/contacts.js"></script>
-<script src="../script/contactsFormValidation.js"></script>
-<script src="../js/database/taskDB.js"></script>
-<script src="../templates/headerTemplate.js"></script>
-<script src="../templates/sidebarTemplate.js"></script>
-<script src="../templates/boardCardTemplate.js"></script>
-<script src="../templates/addTaskTemplate.js"></script>
-<script src="../templates/addTaskOverlayTemplate.js"></script>
-<script src="../script/utils.js"></script>
-<script src="../script/taskForm.js"></script>
-<script src="../script/board.js"></script>
-<script src="../script/dragNdrop.js"></script>
-<script src="../script/script.js"></script>
+<script src="js/database/firebase-app.js"></script>
+<script src="js/database/firebase-database.js"></script>
+<script src="js/database/firebaseConfig.js"></script>
+<script src="js/database/userDB.js"></script>
+<script src="script/contacts.js"></script>
+<script src="script/contactsFormValidation.js"></script>
+<script src="js/database/taskDB.js"></script>
+<script src="templates/headerTemplate.js"></script>
+<script src="templates/sidebarTemplate.js"></script>
+<script src="templates/boardCardTemplate.js"></script>
+<script src="templates/addTaskTemplate.js"></script>
+<script src="templates/addTaskOverlayTemplate.js"></script>
+<script src="script/utils.js"></script>
+<script src="script/taskForm.js"></script>
+<script src="script/board.js"></script>
+<script src="script/dragNdrop.js"></script>
+<script src="script/script.js"></script>
 
 </html>
+

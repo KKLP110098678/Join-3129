@@ -5,13 +5,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Join - Sign up</title>
+  <script>
+        const pathSegments = window.location.pathname.split('/').filter(s => s && !s.endsWith('.html'));
+        const filtered = pathSegments.filter(s => s !== 'html');
+        const basePath = '/' + filtered.join('/') + '/';
+        document.write(`<base href="${basePath}">`);\n    </script>
 
-  <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/standard.css" />
-  <link rel="stylesheet" href="../css/forms.css">
-  <link rel="stylesheet" href="../css/register.css" />
-  <link rel="stylesheet" href="../css/buttons.css" />
-  <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/standard.css" />
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/register.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="icon" type="image/svg" href="assets/icon/logo-blue.svg">
 </head>
 
 <body onload="init()">
@@ -19,7 +24,7 @@
   <div class="content">
 
     <header>
-      <img src="../assets/icon/logowhiteheader.svg" class="logo" alt="Join Logo" />
+      <img src="assets/icon/logowhiteheader.svg" class="logo" alt="Join Logo" />
     </header>
 
     <main>
@@ -36,7 +41,7 @@
               <div class="input-icon-container" id="username-field">
                 <input onblur="validateName(); updateCheckboxDisabledState();" type="text" id="username" name="username"
                   placeholder="Username" required />
-                <img src="../assets/icon/sign/person.svg" alt="Username Icon" />
+                <img src="assets/icon/sign/person.svg" alt="Username Icon" />
               </div>
               <output class="error-message d-none" id="username-error" for="username">This field is required!</output>
             </div>
@@ -44,7 +49,7 @@
               <div class="input-icon-container" id="email-field">
                 <input onblur="validateEmail(); updateCheckboxDisabledState();" type="email" id="email" name="email"
                   placeholder="Email" required />
-                <img src="../assets/icon/sign/email.svg" alt="Email Icon" />
+                <img src="assets/icon/sign/email.svg" alt="Email Icon" />
               </div>
               <output class="error-message d-none" id="email-error" for="email">This field is required!</output>
             </div>
@@ -52,7 +57,7 @@
               <div class="input-icon-container" id="password-field">
                 <input onblur="validatePassword(); updateCheckboxDisabledState();" type="password" id="password"
                   name="password" placeholder="Password" required />
-                <img src="../assets/icon/sign/lock.svg" id="password-toggle" alt="Password Icon" />
+                <img src="assets/icon/sign/lock.svg" id="password-toggle" alt="Password Icon" />
               </div>
               <output class="error-message d-none" id="password-error" for="password">This field is required!</output>
             </div>
@@ -60,7 +65,7 @@
               <div class="input-icon-container" id="confirm-password-field">
                 <input onblur="validateConfirmPassword(); updateCheckboxDisabledState();" type="password"
                   id="confirm-password" name="confirm-password" placeholder="Confirm Password" required />
-                <img src="../assets/icon/sign/lock.svg" id="confirm-password-toggle" alt="Confirm Password Icon" />
+                <img src="assets/icon/sign/lock.svg" id="confirm-password-toggle" alt="Confirm Password Icon" />
               </div>
               <output class="error-message d-none" id="confirm-password-error" for="confirm-password">This field is
                 required!</output>
@@ -71,7 +76,7 @@
               <input id="privacy-checkbox" class="checkbox-masked" type="checkbox" disabled />
               <span class="checkbox-label">
                 I accept the
-                <a href="../html/privacy-policy.html" data-text="Privacy policy"
+                <a href="html/privacy-policy.html" data-text="Privacy policy"
                   class="color-blue checkbox-link">Privacy
                   policy</a>
               </span>
@@ -86,8 +91,8 @@
     </main>
 
     <footer>
-      <a href="../html/privacy-policy.html">Privacy Policy</a>
-      <a href="../html/legal-notice.html">Legal Notice</a>
+      <a href="html/privacy-policy.html">Privacy Policy</a>
+      <a href="html/legal-notice.html">Legal Notice</a>
     </footer>
     <div id="success-overlay" class="overlay hidden">
       <div class="overlay-box">
@@ -98,13 +103,14 @@
 
 </body>
 
-<script src="../script/script.js"></script>
-<script src="../js/database/firebase-app.js"></script>
-<script src="../js/database/firebase-database.js"></script>
-<script src="../script/utils.js"></script>
-<script src="../script/register.js"></script>
-<script src="../js/database/firebaseConfig.js"></script>
-<script src="../js/database/userDB.js"></script>
-<script src="../js/database/taskDB.js"></script>
+<script src="script/script.js"></script>
+<script src="js/database/firebase-app.js"></script>
+<script src="js/database/firebase-database.js"></script>
+<script src="script/utils.js"></script>
+<script src="script/register.js"></script>
+<script src="js/database/firebaseConfig.js"></script>
+<script src="js/database/userDB.js"></script>
+<script src="js/database/taskDB.js"></script>
 
 </html>
+

@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
+    <script>
+        const pathSegments = window.location.pathname.split('/').filter(s => s && !s.endsWith('.html'));
+        const filtered = pathSegments.filter(s => s !== 'html');
+        const basePath = '/' + filtered.join('/') + '/';
+        document.write(`<base href="${basePath}">`);
+    </script>
 
-    <link rel="icon" type="image/svg" href="../assets/icon/logo-blue.svg">
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/standard.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/contacts.css">
+    <link rel="icon" type="image/svg" href="assets/icon/logo-blue.svg">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/contacts.css">
 </head>
 
 <body onload="init()">
@@ -36,7 +42,7 @@
             </div>
 
             <button class="btn-add-contact-mobile" onclick="openAddContactOverlay()">
-                <img src="../assets/icon/contacts/person_add.svg" alt="">
+                <img src="assets/icon/contacts/person_add.svg" alt="">
             </button>
 
             <div class="contact-list-scroll">
@@ -56,10 +62,10 @@
         <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeAddContactOverlay()"><img
-                        src="../assets/icon/contacts/close-white.svg" alt="X"
-                        onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'"
-                        onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
-                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
+                        src="assets/icon/contacts/close-white.svg" alt="X"
+                        onmouseover="this.src='assets/icon/contacts/close-whitehover.svg'"
+                        onmouseout="this.src='assets/icon/contacts/close-white.svg'"></span>
+                <img src="assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Add contact</h2>
                 <p>Tasks are better with a team!</p>
                 <div class="blue-separator d-none"></div>
@@ -67,7 +73,7 @@
             <div class="overlay-white-part">
                 <div class="overlay-avatar-container">
                     <div class="avatar-circle">
-                        <img src="../assets/icon/sign/person.svg" alt="">
+                        <img src="assets/icon/sign/person.svg" alt="">
                     </div>
                 </div>
                 <form onsubmit="addNewContact(event)">
@@ -75,7 +81,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateContactName()" type="text" id="contactName" placeholder="Name"
                                 required>
-                            <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/person.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactName-error" for="contactName">This field is
                             required!</output>
@@ -84,7 +90,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateContactEmail()" type="email" id="contactEmail" placeholder="Email"
                                 required>
-                            <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/email.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactEmail-error" for="contactEmail">This field is
                             required!</output>
@@ -93,7 +99,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateContactPhone()" type="tel" id="contactPhone" placeholder="Phone"
                                 inputmode="numeric" required>
-                            <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/phone.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactPhone-error" for="contactPhone">This field is
                             required!</output>
@@ -126,10 +132,10 @@
         <div class="overlay-content-edit-contact form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeEditContactOverlay()"><img
-                        src="../assets/icon/contacts/close-white.svg" alt="X"
-                        onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'"
-                        onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
-                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
+                        src="assets/icon/contacts/close-white.svg" alt="X"
+                        onmouseover="this.src='assets/icon/contacts/close-whitehover.svg'"
+                        onmouseout="this.src='assets/icon/contacts/close-white.svg'"></span>
+                <img src="assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Edit contact</h2>
                 <p>Tasks are better with a team!</p>
                 <div class="blue-separator d-none"></div>
@@ -146,7 +152,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateEditContactName()" type="text" id="editContactName"
                                 placeholder="Name" required>
-                            <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/person.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactName-error" for="editContactName">This field
                             is required!</output>
@@ -155,7 +161,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateEditContactEmail()" type="email" id="editContactEmail"
                                 placeholder="Email" required>
-                            <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/email.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactEmail-error" for="editContactEmail">This
                             field is required!</output>
@@ -164,7 +170,7 @@
                         <div class="input-wrapper">
                             <input onblur="validateEditContactPhone()" type="tel" id="editContactPhone"
                                 placeholder="Phone" inputmode="numeric" required>
-                            <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
+                            <img src="assets/icon/sign/phone.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactPhone-error" for="editContactPhone">This
                             field is required!</output>
@@ -196,10 +202,10 @@
         <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeDeleteContactOverlay()"><img
-                        src="../assets/icon/contacts/close-white.svg" alt="X"
-                        onmouseover="this.src='../assets/icon/contacts/close-whitehover.svg'"
-                        onmouseout="this.src='../assets/icon/contacts/close-white.svg'"></span>
-                <img src="../assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
+                        src="assets/icon/contacts/close-white.svg" alt="X"
+                        onmouseover="this.src='assets/icon/contacts/close-whitehover.svg'"
+                        onmouseout="this.src='assets/icon/contacts/close-white.svg'"></span>
+                <img src="assets/icon/logo-white.svg" alt="Join logo" class="overlay-logo">
                 <h2>Delete Contact</h2>
                 <p>Are you sure?</p>
             </div>
@@ -216,15 +222,16 @@
 
 </body>
 
-<script src="../js/database/firebase-app.js"></script>
-<script src="../js/database/firebase-database.js"></script>
-<script src="../js/database/firebaseConfig.js"></script>
-<script src="../js/database/userDB.js"></script>
-<script src="../templates/headerTemplate.js"></script>
-<script src="../templates/sidebarTemplate.js"></script>
-<script src="../templates/contactsTemplate.js"></script>
-<script src="../script/contacts.js"></script>
-<script src="../script/contactsFormValidation.js"></script>
-<script src="../script/script.js"></script>
+<script src="js/database/firebase-app.js"></script>
+<script src="js/database/firebase-database.js"></script>
+<script src="js/database/firebaseConfig.js"></script>
+<script src="js/database/userDB.js"></script>
+<script src="templates/headerTemplate.js"></script>
+<script src="templates/sidebarTemplate.js"></script>
+<script src="templates/contactsTemplate.js"></script>
+<script src="script/contacts.js"></script>
+<script src="script/contactsFormValidation.js"></script>
+<script src="script/script.js"></script>
 
 </html>
+

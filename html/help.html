@@ -5,13 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join | Help</title>
+    <script>
+        const pathSegments = window.location.pathname.split('/').filter(s => s && !s.endsWith('.html'));
+        const filtered = pathSegments.filter(s => s !== 'html');
+        const basePath = '/' + filtered.join('/') + '/';
+        document.write(`<base href="${basePath}">`);\n    </script>
 
-    <link rel="stylesheet" href="../css/fonts.css">
-    <link rel="stylesheet" href="../css/standard.css">
-    <link rel="stylesheet" href="../css/header.css">
-    <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/help.css">
-    <link rel="shortcut icon" href="../assets/icon/logo-blue.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/standard.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/help.css">
+    <link rel="shortcut icon" href="assets/icon/logo-blue.svg" type="image/x-icon">
 </head>
 
 <body onload="init()">
@@ -26,7 +31,7 @@
         <div id="helpContent">
             <div class="help-headline">
                 <h1>Help</h1>
-                <button class="back-arrow" onclick="history.back()"><img class="back-arrow-img" src="../assets/icon/sign/backarrow.svg" alt=""></button>
+                <button class="back-arrow" onclick="history.back()"><img class="back-arrow-img" src="assets/icon/sign/backarrow.svg" alt=""></button>
             </div>
             <p>Welcome to the help page for <span class="highlight-join">Join</span>, your guide to using our kanban project management tool. Here, we'll
                 provide an overview of what <span class="highlight-join">Join</span> is, how it can benefit you, and how to use it.
@@ -100,8 +105,9 @@
 
 </body>
 
-<script src="../templates/sidebarTemplate.js"></script>
-<script src="../templates/headerTemplate.js"></script>
-<script src="../script/script.js"></script>
+<script src="templates/sidebarTemplate.js"></script>
+<script src="templates/headerTemplate.js"></script>
+<script src="script/script.js"></script>
 
 </html>
+
