@@ -1,3 +1,46 @@
+/**
+ * Ermittelt den korrekten Pfad relativ zum Repo-Root.
+ * Funktioniert mit GitHub Pages (Subdirectory oder Root) und lokalem Development.
+ * @param {string} relativePath - Der relative Pfad (z.B. 'html/board.html', 'index.html')
+ * @returns {string} Der korrekte absolute oder relative Pfad
+ */
+function getCorrectPath(relativePath) {
+    const path = window.location.pathname;
+    
+    // Prüfe, ob wir in einem Subdirectory sind (GitHub Pages)
+    // z.B. /Join-3129/ oder /Join-3129/html/board.html
+    const pathParts = path.split('/').filter(p => p);
+    
+    // Wenn die letzte Komponente eine HTML-Datei ist, entferne sie
+    if (pathParts[pathParts.length - 1]?.endsWith('.html')) {
+        pathParts.pop();
+    }
+    
+    // Wenn wir in 'html/' sind, gehe eine Ebene zurück
+    if (pathParts[pathParts.length - 1] === 'html') {
+        pathParts.pop();
+    }
+    
+    // Baue den korrekten Pfad zusammen
+    const baseParts = pathParts.length > 0 ? pathParts : [];
+    const fullPath = baseParts.join('/') + '/' + relativePath;
+    return '/' + fullPath;
+}
+
+
+/**
+ * Korrigiert alle Navigation-Links nach dem DOM-Render.
+ */
+function fixNavigationLinks() {
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && (href.startsWith('html/') || href === 'index.html')) {
+            link.setAttribute('href', getCorrectPath(href));
+        }
+    });
+}
+
+
 let protectedPages = ['index.html', 'board.html', 'contacts.html', 'add-task.html'];
 
 
@@ -28,7 +71,7 @@ function isAuthorized() {
  */
 function checkAuth() {
     if (isProtectedPage() && !isAuthorized()) {
-        window.location.href = '../html/login.html';
+        window.location.href = getCorrectPath('html/login.html');
     }
 }
 
@@ -40,6 +83,7 @@ function addHeader() {
     const headerRef = document.getElementById('headerContent');
     if (!headerRef) return;
     headerRef.innerHTML += headerTemplate();
+    fixNavigationLinks();
 }
 
 
@@ -64,6 +108,7 @@ function addSidebar() {
     if (!sidebarRef) return;
     sidebarRef.innerHTML += getSidebarTemplate();
     markActiveSidebarLink(sidebarRef);
+    fixNavigationLinks();
 }
 
 

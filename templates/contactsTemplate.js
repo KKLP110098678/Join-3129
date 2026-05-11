@@ -77,7 +77,7 @@ function contactDetailMobileTemplate(index, name, email, phone, initials, colorC
     return `
         <h3 class="info-headline">Contact Information</h3>
         <div class="back-arrow" onclick="closeMobileDetails()">
-            <img src="../assets/icon/sign/backarrow.svg" alt="Back">
+            <img src="./assets/icon/sign/backarrow.svg" alt="Back">
         </div>
         <div class="contact-header">
             <div class="initials-big ${colorClass}">${initials}</div>
@@ -92,14 +92,14 @@ function contactDetailMobileTemplate(index, name, email, phone, initials, colorC
         <div id="mobileActionOverlay" class="menu-overlay d-none" onclick="hideMobileContactActionMenu()"></div>
         <div class="mobile-contact-action-menu d-none" id="mobileContactActionMenu">
             <span onclick="openEditContactOverlay(${index})" class="mobile-action-button">
-                <img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit
+                <img src="./assets/icon/contacts/edit.svg" alt="Edit">Edit
             </span>
             <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button">
-                <img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete
+                <img src="./assets/icon/contacts/delete.svg" alt="Delete">Delete
             </span>
         </div>
         <button class="btn-change-contact-mobile" onclick="showMobileContactActionMenu()">
-            <img src="../assets/icon/contacts/contact-details-menu.svg" alt="Edit and Delete Menu">
+            <img src="./assets/icon/contacts/contact-details-menu.svg" alt="Edit and Delete Menu">
         </button>
     `;
 }
@@ -118,7 +118,7 @@ function contactDetailMobileTemplate(index, name, email, phone, initials, colorC
 function contactDetailDesktopTemplate(index, name, email, phone, initials, colorClass) {
     return `
         <div class="back-arrow" onclick="closeMobileDetails()">
-            <img src="../assets/icon/sign/backarrow.svg" alt="Back">
+            <img src="./assets/icon/sign/backarrow.svg" alt="Back">
         </div>
         <div class="contact-header">
             <div class="initials-big ${colorClass}">${initials}</div>
@@ -126,10 +126,10 @@ function contactDetailDesktopTemplate(index, name, email, phone, initials, color
                 <h2>${name}</h2>
                 <div class="action-buttons">
                     <span onclick="openEditContactOverlay(${index})" class="mobile-action-button">
-                        <img src="../assets/icon/contacts/edit.svg" alt="Edit">Edit
+                        <img src="./assets/icon/contacts/edit.svg" alt="Edit">Edit
                     </span>
                     <span onclick="openDeleteContactOverlay(${index})" class="mobile-action-button">
-                        <img src="../assets/icon/contacts/delete.svg" alt="Delete">Delete
+                        <img src="./assets/icon/contacts/delete.svg" alt="Delete">Delete
                     </span>
                 </div>
             </div>

@@ -159,9 +159,9 @@ function taskDetailTemplate(task) {
     const badgeClass = task.category === 'Technical Task' ? 'badge-technical-task' : 'badge-user-story';
     const priorityLabels = { urgent: 'Urgent', medium: 'Medium', low: 'Low' };
     const priorityIcons = {
-        urgent: '../assets/icon/taskManagement/urgent.svg',
-        medium: '../assets/icon/taskManagement/medium.svg',
-        low: '../assets/icon/taskManagement/low.svg'
+        urgent: './assets/icon/taskManagement/urgent.svg',
+        medium: './assets/icon/taskManagement/medium.svg',
+        low: './assets/icon/taskManagement/low.svg'
     };
     const assigneesHTML = (task.assignees || []).map(assigneeDetailTemplate).join('');
     const subtasksHTML = (task.subtasks || []).map((s, i) => subtaskDetailTemplate(s, i, task.id)).join('');
@@ -238,11 +238,11 @@ function editTaskTemplate(task) {
                 <p class="form-label">Priority</p>
                 <div class="radio-to-btn">
                     <input type="radio" name="edit-priority" class="d-none" id="editUrgent" value="urgent" ${task.priority === 'urgent' ? 'checked' : ''}>
-                    <label for="editUrgent" class="priority-label urgent">Urgent <img src="../assets/icon/taskManagement/urgent.svg" alt=""></label>
+                    <label for="editUrgent" class="priority-label urgent">Urgent <img src="./assets/icon/taskManagement/urgent.svg" alt=""></label>
                     <input type="radio" name="edit-priority" class="d-none" id="editMedium" value="medium" ${task.priority === 'medium' ? 'checked' : ''}>
-                    <label for="editMedium" class="priority-label medium">Medium <img src="../assets/icon/taskManagement/medium.svg" alt=""></label>
+                    <label for="editMedium" class="priority-label medium">Medium <img src="./assets/icon/taskManagement/medium.svg" alt=""></label>
                     <input type="radio" name="edit-priority" class="d-none" id="editLow" value="low" ${task.priority === 'low' ? 'checked' : ''}>
-                    <label for="editLow" class="priority-label low">Low <img src="../assets/icon/taskManagement/low.svg" alt=""></label>
+                    <label for="editLow" class="priority-label low">Low <img src="./assets/icon/taskManagement/low.svg" alt=""></label>
                 </div>
             </div>
             <div class="form-group">
@@ -254,7 +254,7 @@ function editTaskTemplate(task) {
                             oninput="filterEditAssignedToDropdown(this.value)"
                             onclick="toggleEditAssignedToDropdown(event)"/>
                         <button type="button" class="dropdown-toggle-btn" onclick="toggleEditAssignedToDropdown(event)">
-                            <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow"/>
+                            <img src="./assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow"/>
                         </button>
                     </div>
                     <div class="dropdown-list assigned-to d-none" id="editAssignedToDropdown"></div>

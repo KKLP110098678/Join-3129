@@ -32,17 +32,17 @@ function addTaskTemplate() {
                         <input type="radio" name="urgent-priority" class="d-none" id="urgentPriority" value="urgent">
                         <label for="urgentPriority" class="priority-label urgent">
                             Urgent
-                            <img src="../assets/icon/taskManagement/urgent.svg" alt="">
+                            <img src="./assets/icon/taskManagement/urgent.svg" alt="">
                         </label>
                         <input type="radio" name="urgent-priority" class="d-none" id="mediumPriority" value="medium">
                         <label for="mediumPriority" class="priority-label medium">
                             Medium
-                            <img src="../assets/icon/taskManagement/medium.svg" alt="">
+                            <img src="./assets/icon/taskManagement/medium.svg" alt="">
                         </label>
                         <input type="radio" name="urgent-priority" class="d-none" id="lowPriority" value="low">
                         <label for="lowPriority" class="priority-label low">
                             Low
-                            <img src="../assets/icon/taskManagement/low.svg" alt="">
+                            <img src="./assets/icon/taskManagement/low.svg" alt="">
                         </label>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ function addTaskTemplate() {
                                 oninput="filterAssignedToDropdown(this.value)"
                                 onclick="toggleAssignedToDropdown(event)" />
                             <button type="button" class="dropdown-toggle-btn" onclick="toggleAssignedToDropdown()">
-                                <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow" />
+                                <img src="./assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow" />
                             </button>
                         </div>
                         <div class="dropdown-list assigned-to d-none" id="assignedToDropdown"></div>
@@ -72,7 +72,7 @@ function addTaskTemplate() {
                             <input type="text" class="dropdown-input" id="categoryInput"
                                 placeholder="Select task category" readonly onclick="toggleCategoryDropdown()" required />
                             <button type="button" class="dropdown-toggle-btn" onclick="toggleCategoryDropdown()">
-                                <img src="../assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow" />
+                                <img src="./assets/icon/task/dropdown-arrow.svg" alt="dropdown arrow" class="dropdown-arrow" />
                             </button>
                         </div>
                         <div class="dropdown-list d-none" id="categoryDropdown">

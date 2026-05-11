@@ -8,7 +8,7 @@ let defaultContacts = [];
  */
 async function loadDefaultContacts() {
     try {
-        const response = await fetch('/json/defaultContacts.json');
+        const response = await fetch('./json/defaultContacts.json');
         defaultContacts = await response.json();
     } catch (e) {
         console.error('Error loading defaultContacts.json:', e);
