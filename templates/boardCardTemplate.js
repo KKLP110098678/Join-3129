@@ -1,7 +1,7 @@
 /**
- * Gibt die Move-Menu-Optionen für einen Task-Status zurück.
- * @param {string} status - Der normalisierte Status des Tasks.
- * @returns {Array[]} Array mit [Label, Status]-Paaren.
+ * Returns the move menu options for a task status.
+ * @param {string} status - The normalized status of the task.
+ * @returns {Array[]} Array of [label, status] pairs.
  */
 function getMoveMenuOptions(status) {
     const mapping = {
@@ -15,9 +15,9 @@ function getMoveMenuOptions(status) {
 
 
 /**
- * Normalisiert den Task-Status für das Move-Menu-Mapping.
- * @param {string} status - Der rohe Status-String.
- * @returns {string} Der normalisierte Status.
+ * Normalizes the task status for the move menu mapping.
+ * @param {string} status - The raw status string.
+ * @returns {string} The normalized status.
  */
 function normalizeTaskStatus(status) {
     const normalized = (status || 'todo').toLowerCase().replace(/[\s_-]/g, '');
@@ -26,8 +26,8 @@ function normalizeTaskStatus(status) {
 
 
 /**
- * Gibt die erste und zweite Move-Option eines Tasks zurück.
- * @param {string} menuStatus - Der normalisierte Status.
+ * Returns the first and second move option of a task.
+ * @param {string} menuStatus - The normalized status.
  * @returns {{ first: Array|null, second: Array|null }}
  */
 function resolveMoveOptions(menuStatus) {
@@ -41,11 +41,11 @@ function resolveMoveOptions(menuStatus) {
 
 
 /**
- * Gibt das HTML für einen einzelnen Move-Button zurück.
- * @param {string} taskId - Die Task-ID.
- * @param {Array} option - [Label, Status]-Paar.
- * @param {boolean} isUp - True für Pfeil-oben, false für Pfeil-unten.
- * @returns {string} HTML-String des Buttons.
+ * Returns the HTML for a single move button.
+ * @param {string} taskId - The task ID.
+ * @param {Array} option - [label, status] pair.
+ * @param {boolean} isUp - True for arrow up, false for arrow down.
+ * @returns {string} HTML string of the button.
  */
 function moveOptionButtonTemplate(taskId, option, isUp) {
     const arrowUp = `<svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_56660_6262" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="20" height="20"><rect y="-1" width="20" height="20" fill="#D9D9D9"/></mask><g mask="url(#mask0_56660_6262)"><path d="M9.16578 5.52083L5.08245 9.60417C4.91578 9.77083 4.72134 9.85069 4.49911 9.84375C4.27689 9.83681 4.08245 9.75 3.91578 9.58333C3.763 9.41667 3.68314 9.22222 3.6762 9C3.66925 8.77778 3.74911 8.58333 3.91578 8.41667L9.41578 2.91667C9.49911 2.83333 9.58939 2.77431 9.68661 2.73958C9.78384 2.70486 9.888 2.6875 9.99911 2.6875C10.1102 2.6875 10.2144 2.70486 10.3116 2.73958C10.4088 2.77431 10.4991 2.83333 10.5824 2.91667L16.0824 8.41667C16.2352 8.56944 16.3116 8.76042 16.3116 8.98958C16.3116 9.21875 16.2352 9.41667 16.0824 9.58333C15.9158 9.75 15.7179 9.83333 15.4887 9.83333C15.2595 9.83333 15.0616 9.75 14.8949 9.58333L10.8324 5.52083V14.8333C10.8324 15.0694 10.7526 15.2674 10.5929 15.4271C10.4331 15.5868 10.2352 15.6667 9.99911 15.6667C9.763 15.6667 9.56509 15.5868 9.40536 15.4271C9.24564 15.2674 9.16578 15.0694 9.16578 14.8333V5.52083Z" fill="white"/></g></svg>`;
@@ -61,10 +61,10 @@ function moveOptionButtonTemplate(taskId, option, isUp) {
 
 
 /**
- * Gibt das HTML des Move-Task-Menüs zurück.
- * @param {string} taskId - Die Task-ID.
- * @param {string} menuStatus - Der normalisierte Status.
- * @returns {string} HTML-String des Menüs.
+ * Returns the HTML of the move task menu.
+ * @param {string} taskId - The task ID.
+ * @param {string} menuStatus - The normalized status.
+ * @returns {string} HTML string of the menu.
  */
 function moveTaskMenuTemplate(taskId, menuStatus) {
     const { first, second } = resolveMoveOptions(menuStatus);
@@ -81,9 +81,9 @@ function moveTaskMenuTemplate(taskId, menuStatus) {
 
 
 /**
- * Gibt das HTML einer Board-Karte zurück.
- * @param {Object} task - Das Task-Objekt.
- * @returns {string} HTML-String der Board-Karte.
+ * Returns the HTML of a board card.
+ * @param {Object} task - The task object.
+ * @returns {string} HTML string of the board card.
  */
 function boardCardTemplate(task) {
     const menuStatus = normalizeTaskStatus(task.status);
@@ -116,9 +116,9 @@ function boardCardTemplate(task) {
 
 
 /**
- * Gibt das HTML eines Assignee-Eintrags in der Task-Detailansicht zurück.
- * @param {string} name - Der Name des Assignees.
- * @returns {string} HTML-String des Assignee-Eintrags.
+ * Returns the HTML for an assignee entry in the task detail view.
+ * @param {string} name - The name of the assignee.
+ * @returns {string} HTML string of the assignee entry.
  */
 function assigneeDetailTemplate(name) {
     const contact = contacts.find(c => c.name === name);
@@ -133,11 +133,11 @@ function assigneeDetailTemplate(name) {
 
 
 /**
- * Gibt das HTML eines Subtask-Eintrags in der Task-Detailansicht zurück.
- * @param {Object} subtask - Das Subtask-Objekt.
- * @param {number} index - Der Index des Subtasks.
- * @param {string} taskId - Die Task-ID.
- * @returns {string} HTML-String des Subtask-Eintrags.
+ * Returns the HTML for a subtask entry in the task detail view.
+ * @param {Object} subtask - The subtask object.
+ * @param {number} index - The index of the subtask.
+ * @param {string} taskId - The task ID.
+ * @returns {string} HTML string of the subtask entry.
  */
 function subtaskDetailTemplate(subtask, index, taskId) {
     return `
@@ -151,9 +151,9 @@ function subtaskDetailTemplate(subtask, index, taskId) {
 
 
 /**
- * Gibt das HTML der Task-Detailansicht zurück.
- * @param {Object} task - Das Task-Objekt.
- * @returns {string} HTML-String der Detailansicht.
+ * Returns the HTML of the task detail view.
+ * @param {Object} task - The task object.
+ * @returns {string} HTML string of the detail view.
  */
 function taskDetailTemplate(task) {
     const badgeClass = task.category === 'Technical Task' ? 'badge-technical-task' : 'badge-user-story';
@@ -210,9 +210,9 @@ function taskDetailTemplate(task) {
 
 
 /**
- * Gibt das HTML der Task-Bearbeitungsansicht zurück.
- * @param {Object} task - Das Task-Objekt.
- * @returns {string} HTML-String der Bearbeitungsansicht.
+ * Returns the HTML of the task edit view.
+ * @param {Object} task - The task object.
+ * @returns {string} HTML string of the edit view.
  */
 function editTaskTemplate(task) {
     return `
@@ -293,12 +293,32 @@ function editTaskTemplate(task) {
 
 
 /**
- * Formatiert einen Datums-String von YYYY-MM-DD zu DD.MM.YYYY.
- * @param {string} dateString - Der zu formatierende Datums-String.
- * @returns {string} Der formatierte Datums-String.
+ * Formats a date string from YYYY-MM-DD to DD.MM.YYYY.
+ * @param {string} dateString - The date string to format.
+ * @returns {string} The formatted date string.
  */
 function formatDate(dateString) {
     if (!dateString) return '';
     const [year, month, day] = dateString.split('-');
     return `${day}.${month}.${year}`;
+}
+
+
+/**
+ * Opens or closes the move task menu for a task.
+ * Automatically closes the menu when clicking outside.
+ * @param {string} taskId - The ID of the task.
+ */
+function openMoveTaskMenu(taskId) {
+    const menu = document.getElementById(`moveMenu_${taskId}`);
+    menu.classList.toggle('d-none');
+
+    if (menu.classList.contains('d-none')) return;
+
+    document.addEventListener('click', function closeMenu(e) {
+        if (!menu.contains(e.target)) {
+            menu.classList.add('d-none');
+            document.removeEventListener('click', closeMenu);
+        }
+    });
 }

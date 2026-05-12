@@ -1,7 +1,7 @@
 /**
- * Prüft ob ein Pfad dem aktuellen Seitenpfad entspricht.
- * @param {string} path - Der zu prüfende Pfad.
- * @returns {string} 'active' wenn der Pfad aktiv ist, sonst ''.
+ * Checks if a path matches the current page path.
+ * @param {string} path - The path to check.
+ * @returns {string} 'active' if the path is active, otherwise ''.
  */
 function isActive(path) {
     return window.location.pathname.includes(path) ? 'active' : '';
@@ -9,8 +9,8 @@ function isActive(path) {
 
 
 /**
- * Gibt das HTML der Sidebar für nicht eingeloggte Nutzer zurück.
- * @returns {string} HTML-String der Gast-Sidebar.
+ * Returns the HTML of the sidebar for logged-out users.
+ * @returns {string} HTML string of the guest sidebar.
  */
 function sidebarLoggedOutTemplate() {
     return `
@@ -30,8 +30,8 @@ function sidebarLoggedOutTemplate() {
 
 
 /**
- * Gibt das HTML der Sidebar für eingeloggte Nutzer zurück.
- * @returns {string} HTML-String der eingeloggten Sidebar.
+ * Returns the HTML of the sidebar for logged-in users.
+ * @returns {string} HTML string of the logged-in sidebar.
  */
 function sidebarLoggedInTemplate() {
     return `
@@ -60,8 +60,8 @@ function sidebarLoggedInTemplate() {
 
 
 /**
- * Gibt das passende Sidebar-Template zurück.
- * @returns {string} HTML-String der Sidebar.
+ * Returns the appropriate sidebar template.
+ * @returns {string} HTML string of the sidebar.
  */
 function getSidebarTemplate() {
     return isAuthorized() ? sidebarLoggedInTemplate() : sidebarLoggedOutTemplate();

@@ -1,7 +1,7 @@
 /**
- * Liest und trimmt den Wert eines Input-Felds per ID.
- * @param {string} fieldId - Die ID des Input-Felds.
- * @returns {string} Der getrimmte Wert.
+ * Reads and trims the value of an input field by ID.
+ * @param {string} fieldId - The ID of the input field.
+ * @returns {string} The trimmed value.
  */
 function getInputValue(fieldId) {
     return document.getElementById(fieldId)?.value.trim() || '';
@@ -9,9 +9,9 @@ function getInputValue(fieldId) {
 
 
 /**
- * Zeigt eine Fehlermeldung für ein Formularfeld an.
- * @param {string} fieldId - Die ID des Felds (z.B. 'email').
- * @param {string} message - Die anzuzeigende Fehlermeldung.
+ * Displays an error message for a form field.
+ * @param {string} fieldId - The ID of the field (e.g. 'email').
+ * @param {string} message - The error message to display.
  */
 function showFieldError(fieldId, message) {
     const field = document.getElementById(`${fieldId}-field`);
@@ -27,8 +27,8 @@ function showFieldError(fieldId, message) {
 
 
 /**
- * Entfernt die Fehlermeldung eines Formularfelds.
- * @param {string} fieldId - Die ID des Felds.
+ * Removes the error message of a form field.
+ * @param {string} fieldId - The ID of the field.
  */
 function clearFieldError(fieldId) {
     const field = document.getElementById(`${fieldId}-field`);
@@ -43,9 +43,9 @@ function clearFieldError(fieldId) {
 
 
 /**
- * Aktualisiert das Icon eines Passwort-Felds je nach Zustand.
- * @param {string} inputId - Die ID des Passwort-Inputs.
- * @param {string} iconId - Die ID des Toggle-Icons.
+ * Updates the icon of a password field depending on its state.
+ * @param {string} inputId - The ID of the password input.
+ * @param {string} iconId - The ID of the toggle icon.
  */
 function updatePasswordIconState(inputId, iconId) {
     const input = document.getElementById(inputId);
@@ -53,21 +53,21 @@ function updatePasswordIconState(inputId, iconId) {
     if (!input || !icon) return;
 
     if (!input.value.trim()) {
-        icon.src = '/assets/icon/login/lock.svg';
+        icon.src = './assets/icon/login/lock.svg';
         input.type = 'password';
         return;
     }
 
     icon.src = input.type === 'text'
-        ? '/assets/icon/login/visibility-off.svg'
-        : '/assets/icon/login/visibility.svg';
+        ? './assets/icon/login/visibility-off.svg'
+        : './assets/icon/login/visibility.svg';
 }
 
 
 /**
- * Schaltet die Sichtbarkeit eines Passwort-Felds um.
- * @param {string} inputId - Die ID des Passwort-Inputs.
- * @param {string} iconId - Die ID des Toggle-Icons.
+ * Toggles the visibility of a password field.
+ * @param {string} inputId - The ID of the password input.
+ * @param {string} iconId - The ID of the toggle icon.
  */
 function togglePasswordVisibility(inputId, iconId) {
     const input = document.getElementById(inputId);
@@ -78,9 +78,9 @@ function togglePasswordVisibility(inputId, iconId) {
 
 
 /**
- * Richtet den Passwort-Toggle für ein Feld ein.
- * @param {string} inputId - Die ID des Passwort-Inputs.
- * @param {string} iconId - Die ID des Toggle-Icons.
+ * Sets up the password toggle for a field.
+ * @param {string} inputId - The ID of the password input.
+ * @param {string} iconId - The ID of the toggle icon.
  */
 function setupPasswordToggle(inputId, iconId) {
     const input = document.getElementById(inputId);

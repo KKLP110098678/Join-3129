@@ -2,9 +2,9 @@ let pendingDeleteIndex = null;
 
 
 /**
- * Zeigt einen Feldfehler im Kontaktformular an.
- * @param {string} fieldId - Die ID des Felds.
- * @param {string} message - Die Fehlermeldung.
+ * Displays a field error in the contact form.
+ * @param {string} fieldId - The ID of the field.
+ * @param {string} message - The error message.
  */
 function showContactFieldError(fieldId, message) {
     const wrapper = document.querySelector(`#${fieldId}`)?.closest('.input-wrapper');
@@ -19,8 +19,8 @@ function showContactFieldError(fieldId, message) {
 
 
 /**
- * Entfernt einen Feldfehler im Kontaktformular.
- * @param {string} fieldId - Die ID des Felds.
+ * Removes a field error in the contact form.
+ * @param {string} fieldId - The ID of the field.
  */
 function clearContactFieldError(fieldId) {
     const wrapper = document.querySelector(`#${fieldId}`)?.closest('.input-wrapper');
@@ -35,9 +35,9 @@ function clearContactFieldError(fieldId) {
 
 
 /**
- * Prüft ob eine E-Mail-Adresse gültig ist.
- * @param {string} email - Die zu prüfende E-Mail.
- * @returns {boolean} True wenn gültig.
+ * Checks if an email address is valid.
+ * @param {string} email - The email to check.
+ * @returns {boolean} True if valid.
  */
 function isValidEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -45,9 +45,9 @@ function isValidEmail(email) {
 
 
 /**
- * Prüft ob eine Telefonnummer nur erlaubte Zeichen enthält.
- * @param {string} phone - Die zu prüfende Telefonnummer.
- * @returns {boolean} True wenn gültig.
+ * Checks if a phone number contains only allowed characters.
+ * @param {string} phone - The phone number to check.
+ * @returns {boolean} True if valid.
  */
 function isValidPhone(phone) {
     return /^[0-9+\s\-()]+$/.test(phone);
@@ -55,8 +55,8 @@ function isValidPhone(phone) {
 
 
 /**
- * Validiert das Name-Feld des Add-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the name field of the add contact form.
+ * @returns {boolean} True if valid.
  */
 function validateContactName() {
     const name = document.getElementById('contactName').value.trim();
@@ -67,8 +67,8 @@ function validateContactName() {
 
 
 /**
- * Validiert das E-Mail-Feld des Add-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the email field of the add contact form.
+ * @returns {boolean} True if valid.
  */
 function validateContactEmail() {
     const email = document.getElementById('contactEmail').value.trim();
@@ -80,8 +80,8 @@ function validateContactEmail() {
 
 
 /**
- * Validiert das Telefon-Feld des Add-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the phone field of the add contact form.
+ * @returns {boolean} True if valid.
  */
 function validateContactPhone() {
     const phone = document.getElementById('contactPhone').value.trim();
@@ -93,8 +93,8 @@ function validateContactPhone() {
 
 
 /**
- * Validiert das Name-Feld des Edit-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the name field of the edit contact form.
+ * @returns {boolean} True if valid.
  */
 function validateEditContactName() {
     const name = document.getElementById('editContactName').value.trim();
@@ -105,8 +105,8 @@ function validateEditContactName() {
 
 
 /**
- * Validiert das E-Mail-Feld des Edit-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the email field of the edit contact form.
+ * @returns {boolean} True if valid.
  */
 function validateEditContactEmail() {
     const email = document.getElementById('editContactEmail').value.trim();
@@ -118,8 +118,8 @@ function validateEditContactEmail() {
 
 
 /**
- * Validiert das Telefon-Feld des Edit-Kontakt-Formulars.
- * @returns {boolean} True wenn gültig.
+ * Validates the phone field of the edit contact form.
+ * @returns {boolean} True if valid.
  */
 function validateEditContactPhone() {
     const phone = document.getElementById('editContactPhone').value.trim();
@@ -131,8 +131,8 @@ function validateEditContactPhone() {
 
 
 /**
- * Liest die Kontaktformulardaten aus und gibt sie als Objekt zurück.
- * @param {string} prefix - Präfix der Feld-IDs ('contact' oder 'editContact').
+ * Reads the contact form data and returns it as an object.
+ * @param {string} prefix - Prefix of the field IDs ('contact' or 'editContact').
  * @returns {{ name: string, email: string, phone: string }}
  */
 function getContactFormData(prefix) {
@@ -145,7 +145,7 @@ function getContactFormData(prefix) {
 
 
 /**
- * Öffnet das Add-Contact-Overlay.
+ * Opens the add contact overlay.
  */
 function openAddContactOverlay() {
     document.getElementById('addContactOverlay').classList.remove('d-none');
@@ -153,7 +153,7 @@ function openAddContactOverlay() {
 
 
 /**
- * Schließt das Add-Contact-Overlay und setzt das Formular zurück.
+ * Closes the add contact overlay and resets the form.
  */
 function closeAddContactOverlay() {
     document.getElementById('addContactOverlay').classList.add('d-none');
@@ -165,7 +165,7 @@ function closeAddContactOverlay() {
 
 
 /**
- * Zeigt ein kurzes Popup nach erfolgreichem Erstellen eines Kontakts.
+ * Shows a short popup after successfully creating a contact.
  */
 function showContactAddedPopup() {
     const popup = document.createElement('div');
@@ -181,8 +181,8 @@ function showContactAddedPopup() {
 
 
 /**
- * Verarbeitet das Hinzufügen eines neuen Kontakts.
- * @param {SubmitEvent} event - Das Submit-Event.
+ * Handles adding a new contact.
+ * @param {SubmitEvent} event - The submit event.
  */
 function addNewContact(event) {
     event.preventDefault();
@@ -199,8 +199,8 @@ function addNewContact(event) {
 
 
 /**
- * Öffnet das Edit-Contact-Overlay und befüllt es mit den Kontaktdaten.
- * @param {number} index - Der Index des zu bearbeitenden Kontakts.
+ * Opens the edit contact overlay and fills it with the contact data.
+ * @param {number} index - The index of the contact to edit.
  */
 function openEditContactOverlay(index) {
     const contact = contacts[index];
@@ -220,7 +220,7 @@ function openEditContactOverlay(index) {
 
 
 /**
- * Schließt das Edit-Contact-Overlay.
+ * Closes the edit contact overlay.
  */
 function closeEditContactOverlay() {
     document.getElementById('editContactOverlay').classList.add('d-none');
@@ -229,8 +229,8 @@ function closeEditContactOverlay() {
 
 
 /**
- * Speichert die Änderungen an einem bestehenden Kontakt.
- * @param {SubmitEvent} event - Das Submit-Event.
+ * Saves the changes to an existing contact.
+ * @param {SubmitEvent} event - The submit event.
  */
 function saveEditedContact(event) {
     event.preventDefault();
@@ -252,8 +252,8 @@ function saveEditedContact(event) {
 
 
 /**
- * Öffnet das Löschen-Bestätigungs-Overlay für einen Kontakt.
- * @param {number} index - Der Index des zu löschenden Kontakts.
+ * Opens the delete confirmation overlay for a contact.
+ * @param {number} index - The index of the contact to delete.
  */
 function openDeleteContactOverlay(index) {
     pendingDeleteIndex = index;
@@ -262,7 +262,7 @@ function openDeleteContactOverlay(index) {
 
 
 /**
- * Schließt das Löschen-Overlay.
+ * Closes the delete overlay.
  */
 function closeDeleteContactOverlay() {
     pendingDeleteIndex = null;
@@ -272,7 +272,7 @@ function closeDeleteContactOverlay() {
 
 
 /**
- * Bestätigt und führt das Löschen des ausstehenden Kontakts durch.
+ * Confirms and executes the deletion of the pending contact.
  */
 function confirmDeleteContact() {
     if (pendingDeleteIndex !== null) {
@@ -283,8 +283,8 @@ function confirmDeleteContact() {
 
 
 /**
- * Löscht einen Kontakt und aktualisiert die Ansicht.
- * @param {number} index - Der Index des zu löschenden Kontakts.
+ * Deletes a contact and updates the view.
+ * @param {number} index - The index of the contact to delete.
  */
 function deleteContact(index) {
     contacts.splice(index, 1);
@@ -298,7 +298,7 @@ function deleteContact(index) {
 
 
 /**
- * Blendet die mobile Detailansicht aus.
+ * Hides the mobile detail view.
  */
 function closeMobileDetails() {
     document.getElementById('contact-detail-view')?.classList.remove('show-mobile');
@@ -306,7 +306,7 @@ function closeMobileDetails() {
 
 
 /**
- * Schaltet das mobile Kontakt-Aktionsmenü um.
+ * Toggles the mobile contact action menu.
  */
 function showMobileContactActionMenu() {
     document.getElementById('mobileContactActionMenu').classList.toggle('d-none');
@@ -315,7 +315,7 @@ function showMobileContactActionMenu() {
 
 
 /**
- * Versteckt das mobile Kontakt-Aktionsmenü.
+ * Hides the mobile contact action menu.
  */
 function hideMobileContactActionMenu() {
     document.getElementById('mobileContactActionMenu')?.classList.add('d-none');
@@ -324,9 +324,9 @@ function hideMobileContactActionMenu() {
 
 
 /**
- * Schließt ein Overlay beim Klick auf den Hintergrund.
- * @param {MouseEvent} event - Das Klick-Event.
- * @param {string} overlayId - Die ID des Overlays.
+ * Closes an overlay when clicking on the background.
+ * @param {MouseEvent} event - The click event.
+ * @param {string} overlayId - The ID of the overlay.
  */
 function closeOverlayOnBackground(event, overlayId) {
     if (event.target.id !== overlayId) return;

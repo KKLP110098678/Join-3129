@@ -1,7 +1,7 @@
 /**
- * Gibt das HTML für die Deadline-Anzeige im Urgent-Bereich zurück.
- * @param {Object} counts - Das Counts-Objekt aus getTaskCounts().
- * @returns {string} HTML-String der Deadline-Anzeige.
+ * Returns the HTML for the deadline display in the urgent section.
+ * @param {Object} counts - The counts object from getTaskCounts().
+ * @returns {string} HTML string of the deadline display.
  */
 function urgentDeadlineTemplate(counts) {
     if (counts.urgent === 0) return `<p class="date-text-top">No urgent tasks</p>`;
@@ -13,9 +13,9 @@ function urgentDeadlineTemplate(counts) {
 
 
 /**
- * Gibt das HTML der Begrüßungszeile zurück.
- * @param {boolean} isGuest - Ob der Nutzer ein Gast ist.
- * @returns {string} HTML-String der Begrüßung.
+ * Returns the HTML of the greeting line.
+ * @param {boolean} isGuest - Whether the user is a guest.
+ * @returns {string} HTML string of the greeting.
  */
 function greetingTemplate(isGuest) {
     const firstName = getFirstName();
@@ -25,8 +25,8 @@ function greetingTemplate(isGuest) {
 
 
 /**
- * Gibt das vollständige Summary-Template zurück.
- * @returns {string} HTML-String der Summary-Seite.
+ * Returns the complete summary template.
+ * @returns {string} HTML string of the summary page.
  */
 function summaryTemplate() {
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
@@ -99,8 +99,8 @@ function summaryTemplate() {
 
 
 /**
- * Gibt den Vornamen des eingeloggten Nutzers zurück.
- * @returns {string} Der Vorname oder ein leerer String bei Gästen.
+ * Returns the first name of the logged-in user.
+ * @returns {string} The first name or an empty string for guests.
  */
 function getFirstName() {
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
@@ -111,7 +111,7 @@ function getFirstName() {
 
 
 /**
- * Zählt die Tasks nach Status und berechnet die nächste Urgent-Deadline.
+ * Counts the tasks by status and calculates the next urgent deadline.
  * @returns {{ urgent: number, total: number, todo: number, inProgress: number, awaitFeedback: number, done: number, earliestDeadline: string|null }}
  */
 function getTaskCounts() {

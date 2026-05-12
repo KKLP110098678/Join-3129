@@ -1,78 +1,13 @@
 /**
- * Gibt das HTML der mobilen Kontakt-Detailansicht zurück.
- * @param {number} index - Der Index des Kontakts.
- * @param {string} name - Der Name des Kontakts.
- * @param {string} email - Die E-Mail-Adresse.
- * @param {string} phone - Die Telefonnummer.
- * @param {string} initials - Die Initialen.
- * @param {string} colorClass - Die CSS-Farbklasse.
- * @returns {string} HTML-String der mobilen Detailansicht.
+ * Returns the HTML of the mobile contact detail view.
+ * @param {number} index - The index of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email address.
+ * @param {string} phone - The phone number.
+ * @param {string} initials - The initials.
+ * @param {string} colorClass - The CSS color class.
+ * @returns {string} HTML string of the mobile detail view.
  */
-let selectedContactDetails = null;
-let contactsResizeHandlerAttached = false;
-
-
-function isMobileContactsView() {
-    return window.innerWidth <= 1100;
-}
-
-
-function clearContactDetailSelection() {
-    selectedContactDetails = null;
-}
-
-
-function renderSelectedContactDetails() {
-    if (!selectedContactDetails) return;
-
-    const detailContainer = document.getElementById('contact-detail-view');
-    if (!detailContainer) return;
-
-    const isMobile = isMobileContactsView();
-    const currentContact = contacts[selectedContactDetails.index];
-    if (!currentContact) return;
-
-    detailContainer.innerHTML = isMobile
-        ? contactDetailMobileTemplate(
-            selectedContactDetails.index,
-            currentContact.name,
-            currentContact.email,
-            currentContact.phone,
-            currentContact.initials,
-            currentContact.color
-        )
-        : contactDetailDesktopTemplate(
-            selectedContactDetails.index,
-            currentContact.name,
-            currentContact.email,
-            currentContact.phone,
-            currentContact.initials,
-            currentContact.color
-        );
-
-    if (isMobile) {
-        detailContainer.classList.add('show-mobile');
-    } else {
-        detailContainer.classList.remove('show-mobile');
-        hideMobileContactActionMenu();
-    }
-
-    markActiveContactCard(selectedContactDetails.index);
-}
-
-
-function attachContactsResizeHandler() {
-    if (contactsResizeHandlerAttached) return;
-
-    window.addEventListener('resize', () => {
-        if (!selectedContactDetails) return;
-        renderSelectedContactDetails();
-    });
-
-    contactsResizeHandlerAttached = true;
-}
-
-
 function contactDetailMobileTemplate(index, name, email, phone, initials, colorClass) {
     return `
         <h3 class="info-headline">Contact Information</h3>
@@ -106,14 +41,14 @@ function contactDetailMobileTemplate(index, name, email, phone, initials, colorC
 
 
 /**
- * Gibt das HTML der Desktop-Kontakt-Detailansicht zurück.
- * @param {number} index - Der Index des Kontakts.
- * @param {string} name - Der Name des Kontakts.
- * @param {string} email - Die E-Mail-Adresse.
- * @param {string} phone - Die Telefonnummer.
- * @param {string} initials - Die Initialen.
- * @param {string} colorClass - Die CSS-Farbklasse.
- * @returns {string} HTML-String der Desktop-Detailansicht.
+ * Returns the HTML of the desktop contact detail view.
+ * @param {number} index - The index of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email address.
+ * @param {string} phone - The phone number.
+ * @param {string} initials - The initials.
+ * @param {string} colorClass - The CSS color class.
+ * @returns {string} HTML string of the desktop detail view.
  */
 function contactDetailDesktopTemplate(index, name, email, phone, initials, colorClass) {
     return `
@@ -142,44 +77,4 @@ function contactDetailDesktopTemplate(index, name, email, phone, initials, color
             <span>${phone}</span>
         </div>
     `;
-}
-
-
-/**
- * Markiert die aktive Kontaktkarte in der Liste.
- * @param {number} index - Der Index des aktiven Kontakts.
- */
-function markActiveContactCard(index) {
-    document.querySelectorAll('.contact-card').forEach(card => card.classList.remove('active-card'));
-    const currentCard = document.getElementById(`contactCard_${index}`);
-    if (currentCard) currentCard.classList.add('active-card');
-}
-
-
-/**
- * Zeigt die Kontakt-Detailansicht für einen Kontakt an.
- * @param {number} index - Der Index des Kontakts.
- * @param {string} name - Der Name des Kontakts.
- * @param {string} email - Die E-Mail-Adresse.
- * @param {string} phone - Die Telefonnummer.
- * @param {string} initials - Die Initialen.
- * @param {string} colorClass - Die CSS-Farbklasse.
- */
-function showContactDetails(index, name, email, phone, initials, colorClass) {
-    const detailContainer = document.getElementById('contact-detail-view');
-    const isMobile = isMobileContactsView();
-
-    attachContactsResizeHandler();
-    selectedContactDetails = { index };
-
-    detailContainer.innerHTML = isMobile
-        ? contactDetailMobileTemplate(index, name, email, phone, initials, colorClass)
-        : contactDetailDesktopTemplate(index, name, email, phone, initials, colorClass);
-
-    markActiveContactCard(index);
-    if (isMobile) {
-        detailContainer.classList.add('show-mobile');
-    } else {
-        detailContainer.classList.remove('show-mobile');
-    }
 }

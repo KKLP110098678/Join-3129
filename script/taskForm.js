@@ -2,7 +2,7 @@ let currentSubtasks = [];
 
 
 /**
- * Setzt alle Formularfelder des Add-Task-Formulars zurück.
+ * Resets all form fields of the add task form.
  */
 function clearAddTaskForm() {
     document.getElementById('mediumPriority').checked = true;
@@ -23,7 +23,7 @@ function clearAddTaskForm() {
 
 
 /**
- * Alias für clearAddTaskForm – hält externe Aufrufe kompatibel.
+ * Alias for clearAddTaskForm – keeps external calls compatible.
  */
 function clearForm() {
     clearAddTaskForm();
@@ -31,7 +31,7 @@ function clearForm() {
 
 
 /**
- * Schließt das Add-Task-Overlay.
+ * Closes the add task overlay.
  */
 function closeAddTaskForm() {
     document.getElementById('addTaskOverlay').classList.remove('visible');
@@ -39,8 +39,8 @@ function closeAddTaskForm() {
 
 
 /**
- * Schließt das Overlay beim Klick auf den Hintergrund.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Closes the overlay when clicking on the backdrop.
+ * @param {MouseEvent} event - The click event.
  */
 function closeOnBackdrop(event) {
     if (event.target.id === 'addTaskOverlay') closeAddTaskForm();
@@ -48,9 +48,9 @@ function closeOnBackdrop(event) {
 
 
 /**
- * Gibt die Initialen eines Benutzernamens zurück.
- * @param {string} username - Der vollständige Benutzername.
- * @returns {string} Die Initialen (max. 2 Zeichen).
+ * Returns the initials of a username.
+ * @param {string} username - The full username.
+ * @returns {string} The initials (max. 2 characters).
  */
 function getUserInitials(username) {
     const parts = username.trim().split(' ');
@@ -61,8 +61,8 @@ function getUserInitials(username) {
 
 
 /**
- * Rendert den aktuellen Nutzer als erste Option im Dropdown.
- * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ * Renders the current user as the first option in the dropdown.
+ * @param {HTMLElement} dropdown - The dropdown element.
  */
 function renderCurrentUserOption(dropdown) {
     const currentUser = sessionStorage.getItem('username')?.trim();
@@ -74,8 +74,8 @@ function renderCurrentUserOption(dropdown) {
 
 
 /**
- * Rendert alle Kontakte als Optionen im Dropdown.
- * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ * Renders all contacts as options in the dropdown.
+ * @param {HTMLElement} dropdown - The dropdown element.
  */
 function renderContactOptions(dropdown) {
     if (typeof contacts === 'undefined') return;
@@ -86,7 +86,7 @@ function renderContactOptions(dropdown) {
 
 
 /**
- * Rendert das Assigned-To-Dropdown vollständig neu.
+ * Fully re-renders the assigned-to dropdown.
  */
 function renderAssignedToDropdown() {
     const dropdown = document.getElementById('assignedToDropdown');
@@ -99,8 +99,8 @@ function renderAssignedToDropdown() {
 
 
 /**
- * Setzt alle Kontakt-Checkboxen auf den Wert der Select-All-Checkbox.
- * @param {HTMLInputElement} selectAllCheckbox - Die Select-All-Checkbox.
+ * Sets all contact checkboxes to the value of the select-all checkbox.
+ * @param {HTMLInputElement} selectAllCheckbox - The select-all checkbox.
  */
 function toggleAllContacts(selectAllCheckbox) {
     document.querySelectorAll('.contact-checkbox').forEach(cb => {
@@ -111,8 +111,8 @@ function toggleAllContacts(selectAllCheckbox) {
 
 
 /**
- * Öffnet oder schließt das Assigned-To-Dropdown.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Opens or closes the assigned-to dropdown.
+ * @param {MouseEvent} event - The click event.
  */
 function toggleAssignedToDropdown(event) {
     if (event) event.stopPropagation();
@@ -123,8 +123,8 @@ function toggleAssignedToDropdown(event) {
 
 
 /**
- * Sammelt die Avatar-Elemente aller ausgewählten Kontakte.
- * @returns {HTMLElement[]} Array der Avatar-Elemente.
+ * Collects the avatar elements of all selected contacts.
+ * @returns {HTMLElement[]} Array of avatar elements.
  */
 function getSelectedAvatars() {
     const items = document.getElementById('assignedToDropdown')?.querySelectorAll('.dropdown-item.contact');
@@ -139,9 +139,9 @@ function getSelectedAvatars() {
 
 
 /**
- * Erstellt ein "+N"-Avatar-Element für überzählige Kontakte.
- * @param {number} count - Anzahl der nicht angezeigten Kontakte.
- * @returns {HTMLElement} Das Extra-Avatar-Element.
+ * Creates a "+N" avatar element for excess contacts.
+ * @param {number} count - Number of contacts not displayed.
+ * @returns {HTMLElement} The extra avatar element.
  */
 function createExtraAvatar(count) {
     const extra = document.createElement('div');
@@ -154,7 +154,7 @@ function createExtraAvatar(count) {
 
 
 /**
- * Rendert die ausgewählten Assignee-Avatare im Formular.
+ * Renders the selected assignee avatars in the form.
  */
 function updateAssignees() {
     const container = document.querySelector('.assignees');
@@ -174,8 +174,8 @@ function updateAssignees() {
 
 
 /**
- * Öffnet oder schließt das Kategorie-Dropdown.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Opens or closes the category dropdown.
+ * @param {MouseEvent} event - The click event.
  */
 function toggleCategoryDropdown(event) {
     if (event) event.stopPropagation();
@@ -186,8 +186,8 @@ function toggleCategoryDropdown(event) {
 
 
 /**
- * Wählt eine Kategorie aus und schließt das Dropdown.
- * @param {string} category - Die gewählte Kategorie.
+ * Selects a category and closes the dropdown.
+ * @param {string} category - The selected category.
  */
 function selectCategory(category) {
     document.getElementById('categoryInput').value = category;
@@ -197,7 +197,7 @@ function selectCategory(category) {
 
 
 /**
- * Zeigt die Subtask-Eingabe-Buttons an.
+ * Shows the subtask input buttons.
  */
 function showSubtaskInputButtons() {
     document.getElementById('subtaskBtnGroup').classList.remove('d-none');
@@ -205,7 +205,7 @@ function showSubtaskInputButtons() {
 
 
 /**
- * Leert das Subtask-Eingabefeld und versteckt die Buttons.
+ * Clears the subtask input field and hides the buttons.
  */
 function clearSubtaskInput() {
     document.getElementById('subtaskInput').value = '';
@@ -214,7 +214,7 @@ function clearSubtaskInput() {
 
 
 /**
- * Fügt einen neuen Subtask zur Liste hinzu.
+ * Adds a new subtask to the list.
  */
 function addSubtask() {
     const input = document.getElementById('subtaskInput');
@@ -226,7 +226,7 @@ function addSubtask() {
 
 
 /**
- * Rendert alle Subtasks in der Liste.
+ * Renders all subtasks in the list.
  */
 function renderSubtasks() {
     const list = document.getElementById('subtaskList');
@@ -239,8 +239,8 @@ function renderSubtasks() {
 
 
 /**
- * Entfernt einen Subtask anhand seines Index.
- * @param {number} index - Der Index des zu entfernenden Subtasks.
+ * Removes a subtask by its index.
+ * @param {number} index - The index of the subtask to remove.
  */
 function removeSubtask(index) {
     currentSubtasks.splice(index, 1);
@@ -249,8 +249,8 @@ function removeSubtask(index) {
 
 
 /**
- * Zeigt das Bearbeitungsfeld für einen Subtask an.
- * @param {number} index - Der Index des zu bearbeitenden Subtasks.
+ * Shows the edit input field for a subtask.
+ * @param {number} index - The index of the subtask to edit.
  */
 function showSubtaskEditInput(index) {
     const list = document.getElementById('subtaskList');
@@ -261,8 +261,8 @@ function showSubtaskEditInput(index) {
 
 
 /**
- * Bestätigt die Bearbeitung eines Subtasks.
- * @param {number} index - Der Index des bearbeiteten Subtasks.
+ * Confirms the editing of a subtask.
+ * @param {number} index - The index of the edited subtask.
  */
 function confirmSubtaskEdit(index) {
     const list = document.getElementById('subtaskList');
@@ -274,7 +274,7 @@ function confirmSubtaskEdit(index) {
 
 
 /**
- * Prüft ob alle Pflichtfelder ausgefüllt sind und aktiviert ggf. den Submit-Button.
+ * Checks if all required fields are filled and enables the submit button if so.
  */
 function checkFormValidity() {
     const titleEl = document.getElementById('taskTitle');
@@ -287,13 +287,14 @@ function checkFormValidity() {
         dueDateEl.value !== '' &&
         categoryEl.value !== '';
 
-    btn.disabled = !isValid;
+    btn.classList.toggle('btn-disabled', !isValid);
+    btn.disabled = false;
 }
 
 
 /**
- * Validiert ein einzelnes Pflichtfeld und zeigt ggf. einen Fehler an.
- * @param {string} fieldId - Die ID des zu prüfenden Felds.
+ * Validates a single required field and displays an error if necessary.
+ * @param {string} fieldId - The ID of the field to check.
  */
 function validateTaskField(fieldId) {
     const el = document.getElementById(fieldId);
@@ -310,8 +311,8 @@ function validateTaskField(fieldId) {
 
 
 /**
- * Zeigt Validierungsfehler an wenn der Create-Button noch disabled ist.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Shows validation errors when the create button is still disabled.
+ * @param {MouseEvent} event - The click event.
  */
 function handleDisabledButtonClick(event) {
     const btn = event.currentTarget.querySelector('.btn-primary-with-icon');
@@ -323,8 +324,8 @@ function handleDisabledButtonClick(event) {
 
 
 /**
- * Filtert die Kontakte im Assigned-To-Dropdown anhand eines Suchwerts.
- * @param {string} searchValue - Der Suchwert aus dem Suchfeld.
+ * Filters the contacts in the assigned-to dropdown based on a search value.
+ * @param {string} searchValue - The search value from the search field.
  */
 function filterAssignedToDropdown(searchValue) {
     const dropdown = document.getElementById('assignedToDropdown');
@@ -339,8 +340,8 @@ function filterAssignedToDropdown(searchValue) {
 
 
 /**
- * Schließt ein Dropdown wenn außerhalb geklickt wird.
- * @param {HTMLElement} dropdown - Das Dropdown-Element.
+ * Closes a dropdown when clicking outside of it.
+ * @param {HTMLElement} dropdown - The dropdown element.
  */
 function closeDropdownOnOutsideClick(dropdown) {
     if (!dropdown) return;

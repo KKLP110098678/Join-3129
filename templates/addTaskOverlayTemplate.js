@@ -1,6 +1,6 @@
 /**
- * Gibt das vollständige Add-Task-Overlay als HTML-String zurück.
- * @returns {string} Das HTML des Add-Task-Overlays.
+ * Returns the complete add task overlay as an HTML string.
+ * @returns {string} The HTML of the add task overlay.
  */
 function addTaskOverlayTemplate() {
     return `
@@ -125,15 +125,15 @@ function addTaskOverlayTemplate() {
                     </svg>
                 </button>
             </div>
-        </div>    
+        </div>
     `;
 }
 
 
 /**
- * Öffnet oder schließt das Verschiebe-Menü eines Tasks.
- * Schließt das Menü automatisch beim Klick außerhalb.
- * @param {string} taskId - Die ID des Tasks.
+ * Opens or closes the move task menu for a task.
+ * Automatically closes the menu when clicking outside.
+ * @param {string} taskId - The ID of the task.
  */
 function openMoveTaskMenu(taskId) {
     const menu = document.getElementById(`moveMenu_${taskId}`);

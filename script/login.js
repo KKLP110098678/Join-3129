@@ -1,7 +1,7 @@
 /**
- * Prüft ob eine E-Mail-Adresse dem erwarteten Format entspricht.
- * @param {string} email - Die zu prüfende E-Mail-Adresse.
- * @returns {boolean} True wenn das Format gültig ist.
+ * Checks if an email address matches the expected format.
+ * @param {string} email - The email address to check.
+ * @returns {boolean} True if the format is valid.
  */
 function isValidEmailFormat(email) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -10,8 +10,8 @@ function isValidEmailFormat(email) {
 
 
 /**
- * Validiert das E-Mail-Feld und zeigt ggf. einen Fehler an.
- * @returns {boolean} True wenn die E-Mail gültig ist.
+ * Validates the email field and displays an error if necessary.
+ * @returns {boolean} True if the email is valid.
  */
 function validateEmail() {
     const email = getInputValue('username');
@@ -29,8 +29,8 @@ function validateEmail() {
 
 
 /**
- * Validiert das Passwort-Feld und zeigt ggf. einen Fehler an.
- * @returns {boolean} True wenn das Passwort eingegeben wurde.
+ * Validates the password field and displays an error if necessary.
+ * @returns {boolean} True if the password has been entered.
  */
 function validatePassword() {
     const password = getInputValue('password');
@@ -44,8 +44,8 @@ function validatePassword() {
 
 
 /**
- * Zeigt eine allgemeine Login-Fehlermeldung an.
- * @param {string} message - Die anzuzeigende Fehlermeldung.
+ * Displays a general login error message.
+ * @param {string} message - The error message to display.
  */
 function showLoginError(message) {
     const errorMessage = document.getElementById('login-error');
@@ -56,7 +56,7 @@ function showLoginError(message) {
 
 
 /**
- * Leitet nach erfolgreichem Login zur Hauptseite weiter.
+ * Redirects to the main page after a successful login.
  */
 function handleLoginSuccess() {
     sessionStorage.removeItem('isGuest');
@@ -65,9 +65,9 @@ function handleLoginSuccess() {
 
 
 /**
- * Verarbeitet den Login-Versuch nach erfolgreicher Validierung.
- * @param {string} email - Die eingegebene E-Mail-Adresse.
- * @param {string} password - Das eingegebene Passwort.
+ * Handles the login attempt after successful validation.
+ * @param {string} email - The entered email address.
+ * @param {string} password - The entered password.
  */
 async function submitLogin(email, password) {
     const user = await authenticateUser(email, password);
@@ -80,8 +80,8 @@ async function submitLogin(email, password) {
 
 
 /**
- * Verarbeitet das Login-Formular beim Absenden.
- * @param {SubmitEvent} event - Das Submit-Event des Formulars.
+ * Handles the login form on submit.
+ * @param {SubmitEvent} event - The submit event of the form.
  */
 async function loginUser(event) {
     event.preventDefault();
@@ -96,7 +96,7 @@ async function loginUser(event) {
 
 
 /**
- * Setzt den Guest-Login zurück und leitet zur Hauptseite weiter.
+ * Resets the guest login and redirects to the main page.
  */
 async function guestLogin() {
     sessionStorage.setItem('isGuest', 'true');
@@ -114,7 +114,7 @@ async function guestLogin() {
 
 
 /**
- * Richtet den Guest-Login-Button ein.
+ * Sets up the guest login button.
  */
 function setupGuestLoginButton() {
     const guestButton = document.getElementById('guest-login-button');

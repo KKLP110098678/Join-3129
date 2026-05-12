@@ -1,6 +1,6 @@
 /**
- * Gibt die passende Begrüßung basierend auf der Uhrzeit zurück.
- * @returns {string} Die Begrüßungsformel.
+ * Returns the appropriate greeting based on the time of day.
+ * @returns {string} The greeting phrase.
  */
 function getGreetingMessage() {
     const hour = new Date().getHours();
@@ -11,8 +11,8 @@ function getGreetingMessage() {
 
 
 /**
- * Gibt den Benutzernamen aus dem SessionStorage zurück, oder leer bei Gästen.
- * @returns {string} Der Benutzername oder ein leerer String.
+ * Returns the username from session storage, or empty string for guests.
+ * @returns {string} The username or an empty string.
  */
 function getGreetingName() {
     const isGuest = sessionStorage.getItem('isGuest') === 'true';
@@ -22,8 +22,8 @@ function getGreetingName() {
 
 
 /**
- * Prüft ob die Begrüßungsanimation angezeigt werden soll.
- * @returns {boolean} True wenn die Animation gezeigt werden soll.
+ * Checks if the greeting animation should be displayed.
+ * @returns {boolean} True if the animation should be shown.
  */
 function shouldShowGreeting() {
     if (window.innerWidth > 1000) return false;
@@ -33,8 +33,8 @@ function shouldShowGreeting() {
 
 
 /**
- * Erstellt und gibt das Overlay-Element zurück.
- * @returns {HTMLElement} Das Overlay-div.
+ * Creates and returns the overlay element.
+ * @returns {HTMLElement} The overlay div.
  */
 function createGreetingOverlay() {
     const overlay = document.createElement('div');
@@ -51,8 +51,8 @@ function createGreetingOverlay() {
 
 
 /**
- * Erstellt den Begrüßungstext-Container.
- * @returns {HTMLElement} Das Text-div.
+ * Creates the greeting text container.
+ * @returns {HTMLElement} The text div.
  */
 function createGreetingTextContainer() {
     const greetingText = document.createElement('div');
@@ -67,9 +67,9 @@ function createGreetingTextContainer() {
 
 
 /**
- * Erstellt die Begrüßungszeile (erste Zeile).
- * @param {string} greetingName - Der Benutzername.
- * @returns {HTMLElement} Das span-Element.
+ * Creates the greeting line (first line).
+ * @param {string} greetingName - The username.
+ * @returns {HTMLElement} The span element.
  */
 function createGreetingLine(greetingName) {
     const greetingLine = document.createElement('span');
@@ -83,9 +83,9 @@ function createGreetingLine(greetingName) {
 
 
 /**
- * Erstellt die Namenszeile (zweite Zeile) für eingeloggte Nutzer.
- * @param {string} greetingName - Der Benutzername.
- * @returns {HTMLElement} Das strong-Element.
+ * Creates the name line (second line) for logged-in users.
+ * @param {string} greetingName - The username.
+ * @returns {HTMLElement} The strong element.
  */
 function createNameLine(greetingName) {
     const nameLine = document.createElement('strong');
@@ -100,9 +100,9 @@ function createNameLine(greetingName) {
 
 
 /**
- * Befüllt den Begrüßungstext-Container mit Begrüßung und ggf. Name.
- * @param {HTMLElement} container - Der Text-Container.
- * @param {string} greetingName - Der Benutzername.
+ * Fills the greeting text container with greeting and optional name.
+ * @param {HTMLElement} container - The text container.
+ * @param {string} greetingName - The username.
  */
 function populateGreetingContainer(container, greetingName) {
     const greetingLine = createGreetingLine(greetingName);
@@ -118,10 +118,10 @@ function populateGreetingContainer(container, greetingName) {
 
 
 /**
- * Blendet den Begrüßungstext aus und entfernt das Overlay.
- * @param {HTMLElement} greetingText - Der Text-Container.
- * @param {HTMLElement} overlay - Das Overlay-Element.
- * @param {HTMLElement|null} summaryContent - Der Summary-Container.
+ * Fades out the greeting text and removes the overlay.
+ * @param {HTMLElement} greetingText - The text container.
+ * @param {HTMLElement} overlay - The overlay element.
+ * @param {HTMLElement|null} summaryContent - The summary container.
  */
 function fadeOutGreeting(greetingText, overlay, summaryContent) {
     setTimeout(() => {
@@ -137,8 +137,8 @@ function fadeOutGreeting(greetingText, overlay, summaryContent) {
 
 
 /**
- * Blendet den Summary-Inhalt mit Animation ein.
- * @param {HTMLElement|null} summaryContent - Der Summary-Container.
+ * Fades in the summary content with animation.
+ * @param {HTMLElement|null} summaryContent - The summary container.
  */
 function revealSummaryContent(summaryContent) {
     if (!summaryContent) return;
@@ -155,7 +155,7 @@ function revealSummaryContent(summaryContent) {
 
 
 /**
- * Zeigt die Begrüßungsanimation auf kleinen Bildschirmen beim ersten Besuch.
+ * Shows the greeting animation on small screens on the first visit.
  */
 function animateSummaryGreeting() {
     if (!shouldShowGreeting()) return;

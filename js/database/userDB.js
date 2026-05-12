@@ -1,6 +1,6 @@
 /**
- * Gibt alle Nutzer aus Firebase zurück.
- * @returns {Promise<Object|null>} Das Nutzer-Objekt oder null.
+ * Retrieves all users from Firebase.
+ * @returns {Promise<Object|null>} The users object or null.
  */
 async function getAllUsers() {
     const snapshot = await firebase.database().ref('users').once('value');
@@ -9,7 +9,7 @@ async function getAllUsers() {
 
 
 /**
- * Registriert einen neuen Nutzer in Firebase.
+ * Registers a new user in Firebase.
  * @param {{ username: string, email: string, password: string }} newUser
  */
 async function addNewUser(newUser) {
@@ -26,9 +26,9 @@ async function addNewUser(newUser) {
 
 
 /**
- * Gibt den Firebase-Key eines Nutzers anhand seiner E-Mail zurück.
- * @param {string} email - Die E-Mail-Adresse des Nutzers.
- * @returns {Promise<string|null>} Der Firebase-Key oder null.
+ * Returns the Firebase key of a user by their email address.
+ * @param {string} email - The email address of the user.
+ * @returns {Promise<string|null>} The Firebase key or null.
  */
 async function getUserKeyByEmail(email) {
     try {
@@ -43,7 +43,7 @@ async function getUserKeyByEmail(email) {
 
 
 /**
- * Erstellt den eigenen Kontakteintrag des neuen Nutzers.
+ * Creates the user's own contact entry for a newly registered user.
  * @param {{ username: string, email: string }} newUser
  * @returns {{ name: string, email: string, phone: string, initials: string, color: string }}
  */
@@ -59,7 +59,7 @@ function buildUserContact(newUser) {
 
 
 /**
- * Erstellt Standard-Kontakte für einen neu registrierten Nutzer.
+ * Creates default contacts for a newly registered user.
  * @param {{ username: string, email: string }} newUser
  */
 async function createDefaultContacts(newUser) {
@@ -79,10 +79,10 @@ async function createDefaultContacts(newUser) {
 
 
 /**
- * Authentifiziert einen Nutzer anhand von E-Mail und Passwort.
- * @param {string} inputEmail - Die eingegebene E-Mail.
- * @param {string} inputPassword - Das eingegebene Passwort.
- * @returns {Promise<Object|null>} Der Nutzer oder null.
+ * Authenticates a user by email and password.
+ * @param {string} inputEmail - The entered email.
+ * @param {string} inputPassword - The entered password.
+ * @returns {Promise<Object|null>} The user or null.
  */
 async function authenticateUser(inputEmail, inputPassword) {
     try {
@@ -107,9 +107,9 @@ async function authenticateUser(inputEmail, inputPassword) {
 
 
 /**
- * Prüft ob ein Benutzername bereits vergeben ist.
- * @param {string} userName - Der zu prüfende Benutzername.
- * @returns {Promise<boolean>} True wenn vergeben.
+ * Checks if a username is already taken.
+ * @param {string} userName - The username to check.
+ * @returns {Promise<boolean>} True if taken.
  */
 async function isUserNameTaken(userName) {
     try {
@@ -124,9 +124,9 @@ async function isUserNameTaken(userName) {
 
 
 /**
- * Prüft ob eine E-Mail-Adresse bereits registriert ist.
- * @param {string} inputEmail - Die zu prüfende E-Mail.
- * @returns {Promise<boolean>} True wenn vergeben.
+ * Checks if an email address is already registered.
+ * @param {string} inputEmail - The email to check.
+ * @returns {Promise<boolean>} True if taken.
  */
 async function isUserEmailTaken(inputEmail) {
     try {
@@ -141,8 +141,8 @@ async function isUserEmailTaken(inputEmail) {
 
 
 /**
- * Gibt den Firebase-Key des eingeloggten Nutzers zurück.
- * @returns {string|null} Der Firebase-Key.
+ * Returns the Firebase key of the logged-in user.
+ * @returns {string|null} The Firebase key.
  */
 function getUserKey() {
     return sessionStorage.getItem('userKey');
@@ -150,8 +150,8 @@ function getUserKey() {
 
 
 /**
- * Prüft ob der aktuelle Nutzer ein Gast ist.
- * @returns {boolean} True wenn Gast.
+ * Checks if the current user is a guest.
+ * @returns {boolean} True if guest.
  */
 function isGuest() {
     return sessionStorage.getItem('isGuest') === 'true';

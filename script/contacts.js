@@ -1,14 +1,16 @@
 let contacts = [];
 let defaultContacts = [];
+let selectedContactDetails = null;
+let contactsResizeHandlerAttached = false;
 
 
 /**
- * Lädt die Standard-Kontakte aus der JSON-Datei.
+ * Loads the default contacts from the JSON file.
  * @returns {Promise<void>}
  */
 async function loadDefaultContacts() {
     try {
-        const response = await fetch('/json/defaultContacts.json');
+        const response = await fetch('../json/defaultContacts.json');
         defaultContacts = await response.json();
     } catch (e) {
         console.error('Error loading defaultContacts.json:', e);
@@ -17,8 +19,8 @@ async function loadDefaultContacts() {
 
 
 /**
- * Gibt die Firebase-Referenz für Kontakte zurück.
- * @returns {firebase.database.Reference} Die Firebase-Referenz.
+ * Returns the Firebase reference for contacts.
+ * @returns {firebase.database.Reference} The Firebase reference.
  */
 function getContactsRef() {
     return isGuest() ? db.ref('guest/contacts') : db.ref(`users/${getUserKey()}/contacts`);
@@ -26,7 +28,7 @@ function getContactsRef() {
 
 
 /**
- * Speichert die Kontakte in Firebase.
+ * Saves the contacts to Firebase.
  */
 async function saveContacts() {
     try {
@@ -38,9 +40,9 @@ async function saveContacts() {
 
 
 /**
- * Parst den Firebase-Snapshot in ein Kontakt-Array.
- * @param {Object|Array|null} val - Der Wert aus dem Snapshot.
- * @returns {Object[]|null} Das Kontakt-Array oder null.
+ * Parses the Firebase snapshot into a contacts array.
+ * @param {Object|Array|null} val - The value from the snapshot.
+ * @returns {Object[]|null} The contacts array or null.
  */
 function parseContactsSnapshot(val) {
     if (!val || Object.keys(val).length === 0) return null;
@@ -50,7 +52,7 @@ function parseContactsSnapshot(val) {
 
 
 /**
- * Lädt Kontakte aus Firebase – zuerst die Standard-Kontakte, dann Firebase.
+ * Loads contacts from Firebase – first the default contacts, then Firebase.
  */
 async function loadContacts() {
     await loadDefaultContacts();
@@ -74,9 +76,9 @@ async function loadContacts() {
 
 
 /**
- * Rendert einen Buchstaben-Trenner in die Kontaktliste.
- * @param {HTMLElement} container - Der Listen-Container.
- * @param {string} letter - Der Anfangsbuchstabe.
+ * Renders a letter separator into the contact list.
+ * @param {HTMLElement} container - The list container.
+ * @param {string} letter - The first letter.
  */
 function renderLetterSeparator(container, letter) {
     container.innerHTML += `
@@ -87,10 +89,10 @@ function renderLetterSeparator(container, letter) {
 
 
 /**
- * Rendert eine einzelne Kontaktkarte.
- * @param {HTMLElement} container - Der Listen-Container.
- * @param {Object} contact - Der Kontakt.
- * @param {number} index - Der Index des Kontakts.
+ * Renders a single contact card.
+ * @param {HTMLElement} container - The list container.
+ * @param {Object} contact - The contact.
+ * @param {number} index - The index of the contact.
  */
 function renderContactCard(container, contact, index) {
     container.innerHTML += `
@@ -106,7 +108,7 @@ function renderContactCard(container, contact, index) {
 
 
 /**
- * Rendert die gesamte Kontaktliste alphabetisch sortiert.
+ * Renders the entire contact list sorted alphabetically.
  */
 function renderContacts() {
     const container = document.querySelector('.contact-list-scroll');
@@ -128,9 +130,9 @@ function renderContacts() {
 
 
 /**
- * Berechnet die Initialen aus einem vollständigen Namen.
- * @param {string} name - Der vollständige Name.
- * @returns {string} Die Initialen (1-2 Zeichen).
+ * Calculates the initials from a full name.
+ * @param {string} name - The full name.
+ * @returns {string} The initials (1-2 characters).
  */
 function getInitialsFromName(name) {
     const parts = name.trim().split(' ');
@@ -141,10 +143,124 @@ function getInitialsFromName(name) {
 
 
 /**
- * Gibt eine zufällige Avatar-Farbe zurück.
- * @returns {string} Eine CSS-Klasse für die Farbe.
+ * Returns a random avatar color.
+ * @returns {string} A CSS class for the color.
  */
 function getRandomColor() {
     const colors = ['bg-orange', 'bg-purple', 'bg-blue', 'bg-green', 'bg-pink'];
     return colors[Math.floor(Math.random() * colors.length)];
+}
+
+
+/**
+ * Checks if the current view is mobile.
+ * @returns {boolean} True if the screen width is 1100px or less.
+ */
+function isMobileContactsView() {
+    return window.innerWidth <= 1100;
+}
+
+
+/**
+ * Clears the currently selected contact details.
+ */
+function clearContactDetailSelection() {
+    selectedContactDetails = null;
+}
+
+
+/**
+ * Marks the active contact card in the list.
+ * @param {number} index - The index of the active contact.
+ */
+function markActiveContactCard(index) {
+    document.querySelectorAll('.contact-card').forEach(card => card.classList.remove('active-card'));
+    const currentCard = document.getElementById(`contactCard_${index}`);
+    if (currentCard) currentCard.classList.add('active-card');
+}
+
+
+/**
+ * Re-renders the currently selected contact details.
+ */
+function renderSelectedContactDetails() {
+    if (!selectedContactDetails) return;
+
+    const detailContainer = document.getElementById('contact-detail-view');
+    if (!detailContainer) return;
+
+    const isMobile = isMobileContactsView();
+    const currentContact = contacts[selectedContactDetails.index];
+    if (!currentContact) return;
+
+    detailContainer.innerHTML = isMobile
+        ? contactDetailMobileTemplate(
+            selectedContactDetails.index,
+            currentContact.name,
+            currentContact.email,
+            currentContact.phone,
+            currentContact.initials,
+            currentContact.color
+        )
+        : contactDetailDesktopTemplate(
+            selectedContactDetails.index,
+            currentContact.name,
+            currentContact.email,
+            currentContact.phone,
+            currentContact.initials,
+            currentContact.color
+        );
+
+    if (isMobile) {
+        detailContainer.classList.add('show-mobile');
+    } else {
+        detailContainer.classList.remove('show-mobile');
+        hideMobileContactActionMenu();
+    }
+
+    markActiveContactCard(selectedContactDetails.index);
+}
+
+
+/**
+ * Attaches the resize handler for responsive contact detail rendering.
+ */
+function attachContactsResizeHandler() {
+    if (contactsResizeHandlerAttached) return;
+
+    window.addEventListener('resize', () => {
+        if (!selectedContactDetails) return;
+        renderSelectedContactDetails();
+    });
+
+    contactsResizeHandlerAttached = true;
+}
+
+
+/**
+ * Shows the contact detail view for a contact.
+ * @param {number} index - The index of the contact.
+ * @param {string} name - The name of the contact.
+ * @param {string} email - The email address.
+ * @param {string} phone - The phone number.
+ * @param {string} initials - The initials.
+ * @param {string} colorClass - The CSS color class.
+ */
+function showContactDetails(index, name, email, phone, initials, colorClass) {
+    const detailContainer = document.getElementById('contact-detail-view');
+    const isMobile = isMobileContactsView();
+
+    attachContactsResizeHandler();
+    selectedContactDetails = { index };
+
+    detailContainer.innerHTML = isMobile
+        ? contactDetailMobileTemplate(index, name, email, phone, initials, colorClass)
+        : contactDetailDesktopTemplate(index, name, email, phone, initials, colorClass);
+
+    markActiveContactCard(index);
+    if (isMobile) {
+        detailContainer.classList.add('show-mobile');
+    } else {
+        detailContainer.classList.remove('show-mobile');
+    }
 }

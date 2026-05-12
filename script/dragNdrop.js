@@ -2,8 +2,8 @@ let currentDraggedTaskId = null;
 
 
 /**
- * Speichert die ID des aktuell gezogenen Tasks.
- * @param {string} taskId - Die ID des gezogenen Tasks.
+ * Stores the ID of the currently dragged task.
+ * @param {string} taskId - The ID of the dragged task.
  */
 function dragStart(taskId) {
     currentDraggedTaskId = taskId;
@@ -11,8 +11,8 @@ function dragStart(taskId) {
 
 
 /**
- * Erlaubt das Ablegen eines Elements und hebt die Spalte visuell hervor.
- * @param {DragEvent} event - Das Drag-over-Event.
+ * Allows dropping an element and highlights the column visually.
+ * @param {DragEvent} event - The drag-over event.
  */
 function allowDrop(event) {
     event.preventDefault();
@@ -21,8 +21,8 @@ function allowDrop(event) {
 
 
 /**
- * Entfernt die visuelle Hervorhebung beim Verlassen einer Spalte.
- * @param {DragEvent} event - Das Drag-leave-Event.
+ * Removes the visual highlight when leaving a column.
+ * @param {DragEvent} event - The drag-leave event.
  */
 function dragLeave(event) {
     event.currentTarget.classList.remove('drag-over');
@@ -30,9 +30,9 @@ function dragLeave(event) {
 
 
 /**
- * Prüft ob ein Task valide ist und ob sich der Status tatsächlich ändert.
- * @param {string} newStatus - Der Zielstatus.
- * @returns {Object|null} Den gefundenen Task oder null.
+ * Checks if a task is valid and if the status actually changes.
+ * @param {string} newStatus - The target status.
+ * @returns {Object|null} The found task or null.
  */
 function getValidDropTarget(newStatus) {
     if (!currentDraggedTaskId) return null;
@@ -43,9 +43,9 @@ function getValidDropTarget(newStatus) {
 
 
 /**
- * Speichert den neuen Status eines Tasks in der Datenbank.
- * @param {string} taskId - Die ID des Tasks.
- * @param {string} newStatus - Der neue Status.
+ * Saves the new status of a task in the database.
+ * @param {string} taskId - The ID of the task.
+ * @param {string} newStatus - The new status.
  */
 async function saveTaskStatus(taskId, newStatus) {
     await getTasksRef().child(taskId).child('status').set(newStatus);
@@ -53,9 +53,9 @@ async function saveTaskStatus(taskId, newStatus) {
 
 
 /**
- * Verarbeitet das Ablegen eines Tasks in eine neue Spalte.
- * @param {DragEvent} event - Das Drop-Event.
- * @param {string} newStatus - Der Zielstatus der Spalte.
+ * Handles dropping a task into a new column.
+ * @param {DragEvent} event - The drop event.
+ * @param {string} newStatus - The target status of the column.
  */
 async function drop(event, newStatus) {
     event.preventDefault();

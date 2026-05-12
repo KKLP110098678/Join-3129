@@ -1,5 +1,5 @@
 /**
- * Gibt die Logo-Dimensionen und Position je nach Bildschirmgröße zurück.
+ * Returns the logo dimensions and position depending on the screen size.
  * @returns {{ height: string, width: string, left: string, top: string }}
  */
 function getLogoTargetStyles() {
@@ -11,8 +11,8 @@ function getLogoTargetStyles() {
 
 
 /**
- * Setzt die finalen Styles des Logos nach der Animation.
- * @param {HTMLElement} animationLogo - Das Logo-Element.
+ * Sets the final styles of the logo after the animation.
+ * @param {HTMLElement} animationLogo - The logo element.
  */
 function applyLogoStyles(animationLogo) {
     const styles = getLogoTargetStyles();
@@ -27,8 +27,8 @@ function applyLogoStyles(animationLogo) {
 
 
 /**
- * Blendet den Animationshintergrund aus und versteckt ihn nach 3 Sekunden.
- * @param {HTMLElement} animationBackground - Das Hintergrund-Element.
+ * Fades out the animation background and hides it after 3 seconds.
+ * @param {HTMLElement} animationBackground - The background element.
  */
 function fadeOutBackground(animationBackground) {
     animationBackground.style.opacity = '0';
@@ -38,7 +38,7 @@ function fadeOutBackground(animationBackground) {
 
 
 /**
- * Startet die Logo-Einblendanimation auf der Login-Seite.
+ * Starts the logo fade-in animation on the login page.
  */
 function animateLogo() {
     const animationBackground = document.getElementById('animation-background');
