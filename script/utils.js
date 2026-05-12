@@ -59,8 +59,8 @@ function updatePasswordIconState(inputId, iconId) {
     }
 
     icon.src = input.type === 'text'
-        ? './assets/icon/login/visibility-off.svg'
-        : './assets/icon/login/visibility.svg';
+        ? '../assets/icon/login/visibility-off.svg'
+        : '../assets/icon/login/visibility.svg';
 }
 
 
