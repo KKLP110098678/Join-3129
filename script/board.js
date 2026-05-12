@@ -1,5 +1,5 @@
 /**
- * Gibt die Spalten-Elemente des Boards als Objekt zurück.
+ * Returns the column elements of the board as an object.
  * @returns {{ todo: HTMLElement, inprogress: HTMLElement, awaitfeedback: HTMLElement, done: HTMLElement }}
  */
 function getColumns() {
@@ -13,7 +13,7 @@ function getColumns() {
 
 
 /**
- * Gibt die Platzhaltertexte für leere Spalten zurück.
+ * Returns the placeholder texts for empty columns.
  * @returns {{ todo: string, inprogress: string, awaitfeedback: string, done: string }}
  */
 function getPlaceholders() {
@@ -27,9 +27,9 @@ function getPlaceholders() {
 
 
 /**
- * Filtert Tasks anhand eines Suchwerts in Titel oder Beschreibung.
- * @param {string} searchValue - Der Suchwert aus dem Suchfeld.
- * @returns {Task[]} Array der passenden Tasks.
+ * Filters tasks based on a search value in title or description.
+ * @param {string} searchValue - The search value from the search field.
+ * @returns {Task[]} Array of matching tasks.
  */
 function getFilteredTasks(searchValue) {
     return tasks.filter(task =>
@@ -40,8 +40,8 @@ function getFilteredTasks(searchValue) {
 
 
 /**
- * Leert den Inhalt aller Spalten.
- * @param {Object} columns - Objekt mit Spalten-HTMLElementen.
+ * Clears the content of all columns.
+ * @param {Object} columns - Object with column HTML elements.
  */
 function clearColumns(columns) {
     Object.values(columns).forEach(col => {
@@ -51,8 +51,8 @@ function clearColumns(columns) {
 
 
 /**
- * Zählt die gefilterten Tasks pro Status.
- * @param {Task[]} filtered - Array der gefilterten Tasks.
+ * Counts the filtered tasks per status.
+ * @param {Task[]} filtered - Array of filtered tasks.
  * @returns {{ todo: number, inprogress: number, awaitfeedback: number, done: number }}
  */
 function countTasksByStatus(filtered) {
@@ -65,10 +65,10 @@ function countTasksByStatus(filtered) {
 
 
 /**
- * Setzt Platzhalter in leere Spalten.
- * @param {Object} columns - Objekt mit Spalten-HTMLElementen.
- * @param {Object} counts - Anzahl der Tasks pro Status.
- * @param {Object} placeholders - Platzhaltertexte pro Status.
+ * Sets placeholders in empty columns.
+ * @param {Object} columns - Object with column HTML elements.
+ * @param {Object} counts - Number of tasks per status.
+ * @param {Object} placeholders - Placeholder texts per status.
  */
 function renderPlaceholders(columns, counts, placeholders) {
     Object.entries(columns).forEach(([status, col]) => {
@@ -80,9 +80,9 @@ function renderPlaceholders(columns, counts, placeholders) {
 
 
 /**
- * Rendert die gefilterten Tasks in die zugehörigen Spalten.
- * @param {Task[]} filtered - Array der gefilterten Tasks.
- * @param {Object} columns - Objekt mit Spalten-HTMLElementen.
+ * Renders the filtered tasks into their respective columns.
+ * @param {Task[]} filtered - Array of filtered tasks.
+ * @param {Object} columns - Object with column HTML elements.
  */
 function renderFilteredTasks(filtered, columns) {
     filtered.forEach(task => {
@@ -96,7 +96,7 @@ function renderFilteredTasks(filtered, columns) {
 
 
 /**
- * Filtert Tasks anhand des Suchfelds und aktualisiert das Board.
+ * Filters tasks based on the search field and updates the board.
  */
 function filterTasks() {
     const searchValue = document.getElementById('searchField')?.value.toLowerCase().trim();
@@ -114,7 +114,7 @@ function filterTasks() {
 
 
 /**
- * Aktualisiert das Board mit allen aktuellen Tasks.
+ * Updates the board with all current tasks.
  */
 function updateBoard() {
     const columns = getColumns();

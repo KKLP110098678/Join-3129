@@ -2,8 +2,8 @@ let protectedPages = ['index.html', 'board.html', 'contacts.html', 'add-task.htm
 
 
 /**
- * Prüft ob der aktuelle Pfad eine geschützte Seite ist.
- * @returns {boolean} True wenn die Seite geschützt ist.
+ * Checks if the current path is a protected page.
+ * @returns {boolean} True if the page is protected.
  */
 function isProtectedPage() {
     const path = window.location.pathname;
@@ -12,8 +12,8 @@ function isProtectedPage() {
 
 
 /**
- * Prüft ob der Nutzer eingeloggt oder Gast ist.
- * @returns {boolean} True wenn der Nutzer berechtigt ist.
+ * Checks if the user is logged in or a guest.
+ * @returns {boolean} True if the user is authorized.
  */
 function isAuthorized() {
     const username = sessionStorage.getItem('username');
@@ -24,7 +24,7 @@ function isAuthorized() {
 
 
 /**
- * Leitet nicht autorisierte Nutzer auf die Login-Seite weiter.
+ * Redirects unauthorized users to the login page.
  */
 function checkAuth() {
     if (isProtectedPage() && !isAuthorized()) {
@@ -34,7 +34,7 @@ function checkAuth() {
 
 
 /**
- * Fügt den Header in das Layout ein.
+ * Inserts the header into the layout.
  */
 function addHeader() {
     const headerRef = document.getElementById('headerContent');
@@ -44,8 +44,8 @@ function addHeader() {
 
 
 /**
- * Markiert den aktiven Menülink anhand des aktuellen Pfads.
- * @param {HTMLElement} sidebarRef - Das Sidebar-Element.
+ * Marks the active menu link based on the current path.
+ * @param {HTMLElement} sidebarRef - The sidebar element.
  */
 function markActiveSidebarLink(sidebarRef) {
     const currentPath = window.location.pathname;
@@ -57,7 +57,7 @@ function markActiveSidebarLink(sidebarRef) {
 
 
 /**
- * Fügt die Sidebar in das Layout ein und markiert den aktiven Link.
+ * Inserts the sidebar into the layout and marks the active link.
  */
 function addSidebar() {
     const sidebarRef = document.getElementById('sidebarContent');
@@ -68,7 +68,7 @@ function addSidebar() {
 
 
 /**
- * Fügt die Summary-Sektion ein und startet die Begrüßungsanimation.
+ * Inserts the summary section and starts the greeting animation.
  */
 function addSummary() {
     const summaryRef = document.getElementById('summaryContent');
@@ -79,7 +79,7 @@ function addSummary() {
 
 
 /**
- * Setzt das Standard- und Mindestdatum des Due-Date-Felds auf heute.
+ * Sets the default and minimum date of the due date field to today.
  */
 function setDefaultDueDate() {
     const dateInput = document.getElementById('taskDueDate');
@@ -91,7 +91,7 @@ function setDefaultDueDate() {
 
 
 /**
- * Befüllt den Add-Task-Bereich mit dem Formular-Template und initialisiert es.
+ * Fills the add task area with the form template and initializes it.
  */
 function addTaskMain() {
     const addTaskRef = document.getElementById('addTaskContent');
@@ -107,7 +107,7 @@ function addTaskMain() {
 
 
 /**
- * Initialisiert Header, Sidebar und Add-Task-Formular.
+ * Initializes header, sidebar and add task form.
  */
 function initLayout() {
     addHeader();
@@ -117,7 +117,7 @@ function initLayout() {
 
 
 /**
- * Lädt Kontakte und Tasks und rendert die Summary.
+ * Loads contacts and tasks and renders the summary.
  */
 async function initBoard() {
     if (typeof loadContacts === 'function') await loadContacts();
@@ -127,7 +127,7 @@ async function initBoard() {
 
 
 /**
- * Initialisiert die Kontaktliste.
+ * Initializes the contact list.
  */
 function initContacts() {
     if (typeof loadContacts === 'function') {
@@ -139,7 +139,7 @@ function initContacts() {
 
 
 /**
- * Initialisiert das Task-Formular mit Standardwerten.
+ * Initializes the task form with default values.
  */
 function initTaskForm() {
     setDefaultDueDate();
@@ -147,7 +147,7 @@ function initTaskForm() {
 
 
 /**
- * Einstiegspunkt – initialisiert Auth, Layout, Board, Kontakte und Formular.
+ * Entry point – initializes auth, layout, board, contacts and form.
  */
 async function init() {
     checkAuth();
@@ -155,4 +155,5 @@ async function init() {
     await initBoard();
     initContacts();
     initTaskForm();
+    if (typeof renderAssignedToDropdown === 'function') renderAssignedToDropdown();
 }

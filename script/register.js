@@ -1,6 +1,6 @@
 /**
- * Prüft ob ein Passwort alle Regeln erfüllt.
- * @param {string} password - Das zu prüfende Passwort.
+ * Checks if a password meets all rules.
+ * @param {string} password - The password to check.
  * @returns {{ minLength: boolean, uppercase: boolean, lowercase: boolean, number: boolean, specialChar: boolean }}
  */
 function checkPasswordRules(password) {
@@ -15,9 +15,9 @@ function checkPasswordRules(password) {
 
 
 /**
- * Erstellt eine Fehlermeldung basierend auf den nicht erfüllten Passwortregeln.
- * @param {string} password - Das eingegebene Passwort.
- * @returns {string} Die Fehlermeldung.
+ * Builds an error message based on the unmet password rules.
+ * @param {string} password - The entered password.
+ * @returns {string} The error message.
  */
 function buildPasswordErrorMessage(password) {
     const rules = checkPasswordRules(password);
@@ -33,9 +33,9 @@ function buildPasswordErrorMessage(password) {
 
 
 /**
- * Prüft ob ein Benutzername gültig und noch nicht vergeben ist.
- * @param {string} username - Der zu prüfende Benutzername.
- * @returns {Promise<boolean>} True wenn gültig.
+ * Checks if a username is valid and not yet taken.
+ * @param {string} username - The username to check.
+ * @returns {Promise<boolean>} True if valid.
  */
 async function isUsernameValid(username) {
     if (!username) return false;
@@ -45,9 +45,9 @@ async function isUsernameValid(username) {
 
 
 /**
- * Validiert das Benutzername-Feld und zeigt ggf. einen Fehler an.
- * @param {boolean} checkMode - Wenn true, wird kein Fehler angezeigt.
- * @returns {Promise<boolean>} True wenn der Benutzername gültig ist.
+ * Validates the username field and displays an error if necessary.
+ * @param {boolean} checkMode - If true, no error is displayed.
+ * @returns {Promise<boolean>} True if the username is valid.
  */
 async function validateName(checkMode) {
     const username = getInputValue('username');
@@ -64,9 +64,9 @@ async function validateName(checkMode) {
 
 
 /**
- * Prüft ob eine E-Mail gültig und noch nicht registriert ist.
- * @param {string} email - Die zu prüfende E-Mail.
- * @returns {Promise<boolean>} True wenn gültig.
+ * Checks if an email is valid and not yet registered.
+ * @param {string} email - The email to check.
+ * @returns {Promise<boolean>} True if valid.
  */
 async function isEmailValid(email) {
     const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -77,9 +77,9 @@ async function isEmailValid(email) {
 
 
 /**
- * Validiert das E-Mail-Feld und zeigt ggf. einen Fehler an.
- * @param {boolean} checkMode - Wenn true, wird kein Fehler angezeigt.
- * @returns {Promise<boolean>} True wenn die E-Mail gültig ist.
+ * Validates the email field and displays an error if necessary.
+ * @param {boolean} checkMode - If true, no error is displayed.
+ * @returns {Promise<boolean>} True if the email is valid.
  */
 async function validateEmail(checkMode) {
     const email = getInputValue('email');
@@ -96,9 +96,9 @@ async function validateEmail(checkMode) {
 
 
 /**
- * Validiert das Passwort-Feld und zeigt ggf. einen Fehler an.
- * @param {boolean} checkMode - Wenn true, wird kein Fehler angezeigt.
- * @returns {boolean} True wenn das Passwort gültig ist.
+ * Validates the password field and displays an error if necessary.
+ * @param {boolean} checkMode - If true, no error is displayed.
+ * @returns {boolean} True if the password is valid.
  */
 function validatePassword(checkMode) {
     const password = getInputValue('password');
@@ -111,9 +111,9 @@ function validatePassword(checkMode) {
 
 
 /**
- * Validiert das Passwort-Bestätigung-Feld und zeigt ggf. einen Fehler an.
- * @param {boolean} checkMode - Wenn true, wird kein Fehler angezeigt.
- * @returns {boolean} True wenn die Passwörter übereinstimmen.
+ * Validates the confirm password field and displays an error if necessary.
+ * @param {boolean} checkMode - If true, no error is displayed.
+ * @returns {boolean} True if the passwords match.
  */
 function validateConfirmPassword(checkMode) {
     const password = getInputValue('password');
@@ -131,7 +131,7 @@ function validateConfirmPassword(checkMode) {
 
 
 /**
- * Aktualisiert den Disabled-Status der Datenschutz-Checkbox.
+ * Updates the disabled state of the privacy checkbox.
  */
 async function updateCheckboxDisabledState() {
     const nameValid = await validateName(true);
@@ -146,7 +146,7 @@ async function updateCheckboxDisabledState() {
 
 
 /**
- * Aktualisiert den Disabled-Status des Submit-Buttons.
+ * Updates the disabled state of the submit button.
  */
 function toggleSubmitDisabledState() {
     const privacyCheckbox = document.getElementById('privacy-checkbox');
@@ -156,7 +156,7 @@ function toggleSubmitDisabledState() {
 
 
 /**
- * Liest die Formulardaten aus und gibt sie als Objekt zurück.
+ * Reads the form data and returns it as an object.
  * @returns {{ username: string, email: string, password: string }}
  */
 function getFormData() {
@@ -169,7 +169,7 @@ function getFormData() {
 
 
 /**
- * Erstellt einen neuen Benutzer mit Standard-Daten in der Datenbank.
+ * Creates a new user with default data in the database.
  * @param {{ username: string, email: string, password: string }} newUser
  */
 async function createNewUser(newUser) {
@@ -180,8 +180,8 @@ async function createNewUser(newUser) {
 
 
 /**
- * Verarbeitet die Registrierung beim Absenden des Formulars.
- * @param {SubmitEvent} event - Das Submit-Event des Formulars.
+ * Handles the registration on form submit.
+ * @param {SubmitEvent} event - The submit event of the form.
  */
 async function registerUser(event) {
     event.preventDefault();
@@ -193,7 +193,7 @@ async function registerUser(event) {
 
 
 /**
- * Zeigt das Erfolgs-Overlay an und wartet bis es ausgeblendet ist.
+ * Shows the success overlay and waits until it is hidden.
  * @returns {Promise<void>}
  */
 function showSuccessOverlay() {

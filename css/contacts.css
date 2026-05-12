@@ -740,3 +740,15 @@ body {
         font-weight: 700;
     }
 }
+
+@media (max-width: 350px) {
+    .btn-cancel {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+
+    .btn-create {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}

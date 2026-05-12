@@ -1,6 +1,6 @@
 /**
- * Gibt das HTML des Headers für nicht eingeloggte Nutzer zurück.
- * @returns {string} HTML-String des Gast-Headers.
+ * Returns the HTML of the header for logged-out users.
+ * @returns {string} HTML string of the guest header.
  */
 function headerLoggedOutTemplate() {
     return `
@@ -17,8 +17,8 @@ function headerLoggedOutTemplate() {
 
 
 /**
- * Gibt das HTML des Headers für eingeloggte Nutzer zurück.
- * @returns {string} HTML-String des eingeloggten Headers.
+ * Returns the HTML of the header for logged-in users.
+ * @returns {string} HTML string of the logged-in header.
  */
 function headerLoggedInTemplate() {
     return `
@@ -52,8 +52,8 @@ function headerLoggedInTemplate() {
 
 
 /**
- * Gibt das passende Header-Template zurück.
- * @returns {string} HTML-String des Headers.
+ * Returns the appropriate header template.
+ * @returns {string} HTML string of the header.
  */
 function headerTemplate() {
     return isAuthorized() ? headerLoggedInTemplate() : headerLoggedOutTemplate();
@@ -61,7 +61,7 @@ function headerTemplate() {
 
 
 /**
- * Öffnet oder schließt das Logout-Menü.
+ * Opens or closes the logout menu.
  */
 function toggleLogoutMenu() {
     document.getElementById('logOutMenu').classList.toggle('d-none');
@@ -70,7 +70,7 @@ function toggleLogoutMenu() {
 
 
 /**
- * Schließt das Logout-Menü.
+ * Closes the logout menu.
  */
 function closeLogoutMenu() {
     document.getElementById('logOutMenu').classList.add('d-none');
@@ -79,8 +79,8 @@ function closeLogoutMenu() {
 
 
 /**
- * Gibt die Initialen des eingeloggten Nutzers zurück.
- * @returns {string} Die Initialen (1-2 Zeichen).
+ * Returns the initials of the logged-in user.
+ * @returns {string} The initials (1-2 characters).
  */
 function getInitials() {
     const username = sessionStorage.getItem('username') || '';
@@ -91,7 +91,7 @@ function getInitials() {
 
 
 /**
- * Loggt den Nutzer aus und leitet zur Login-Seite weiter.
+ * Logs out the user and redirects to the login page.
  */
 function logout() {
     sessionStorage.removeItem('username');

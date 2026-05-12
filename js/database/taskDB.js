@@ -4,7 +4,7 @@ let editSubtasks = [];
 
 
 /**
- * Lädt die Standard-Tasks aus der JSON-Datei.
+ * Loads the default tasks from the JSON file.
  * @returns {Promise<void>}
  */
 async function loadDefaultTasks() {
@@ -18,8 +18,8 @@ async function loadDefaultTasks() {
 
 
 /**
- * Gibt die Firebase-Referenz für Tasks zurück.
- * @returns {firebase.database.Reference} Die Firebase-Referenz.
+ * Returns the Firebase reference for tasks.
+ * @returns {firebase.database.Reference} The Firebase reference.
  */
 function getTasksRef() {
     return isGuest() ? db.ref('guest/tasks') : db.ref(`users/${getUserKey()}/tasks`);
@@ -27,8 +27,8 @@ function getTasksRef() {
 
 
 /**
- * Fügt die Standard-Tasks in eine Firebase-Referenz ein.
- * @param {firebase.database.Reference} tasksRef - Die Firebase-Referenz.
+ * Inserts the default tasks into a Firebase reference.
+ * @param {firebase.database.Reference} tasksRef - The Firebase reference.
  */
 async function insertDefaultTasksForRef(tasksRef) {
     for (const task of defaultTasks) {
@@ -38,7 +38,7 @@ async function insertDefaultTasksForRef(tasksRef) {
 
 
 /**
- * Lädt Tasks aus Firebase und initialisiert Standard-Tasks falls leer.
+ * Loads tasks from Firebase and initializes default tasks if empty.
  */
 async function loadTasks() {
     await loadDefaultTasks();
@@ -55,14 +55,14 @@ async function loadTasks() {
         tasks = !val ? [] : Object.entries(val).map(([id, task]) => ({ id, ...task }));
         if (typeof updateBoard === 'function') updateBoard();
     } catch (e) {
-        console.error('Fehler beim Laden der Tasks:', e);
+        console.error('Error loading tasks:', e);
     }
 }
 
 
 /**
- * Erstellt Standard-Tasks für einen neu registrierten Nutzer.
- * @param {{ email: string }} newUser - Der neu registrierte Nutzer.
+ * Creates default tasks for a newly registered user.
+ * @param {{ email: string }} newUser - The newly registered user.
  */
 async function createDefaultTasks(newUser) {
     await loadDefaultTasks();
@@ -78,9 +78,9 @@ async function createDefaultTasks(newUser) {
 
 
 /**
- * Rendert den Subtask-Fortschrittsbalken einer Board-Karte.
- * @param {Object} task - Das Task-Objekt.
- * @returns {string} HTML-String des Fortschrittsbalkens.
+ * Renders the subtask progress bar of a board card.
+ * @param {Object} task - The task object.
+ * @returns {string} HTML string of the progress bar.
  */
 function renderSubtaskProgress(task) {
     if (!task.subtasks || task.subtasks.length === 0) return '';
@@ -99,9 +99,9 @@ function renderSubtaskProgress(task) {
 
 
 /**
- * Rendert die Assignee-Avatare einer Board-Karte.
- * @param {string[]} assignees - Array der Assignee-Namen.
- * @returns {string} HTML-String der Avatare.
+ * Renders the assignee avatars of a board card.
+ * @param {string[]} assignees - Array of assignee names.
+ * @returns {string} HTML string of the avatars.
  */
 function renderAssigneeIcons(assignees) {
     if (!assignees || assignees.length === 0) return '';
@@ -121,9 +121,9 @@ function renderAssigneeIcons(assignees) {
 
 
 /**
- * Rendert das Prioritäts-Icon einer Board-Karte.
- * @param {string} priority - Die Priorität des Tasks.
- * @returns {string} HTML-String des Icons.
+ * Renders the priority icon of a board card.
+ * @param {string} priority - The priority of the task.
+ * @returns {string} HTML string of the icon.
  */
 function renderPriorityIcon(priority) {
     const icons = {
@@ -136,7 +136,7 @@ function renderPriorityIcon(priority) {
 
 
 /**
- * Liest die Formulardaten des neuen Tasks aus.
+ * Reads the form data of the new task.
  * @returns {{ title: string, description: string, dueDate: string, category: string, status: string, priority: string, assignees: string[] }}
  */
 function getNewTaskFormData() {
@@ -160,7 +160,7 @@ function getNewTaskFormData() {
 
 
 /**
- * Zeigt ein Popup nach erfolgreichem Erstellen eines Tasks.
+ * Shows a popup after successfully creating a task.
  */
 function showTaskAddedPopup() {
     const popup = document.createElement('div');
@@ -176,7 +176,7 @@ function showTaskAddedPopup() {
 
 
 /**
- * Leitet nach dem Speichern eines Tasks weiter oder schließt das Overlay.
+ * Redirects after saving a task or closes the overlay.
  */
 async function handleAfterTaskSave() {
     showTaskAddedPopup();
@@ -190,16 +190,16 @@ async function handleAfterTaskSave() {
 
 
 /**
- * Speichert einen neuen Task in Firebase.
+ * Saves a new task to Firebase.
  */
 async function saveNewTask() {
     const data = getNewTaskFormData();
-    if (!data.title || !data.dueDate || !data.category) {
-        validateTaskField('taskTitle');
-        validateTaskField('taskDueDate');
-        validateTaskField('categoryInput');
-        return;
-    }
+
+    validateTaskField('taskTitle');
+    validateTaskField('taskDueDate');
+    validateTaskField('categoryInput');
+
+    if (!data.title || !data.dueDate || !data.category) return;
 
     const newTask = { ...data, subtasks: currentSubtasks, createdAt: new Date().toISOString() };
 
@@ -208,14 +208,14 @@ async function saveNewTask() {
         clearAddTaskForm();
         await handleAfterTaskSave();
     } catch (e) {
-        console.error('Fehler beim Speichern:', e);
+        console.error('Error saving task:', e);
     }
 }
 
 
 /**
- * Öffnet das Add-Task-Overlay mit dem angegebenen Status.
- * @param {string} status - Der Status der Zielspalte.
+ * Opens the add task overlay with the specified status.
+ * @param {string} status - The status of the target column.
  */
 function openAddTaskForm(status) {
     const normalizedStatus = status.replace(/\s+/g, '').toLowerCase();
@@ -230,8 +230,8 @@ function openAddTaskForm(status) {
 
 
 /**
- * Öffnet die Task-Detailansicht für einen Task.
- * @param {string} taskId - Die ID des Tasks.
+ * Opens the task detail view for a task.
+ * @param {string} taskId - The ID of the task.
  */
 function openTaskDetail(taskId) {
     const task = tasks.find(t => t.id === taskId);
@@ -244,7 +244,7 @@ function openTaskDetail(taskId) {
 
 
 /**
- * Schließt die Task-Detailansicht mit Animation.
+ * Closes the task detail view with animation.
  */
 function closeTaskDetail() {
     const overlay = document.getElementById('taskDetailOverlay');
@@ -257,8 +257,8 @@ function closeTaskDetail() {
 
 
 /**
- * Schließt die Task-Detailansicht beim Klick auf den Hintergrund.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Closes the task detail view when clicking on the backdrop.
+ * @param {MouseEvent} event - The click event.
  */
 function closeTaskDetailOnBackdrop(event) {
     if (event.target.id === 'taskDetailOverlay') closeTaskDetail();
@@ -266,8 +266,8 @@ function closeTaskDetailOnBackdrop(event) {
 
 
 /**
- * Löscht einen Task aus Firebase und aktualisiert das Board.
- * @param {string} taskId - Die ID des zu löschenden Tasks.
+ * Deletes a task from Firebase and updates the board.
+ * @param {string} taskId - The ID of the task to delete.
  */
 async function deleteTask(taskId) {
     try {
@@ -276,15 +276,15 @@ async function deleteTask(taskId) {
         closeTaskDetail();
         updateBoard();
     } catch (e) {
-        console.error('Fehler beim Löschen:', e);
+        console.error('Error deleting task:', e);
     }
 }
 
 
 /**
- * Schaltet den Done-Status eines Subtasks um.
- * @param {string} taskId - Die ID des Tasks.
- * @param {number} subtaskIndex - Der Index des Subtasks.
+ * Toggles the done status of a subtask.
+ * @param {string} taskId - The ID of the task.
+ * @param {number} subtaskIndex - The index of the subtask.
  */
 async function toggleSubtask(taskId, subtaskIndex) {
     const task = tasks.find(t => t.id === taskId);
@@ -294,13 +294,13 @@ async function toggleSubtask(taskId, subtaskIndex) {
         await getTasksRef().child(taskId).child('subtasks').set(task.subtasks);
         updateBoard();
     } catch (e) {
-        console.error('Fehler beim Aktualisieren des Subtasks:', e);
+        console.error('Error updating subtask:', e);
     }
 }
 
 
 /**
- * Setzt den Minimum-Datum des Edit-Datumsfelds auf heute.
+ * Sets the minimum date of the edit due date field to today.
  */
 function setEditDueDateMin() {
     const dateInput = document.getElementById('editDueDate');
@@ -309,8 +309,8 @@ function setEditDueDateMin() {
 
 
 /**
- * Öffnet die Bearbeitungsansicht für einen Task.
- * @param {string} taskId - Die ID des zu bearbeitenden Tasks.
+ * Opens the edit view for a task.
+ * @param {string} taskId - The ID of the task to edit.
  */
 function openEditTask(taskId) {
     const task = tasks.find(t => t.id === taskId);
@@ -328,8 +328,8 @@ function openEditTask(taskId) {
 
 
 /**
- * Rendert das Assignee-Dropdown im Edit-Modus.
- * @param {string[]} selectedAssignees - Array der bereits ausgewählten Assignee-Namen.
+ * Renders the assignee dropdown in edit mode.
+ * @param {string[]} selectedAssignees - Array of already selected assignee names.
  */
 function renderEditAssignedToDropdown(selectedAssignees) {
     const dropdown = document.getElementById('editAssignedToDropdown');
@@ -345,8 +345,8 @@ function renderEditAssignedToDropdown(selectedAssignees) {
 
 
 /**
- * Öffnet oder schließt das Assignee-Dropdown im Edit-Modus.
- * @param {MouseEvent} event - Das Klick-Event.
+ * Opens or closes the assignee dropdown in edit mode.
+ * @param {MouseEvent} event - The click event.
  */
 function toggleEditAssignedToDropdown(event) {
     if (event) event.stopPropagation();
@@ -357,9 +357,9 @@ function toggleEditAssignedToDropdown(event) {
 
 
 /**
- * Erstellt ein "+N"-Avatar-Element für überzählige Edit-Assignees.
- * @param {number} count - Anzahl der nicht angezeigten Assignees.
- * @returns {HTMLElement} Das Extra-Avatar-Element.
+ * Creates a "+N" avatar element for excess edit assignees.
+ * @param {number} count - Number of assignees not displayed.
+ * @returns {HTMLElement} The extra avatar element.
  */
 function createEditExtraAvatar(count) {
     const extra = document.createElement('div');
@@ -372,7 +372,7 @@ function createEditExtraAvatar(count) {
 
 
 /**
- * Rendert die ausgewählten Assignee-Avatare im Edit-Modus.
+ * Renders the selected assignee avatars in edit mode.
  */
 function updateEditAssignees() {
     const list = document.getElementById('editAssignedToDropdown');
@@ -400,7 +400,7 @@ function updateEditAssignees() {
 
 
 /**
- * Rendert die Subtask-Liste im Edit-Modus.
+ * Renders the subtask list in edit mode.
  */
 function renderEditSubtasks() {
     const list = document.getElementById('editSubtaskList');
@@ -413,8 +413,8 @@ function renderEditSubtasks() {
 
 
 /**
- * Zeigt das Bearbeitungsfeld für einen Edit-Subtask an.
- * @param {number} index - Der Index des Subtasks.
+ * Shows the edit input field for an edit subtask.
+ * @param {number} index - The index of the subtask.
  */
 function showEditSubtaskEditInput(index) {
     const list = document.getElementById('editSubtaskList');
@@ -425,8 +425,8 @@ function showEditSubtaskEditInput(index) {
 
 
 /**
- * Bestätigt die Bearbeitung eines Edit-Subtasks.
- * @param {number} index - Der Index des Subtasks.
+ * Confirms the editing of an edit subtask.
+ * @param {number} index - The index of the subtask.
  */
 function confirmEditSubtaskEdit(index) {
     const list = document.getElementById('editSubtaskList');
@@ -438,7 +438,7 @@ function confirmEditSubtaskEdit(index) {
 
 
 /**
- * Zeigt die Subtask-Eingabe-Buttons im Edit-Modus an.
+ * Shows the subtask input buttons in edit mode.
  */
 function showEditSubtaskButtons() {
     document.getElementById('editSubtaskBtnGroup').classList.remove('d-none');
@@ -446,7 +446,7 @@ function showEditSubtaskButtons() {
 
 
 /**
- * Leert das Subtask-Eingabefeld im Edit-Modus.
+ * Clears the subtask input field in edit mode.
  */
 function clearEditSubtaskInput() {
     document.getElementById('editSubtaskInput').value = '';
@@ -455,7 +455,7 @@ function clearEditSubtaskInput() {
 
 
 /**
- * Fügt einen neuen Subtask im Edit-Modus hinzu.
+ * Adds a new subtask in edit mode.
  */
 function addEditSubtask() {
     const input = document.getElementById('editSubtaskInput');
@@ -467,8 +467,8 @@ function addEditSubtask() {
 
 
 /**
- * Entfernt einen Subtask im Edit-Modus.
- * @param {number} index - Der Index des zu entfernenden Subtasks.
+ * Removes a subtask in edit mode.
+ * @param {number} index - The index of the subtask to remove.
  */
 function removeEditSubtask(index) {
     editSubtasks.splice(index, 1);
@@ -477,7 +477,7 @@ function removeEditSubtask(index) {
 
 
 /**
- * Liest die Formulardaten des Edit-Tasks aus.
+ * Reads the form data of the edit task.
  * @returns {{ title: string, description: string, dueDate: string, priority: string, assignees: string[] }}
  */
 function getEditTaskFormData() {
@@ -496,13 +496,13 @@ function getEditTaskFormData() {
 
 
 /**
- * Speichert die Änderungen an einem bestehenden Task in Firebase.
- * @param {string} taskId - Die ID des zu speichernden Tasks.
+ * Saves the changes to an existing task in Firebase.
+ * @param {string} taskId - The ID of the task to save.
  */
 async function saveEditedTask(taskId) {
     const data = getEditTaskFormData();
     if (!data.title || !data.dueDate) {
-        alert('Bitte Titel und Fälligkeitsdatum ausfüllen.');
+        alert('Please fill in title and due date.');
         return;
     }
 
@@ -511,14 +511,14 @@ async function saveEditedTask(taskId) {
         await loadTasks();
         closeTaskDetail();
     } catch (e) {
-        console.error('Fehler beim Bearbeiten:', e);
+        console.error('Error editing task:', e);
     }
 }
 
 
 /**
- * Filtert die Kontakte im Edit-Assignee-Dropdown anhand eines Suchwerts.
- * @param {string} searchValue - Der Suchwert.
+ * Filters the contacts in the edit assignee dropdown based on a search value.
+ * @param {string} searchValue - The search value.
  */
 function filterEditAssignedToDropdown(searchValue) {
     const dropdown = document.getElementById('editAssignedToDropdown');
