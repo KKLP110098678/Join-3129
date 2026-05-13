@@ -278,3 +278,27 @@ function sanitizePhoneInput(input) {
     if (hasPlus) value = '+' + value;
     input.value = value;
 }
+
+
+/**
+ * Deselects the active contact card and clears the detail view
+ * when clicking outside of a contact card, detail view or overlay.
+ * @param {MouseEvent} event - The click event.
+ */
+document.addEventListener('click', function (event) {
+    const clickedCard = event.target.closest('.contact-card');
+    const clickedDetail = event.target.closest('.contact-detail-container');
+    const clickedOverlay = event.target.closest('.overlay, .overlay-edit-contact');
+
+    if (!clickedCard && !clickedDetail && !clickedOverlay) {
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.classList.remove('active-card');
+        });
+
+        const detailView = document.getElementById('contact-detail-view');
+        if (detailView) {
+            detailView.innerHTML = '<div class="no-selection">Wähle einen Kontakt aus, um Details zu sehen.</div>';
+            detailView.classList.remove('show-mobile');
+        }
+    }
+});
