@@ -768,4 +768,8 @@ body {
     .overlay-content {
         height: 90vh;
     }
+
+    .overlay-content-edit-contact {
+        height: 90vh;
+    }
 }
