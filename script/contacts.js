@@ -302,3 +302,13 @@ document.addEventListener('click', function (event) {
         }
     }
 });
+
+
+/**
+ * Sanitizes a name input field.
+ * Only allows letters, spaces, hyphens and apostrophes.
+ * @param {HTMLInputElement} input - The name input element to sanitize.
+ */
+function sanitizeNameInput(input) {
+    input.value = input.value.replace(/[^a-zA-ZäöüÄÖÜß\s\-']/g, '');
+}
