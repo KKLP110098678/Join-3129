@@ -220,6 +220,7 @@ body {
 .contact-data a {
     color: #007CEE;
     text-decoration: none;
+    word-break: break-word;
 }
 
 .contact-added-popup {
@@ -761,5 +762,5 @@ body {
     .overlay-white-part {
         padding: 0 20px 40px 20px;
     }
-    
+
 }
