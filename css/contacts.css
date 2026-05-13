@@ -753,7 +753,7 @@ body {
     }
 }
 
-@media (max-width: 320px) and (max-height: 750px) {
+@media (max-width: 350px) and (max-height: 750px) {
     .overlay-blue-part {
         padding: 40px 20px;
     }
@@ -762,4 +762,10 @@ body {
         padding: 0 20px 40px 20px;
     }
     
+}
+
+@media (max-width: 1100px) and (max-height: 660px) {
+    .overlay-content {
+        height: 90vh;
+    }
 }
