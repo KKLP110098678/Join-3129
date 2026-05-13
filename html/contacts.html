@@ -52,7 +52,7 @@
         </div>
     </main>
 
-    <div id="addContactOverlay" class="overlay d-none" onclick="closeOverlayOnBackground(event, 'addContactOverlay')">
+    <div id="addContactOverlay" class="overlay d-none">
         <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeAddContactOverlay()"><img
@@ -121,8 +121,7 @@
         </div>
     </div>
 
-    <div id="editContactOverlay" class="overlay-edit-contact d-none"
-        onclick="closeOverlayOnBackground(event, 'editContactOverlay')">
+    <div id="editContactOverlay" class="overlay-edit-contact d-none">
         <div class="overlay-content-edit-contact form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeEditContactOverlay()"><img
@@ -191,8 +190,7 @@
         </div>
     </div>
 
-    <div id="deleteContactOverlay" class="overlay d-none"
-        onclick="closeOverlayOnBackground(event, 'deleteContactOverlay')">
+    <div id="deleteContactOverlay" class="overlay d-none">
         <div class="overlay-content form-overlay" onclick="event.stopPropagation()">
             <div class="overlay-blue-part">
                 <span class="close-btn white-close-btn" onclick="closeDeleteContactOverlay()"><img
