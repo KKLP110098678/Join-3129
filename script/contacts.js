@@ -264,3 +264,17 @@ function showContactDetails(index, name, email, phone, initials, colorClass) {
         detailContainer.classList.remove('show-mobile');
     }
 }
+
+
+/**
+ * Removes invalid characters from a phone input field.
+ * Allows only digits, spaces and a leading plus sign.
+ * @param {HTMLInputElement} input - The phone input element.
+ */
+function sanitizePhoneInput(input) {
+    let value = input.value;
+    let hasPlus = value.startsWith('+');
+    value = value.replace(/[^0-9\s]/g, '');
+    if (hasPlus) value = '+' + value;
+    input.value = value;
+}
