@@ -220,6 +220,7 @@ body {
 .contact-data a {
     color: #007CEE;
     text-decoration: none;
+    word-break: break-word;
 }
 
 .contact-added-popup {

@@ -128,23 +128,3 @@ function addTaskOverlayTemplate() {
         </div>
     `;
 }
-
-
-/**
- * Opens or closes the move task menu for a task.
- * Automatically closes the menu when clicking outside.
- * @param {string} taskId - The ID of the task.
- */
-function openMoveTaskMenu(taskId) {
-    const menu = document.getElementById(`moveMenu_${taskId}`);
-    menu.classList.toggle('d-none');
-
-    if (menu.classList.contains('d-none')) return;
-
-    document.addEventListener('click', function closeMenu(e) {
-        if (!menu.contains(e.target)) {
-            menu.classList.add('d-none');
-            document.removeEventListener('click', closeMenu);
-        }
-    });
-}

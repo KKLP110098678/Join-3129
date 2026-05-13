@@ -70,11 +70,11 @@
                         <img src="../assets/icon/sign/person.svg" alt="">
                     </div>
                 </div>
-                <form onsubmit="addNewContact(event)">
+                <form onsubmit="addNewContact(event)" novalidate>
                     <div class="field-container">
                         <div class="input-wrapper">
-                            <input onblur="validateContactName()" type="text" id="contactName" placeholder="Name"
-                                required>
+                            <input onblur="validateContactName()" oninput="sanitizeNameInput(this)" type="text"
+                                id="contactName" placeholder="Name">
                             <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactName-error" for="contactName">This field is
@@ -82,8 +82,7 @@
                     </div>
                     <div class="field-container">
                         <div class="input-wrapper">
-                            <input onblur="validateContactEmail()" type="email" id="contactEmail" placeholder="Email"
-                                required>
+                            <input onblur="validateContactEmail()" type="email" id="contactEmail" placeholder="Email">
                             <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactEmail-error" for="contactEmail">This field is
@@ -92,7 +91,7 @@
                     <div class="field-container">
                         <div class="input-wrapper">
                             <input onblur="validateContactPhone()" oninput="sanitizePhoneInput(this)" type="tel"
-                                id="contactPhone" placeholder="Phone" inputmode="numeric" required>
+                                id="contactPhone" placeholder="Phone" inputmode="numeric">
                             <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="contactPhone-error" for="contactPhone">This field is
@@ -139,12 +138,12 @@
                         <span id="editContactInitials" class="avatar-initials">AB</span>
                     </div>
                 </div>
-                <form id="editContactForm" onsubmit="saveEditedContact(event)">
+                <form id="editContactForm" onsubmit="saveEditedContact(event)" novalidate>
                     <input type="hidden" id="editContactIndex">
                     <div class="field-container">
                         <div class="input-wrapper">
-                            <input onblur="validateEditContactName()" type="text" id="editContactName"
-                                placeholder="Name" required>
+                            <input onblur="validateEditContactName()" oninput="sanitizeNameInput(this)" type="text"
+                                id="editContactName" placeholder="Name">
                             <img src="../assets/icon/sign/person.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactName-error" for="editContactName">This field
@@ -153,7 +152,7 @@
                     <div class="field-container">
                         <div class="input-wrapper">
                             <input onblur="validateEditContactEmail()" type="email" id="editContactEmail"
-                                placeholder="Email" required>
+                                placeholder="Email">
                             <img src="../assets/icon/sign/email.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactEmail-error" for="editContactEmail">This
@@ -162,7 +161,7 @@
                     <div class="field-container">
                         <div class="input-wrapper">
                             <input onblur="validateEditContactPhone()" oninput="sanitizePhoneInput(this)" type="tel"
-                                id="editContactPhone" placeholder="Phone" inputmode="numeric" required>
+                                id="editContactPhone" placeholder="Phone" inputmode="numeric">
                             <img src="../assets/icon/sign/phone.svg" alt="" class="input-icon">
                         </div>
                         <output class="error-message d-none" id="editContactPhone-error" for="editContactPhone">This
@@ -218,6 +217,7 @@
 <script src="../js/database/firebase-database.js"></script>
 <script src="../js/database/firebaseConfig.js"></script>
 <script src="../js/database/userDB.js"></script>
+<script src="../script/templateHelper.js"></script>
 <script src="../templates/headerTemplate.js"></script>
 <script src="../templates/sidebarTemplate.js"></script>
 <script src="../templates/contactsTemplate.js"></script>

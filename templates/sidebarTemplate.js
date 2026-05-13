@@ -1,14 +1,4 @@
 /**
- * Checks if a path matches the current page path.
- * @param {string} path - The path to check.
- * @returns {string} 'active' if the path is active, otherwise ''.
- */
-function isActive(path) {
-    return window.location.pathname.includes(path) ? 'active' : '';
-}
-
-
-/**
  * Returns the HTML of the sidebar for logged-out users.
  * @returns {string} HTML string of the guest sidebar.
  */
@@ -56,13 +46,4 @@ function sidebarLoggedInTemplate() {
             </div>
         </nav>
     `;
-}
-
-
-/**
- * Returns the appropriate sidebar template.
- * @returns {string} HTML string of the sidebar.
- */
-function getSidebarTemplate() {
-    return isAuthorized() ? sidebarLoggedInTemplate() : sidebarLoggedOutTemplate();
 }

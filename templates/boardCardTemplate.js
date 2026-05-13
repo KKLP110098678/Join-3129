@@ -1,46 +1,4 @@
 /**
- * Returns the move menu options for a task status.
- * @param {string} status - The normalized status of the task.
- * @returns {Array[]} Array of [label, status] pairs.
- */
-function getMoveMenuOptions(status) {
-    const mapping = {
-        'todo': [['In Progress', 'inprogress']],
-        'inprogress': [['Todo', 'todo'], ['Awaiting feedback', 'awaitfeedback']],
-        'awaitfeedback': [['In progress', 'inprogress'], ['Done', 'done']],
-        'done': [['Awaiting feedback', 'awaitfeedback']]
-    };
-    return mapping[status] || mapping['todo'];
-}
-
-
-/**
- * Normalizes the task status for the move menu mapping.
- * @param {string} status - The raw status string.
- * @returns {string} The normalized status.
- */
-function normalizeTaskStatus(status) {
-    const normalized = (status || 'todo').toLowerCase().replace(/[\s_-]/g, '');
-    return normalized === 'awaitingfeedback' ? 'awaitfeedback' : normalized;
-}
-
-
-/**
- * Returns the first and second move option of a task.
- * @param {string} menuStatus - The normalized status.
- * @returns {{ first: Array|null, second: Array|null }}
- */
-function resolveMoveOptions(menuStatus) {
-    const options = getMoveMenuOptions(menuStatus);
-    const first = menuStatus === 'todo' ? null : (options[0] || null);
-    const second = menuStatus === 'todo'
-        ? (options[0] || null)
-        : (menuStatus === 'done' ? null : (options[1] || null));
-    return { first, second };
-}
-
-
-/**
  * Returns the HTML for a single move button.
  * @param {string} taskId - The task ID.
  * @param {Array} option - [label, status] pair.
@@ -289,36 +247,4 @@ function editTaskTemplate(task) {
             </button>
         </div>
     `;
-}
-
-
-/**
- * Formats a date string from YYYY-MM-DD to DD.MM.YYYY.
- * @param {string} dateString - The date string to format.
- * @returns {string} The formatted date string.
- */
-function formatDate(dateString) {
-    if (!dateString) return '';
-    const [year, month, day] = dateString.split('-');
-    return `${day}.${month}.${year}`;
-}
-
-
-/**
- * Opens or closes the move task menu for a task.
- * Automatically closes the menu when clicking outside.
- * @param {string} taskId - The ID of the task.
- */
-function openMoveTaskMenu(taskId) {
-    const menu = document.getElementById(`moveMenu_${taskId}`);
-    menu.classList.toggle('d-none');
-
-    if (menu.classList.contains('d-none')) return;
-
-    document.addEventListener('click', function closeMenu(e) {
-        if (!menu.contains(e.target)) {
-            menu.classList.add('d-none');
-            document.removeEventListener('click', closeMenu);
-        }
-    });
 }
