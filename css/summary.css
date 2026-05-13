@@ -97,9 +97,11 @@ main {
 
 .urgent-task {
     height: 120px;
+    width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .seperation-line {
@@ -111,6 +113,8 @@ main {
 
 .urgent-task-date {
     height: 120px;
+    width: 50%;
+    padding-left: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +290,6 @@ main {
 }
 
 .task-text-white {
-    width: 140px;
     font-size: 20px;
     color: white;
     text-align: center;
@@ -295,8 +298,8 @@ main {
 }
 
 .date-text-top {
-    width: 270px;
     font-size: 28px;
+    font-weight: 700;
     color: white;
     text-align: start;
     margin-top: 8px;
@@ -304,7 +307,6 @@ main {
 }
 
 .date-text {
-    width: 270px;
     font-size: 20px;
     color: white;
     text-align: start;
@@ -319,6 +321,7 @@ main {
 
 .task-amount-number-white {
     font-size: 48px;
+    font-weight: 700;
     color: white;
     margin: 0;
 }
@@ -400,17 +403,6 @@ main {
     }
 }
 
-@media (max-width: 400px) {
-    .task-text-white {
-        width: 120px;
-    }
-
-    .date-text-top,
-    .date-text {
-        font-size: 18px;
-    }
-}
-
 @media (max-height: 844px) {
     .task-text {
         font-size: 18px;
@@ -454,5 +446,42 @@ main {
 
     .to-do {
         height: 70px;
+    }
+}
+
+@media (max-width: 400px) {
+    .task-text-white {
+        font-size: 18px;
+    }
+
+    .date-text-top {
+        font-size: 18px;
+    }
+
+    .tasks-amount {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .date-text {
+        font-size: 14px;
+    }
+
+    .tasks-amount img {
+        height: 50px;
+        width: 50px;
+    }
+
+    .task-amount-number-white {
+        font-size: 40px;
+    }
+
+    .urgent-task {
+        width: 40%;
+    }
+
+    .urgent-task-date {
+        padding-left: 8px;
+        width: 60%;
     }
 }
