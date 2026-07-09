@@ -60,7 +60,7 @@ function showLoginError(message) {
  */
 function handleLoginSuccess() {
     sessionStorage.removeItem('isGuest');
-    window.location.href = '../index.html';
+    window.location.href = '../html/summary.html';
 }
 
 
@@ -109,7 +109,7 @@ async function guestLogin() {
         console.error('Error resetting guest tasks:', e);
     }
 
-    window.location.href = '../index.html';
+    window.location.href = '../html/summary.html';
 }
 
 

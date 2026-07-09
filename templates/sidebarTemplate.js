@@ -27,7 +27,7 @@ function sidebarLoggedInTemplate() {
     return `
         <nav class="menu">
             <div class="menu-items-container">
-                <a href="../index.html" class="menu-item ${isActive('summary')}">
+                <a href="../html/summary.html" class="menu-item ${isActive('summary')}">
                     <img src="../assets/icon/menuIcons/summary.svg" alt=""> Summary
                 </a>
                 <a href="../html/add-task.html" class="menu-item ${isActive('add-task')}">

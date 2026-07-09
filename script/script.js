@@ -1,4 +1,4 @@
-let protectedPages = ['index.html', 'board.html', 'contacts.html', 'add-task.html'];
+let protectedPages = ['board.html', 'contacts.html', 'add-task.html', 'summary.html'];
 
 
 /**
